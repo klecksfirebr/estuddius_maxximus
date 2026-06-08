@@ -26,3 +26,14 @@ a:hover{
     width: 500px;
     height: 500px;
 }
+
+#butInicio{
+    text-align: center;
+    margin-top: 45vh;
+    scale: 5;
+    padding: 15px;
+    border-radius: 10px;
+    border-color: white;
+    background-color: hsl(0, 0%, 0%);
+    color: #fff;
+}
