@@ -15,8 +15,12 @@ butInicio.addEventListener('click', () => {
         <a href=".//tabs/matematica.html">Matemática</a>   
     </nav>
     <main>
-        <br><br>
-        <img src="./img/images.jpeg" alt="" id="ninjaTurtles">
+        <br><br><br><br>
+        <div id="img">
+        <img src="./img/nerd.gif" alt="" id="nerd">
+        <img src="./img/ninjaTurtles.gif" alt="" id="ninjaTurtles"><br>
+        <img src="./img/gigachad.gif" alt="" id="gigachad">
+        </div>
     </main>`
 
 })
