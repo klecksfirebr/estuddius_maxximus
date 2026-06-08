@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="./images.jpeg" type="image/x-icon">
+<title>Matemática - Estudius maximmus</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      macros: {
+        sen:    ['\\operatorname{sen}'],
+        tg:     ['\\operatorname{tg}'],
+        cotg:   ['\\operatorname{cotg}'],
+        cossec: ['\\operatorname{cossec}']
+      }
+    },
+    svg: { fontCache: 'global' },
+    startup: { ready(){ MathJax.startup.defaultReady(); MathJax.startup.promise.then(()=>document.body.classList.add('mjx-ready')); } }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e4e8ee; --line-strong:#cdd3dd;
+    --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9;
+    --ex-bg:#f1f7ff; --ex-border:#3b7dd8;
+    --pr-bg:#fff8ea; --pr-border:#e0a93c;
+    --paper:#ffffff; --bg:#eef1f5;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:290px 1fr; max-width:1180px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+  /* ÍNDICE */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbfcfe; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 10px; }
+  .toc details>summary{ display:none; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:18px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:block; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; margin-right:5px; }
+  main{ min-width:0; padding-bottom:50px; }
+  .hero{ background:var(--accent); color:#fff; padding:38px 46px; }
+  .hero h1{ margin:0; font-size:29px; letter-spacing:.3px; }
+  .hero p{ margin:8px 0 0; opacity:.92; font-size:15px; max-width:62ch; }
+  .intro{ padding:18px 46px; background:#f7f9fc; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.5px; }
+  .content{ padding:0 46px; }
+  section.eq{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:24px 28px 26px; margin:26px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.eq h2{ margin:5px 0 14px; font-size:22px; color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid #dbe6f2; border-radius:10px;
+    padding:16px; text-align:center; font-size:18px; margin:0 0 16px; overflow-x:auto; }
+  .lead{ font-size:14.5px; margin:0 0 6px; }
+  h3.blk{ font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:20px 0 8px; border-bottom:1px solid var(--line); padding-bottom:4px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  .example{ background:var(--ex-bg); border-left:4px solid var(--ex-border);
+    border-radius:0 8px 8px 0; padding:14px 18px; margin:12px 0; }
+  .example .q{ font-weight:600; margin:0 0 10px; font-size:14.5px; }
+  ol.steps{ margin:0; padding:0; list-style:none; counter-reset:st; }
+  ol.steps li{ counter-increment:st; position:relative; padding:5px 0 5px 32px; font-size:14px; }
+  ol.steps li::before{ content:counter(st); position:absolute; left:0; top:4px; width:21px; height:21px;
+    background:var(--ex-border); color:#fff; border-radius:50%; font-size:11.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; }
+  .answer{ margin-top:11px; background:#e8f4ea; border:1px solid #b9dcc0; border-radius:8px;
+    padding:9px 13px; font-weight:600; color:#1d6b3a; font-size:14px; }
+  .practice{ background:var(--pr-bg); border-left:4px solid var(--pr-border);
+    border-radius:0 8px 8px 0; padding:14px 18px; margin:12px 0; }
+  .practice .pq{ margin:10px 0 4px; font-size:14.5px; }
+  .practice .pq:first-child{ margin-top:0; }
+  .practice .pq .tag{ display:inline-block; font-size:11px; font-weight:800; color:#8a5a06;
+    background:#f6e4bf; border-radius:6px; padding:2px 9px; margin-right:8px; }
+  details.sol{ margin:6px 0 2px; background:var(--paper); border:1px solid var(--line-strong);
+    border-radius:8px; padding:0 14px; }
+  details.sol>summary{ cursor:pointer; font-weight:600; color:var(--accent); padding:9px 0;
+    font-size:13px; list-style:none; }
+  details.sol>summary::-webkit-details-marker{ display:none; }
+  details.sol>summary::before{ content:"▸ "; }
+  details.sol[open]>summary::before{ content:"▾ "; }
+  details.sol[open]{ padding-bottom:12px; }
+  .toplink{ display:inline-block; margin-top:14px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  table.notable{ border-collapse:collapse; margin:4px auto 0; }
+  table.notable th, table.notable td{ border:1px solid var(--line-strong); padding:9px 20px; text-align:center; font-size:16px; }
+  table.notable thead th{ background:var(--accent); color:#fff; }
+  table.notable tbody th{ background:var(--accent-soft); color:var(--accent); }
+  footer.f{ padding:22px 46px 0; color:var(--muted); font-size:12px; }
+  @media(max-width:880px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:700; color:var(--accent);
+      font-size:14px; padding:6px 0; }
+    .toc details:not([open]) .grp:first-of-type{ }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.eq{ padding:18px 16px; }
+    .hero h1{ font-size:24px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .hero{ break-after:avoid; }
+    section.eq{ break-before:page; page-break-before:always; break-inside:avoid; border:none; margin:0; padding-top:10px; }
+    details.sol{ } details.sol>summary::before{ content:""; }
+    details.sol{ border:none; padding:0; } details.sol>summary{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ÍNDICE -->
+    <aside class="toc">
+      <div class="brand">Apostila de Matemática</div>
+      <div class="sub">Fórmulas explicadas · nível vestibular/ENEM</div>
+      <details open>
+        <summary>Índice ▾</summary>
+        <div class="grp">Geometria plana</div>
+        <ol>
+          <li><a href="#eq1"><b>1</b> Área do triângulo (determinante)</a></li>
+          <li><a href="#eq2"><b>2</b> Área do círculo</a></li>
+          <li><a href="#eq3"><b>3</b> Comprimento da circunferência</a></li>
+          <li><a href="#eq4"><b>4</b> Área do triângulo (base × altura)</a></li>
+          <li><a href="#eq5"><b>5</b> Teorema de Pitágoras</a></li>
+          <li><a href="#eq6"><b>6</b> Lei dos cossenos</a></li>
+        </ol>
+        <div class="grp">Geometria espacial</div>
+        <ol>
+          <li><a href="#eq7"><b>7</b> Volume do prisma</a></li>
+          <li><a href="#eq8"><b>8</b> Volume do cilindro</a></li>
+          <li><a href="#eq9"><b>9</b> Volume do cone</a></li>
+          <li><a href="#eq10"><b>10</b> Volume da esfera</a></li>
+        </ol>
+        <div class="grp">Progressões</div>
+        <ol>
+          <li><a href="#eq11"><b>11</b> PA — termo geral</a></li>
+          <li><a href="#eq12"><b>12</b> PA — soma dos termos</a></li>
+          <li><a href="#eq13"><b>13</b> PG — termo geral</a></li>
+          <li><a href="#eq14"><b>14</b> PG — soma infinita</a></li>
+        </ol>
+        <div class="grp">Análise combinatória</div>
+        <ol>
+          <li><a href="#eq15"><b>15</b> Arranjo simples</a></li>
+          <li><a href="#eq16"><b>16</b> Permutação com repetição</a></li>
+          <li><a href="#eq17"><b>17</b> Combinação simples</a></li>
+          <li><a href="#eq18"><b>18</b> Termo geral do binômio</a></li>
+        </ol>
+        <div class="grp">Geometria analítica</div>
+        <ol>
+          <li><a href="#eq19"><b>19</b> Equação da circunferência</a></li>
+          <li><a href="#eq20"><b>20</b> Equação da reta</a></li>
+          <li><a href="#eq21"><b>21</b> Distância entre dois pontos</a></li>
+          <li><a href="#eq22"><b>22</b> Distância de ponto a reta</a></li>
+        </ol>
+        <div class="grp">Trigonometria</div>
+        <ol>
+          <li><a href="#eq23"><b>23</b> Relação fundamental</a></li>
+          <li><a href="#eq24"><b>24</b> Tangente</a></li>
+          <li><a href="#eq25"><b>25</b> Cotangente</a></li>
+          <li><a href="#eq26"><b>26</b> Secante</a></li>
+          <li><a href="#eq27"><b>27</b> Cossecante</a></li>
+          <li><a href="#eq28"><b>28</b> Cosseno da soma</a></li>
+          <li><a href="#eq29"><b>29</b> Seno da soma</a></li>
+        </ol>
+        <div class="grp">Apêndice</div>
+        <ol>
+          <li><a href="#notable">Ângulos notáveis (30°, 45°, 60°)</a></li>
+        </ol>
+      </details>
+    </aside>
+    <!-- CONTEÚDO -->
+    <main>
+      <div class="hero">
+        <h1>Apostila de Matemática</h1>
+        <p>Cada fórmula tem a explicação do conceito, um exercício resolvido passo a passo e duas questões de prática com resolução. Clique em “Ver resolução” para conferir cada resposta depois de tentar.</p>
+      </div>
+      <div class="intro">
+        Como estudar: leia a explicação, acompanhe o exercício resolvido e só então tente as questões de prática sozinho(a). As resoluções ficam escondidas de propósito — abra-as apenas para conferir. Use o índice ao lado para navegar entre as 29 fórmulas.
+      </div>
+      <div class="content">
+<section class="eq" id="eq1">
+  <div class="kicker">Geometria plana · Fórmula 1</div>
+  <h2>Área do triângulo por determinante</h2>
+  <div class="formula-box">\( \displaystyle A_{\text{triângulo}}=\frac{1}{2}\cdot|D|,\quad D=\begin{vmatrix} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \\ x_3 & y_3 & 1 \end{vmatrix} \)</div>
+  <p class="lead">Quando você conhece as <b>coordenadas dos três vértices</b> de um triângulo no plano cartesiano, não precisa descobrir base e altura: a área sai diretamente de um determinante 3×3. Monta-se a matriz colocando as coordenadas de cada vértice em uma linha e completando com uma coluna de 1; calcula-se o determinante \(D\), toma-se o <b>módulo</b> e multiplica-se por \(\tfrac12\). O módulo é essencial — dependendo da ordem em que você lista os vértices, o determinante pode sair negativo, mas área é sempre positiva. A fórmula vem do produto vetorial: o determinante mede o dobro da área <i>orientada</i> do triângulo.</p>
+  <p class="lead">Onde se aplica: em <b>geometria analítica</b>, sempre que o problema fornece os pontos por coordenadas em vez de medidas. Um uso muito cobrado é o <b>teste de colinearidade</b> — se \(D=0\), a área é nula e os três pontos estão alinhados. E como todo polígono pode ser fatiado em triângulos, a mesma ideia permite calcular a área de figuras mais complexas dadas por coordenadas, somando as áreas das partes.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\((x_1,y_1),(x_2,y_2),(x_3,y_3)\) — as coordenadas dos três vértices.</li>
+    <li>\(D\) — o determinante da matriz montada com os vértices.</li>
+    <li>\(|D|\) — o módulo (valor absoluto) de \(D\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule a área do triângulo de vértices \(A(1,1)\), \(B(5,1)\) e \(C(1,4)\).</p>
+    <ol class="steps">
+      <li>Monte o determinante: \(D=\begin{vmatrix} 1 & 1 & 1 \\ 5 & 1 & 1 \\ 1 & 4 & 1 \end{vmatrix}\).</li>
+      <li>Desenvolva pela 1ª linha: \(D=1(1\cdot1-1\cdot4)-1(5\cdot1-1\cdot1)+1(5\cdot4-1\cdot1)\).</li>
+      <li>\(D=1(-3)-1(4)+1(19)=-3-4+19=12\).</li>
+      <li>Aplique a fórmula: \(A=\tfrac12\,|12|=6\).</li>
+    </ol>
+    <div class="answer">Resposta: a área é 6 unidades de área.</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Encontre a área do triângulo de vértices \((0,0)\), \((4,0)\) e \((0,3)\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(D=\begin{vmatrix} 0 & 0 & 1 \\ 4 & 0 & 1 \\ 0 & 3 & 1 \end{vmatrix}=0(0-3)-0(4-0)+1(12-0)=12\).</li>
+        <li>\(A=\tfrac12|12|=6\).</li>
+      </ol>
+      <div class="answer">Resposta: 6 u.a.</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Determine a área do triângulo de vértices \(A(2,1)\), \(B(6,3)\) e \(C(4,7)\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(D=\begin{vmatrix} 2 & 1 & 1 \\ 6 & 3 & 1 \\ 4 & 7 & 1 \end{vmatrix}=2(3-7)-1(6-4)+1(42-12)\).</li>
+        <li>\(D=2(-4)-1(2)+1(30)=-8-2+30=20\).</li>
+        <li>\(A=\tfrac12|20|=10\).</li>
+      </ol>
+      <div class="answer">Resposta: 10 u.a.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq2">
+  <div class="kicker">Geometria plana · Fórmula 2</div>
+  <h2>Área do círculo</h2>
+  <div class="formula-box">\( \displaystyle A_{\text{círculo}}=\pi\cdot r^2 \)</div>
+  <p class="lead">A área de um círculo depende <b>apenas do raio</b>. Como o raio aparece ao quadrado, a área cresce muito rápido: dobrar o raio multiplica a área por quatro, triplicar multiplica por nove. O \(\pi\) é a constante que liga a área ao quadrado do raio em qualquer círculo. Cuidado clássico de prova: muitos enunciados dão o <b>diâmetro</b> — divida por 2 antes de usar a fórmula.</p>
+  <p class="lead">Onde se aplica: em qualquer superfície circular — uma pizza, um tampo de mesa, a seção de um cano ou tanque, um canteiro redondo — e ao comparar tamanhos de círculos. Aparece também combinada: a área de uma <b>coroa circular</b> (anel) é a diferença entre dois círculos, e o cálculo da área do círculo é o primeiro passo para achar o volume de cilindros e cones, cujas bases são círculos.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(A\) — área do círculo.</li>
+    <li>\(r\) — raio (metade do diâmetro).</li>
+    <li>\(\pi\approx 3{,}14\) — constante.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Uma pizza tem raio de 20 cm. Qual é a área da sua superfície?</p>
+    <ol class="steps">
+      <li>Identifique \(r=20\) cm.</li>
+      <li>Substitua: \(A=\pi\cdot 20^2=400\pi\).</li>
+      <li>Aproxime: \(A\approx 400\cdot 3{,}14=1256\ \text{cm}^2\).</li>
+    </ol>
+    <div class="answer">Resposta: \(A=400\pi\approx 1256\ \text{cm}^2\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule a área de um círculo de raio 3 cm.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(A=\pi\cdot 3^2=9\pi\).</li>
+        <li>\(A\approx 9\cdot 3{,}14=28{,}26\ \text{cm}^2\).</li>
+      </ol>
+      <div class="answer">Resposta: \(9\pi\approx 28{,}3\ \text{cm}^2\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Uma mesa circular tem 14 dm de diâmetro. Qual a área do tampo? (use \(\pi=\tfrac{22}{7}\))</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>O diâmetro é 14, então \(r=7\) dm.</li>
+        <li>\(A=\tfrac{22}{7}\cdot 7^2=\tfrac{22}{7}\cdot 49=22\cdot 7=154\ \text{dm}^2\).</li>
+      </ol>
+      <div class="answer">Resposta: \(154\ \text{dm}^2\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq3">
+  <div class="kicker">Geometria plana · Fórmula 3</div>
+  <h2>Comprimento da circunferência</h2>
+  <div class="formula-box">\( \displaystyle C=2\pi r \)</div>
+  <p class="lead">Esta fórmula dá o <b>perímetro</b> da circunferência, isto é, o comprimento de uma volta completa. A relação \(C=2\pi r\) (ou, de forma equivalente, \(C=\pi d\)) vale para qualquer círculo. Não confunda com a área: o comprimento usa o raio na <b>primeira potência</b>.</p>
+  <p class="lead">Onde se aplica: é a fórmula das <b>rodas, polias e engrenagens</b> — a cada volta completa, um ponto da borda percorre exatamente um comprimento \(C\), então a distância total é o número de voltas vezes \(C\). Por isso aparece em problemas de bicicletas, pneus, esteiras e relógios, e também ao calcular quanto material é preciso para cercar uma região circular. Sempre que o enunciado falar em “volta”, “giro”, “rotação” ou “contorno”, o comprimento da circunferência está envolvido.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(C\) — comprimento (perímetro) da circunferência.</li>
+    <li>\(r\) — raio.</li>
+    <li>\(\pi\approx 3{,}14\) — constante.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Qual o comprimento de uma circunferência de raio 7 cm? (use \(\pi=\tfrac{22}{7}\))</p>
+    <ol class="steps">
+      <li>\(C=2\pi r=2\cdot\tfrac{22}{7}\cdot 7\).</li>
+      <li>O 7 cancela: \(C=2\cdot 22=44\ \text{cm}\).</li>
+    </ol>
+    <div class="answer">Resposta: \(C=44\ \text{cm}\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Determine o comprimento de uma circunferência de raio 10 cm.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(C=2\pi\cdot 10=20\pi\).</li>
+        <li>\(C\approx 20\cdot 3{,}14=62{,}8\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(20\pi\approx 62{,}8\ \text{cm}\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Uma roda de bicicleta tem diâmetro de 0,5 m. Quantos metros ela percorre em 100 voltas completas? (use \(\pi=3{,}14\))</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(r=0{,}25\) m, logo \(C=2\cdot 3{,}14\cdot 0{,}25=1{,}57\) m por volta.</li>
+        <li>Em 100 voltas: \(100\cdot 1{,}57=157\) m.</li>
+      </ol>
+      <div class="answer">Resposta: 157 m.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq4">
+  <div class="kicker">Geometria plana · Fórmula 4</div>
+  <h2>Área do triângulo (base × altura)</h2>
+  <div class="formula-box">\( \displaystyle A_{\text{triângulo}}=\frac{b\cdot h}{2} \)</div>
+  <p class="lead">É a fórmula mais usada para a área de um triângulo, aplicável quando se conhecem a <b>base</b> e a <b>altura</b> relativa a ela. A altura é sempre <b>perpendicular</b> à base — é a distância do vértice oposto até a reta da base, e não o lado inclinado do triângulo. Como todo triângulo tem três pares base–altura diferentes, você pode escolher o lado que for mais conveniente: a área dá o mesmo resultado. A mesma fórmula serve para <b>isolar</b> a base ou a altura quando a área já é dada.</p>
+  <p class="lead">Onde se aplica: telhados, terrenos e velas triangulares, peças de engenharia e, principalmente, na <b>decomposição de figuras</b> — qualquer polígono pode ser dividido em triângulos, e somar suas áreas resolve o todo. Reconheça pela presença de uma base e de uma altura, ou da informação suficiente para encontrá-las.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(b\) — base (um dos lados escolhido como referência).</li>
+    <li>\(h\) — altura relativa a essa base (perpendicular a ela).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Um triângulo tem base 8 cm e altura 5 cm. Qual é a sua área?</p>
+    <ol class="steps">
+      <li>\(A=\dfrac{b\cdot h}{2}=\dfrac{8\cdot 5}{2}\).</li>
+      <li>\(A=\dfrac{40}{2}=20\ \text{cm}^2\).</li>
+    </ol>
+    <div class="answer">Resposta: \(20\ \text{cm}^2\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule a área de um triângulo de base 12 cm e altura 7 cm.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(A=\dfrac{12\cdot 7}{2}=\dfrac{84}{2}=42\ \text{cm}^2\).</li>
+      </ol>
+      <div class="answer">Resposta: \(42\ \text{cm}^2\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Um triângulo tem área 30 cm² e base 10 cm. Qual é a altura?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(30=\dfrac{10\cdot h}{2}=5h\).</li>
+        <li>\(h=\dfrac{30}{5}=6\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: 6 cm.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq5">
+  <div class="kicker">Geometria plana · Fórmula 5</div>
+  <h2>Teorema de Pitágoras</h2>
+  <div class="formula-box">\( \displaystyle (\text{hipotenusa})^2=(\text{cateto}_1)^2+(\text{cateto}_2)^2 \)</div>
+  <p class="lead">Vale <b>apenas em triângulos retângulos</b> (os que têm um ângulo de 90°). O quadrado da hipotenusa — o lado maior, oposto ao ângulo reto — é igual à soma dos quadrados dos catetos. Serve tanto para achar a hipotenusa (somando) quanto um cateto (isolando e subtraindo). É um dos teoremas mais aplicados de toda a matemática: dele saem a <b>distância entre dois pontos</b>, a <b>diagonal</b> de retângulos e quadrados, a altura de um triângulo equilátero, as diagonais de sólidos no espaço e a própria base da trigonometria.</p>
+  <p class="lead">Onde se aplica no dia a dia: escadas apoiadas em paredes, rampas, deslocamentos do tipo “andar para o leste e depois para o norte” e qualquer situação com ângulo reto. Vale memorizar os <b>ternos pitagóricos</b> (3-4-5, 5-12-13, 8-15-17 e seus múltiplos), que aparecem o tempo todo e poupam contas.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>hipotenusa — lado oposto ao ângulo de 90° (o maior).</li>
+    <li>catetos — os dois lados que formam o ângulo reto.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Um triângulo retângulo tem catetos 3 cm e 4 cm. Qual é a hipotenusa?</p>
+    <ol class="steps">
+      <li>\(h^2=3^2+4^2=9+16=25\).</li>
+      <li>\(h=\sqrt{25}=5\ \text{cm}\).</li>
+    </ol>
+    <div class="answer">Resposta: 5 cm.</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Os catetos de um triângulo retângulo medem 6 cm e 8 cm. Calcule a hipotenusa.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(h^2=6^2+8^2=36+64=100\).</li>
+        <li>\(h=\sqrt{100}=10\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: 10 cm.</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> A hipotenusa mede 13 cm e um cateto mede 5 cm. Encontre o outro cateto.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(13^2=5^2+c^2 \Rightarrow 169=25+c^2\).</li>
+        <li>\(c^2=144 \Rightarrow c=12\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: 12 cm.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq6">
+  <div class="kicker">Geometria plana · Fórmula 6</div>
+  <h2>Lei dos cossenos</h2>
+  <div class="formula-box">\( \displaystyle a^2=b^2+c^2-2bc\cdot\cos\hat{A} \)</div>
+  <p class="lead">É a <b>generalização do teorema de Pitágoras</b> para qualquer triângulo, não só os retângulos. Ela relaciona um lado com os outros dois e o ângulo <b>oposto</b> a esse lado. Use em duas situações: quando o problema dá <b>dois lados e o ângulo entre eles</b> (para achar o terceiro lado) ou quando dá os <b>três lados</b> (para achar um ângulo, isolando o cosseno). Repare que, se \(\hat{A}=90^\circ\), então \(\cos 90^\circ=0\) e a fórmula se reduz a Pitágoras — ou seja, Pitágoras é um caso particular dela.</p>
+  <p class="lead">Onde se aplica: triângulos quaisquer (obtusângulos e acutângulos), <b>topografia e navegação</b> (medir distâncias inacessíveis por triangulação) e física, na soma de vetores que formam um ângulo entre si. Sempre que faltar o ângulo reto, mas houver um ângulo conhecido entre dois lados, pense na lei dos cossenos.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(a\) — lado oposto ao ângulo \(\hat{A}\).</li>
+    <li>\(b,c\) — os outros dois lados.</li>
+    <li>\(\hat{A}\) — ângulo formado entre os lados \(b\) e \(c\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Em um triângulo, \(b=5\), \(c=7\) e o ângulo entre eles é \(\hat{A}=60^\circ\). Calcule o lado \(a\).</p>
+    <ol class="steps">
+      <li>\(a^2=5^2+7^2-2\cdot 5\cdot 7\cdot\cos 60^\circ\).</li>
+      <li>\(a^2=25+49-70\cdot\tfrac12=74-35=39\).</li>
+      <li>\(a=\sqrt{39}\approx 6{,}24\).</li>
+    </ol>
+    <div class="answer">Resposta: \(a=\sqrt{39}\approx 6{,}24\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Em um triângulo, \(b=8\), \(c=6\) e \(\hat{A}=60^\circ\). Calcule \(a\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(a^2=8^2+6^2-2\cdot 8\cdot 6\cdot\cos 60^\circ\).</li>
+        <li>\(a^2=64+36-96\cdot\tfrac12=100-48=52\).</li>
+        <li>\(a=\sqrt{52}=2\sqrt{13}\approx 7{,}21\).</li>
+      </ol>
+      <div class="answer">Resposta: \(a=2\sqrt{13}\approx 7{,}21\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Um triângulo tem lados \(a=7\), \(b=5\) e \(c=3\). Determine a medida do ângulo \(\hat{A}\) (oposto ao lado 7).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(7^2=5^2+3^2-2\cdot 5\cdot 3\cdot\cos\hat{A}\).</li>
+        <li>\(49=25+9-30\cos\hat{A}=34-30\cos\hat{A}\).</li>
+        <li>\(30\cos\hat{A}=34-49=-15 \Rightarrow \cos\hat{A}=-\tfrac12\).</li>
+        <li>\(\hat{A}=120^\circ\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\hat{A}=120^\circ\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq7">
+  <div class="kicker">Geometria espacial · Fórmula 7</div>
+  <h2>Volume do prisma</h2>
+  <div class="formula-box">\( \displaystyle V_{\text{prisma}}=A_b\cdot h \)</div>
+  <p class="lead">O volume de <b>qualquer prisma</b> (e também do cilindro) é a área da base multiplicada pela altura. A ideia é intuitiva: a base é uma figura plana que se repete, empilhada ao longo da altura. O segredo está em calcular corretamente a <b>área da base</b>, que muda conforme o formato — retângulo, triângulo, hexágono, etc. A altura é a distância <b>perpendicular</b> entre as duas bases.</p>
+  <p class="lead">Onde se aplica: caixas, piscinas, aquários, embalagens, blocos de construção e qualquer corpo com <b>seção transversal constante</b> (igual de baixo a cima). É também a base do cálculo de <b>capacidade</b>: o volume em cm³ se converte direto em mililitros. Reconheça um prisma quando o sólido tiver duas bases iguais e paralelas ligadas por faces retas.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(V\) — volume do prisma.</li>
+    <li>\(A_b\) — área da base.</li>
+    <li>\(h\) — altura (distância entre as bases).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Um prisma tem base retangular de 4 cm por 3 cm e altura 10 cm. Qual é o volume?</p>
+    <ol class="steps">
+      <li>Área da base: \(A_b=4\cdot 3=12\ \text{cm}^2\).</li>
+      <li>\(V=A_b\cdot h=12\cdot 10=120\ \text{cm}^3\).</li>
+    </ol>
+    <div class="answer">Resposta: \(120\ \text{cm}^3\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Um prisma triangular tem área da base 15 cm² e altura 8 cm. Calcule o volume.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(V=A_b\cdot h=15\cdot 8=120\ \text{cm}^3\).</li>
+      </ol>
+      <div class="answer">Resposta: \(120\ \text{cm}^3\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Um prisma de base quadrada de lado 6 cm tem altura 10 cm. Qual o volume?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>Área da base: \(A_b=6^2=36\ \text{cm}^2\).</li>
+        <li>\(V=36\cdot 10=360\ \text{cm}^3\).</li>
+      </ol>
+      <div class="answer">Resposta: \(360\ \text{cm}^3\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq8">
+  <div class="kicker">Geometria espacial · Fórmula 8</div>
+  <h2>Volume do cilindro</h2>
+  <div class="formula-box">\( \displaystyle V_{\text{cilindro}}=\pi\cdot r^2\cdot h \)</div>
+  <p class="lead">O cilindro é, em essência, um <b>“prisma de base circular”</b>: seu volume é a área do círculo da base \((\pi r^2)\) multiplicada pela altura. Como o raio entra ao quadrado, ele pesa mais que a altura no resultado — um cilindro mais largo ganha volume mais rápido do que um mais alto.</p>
+  <p class="lead">Onde se aplica: <b>latas, copos, tanques, tubos, poços e reservatórios</b>. É a fórmula central dos problemas de <b>capacidade e vazão</b>: lembre que \(1\ \text{dm}^3=1\) litro, então um volume em cm³ dividido por 1000 dá litros. Também aparece de forma “invertida”, quando o enunciado fornece o volume e pede o raio ou a altura — basta isolar a incógnita.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(V\) — volume.</li>
+    <li>\(r\) — raio da base circular.</li>
+    <li>\(h\) — altura do cilindro.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Uma lata cilíndrica tem raio 3 cm e altura 10 cm. Qual é o volume?</p>
+    <ol class="steps">
+      <li>\(V=\pi r^2 h=\pi\cdot 3^2\cdot 10\).</li>
+      <li>\(V=\pi\cdot 9\cdot 10=90\pi\).</li>
+      <li>\(V\approx 90\cdot 3{,}14=282{,}6\ \text{cm}^3\).</li>
+    </ol>
+    <div class="answer">Resposta: \(90\pi\approx 282{,}6\ \text{cm}^3\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule o volume de um cilindro de raio 5 cm e altura 4 cm.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(V=\pi\cdot 5^2\cdot 4=\pi\cdot 25\cdot 4=100\pi\).</li>
+        <li>\(V\approx 314\ \text{cm}^3\).</li>
+      </ol>
+      <div class="answer">Resposta: \(100\pi\approx 314\ \text{cm}^3\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Um cilindro de raio 5 cm tem volume \(200\pi\ \text{cm}^3\). Qual é a sua altura?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\pi\cdot 5^2\cdot h=200\pi \Rightarrow 25h=200\).</li>
+        <li>\(h=\dfrac{200}{25}=8\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: 8 cm.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq9">
+  <div class="kicker">Geometria espacial · Fórmula 9</div>
+  <h2>Volume do cone</h2>
+  <div class="formula-box">\( \displaystyle V_{\text{cone}}=\frac{\pi\cdot r^2\cdot h}{3} \)</div>
+  <p class="lead">O cone tem exatamente <b>um terço</b> do volume do cilindro de mesma base e mesma altura — por isso a fórmula é a do cilindro dividida por 3. O cuidado mais importante é não confundir a <b>altura</b> \(h\) (perpendicular, do vértice ao centro da base) com a <b>geratriz</b> \(g\) (o lado inclinado): elas se relacionam por Pitágoras, \(g^2=h^2+r^2\), então às vezes é preciso achar \(h\) antes de calcular o volume.</p>
+  <p class="lead">Onde se aplica: <b>casquinhas de sorvete, funis, chapéus de festa, montes de areia ou grãos</b> e tanques cônicos. Aparece também combinada com o cilindro e a esfera em sólidos compostos (por exemplo, um cilindro encimado por um cone). Reconheça pela ponta única (vértice) sobre uma base circular.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(V\) — volume do cone.</li>
+    <li>\(r\) — raio da base.</li>
+    <li>\(h\) — altura (do vértice até o centro da base).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Um cone tem raio 3 cm e altura 9 cm. Calcule o volume.</p>
+    <ol class="steps">
+      <li>\(V=\dfrac{\pi r^2 h}{3}=\dfrac{\pi\cdot 3^2\cdot 9}{3}\).</li>
+      <li>\(V=\dfrac{\pi\cdot 9\cdot 9}{3}=\dfrac{81\pi}{3}=27\pi\).</li>
+      <li>\(V\approx 27\cdot 3{,}14=84{,}8\ \text{cm}^3\).</li>
+    </ol>
+    <div class="answer">Resposta: \(27\pi\approx 84{,}8\ \text{cm}^3\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule o volume de um cone de raio 6 cm e altura 10 cm.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(V=\dfrac{\pi\cdot 6^2\cdot 10}{3}=\dfrac{\pi\cdot 36\cdot 10}{3}=\dfrac{360\pi}{3}=120\pi\).</li>
+        <li>\(V\approx 376{,}8\ \text{cm}^3\).</li>
+      </ol>
+      <div class="answer">Resposta: \(120\pi\approx 376{,}8\ \text{cm}^3\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Um cone de raio 4 cm tem volume \(16\pi\ \text{cm}^3\). Determine a altura.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\dfrac{\pi\cdot 4^2\cdot h}{3}=16\pi \Rightarrow \dfrac{16h}{3}=16\).</li>
+        <li>\(16h=48 \Rightarrow h=3\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: 3 cm.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq10">
+  <div class="kicker">Geometria espacial · Fórmula 10</div>
+  <h2>Volume da esfera</h2>
+  <div class="formula-box">\( \displaystyle V_{\text{esfera}}=\frac{4\cdot\pi\cdot r^3}{3} \)</div>
+  <p class="lead">A esfera depende <b>apenas do raio</b>, agora elevado ao <b>cubo</b>. Como \(r\) aparece na terceira potência, pequenas mudanças no raio alteram muito o volume: dobrar o raio multiplica o volume por oito. Se o enunciado der o diâmetro, divida por 2 primeiro — é a pegadinha mais comum. Não confunda o <b>volume</b> \(\left(\tfrac{4}{3}\pi r^3\right)\) com a <b>área da superfície</b> \((4\pi r^2)\), que mede só a “casca”.</p>
+  <p class="lead">Onde se aplica: <b>bolas, gotas, balões, planetas, cúpulas</b> e tanques esféricos, além de problemas de densidade (massa = densidade × volume) e de comparação de tamanhos. Aparece muito em sólidos compostos e em questões que pedem o raio a partir do volume, isolando \(r\) com uma raiz cúbica.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(V\) — volume da esfera.</li>
+    <li>\(r\) — raio.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule o volume de uma esfera de raio 3 cm.</p>
+    <ol class="steps">
+      <li>\(V=\dfrac{4\pi r^3}{3}=\dfrac{4\pi\cdot 3^3}{3}\).</li>
+      <li>\(V=\dfrac{4\pi\cdot 27}{3}=\dfrac{108\pi}{3}=36\pi\).</li>
+      <li>\(V\approx 36\cdot 3{,}14=113{,}0\ \text{cm}^3\).</li>
+    </ol>
+    <div class="answer">Resposta: \(36\pi\approx 113\ \text{cm}^3\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Determine o volume de uma esfera de raio 6 cm.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(V=\dfrac{4\pi\cdot 6^3}{3}=\dfrac{4\pi\cdot 216}{3}=\dfrac{864\pi}{3}=288\pi\).</li>
+        <li>\(V\approx 904{,}3\ \text{cm}^3\).</li>
+      </ol>
+      <div class="answer">Resposta: \(288\pi\approx 904{,}3\ \text{cm}^3\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Uma esfera tem volume \(36\pi\ \text{cm}^3\). Qual é o raio?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\dfrac{4\pi r^3}{3}=36\pi \Rightarrow 4r^3=108\).</li>
+        <li>\(r^3=27 \Rightarrow r=\sqrt[3]{27}=3\ \text{cm}\).</li>
+      </ol>
+      <div class="answer">Resposta: 3 cm.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq11">
+  <div class="kicker">Progressões · Fórmula 11</div>
+  <h2>PA — termo geral</h2>
+  <div class="formula-box">\( \displaystyle a_n=a_1+(n-1)\cdot r \)</div>
+  <p class="lead">Em uma <b>progressão aritmética (PA)</b>, cada termo é igual ao anterior <b>somado</b> de um valor fixo \(r\), chamado razão. Esta fórmula permite achar <b>qualquer termo</b> sem precisar listar todos: basta o primeiro termo, a razão e a posição \(n\). Repare no \((n-1)\): para chegar ao termo de posição \(n\), você dá \(n-1\) “passos” de tamanho \(r\) a partir do primeiro.</p>
+  <p class="lead">Onde se aplica: tudo que cresce (ou decresce) de forma <b>constante e linear</b> — uma poupança em que se deposita o mesmo valor todo mês, fileiras de um teatro que ganham um número fixo de cadeiras, parcelas iguais, <b>juros simples</b> e padrões numéricos. Reconheça uma PA quando a diferença entre termos consecutivos for sempre a mesma. A fórmula também é usada “de trás para frente”: dados dois termos, dá para descobrir a razão ou a posição.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(a_n\) — termo da posição \(n\).</li>
+    <li>\(a_1\) — primeiro termo.</li>
+    <li>\(r\) — razão (diferença constante entre termos consecutivos).</li>
+    <li>\(n\) — posição do termo procurado.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Em uma PA, \(a_1=3\) e \(r=5\). Calcule o 10º termo.</p>
+    <ol class="steps">
+      <li>\(a_{10}=a_1+(10-1)\cdot r=3+9\cdot 5\).</li>
+      <li>\(a_{10}=3+45=48\).</li>
+    </ol>
+    <div class="answer">Resposta: \(a_{10}=48\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Em uma PA com \(a_1=7\) e \(r=4\), encontre o 20º termo.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(a_{20}=7+(20-1)\cdot 4=7+19\cdot 4\).</li>
+        <li>\(a_{20}=7+76=83\).</li>
+      </ol>
+      <div class="answer">Resposta: \(a_{20}=83\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Em uma PA, \(a_1=5\) e \(a_8=33\). Determine a razão \(r\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(a_8=a_1+7r \Rightarrow 33=5+7r\).</li>
+        <li>\(7r=28 \Rightarrow r=4\).</li>
+      </ol>
+      <div class="answer">Resposta: \(r=4\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq12">
+  <div class="kicker">Progressões · Fórmula 12</div>
+  <h2>PA — soma dos termos</h2>
+  <div class="formula-box">\( \displaystyle S_n=\frac{(a_1+a_n)\cdot n}{2} \)</div>
+  <p class="lead">Esta fórmula soma os \(n\) primeiros termos de uma PA <b>sem precisar somar um a um</b>. A ideia, atribuída a Gauss ainda criança, é que a soma do primeiro com o último termo se repete ao longo da sequência (o segundo com o penúltimo dá o mesmo total, e assim por diante). Você precisa do primeiro termo, do último e da quantidade de termos; se o último não for dado, ache-o antes com o <b>termo geral</b> da PA.</p>
+  <p class="lead">Onde se aplica: total de quantidades <b>igualmente espaçadas</b> — a soma de todos os inteiros de 1 a \(n\), o número total de cadeiras de um auditório com fileiras crescentes, o montante acumulado em juros simples ou o total de objetos empilhados em camadas que crescem de forma constante. Reconheça pelo pedido de “soma dos termos” ou “total” de uma sequência aritmética.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(S_n\) — soma dos \(n\) primeiros termos.</li>
+    <li>\(a_1\) — primeiro termo; \(a_n\) — último termo (posição \(n\)).</li>
+    <li>\(n\) — quantidade de termos somados.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Some os 10 primeiros termos da PA \(1,3,5,7,\dots\) (em que \(a_{10}=19\)).</p>
+    <ol class="steps">
+      <li>\(S_{10}=\dfrac{(a_1+a_{10})\cdot 10}{2}=\dfrac{(1+19)\cdot 10}{2}\).</li>
+      <li>\(S_{10}=\dfrac{20\cdot 10}{2}=\dfrac{200}{2}=100\).</li>
+    </ol>
+    <div class="answer">Resposta: \(S_{10}=100\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule a soma de todos os números inteiros de 1 a 30.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>É uma PA com \(a_1=1\), \(a_{30}=30\), \(n=30\).</li>
+        <li>\(S_{30}=\dfrac{(1+30)\cdot 30}{2}=\dfrac{31\cdot 30}{2}=\dfrac{930}{2}=465\).</li>
+      </ol>
+      <div class="answer">Resposta: 465.</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Em uma PA com \(a_1=4\) e \(r=3\), calcule a soma dos 20 primeiros termos.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>Ache \(a_{20}=4+(20-1)\cdot 3=4+57=61\).</li>
+        <li>\(S_{20}=\dfrac{(4+61)\cdot 20}{2}=\dfrac{65\cdot 20}{2}=\dfrac{1300}{2}=650\).</li>
+      </ol>
+      <div class="answer">Resposta: 650.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq13">
+  <div class="kicker">Progressões · Fórmula 13</div>
+  <h2>PG — termo geral</h2>
+  <div class="formula-box">\( \displaystyle a_n=a_1\cdot q^{\,n-1} \)</div>
+  <p class="lead">Em uma <b>progressão geométrica (PG)</b>, cada termo é o anterior <b>multiplicado</b> por uma razão fixa \(q\). Como são necessárias \(n-1\) multiplicações para chegar ao termo de posição \(n\), a razão aparece elevada a \(n-1\). É o modelo do <b>crescimento (ou decaimento) exponencial</b>.</p>
+  <p class="lead">Onde se aplica: <b>juros compostos</b> (o dinheiro é multiplicado por \(1+i\) a cada período), crescimento de <b>populações</b> de bactérias, <b>decaimento radioativo</b> e depreciação (casos com \(0<q<1\), em que os termos diminuem) e a altura sucessiva de uma bola que quica. Reconheça uma PG quando o <b>quociente</b> entre termos consecutivos for sempre o mesmo. Assim como na PA, dá para usar a fórmula ao contrário: com dois termos, encontra-se a razão (via raiz) ou a posição.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(a_n\) — termo da posição \(n\).</li>
+    <li>\(a_1\) — primeiro termo.</li>
+    <li>\(q\) — razão (quociente entre termos consecutivos).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Em uma PG, \(a_1=2\) e \(q=3\). Calcule o 5º termo.</p>
+    <ol class="steps">
+      <li>\(a_5=a_1\cdot q^{5-1}=2\cdot 3^4\).</li>
+      <li>\(a_5=2\cdot 81=162\).</li>
+    </ol>
+    <div class="answer">Resposta: \(a_5=162\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Em uma PG com \(a_1=5\) e \(q=2\), encontre o 6º termo.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(a_6=5\cdot 2^{6-1}=5\cdot 2^5=5\cdot 32\).</li>
+        <li>\(a_6=160\).</li>
+      </ol>
+      <div class="answer">Resposta: \(a_6=160\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Em uma PG, \(a_1=3\) e \(a_4=24\). Determine a razão \(q\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(a_4=a_1\cdot q^3 \Rightarrow 24=3\cdot q^3\).</li>
+        <li>\(q^3=8 \Rightarrow q=\sqrt[3]{8}=2\).</li>
+      </ol>
+      <div class="answer">Resposta: \(q=2\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq14">
+  <div class="kicker">Progressões · Fórmula 14</div>
+  <h2>PG — soma infinita</h2>
+  <div class="formula-box">\( \displaystyle S=\frac{a_1}{1-q}\qquad(|q|<1) \)</div>
+  <p class="lead">Quando a razão satisfaz \(|q|<1\), os termos vão ficando cada vez menores e a soma de <b>infinitos termos</b> se aproxima de um valor <b>finito</b> (ela “converge”). Só vale nessa condição: se \(|q|\ge 1\) os termos não encolhem e a soma cresce sem limite.</p>
+  <p class="lead">Onde se aplica: o uso mais clássico em provas é transformar uma <b>dízima periódica em fração</b>, escrevendo o número como soma de uma PG decrescente. Aparece também na <b>distância total percorrida por uma bola que quica infinitamente</b>, em comprimentos e áreas de <b>fractais</b> e, em finanças, no valor de uma renda perpétua. Reconheça pelas expressões “soma infinita”, “infinitos termos” ou pela presença de uma razão fracionária entre 0 e 1.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(S\) — soma de todos os infinitos termos.</li>
+    <li>\(a_1\) — primeiro termo.</li>
+    <li>\(q\) — razão, com \(|q|<1\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule a soma infinita da PG \(4,\ 2,\ 1,\ \tfrac12,\dots\)</p>
+    <ol class="steps">
+      <li>Razão: \(q=\dfrac{2}{4}=\dfrac12\) (e \(a_1=4\)).</li>
+      <li>\(S=\dfrac{a_1}{1-q}=\dfrac{4}{1-\frac12}=\dfrac{4}{\frac12}\).</li>
+      <li>\(S=4\cdot 2=8\).</li>
+    </ol>
+    <div class="answer">Resposta: \(S=8\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule a soma infinita da PG com \(a_1=9\) e \(q=\tfrac13\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(S=\dfrac{9}{1-\frac13}=\dfrac{9}{\frac23}\).</li>
+        <li>\(S=9\cdot\dfrac{3}{2}=\dfrac{27}{2}=13{,}5\).</li>
+      </ol>
+      <div class="answer">Resposta: \(S=13{,}5\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Use a soma de PG infinita para escrever a dízima \(0{,}333\dots\) como fração.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(0{,}333\dots=0{,}3+0{,}03+0{,}003+\dots\), uma PG com \(a_1=0{,}3\) e \(q=0{,}1\).</li>
+        <li>\(S=\dfrac{0{,}3}{1-0{,}1}=\dfrac{0{,}3}{0{,}9}=\dfrac{1}{3}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(0{,}333\dots=\dfrac13\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq15">
+  <div class="kicker">Análise combinatória · Fórmula 15</div>
+  <h2>Arranjo simples</h2>
+  <div class="formula-box">\( \displaystyle A_n^{\,p}=\frac{n!}{(n-p)!} \)</div>
+  <p class="lead">Use o <b>arranjo</b> quando você seleciona \(p\) elementos de um total \(n\) e a <b>ordem importa</b> — isto é, trocar a ordem dos escolhidos gera um agrupamento diferente. A fórmula conta de quantas maneiras isso pode ser feito sem repetir elementos.</p>
+  <p class="lead">Onde se aplica: <b>pódios</b> (1º, 2º e 3º lugares são posições distintas), formação de <b>senhas e códigos</b> com algarismos diferentes, placas e eleições para <b>cargos diferentes</b> (presidente e vice não são intercambiáveis). As palavras-chave que denunciam um arranjo são “ordem”, “posição”, “sequência” e “cargos distintos”. Se a troca de ordem <i>não</i> formasse um caso novo, seria combinação, não arranjo — essa é a distinção que mais cai em prova.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(n\) — total de elementos disponíveis.</li>
+    <li>\(p\) — quantos serão escolhidos/ordenados.</li>
+    <li>\(n!\) — fatorial: \(n!=n\cdot(n-1)\cdots 2\cdot 1\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">De quantas formas 5 atletas podem ocupar o 1º e o 2º lugar do pódio?</p>
+    <ol class="steps">
+      <li>Ordem importa (1º ≠ 2º): é arranjo, \(n=5\), \(p=2\).</li>
+      <li>\(A_5^{\,2}=\dfrac{5!}{(5-2)!}=\dfrac{5!}{3!}=\dfrac{5\cdot 4\cdot 3!}{3!}=5\cdot 4\).</li>
+      <li>\(A_5^{\,2}=20\).</li>
+    </ol>
+    <div class="answer">Resposta: 20 maneiras.</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(A_6^{\,3}\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(A_6^{\,3}=\dfrac{6!}{(6-3)!}=\dfrac{6!}{3!}=6\cdot 5\cdot 4\).</li>
+        <li>\(A_6^{\,3}=120\).</li>
+      </ol>
+      <div class="answer">Resposta: 120.</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Quantos números de 3 algarismos <b>distintos</b> podem ser formados com os dígitos \(\{1,2,3,4,5\}\)?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>Ordem importa e sem repetição: \(A_5^{\,3}=\dfrac{5!}{2!}\).</li>
+        <li>\(A_5^{\,3}=5\cdot 4\cdot 3=60\).</li>
+      </ol>
+      <div class="answer">Resposta: 60 números.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq16">
+  <div class="kicker">Análise combinatória · Fórmula 16</div>
+  <h2>Permutação com repetição</h2>
+  <div class="formula-box">\( \displaystyle P_n^{\,\alpha,\beta}=\frac{n!}{\alpha!\cdot\beta!} \)</div>
+  <p class="lead">Conta de quantas formas podemos <b>ordenar \(n\) elementos</b> quando alguns deles se <b>repetem</b>. É a fórmula dos <b>anagramas de palavras com letras repetidas</b>: dividimos \(n!\) pelos fatoriais das quantidades de cada letra repetida, porque trocar entre si letras iguais não produz um anagrama novo.</p>
+  <p class="lead">Onde se aplica: além de anagramas, ela resolve <b>trajetos em malhas/grades</b> — por exemplo, quantos caminhos mínimos ligam dois pontos quando só se pode andar para a direita e para cima (cada caminho é uma permutação das “direitas” e “cimas”) — e qualquer arranjo de objetos em fila com itens idênticos (bandeiras de cores repetidas, fichas iguais). Reconheça pela presença de <b>elementos indistinguíveis</b> dentro do total a ser ordenado.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(n\) — total de elementos a ordenar.</li>
+    <li>\(\alpha,\beta,\dots\) — quantas vezes cada elemento se repete.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Quantos anagramas tem a palavra <b>ARARA</b>?</p>
+    <ol class="steps">
+      <li>São 5 letras (\(n=5\)): a letra A aparece 3 vezes e R, 2 vezes.</li>
+      <li>\(P=\dfrac{5!}{3!\cdot 2!}=\dfrac{120}{6\cdot 2}=\dfrac{120}{12}\).</li>
+      <li>\(P=10\).</li>
+    </ol>
+    <div class="answer">Resposta: 10 anagramas.</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Quantos anagramas tem a palavra <b>OVO</b>?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>3 letras, com O repetido 2 vezes: \(P=\dfrac{3!}{2!}\).</li>
+        <li>\(P=\dfrac{6}{2}=3\).</li>
+      </ol>
+      <div class="answer">Resposta: 3 anagramas (OVO, OOV, VOO).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Quantos anagramas tem a palavra <b>BANANA</b>?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>6 letras: A aparece 3 vezes, N aparece 2 vezes, B uma vez.</li>
+        <li>\(P=\dfrac{6!}{3!\cdot 2!}=\dfrac{720}{6\cdot 2}=\dfrac{720}{12}\).</li>
+        <li>\(P=60\).</li>
+      </ol>
+      <div class="answer">Resposta: 60 anagramas.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq17">
+  <div class="kicker">Análise combinatória · Fórmula 17</div>
+  <h2>Combinação simples</h2>
+  <div class="formula-box">\( \displaystyle C_n^{\,p}=\frac{n!}{p!\cdot(n-p)!} \)</div>
+  <p class="lead">Use a <b>combinação</b> quando você escolhe \(p\) elementos de \(n\) e a <b>ordem NÃO importa</b> — o grupo \(\{A,B\}\) é o mesmo que \(\{B,A\}\). Ela é o arranjo dividido por \(p!\), justamente para descontar as ordens repetidas que não devem ser contadas.</p>
+  <p class="lead">Onde se aplica: escolha de <b>comissões e equipes</b> (os membros não têm cargos), <b>apertos de mão</b> e duplas, seleção de cartas, <b>jogos de loteria</b> (a ordem das dezenas é irrelevante) e o número de <b>diagonais</b> de um polígono. A pergunta-chave para decidir entre arranjo e combinação é: “mudar a ordem cria um caso diferente?” Se <b>não</b>, é combinação. Reconheça por palavras como “grupo”, “equipe”, “conjunto” e “quantas maneiras de escolher”.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(n\) — total disponível.</li>
+    <li>\(p\) — quantos serão escolhidos (sem ordem).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">De quantas formas podemos escolher 2 alunos de um grupo de 5 para formar uma dupla?</p>
+    <ol class="steps">
+      <li>Ordem não importa: combinação, \(n=5\), \(p=2\).</li>
+      <li>\(C_5^{\,2}=\dfrac{5!}{2!\,3!}=\dfrac{5\cdot 4}{2\cdot 1}=\dfrac{20}{2}\).</li>
+      <li>\(C_5^{\,2}=10\).</li>
+    </ol>
+    <div class="answer">Resposta: 10 duplas.</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(C_6^{\,2}\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(C_6^{\,2}=\dfrac{6!}{2!\,4!}=\dfrac{6\cdot 5}{2\cdot 1}=\dfrac{30}{2}\).</li>
+        <li>\(C_6^{\,2}=15\).</li>
+      </ol>
+      <div class="answer">Resposta: 15.</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Em uma sala de 10 pessoas, todos se cumprimentam com um aperto de mão. Quantos apertos ocorrem?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>Cada aperto é um par sem ordem: \(C_{10}^{\,2}\).</li>
+        <li>\(C_{10}^{\,2}=\dfrac{10\cdot 9}{2}=\dfrac{90}{2}=45\).</li>
+      </ol>
+      <div class="answer">Resposta: 45 apertos de mão.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq18">
+  <div class="kicker">Análise combinatória · Fórmula 18</div>
+  <h2>Termo geral do binômio de Newton</h2>
+  <div class="formula-box">\( \displaystyle T_{p+1}=\binom{n}{p}\cdot x^{\,n-p}\cdot a^{\,p} \)</div>
+  <p class="lead">Permite achar <b>um termo específico</b> do desenvolvimento de \((x+a)^n\) sem precisar expandir o binômio inteiro. O índice \(p\) varia de 0 a \(n\); o termo da posição \(p+1\) tem \(x\) elevado a \(n-p\) e \(a\) elevado a \(p\). A estratégia de prova é direta: descubra o valor de \(p\) que produz o <b>expoente pedido</b> e substitua na fórmula.</p>
+  <p class="lead">Onde se aplica: encontrar o <b>coeficiente</b> de um termo em \(x^k\), o <b>termo independente</b> de \(x\) (aquele em que o expoente é zero), o termo do meio e, em <b>probabilidade</b>, o modelo binomial, em que \(\binom{n}{p}\) conta as combinações de sucessos. Reconheça pelos pedidos “termo em \(x^k\)”, “coeficiente de” ou “termo independente”. Os coeficientes \(\binom{n}{p}\) são exatamente as linhas do <b>triângulo de Pascal</b>.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(n\) — expoente do binômio.</li>
+    <li>\(p\) — contador do termo (de 0 a \(n\)); o termo é o \((p+1)\)-ésimo.</li>
+    <li>\(\binom{n}{p}=C_n^{\,p}\) — coeficiente binomial.</li>
+    <li>\(x,a\) — os dois termos do binômio \((x+a)\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">No desenvolvimento de \((x+2)^5\), encontre o termo em \(x^3\).</p>
+    <ol class="steps">
+      <li>Aqui \(n=5\), \(a=2\). O expoente de \(x\) é \(n-p=3 \Rightarrow p=2\).</li>
+      <li>\(T_{3}=\binom{5}{2}\,x^{3}\,2^{2}=10\cdot x^3\cdot 4\).</li>
+      <li>\(T_3=40x^3\).</li>
+    </ol>
+    <div class="answer">Resposta: o termo é \(40x^3\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> No desenvolvimento de \((x+1)^6\), qual é o termo em \(x^4\)?</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(n=6\), \(a=1\). Expoente \(n-p=4 \Rightarrow p=2\).</li>
+        <li>\(T_3=\binom{6}{2}x^4\cdot 1^2=15\cdot x^4\).</li>
+      </ol>
+      <div class="answer">Resposta: \(15x^4\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> No desenvolvimento de \((2x+1)^5\), determine o coeficiente do termo em \(x^3\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>Termo geral: \(\binom{5}{p}(2x)^{5-p}(1)^p=\binom{5}{p}2^{5-p}x^{5-p}\).</li>
+        <li>Queremos \(x^3\): \(5-p=3 \Rightarrow p=2\).</li>
+        <li>Coeficiente: \(\binom{5}{2}\cdot 2^{3}=10\cdot 8=80\).</li>
+      </ol>
+      <div class="answer">Resposta: coeficiente 80 (termo \(80x^3\)).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq19">
+  <div class="kicker">Geometria analítica · Fórmula 19</div>
+  <h2>Equação da circunferência</h2>
+  <div class="formula-box">\( \displaystyle (x-a)^2+(y-b)^2=r^2 \)</div>
+  <p class="lead">Descreve todos os pontos \((x,y)\) que estão à <b>mesma distância \(r\)</b> de um <b>centro</b> \((a,b)\) — e essa distância constante é, na verdade, o teorema de Pitágoras aplicado ao raio. Cuidado com os <b>sinais</b>: o centro é \((a,b)\), mas na equação os termos aparecem como \((x-a)\) e \((y-b)\), então um centro \((2,-3)\) vira \((x-2)^2+(y+3)^2\).</p>
+  <p class="lead">Onde se aplica: em <b>geometria analítica</b>, para achar interseções entre uma circunferência e uma reta, estudar <b>tangência</b> e posições relativas, ou modelar “alcances” circulares (a área coberta por uma antena, por um aspersor, o conceito por trás do GPS). Vale conhecer também a <b>forma geral</b> \(x^2+y^2+Dx+Ey+F=0\): completando quadrados você volta à forma reduzida e identifica centro e raio. Reconheça pelo par centro + raio ou por um conjunto de pontos equidistantes.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\((a,b)\) — coordenadas do centro.</li>
+    <li>\(r\) — raio.</li>
+    <li>\((x,y)\) — um ponto qualquer da circunferência.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Escreva a equação da circunferência de centro \((2,-3)\) e raio 4.</p>
+    <ol class="steps">
+      <li>Substitua \(a=2\), \(b=-3\), \(r=4\): \((x-2)^2+(y-(-3))^2=4^2\).</li>
+      <li>Simplifique: \((x-2)^2+(y+3)^2=16\).</li>
+    </ol>
+    <div class="answer">Resposta: \((x-2)^2+(y+3)^2=16\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Escreva a equação da circunferência de centro na origem \((0,0)\) e raio 5.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\((x-0)^2+(y-0)^2=5^2\).</li>
+        <li>\(x^2+y^2=25\).</li>
+      </ol>
+      <div class="answer">Resposta: \(x^2+y^2=25\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Dada \((x-1)^2+(y-2)^2=9\), identifique o centro e o raio e verifique se o ponto \((4,2)\) pertence à circunferência.</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>Centro \((1,2)\) e \(r^2=9 \Rightarrow r=3\).</li>
+        <li>Distância do centro a \((4,2)\): \(\sqrt{(4-1)^2+(2-2)^2}=\sqrt{9}=3\).</li>
+        <li>Como a distância (3) é igual ao raio (3), o ponto está sobre a circunferência.</li>
+      </ol>
+      <div class="answer">Resposta: centro \((1,2)\), \(r=3\); o ponto \((4,2)\) pertence à circunferência.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq20">
+  <div class="kicker">Geometria analítica · Fórmula 20</div>
+  <h2>Equação da reta (ponto + inclinação)</h2>
+  <div class="formula-box">\( \displaystyle (y-y_0)=m(x-x_0) \)</div>
+  <p class="lead">Dá a equação de uma reta a partir de <b>um ponto \((x_0,y_0)\)</b> por onde ela passa e de seu <b>coeficiente angular</b> \(m\) (a inclinação). Depois é só desenvolver para chegar à forma \(y=mx+n\). Se o problema fornecer <b>dois pontos</b> em vez da inclinação, calcule \(m\) primeiro como a razão entre as variações: \(m=\dfrac{\Delta y}{\Delta x}\).</p>
+  <p class="lead">Onde se aplica: modelar qualquer relação <b>linear</b> — o \(m\) representa a <b>taxa de variação</b> (quanto \(y\) muda por unidade de \(x\)), como velocidade constante, preço por unidade ou inclinação de uma rampa. Serve ainda para verificar <b>paralelismo</b> (retas paralelas têm o mesmo \(m\)) e <b>perpendicularidade</b> (\(m_1\cdot m_2=-1\)). Reconheça quando o enunciado dá um ponto e a inclinação, ou dois pontos da reta.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\((x_0,y_0)\) — um ponto conhecido da reta.</li>
+    <li>\(m\) — coeficiente angular (inclinação) \(=\dfrac{\Delta y}{\Delta x}\).</li>
+    <li>\((x,y)\) — ponto genérico da reta.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Escreva a equação da reta que passa por \((2,3)\) com coeficiente angular \(m=4\).</p>
+    <ol class="steps">
+      <li>\(y-3=4(x-2)\).</li>
+      <li>\(y-3=4x-8\).</li>
+      <li>\(y=4x-5\).</li>
+    </ol>
+    <div class="answer">Resposta: \(y=4x-5\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Determine a equação da reta que passa por \((1,2)\) com \(m=3\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(y-2=3(x-1)=3x-3\).</li>
+        <li>\(y=3x-1\).</li>
+      </ol>
+      <div class="answer">Resposta: \(y=3x-1\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Encontre a equação da reta que passa pelos pontos \((0,1)\) e \((2,5)\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(m=\dfrac{5-1}{2-0}=\dfrac{4}{2}=2\).</li>
+        <li>Usando o ponto \((0,1)\): \(y-1=2(x-0)\).</li>
+        <li>\(y=2x+1\).</li>
+      </ol>
+      <div class="answer">Resposta: \(y=2x+1\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq21">
+  <div class="kicker">Geometria analítica · Fórmula 21</div>
+  <h2>Distância entre dois pontos</h2>
+  <div class="formula-box">\( \displaystyle d_{A,B}=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2} \)</div>
+  <p class="lead">Mede a distância em <b>linha reta</b> entre dois pontos no plano. É o <b>teorema de Pitágoras “disfarçado”</b>: a diferença das abscissas \((x_B-x_A)\) e a das ordenadas \((y_B-y_A)\) são os catetos, e a distância é a hipotenusa. A ordem da subtração não importa, pois os termos estão elevados ao quadrado.</p>
+  <p class="lead">Onde se aplica: calcular <b>comprimentos de segmentos</b> e perímetros a partir de coordenadas, descobrir o <b>raio</b> de uma circunferência (distância do centro a um ponto dela), <b>classificar triângulos</b> (comparando os três lados para ver se é equilátero, isósceles ou escaleno) e encontrar o ponto mais próximo. Reconheça sempre que o enunciado der pontos por coordenadas e pedir “distância”, “comprimento” ou “medida do lado”.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\((x_A,y_A)\) e \((x_B,y_B)\) — coordenadas dos pontos \(A\) e \(B\).</li>
+    <li>\(d_{A,B}\) — distância entre eles.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule a distância entre \(A(1,2)\) e \(B(4,6)\).</p>
+    <ol class="steps">
+      <li>\(d=\sqrt{(4-1)^2+(6-2)^2}\).</li>
+      <li>\(d=\sqrt{3^2+4^2}=\sqrt{9+16}=\sqrt{25}\).</li>
+      <li>\(d=5\).</li>
+    </ol>
+    <div class="answer">Resposta: \(d=5\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule a distância entre \(A(0,0)\) e \(B(6,8)\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(d=\sqrt{(6-0)^2+(8-0)^2}=\sqrt{36+64}=\sqrt{100}\).</li>
+        <li>\(d=10\).</li>
+      </ol>
+      <div class="answer">Resposta: 10.</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Calcule a distância entre \(A(-1,2)\) e \(B(2,-2)\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(d=\sqrt{(2-(-1))^2+(-2-2)^2}=\sqrt{3^2+(-4)^2}\).</li>
+        <li>\(d=\sqrt{9+16}=\sqrt{25}=5\).</li>
+      </ol>
+      <div class="answer">Resposta: 5.</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq22">
+  <div class="kicker">Geometria analítica · Fórmula 22</div>
+  <h2>Distância de ponto a reta</h2>
+  <div class="formula-box">\( \displaystyle d_{P,r}=\frac{|a x_0+b y_0+c|}{\sqrt{a^2+b^2}} \)</div>
+  <p class="lead">Dá a <b>menor distância</b> — a perpendicular — entre um ponto \(P(x_0,y_0)\) e uma reta escrita na forma geral \(ax+by+c=0\). Basta substituir as coordenadas do ponto na expressão \(ax+by+c\), tomar o <b>módulo</b> e dividir pela raiz de \(a^2+b^2\). Se o resultado for 0, o ponto está <b>sobre</b> a reta.</p>
+  <p class="lead">Onde se aplica: medir o afastamento de um ponto a uma reta, achar o <b>raio</b> de uma circunferência <b>tangente</b> a uma reta e decidir a <b>posição relativa</b> entre reta e circunferência — comparando essa distância \(d\) com o raio: se \(d>r\) são exteriores, se \(d=r\) há tangência, se \(d<r\) a reta é secante. Serve também para calcular a <b>altura</b> de um triângulo a partir de um vértice até o lado oposto. Reconheça pelo pedido explícito de “distância de ponto a reta” ou por situações de tangência.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(a,b,c\) — coeficientes da reta \(ax+by+c=0\).</li>
+    <li>\((x_0,y_0)\) — coordenadas do ponto \(P\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule a distância do ponto \(P(0,0)\) à reta \(3x+4y-10=0\).</p>
+    <ol class="steps">
+      <li>\(a=3,\ b=4,\ c=-10\); \((x_0,y_0)=(0,0)\).</li>
+      <li>\(d=\dfrac{|3\cdot 0+4\cdot 0-10|}{\sqrt{3^2+4^2}}=\dfrac{|-10|}{\sqrt{25}}\).</li>
+      <li>\(d=\dfrac{10}{5}=2\).</li>
+    </ol>
+    <div class="answer">Resposta: \(d=2\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule a distância do ponto \(P(2,1)\) à reta \(3x-4y+5=0\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(d=\dfrac{|3\cdot 2-4\cdot 1+5|}{\sqrt{3^2+(-4)^2}}=\dfrac{|6-4+5|}{\sqrt{25}}\).</li>
+        <li>\(d=\dfrac{7}{5}=1{,}4\).</li>
+      </ol>
+      <div class="answer">Resposta: \(d=1{,}4\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Calcule a distância do ponto \(P(1,1)\) à reta \(5x+12y-3=0\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(d=\dfrac{|5\cdot 1+12\cdot 1-3|}{\sqrt{5^2+12^2}}=\dfrac{|14|}{\sqrt{169}}\).</li>
+        <li>\(d=\dfrac{14}{13}\approx 1{,}08\).</li>
+      </ol>
+      <div class="answer">Resposta: \(d=\dfrac{14}{13}\approx 1{,}08\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq23">
+  <div class="kicker">Trigonometria · Fórmula 23</div>
+  <h2>Relação trigonométrica fundamental</h2>
+  <div class="formula-box">\( \displaystyle \sen^2 x+\cos^2 x=1 \)</div>
+  <p class="lead">É a identidade <b>mais importante</b> da trigonometria: para <b>qualquer ângulo</b> \(x\), a soma dos quadrados do seno e do cosseno é sempre 1. Isso é consequência direta do teorema de Pitágoras no <b>círculo trigonométrico</b> de raio 1, em que o cosseno e o seno são justamente os catetos. Seu uso prático mais comum é achar o seno conhecendo o cosseno (ou vice-versa) — e aqui entra a atenção ao <b>sinal</b>: o quadrante em que o ângulo está decide se o resultado é positivo ou negativo.</p>
+  <p class="lead">Onde se aplica: <b>simplificar expressões</b> trigonométricas, resolver equações e demonstrar outras identidades. Dividindo a relação por \(\cos^2 x\) obtém-se \(1+\tg^2 x=\sec^2 x\); dividindo por \(\sen^2 x\), obtém-se \(1+\cotg^2 x=\cossec^2 x\) — duas identidades muito úteis que nascem desta. Reconheça quando uma razão é conhecida e se pede a outra.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(\sen x\) — seno do ângulo \(x\).</li>
+    <li>\(\cos x\) — cosseno do ângulo \(x\).</li>
+    <li>\(\sen^2 x\) significa \((\sen x)^2\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Se \(\sen x=\dfrac{3}{5}\) e \(x\) é um ângulo do 1º quadrante, calcule \(\cos x\).</p>
+    <ol class="steps">
+      <li>\(\cos^2 x=1-\sen^2 x=1-\left(\tfrac35\right)^2=1-\tfrac{9}{25}=\tfrac{16}{25}\).</li>
+      <li>\(\cos x=\pm\sqrt{\tfrac{16}{25}}=\pm\tfrac{4}{5}\).</li>
+      <li>No 1º quadrante o cosseno é positivo: \(\cos x=\tfrac45\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\cos x=\dfrac{4}{5}\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Se \(\cos x=\dfrac{5}{13}\) e \(x\) está no 1º quadrante, calcule \(\sen x\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\sen^2 x=1-\left(\tfrac{5}{13}\right)^2=1-\tfrac{25}{169}=\tfrac{144}{169}\).</li>
+        <li>\(\sen x=\tfrac{12}{13}\) (positivo no 1º quadrante).</li>
+      </ol>
+      <div class="answer">Resposta: \(\sen x=\dfrac{12}{13}\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Se \(\cos x=-\dfrac{4}{5}\) e \(x\) está no 2º quadrante, calcule \(\sen x\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\sen^2 x=1-\left(\tfrac45\right)^2=1-\tfrac{16}{25}=\tfrac{9}{25}\).</li>
+        <li>\(\sen x=\pm\tfrac35\); no 2º quadrante o seno é positivo.</li>
+        <li>\(\sen x=\tfrac35\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\sen x=\dfrac{3}{5}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq24">
+  <div class="kicker">Trigonometria · Fórmula 24</div>
+  <h2>Tangente</h2>
+  <div class="formula-box">\( \displaystyle \tg x=\frac{\sen x}{\cos x}\qquad(\cos x\neq 0) \)</div>
+  <p class="lead">A tangente é a razão entre o <b>seno e o cosseno</b> do mesmo ângulo. Ela <b>não existe</b> quando \(\cos x=0\) (ângulos de 90°, 270°…), pois não se divide por zero. Geometricamente, a tangente representa uma <b>inclinação</b>: o coeficiente angular de uma reta é exatamente a tangente do ângulo que ela faz com o eixo \(x\). No triângulo retângulo, ela é o cateto oposto sobre o cateto adjacente.</p>
+  <p class="lead">Onde se aplica: em <b>ângulos de elevação e depressão</b>, é a ferramenta para achar alturas e distâncias — a altura de um prédio a partir da sombra, a altura de uma montanha vista de longe (altura \(=\) distância \(\times\,\tg\theta\)), a inclinação de rampas e telhados e o plano inclinado na física. Reconheça pela combinação “cateto oposto e cateto adjacente” ou por qualquer problema que envolva inclinação.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(\tg x\) — tangente do ângulo.</li>
+    <li>\(\sen x,\ \cos x\) — seno e cosseno do ângulo.</li>
+    <li>Condição: \(\cos x\neq 0\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule \(\tg 45^\circ\).</p>
+    <ol class="steps">
+      <li>\(\sen 45^\circ=\dfrac{\sqrt2}{2}\) e \(\cos 45^\circ=\dfrac{\sqrt2}{2}\).</li>
+      <li>\(\tg 45^\circ=\dfrac{\sqrt2/2}{\sqrt2/2}=1\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\tg 45^\circ=1\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(\tg 30^\circ\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\tg 30^\circ=\dfrac{\sen 30^\circ}{\cos 30^\circ}=\dfrac{1/2}{\sqrt3/2}=\dfrac{1}{\sqrt3}\).</li>
+        <li>Racionalizando: \(\dfrac{1}{\sqrt3}=\dfrac{\sqrt3}{3}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\tg 30^\circ=\dfrac{\sqrt3}{3}\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Se \(\sen x=\dfrac{3}{5}\) e \(\cos x=\dfrac{4}{5}\), calcule \(\tg x\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\tg x=\dfrac{\sen x}{\cos x}=\dfrac{3/5}{4/5}\).</li>
+        <li>\(\tg x=\dfrac{3}{4}=0{,}75\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\tg x=\dfrac{3}{4}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq25">
+  <div class="kicker">Trigonometria · Fórmula 25</div>
+  <h2>Cotangente</h2>
+  <div class="formula-box">\( \displaystyle \cotg x=\frac{\cos x}{\sen x}\qquad(\sen x\neq 0) \)</div>
+  <p class="lead">A cotangente é o <b>inverso da tangente</b>: a razão entre o cosseno e o seno. Não existe quando \(\sen x=0\) (ângulos de 0°, 180°…). Na prática, vale muito a relação \(\cotg x=\dfrac{1}{\tg x}\), útil quando você já conhece a tangente. No triângulo retângulo, equivale ao cateto <b>adjacente</b> sobre o <b>oposto</b> — a razão “de cabeça para baixo” em relação à tangente.</p>
+  <p class="lead">Onde se aplica: na <b>simplificação de identidades</b> trigonométricas, em problemas de ângulos em que o lado adjacente é o de interesse e no cálculo (derivadas e integrais). Liga-se à relação fundamental pela identidade \(1+\cotg^2 x=\cossec^2 x\). Reconheça quando aparecer a razão cosseno/seno ou o inverso de uma tangente já conhecida.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(\cotg x\) — cotangente do ângulo.</li>
+    <li>\(\sen x,\ \cos x\) — seno e cosseno.</li>
+    <li>Condição: \(\sen x\neq 0\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule \(\cotg 45^\circ\).</p>
+    <ol class="steps">
+      <li>\(\cotg 45^\circ=\dfrac{\cos 45^\circ}{\sen 45^\circ}=\dfrac{\sqrt2/2}{\sqrt2/2}\).</li>
+      <li>\(\cotg 45^\circ=1\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\cotg 45^\circ=1\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(\cotg 60^\circ\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\cotg 60^\circ=\dfrac{\cos 60^\circ}{\sen 60^\circ}=\dfrac{1/2}{\sqrt3/2}=\dfrac{1}{\sqrt3}\).</li>
+        <li>\(=\dfrac{\sqrt3}{3}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\cotg 60^\circ=\dfrac{\sqrt3}{3}\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Se \(\tg x=2\), calcule \(\cotg x\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\cotg x=\dfrac{1}{\tg x}=\dfrac{1}{2}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\cotg x=\dfrac{1}{2}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq26">
+  <div class="kicker">Trigonometria · Fórmula 26</div>
+  <h2>Secante</h2>
+  <div class="formula-box">\( \displaystyle \sec x=\frac{1}{\cos x}\qquad(\cos x\neq 0) \)</div>
+  <p class="lead">A secante é simplesmente o <b>inverso do cosseno</b>. Existe sempre que \(\cos x\neq 0\). Como \(|\cos x|\le 1\), a secante tem sempre módulo <b>maior ou igual a 1</b> — ela nunca fica entre \(-1\) e \(1\). No triângulo retângulo, corresponde à hipotenusa sobre o cateto adjacente.</p>
+  <p class="lead">Onde se aplica: aparece bastante na <b>simplificação de identidades</b> — em especial \(1+\tg^2 x=\sec^2 x\), que relaciona secante e tangente — e é muito comum no <b>cálculo</b> (a derivada da tangente é \(\sec^2 x\), e a secante surge em várias integrais). Reconheça quando o enunciado pedir o inverso do cosseno ou quando uma identidade envolver \(\sec x\) ou \(\sec^2 x\).</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(\sec x\) — secante do ângulo.</li>
+    <li>\(\cos x\) — cosseno do ângulo.</li>
+    <li>Condição: \(\cos x\neq 0\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule \(\sec 60^\circ\).</p>
+    <ol class="steps">
+      <li>\(\cos 60^\circ=\dfrac{1}{2}\).</li>
+      <li>\(\sec 60^\circ=\dfrac{1}{\cos 60^\circ}=\dfrac{1}{1/2}=2\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\sec 60^\circ=2\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(\sec 45^\circ\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\sec 45^\circ=\dfrac{1}{\cos 45^\circ}=\dfrac{1}{\sqrt2/2}=\dfrac{2}{\sqrt2}\).</li>
+        <li>\(=\sqrt2\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\sec 45^\circ=\sqrt2\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Se \(\cos x=\dfrac{3}{5}\), calcule \(\sec x\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\sec x=\dfrac{1}{\cos x}=\dfrac{1}{3/5}=\dfrac{5}{3}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\sec x=\dfrac{5}{3}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq27">
+  <div class="kicker">Trigonometria · Fórmula 27</div>
+  <h2>Cossecante</h2>
+  <div class="formula-box">\( \displaystyle \cossec x=\frac{1}{\sen x}\qquad(\sen x\neq 0) \)</div>
+  <p class="lead">A cossecante é o <b>inverso do seno</b>. Existe sempre que \(\sen x\neq 0\). Assim como a secante, seu módulo é sempre <b>maior ou igual a 1</b>. No triângulo retângulo, corresponde à hipotenusa sobre o cateto oposto. Ela completa o <b>trio das razões inversas</b>: a secante é o inverso do cosseno, a cossecante é o inverso do seno e a cotangente é o inverso da tangente.</p>
+  <p class="lead">Onde se aplica: na <b>simplificação de identidades</b> — em particular \(1+\cotg^2 x=\cossec^2 x\) — e no <b>cálculo</b>. Embora menos frequente que seno e cosseno em provas, é importante reconhecê-la para não travar quando ela aparecer dentro de uma expressão a ser simplificada. Reconheça pelo pedido do inverso do seno ou pela presença de \(\cossec x\) em uma identidade.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(\cossec x\) — cossecante do ângulo.</li>
+    <li>\(\sen x\) — seno do ângulo.</li>
+    <li>Condição: \(\sen x\neq 0\).</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule \(\cossec 30^\circ\).</p>
+    <ol class="steps">
+      <li>\(\sen 30^\circ=\dfrac{1}{2}\).</li>
+      <li>\(\cossec 30^\circ=\dfrac{1}{\sen 30^\circ}=\dfrac{1}{1/2}=2\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\cossec 30^\circ=2\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(\cossec 45^\circ\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\cossec 45^\circ=\dfrac{1}{\sen 45^\circ}=\dfrac{1}{\sqrt2/2}=\dfrac{2}{\sqrt2}\).</li>
+        <li>\(=\sqrt2\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\cossec 45^\circ=\sqrt2\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Se \(\sen x=\dfrac{4}{5}\), calcule \(\cossec x\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\cossec x=\dfrac{1}{\sen x}=\dfrac{1}{4/5}=\dfrac{5}{4}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\cossec x=\dfrac{5}{4}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq28">
+  <div class="kicker">Trigonometria · Fórmula 28</div>
+  <h2>Cosseno da soma de arcos</h2>
+  <div class="formula-box">\( \displaystyle \cos(a+b)=\cos a\cdot\cos b-\sen a\cdot\sen b \)</div>
+  <p class="lead">Permite calcular o cosseno de uma <b>soma de ângulos</b> a partir dos senos e cossenos de cada um. Repare no <b>sinal de menos</b> e na “troca”: o cosseno da soma mistura \(\cos\cdot\cos\) com \(\sen\cdot\sen\).</p>
+  <p class="lead">Onde se aplica: o uso clássico em provas é obter o cosseno de <b>ângulos “não notáveis”</b> combinando os notáveis — por exemplo, \(75^\circ=45^\circ+30^\circ\) ou \(15^\circ=45^\circ-30^\circ\) (para a diferença, troque o sinal central). A fórmula também é a origem do <b>arco duplo</b>: fazendo \(b=a\), obtém-se \(\cos(2a)=\cos^2 a-\sen^2 a\). Aparece ainda na simplificação de expressões e, na física, na <b>superposição de ondas</b>. Reconheça quando o ângulo pedido puder ser escrito como soma ou diferença de dois ângulos conhecidos.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(a,b\) — os dois ângulos.</li>
+    <li>\(\cos a,\cos b,\sen a,\sen b\) — seus cossenos e senos.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule \(\cos 75^\circ\) usando \(75^\circ=45^\circ+30^\circ\).</p>
+    <ol class="steps">
+      <li>\(\cos 75^\circ=\cos 45^\circ\cos 30^\circ-\sen 45^\circ\sen 30^\circ\).</li>
+      <li>\(=\dfrac{\sqrt2}{2}\cdot\dfrac{\sqrt3}{2}-\dfrac{\sqrt2}{2}\cdot\dfrac{1}{2}=\dfrac{\sqrt6}{4}-\dfrac{\sqrt2}{4}\).</li>
+      <li>\(=\dfrac{\sqrt6-\sqrt2}{4}\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\cos 75^\circ=\dfrac{\sqrt6-\sqrt2}{4}\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(\cos 105^\circ\) usando \(105^\circ=60^\circ+45^\circ\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\cos 105^\circ=\cos 60^\circ\cos 45^\circ-\sen 60^\circ\sen 45^\circ\).</li>
+        <li>\(=\dfrac12\cdot\dfrac{\sqrt2}{2}-\dfrac{\sqrt3}{2}\cdot\dfrac{\sqrt2}{2}=\dfrac{\sqrt2}{4}-\dfrac{\sqrt6}{4}\).</li>
+        <li>\(=\dfrac{\sqrt2-\sqrt6}{4}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\cos 105^\circ=\dfrac{\sqrt2-\sqrt6}{4}\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Sabendo que \(a\) e \(b\) são agudos, \(\sen a=\dfrac{3}{5}\) e \(\sen b=\dfrac{5}{13}\), calcule \(\cos(a+b)\). (use \(\cos a=\tfrac45\), \(\cos b=\tfrac{12}{13}\))</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\cos(a+b)=\cos a\cos b-\sen a\sen b\).</li>
+        <li>\(=\dfrac{4}{5}\cdot\dfrac{12}{13}-\dfrac{3}{5}\cdot\dfrac{5}{13}=\dfrac{48}{65}-\dfrac{15}{65}\).</li>
+        <li>\(=\dfrac{33}{65}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\cos(a+b)=\dfrac{33}{65}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+<section class="eq" id="eq29">
+  <div class="kicker">Trigonometria · Fórmula 29</div>
+  <h2>Seno da soma de arcos</h2>
+  <div class="formula-box">\( \displaystyle \sen(a+b)=\sen a\cdot\cos b+\sen b\cdot\cos a \)</div>
+  <p class="lead">Calcula o seno de uma <b>soma de ângulos</b>. Diferente do cosseno da soma, aqui o sinal é de <b>mais</b> e os termos “cruzam” seno com cosseno: \(\sen\cdot\cos\) somado a \(\sen\cdot\cos\).</p>
+  <p class="lead">Onde se aplica: assim como o cosseno da soma, é a chave para <b>ângulos não notáveis</b>, como \(\sen 75^\circ=\sen(45^\circ+30^\circ)\) (para a diferença \(\sen(a-b)\), basta trocar o sinal central). Dela também sai o <b>arco duplo</b> do seno: com \(b=a\), obtém-se \(\sen(2a)=2\,\sen a\,\cos a\), uma das identidades mais cobradas. Serve ainda para simplificar expressões e, na física, somar ondas de mesma frequência. Reconheça quando o ângulo puder ser decomposto em uma soma ou diferença de ângulos conhecidos.</p>
+  <h3 class="blk">O que cada símbolo significa</h3>
+  <ul class="vars">
+    <li>\(a,b\) — os dois ângulos.</li>
+    <li>\(\sen a,\sen b,\cos a,\cos b\) — seus senos e cossenos.</li>
+  </ul>
+  <h3 class="blk">Exemplo resolvido</h3>
+  <div class="example">
+    <p class="q">Calcule \(\sen 75^\circ\) usando \(75^\circ=45^\circ+30^\circ\).</p>
+    <ol class="steps">
+      <li>\(\sen 75^\circ=\sen 45^\circ\cos 30^\circ+\sen 30^\circ\cos 45^\circ\).</li>
+      <li>\(=\dfrac{\sqrt2}{2}\cdot\dfrac{\sqrt3}{2}+\dfrac{1}{2}\cdot\dfrac{\sqrt2}{2}=\dfrac{\sqrt6}{4}+\dfrac{\sqrt2}{4}\).</li>
+      <li>\(=\dfrac{\sqrt6+\sqrt2}{4}\).</li>
+    </ol>
+    <div class="answer">Resposta: \(\sen 75^\circ=\dfrac{\sqrt6+\sqrt2}{4}\).</div>
+  </div>
+  <h3 class="blk">Pratique</h3>
+  <div class="practice">
+    <p class="pq"><span class="tag">1</span> Calcule \(\sen 105^\circ\) usando \(105^\circ=60^\circ+45^\circ\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\sen 105^\circ=\sen 60^\circ\cos 45^\circ+\sen 45^\circ\cos 60^\circ\).</li>
+        <li>\(=\dfrac{\sqrt3}{2}\cdot\dfrac{\sqrt2}{2}+\dfrac{\sqrt2}{2}\cdot\dfrac12=\dfrac{\sqrt6}{4}+\dfrac{\sqrt2}{4}\).</li>
+        <li>\(=\dfrac{\sqrt6+\sqrt2}{4}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\sen 105^\circ=\dfrac{\sqrt6+\sqrt2}{4}\).</div>
+    </details>
+    <p class="pq"><span class="tag">2</span> Com \(a,b\) agudos, \(\sen a=\dfrac{3}{5}\) (\(\cos a=\tfrac45\)) e \(\sen b=\dfrac{5}{13}\) (\(\cos b=\tfrac{12}{13}\)), calcule \(\sen(a+b)\).</p>
+    <details class="sol"><summary>Ver resolução</summary>
+      <ol class="steps">
+        <li>\(\sen(a+b)=\sen a\cos b+\sen b\cos a\).</li>
+        <li>\(=\dfrac{3}{5}\cdot\dfrac{12}{13}+\dfrac{5}{13}\cdot\dfrac{4}{5}=\dfrac{36}{65}+\dfrac{20}{65}\).</li>
+        <li>\(=\dfrac{56}{65}\).</li>
+      </ol>
+      <div class="answer">Resposta: \(\sen(a+b)=\dfrac{56}{65}\).</div>
+    </details>
+  </div>
+  <a class="toplink" href="#top">↑ voltar ao índice</a>
+</section>
+      </div>
+      <div class="content">
+        <section class="eq" id="notable">
+          <div class="kicker">Apêndice · Referência</div>
+          <h2>Razões trigonométricas dos ângulos notáveis</h2>
+          <p class="lead">Você vai usar estes valores o tempo todo nas questões de trigonometria. Vale a pena memorizá-los — repare que, do seno para o cosseno, os valores apenas se invertem entre 30° e 60°.</p>
+          <table class="notable">
+            <thead>
+              <tr><th></th><th>\(30^\circ\)</th><th>\(45^\circ\)</th><th>\(60^\circ\)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>sen</th><td>\(\frac{1}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{\sqrt{3}}{2}\)</td></tr>
+              <tr><th>cos</th><td>\(\frac{\sqrt{3}}{2}\)</td><td>\(\frac{\sqrt{2}}{2}\)</td><td>\(\frac{1}{2}\)</td></tr>
+              <tr><th>tg</th><td>\(\frac{\sqrt{3}}{3}\)</td><td>\(1\)</td><td>\(\sqrt{3}\)</td></tr>
+            </tbody>
+          </table>
+          <a class="toplink" href="#top">↑ voltar ao índice</a>
+        </section>
+      </div>
+      <footer class="f">
+        Apostila de Matemática — fórmulas explicadas. As equações são renderizadas com MathJax (requer internet na primeira abertura). Abra este arquivo no navegador; para imprimir, cada fórmula começa em uma nova página.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

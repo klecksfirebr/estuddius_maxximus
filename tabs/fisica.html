@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="./images.jpeg" type="image/x-icon">
+<title>Física - Estudius maximmus</title>
+<script>
+MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" async></script>
+<style>
+  :root{
+    --tinta:#1f2937; --suave:#6b7280; --linha:#e5e7eb;
+    --azul:#2563eb; --vermelho:#dc2626; --verde:#16a34a; --ciano:#0891b2;
+    --laranja:#ea580c; --roxo:#7c3aed; --ambar:#d97706; --teal:#0d9488;
+    --accent:#2563eb;
+    --papel:#ffffff; --fundo:#eef1f6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--fundo);
+    color:var(--tinta);
+    font-family:'Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .pagina{
+    background:var(--papel);
+    width:880px; max-width:94vw;
+    margin:26px auto;
+    padding:54px 60px 64px;
+    border-radius:10px;
+    box-shadow:0 8px 30px rgba(15,23,42,.10);
+    position:relative;
+    overflow:hidden;
+  }
+  .pagina::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:8px;
+    background:var(--accent);
+  }
+  /* ====== CAPA ====== */
+  .capa{ text-align:center; padding-top:120px; padding-bottom:120px; }
+  .capa .eyebrow{ letter-spacing:.32em; text-transform:uppercase; color:var(--azul); font-weight:700; font-size:14px; }
+  .capa h1{ font-size:46px; line-height:1.1; margin:18px 0 8px; color:#0f172a; }
+  .capa h2{ font-size:21px; font-weight:500; color:var(--suave); margin:0 0 36px; }
+  .capa .selo{
+    display:inline-block; margin-top:14px; padding:10px 22px; border-radius:999px;
+    background:#eff6ff; color:var(--azul); font-weight:600; font-size:15px; border:1px solid #bfdbfe;
+  }
+  .capa .meta{ margin-top:42px; color:var(--suave); font-size:14px; }
+  .capa .grid-temas{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:30px; }
+  .capa .grid-temas span{ font-size:12.5px; padding:5px 12px; border-radius:6px; background:#f1f5f9; color:#475569; }
+
+  /* ====== SUMÁRIO ====== */
+  .sumario h2{ font-size:30px; margin:0 0 6px; color:#0f172a; }
+  .sumario .sub{ color:var(--suave); margin:0 0 28px; }
+  .toc-grupo{ margin-bottom:22px; }
+  .toc-grupo h3{
+    font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+    border-bottom:2px solid var(--linha); padding-bottom:6px; margin:0 0 10px;
+  }
+  .toc-grupo ol{ margin:0; padding:0; list-style:none; columns:2; column-gap:34px; }
+  .toc-grupo li{ break-inside:avoid; margin:0 0 7px; font-size:14.5px; }
+  .toc-grupo a{ color:var(--tinta); text-decoration:none; display:flex; gap:8px; }
+  .toc-grupo a:hover{ color:var(--azul); }
+  .toc-grupo .n{ color:var(--suave); font-variant-numeric:tabular-nums; min-width:22px; }
+
+  /* ====== PÁGINA DE EQUAÇÃO ====== */
+  .cab{ display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+  .badge{
+    flex:none; width:46px; height:46px; border-radius:12px; background:var(--accent);
+    color:#fff; font-weight:700; font-size:19px; display:flex; align-items:center; justify-content:center;
+  }
+  .tag{ font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--accent); }
+  .titulo{ font-size:25px; margin:2px 0 0; color:#0f172a; }
+  .formula-box{
+    margin:24px 0 8px; padding:22px 18px; border-radius:10px;
+    background:#f8fafc; border:1px solid var(--linha); border-left:5px solid var(--accent);
+    font-size:20px; text-align:center; overflow-x:auto;
+  }
+  h4.sec{
+    font-size:12.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
+    margin:26px 0 8px; display:flex; align-items:center; gap:9px;
+  }
+  h4.sec::before{ content:""; width:16px; height:16px; border-radius:4px; background:var(--accent); opacity:.85; flex:none; }
+  p{ margin:8px 0; font-size:15.5px; }
+  .vars{ margin:6px 0; padding:0; list-style:none; }
+  .vars li{ margin:5px 0; font-size:15px; padding-left:4px; }
+  .vars b{ color:var(--accent); }
+  .exemplo{
+    margin-top:10px; padding:18px 20px; border-radius:10px;
+    background:#f9fafb; border:1px dashed #cbd5e1;
+  }
+  .exemplo .passo{ margin:7px 0; font-size:15px; }
+  .resp{
+    margin-top:12px; padding:10px 16px; border-radius:8px; background:#ecfdf5;
+    border-left:4px solid var(--verde); font-size:15px; font-weight:600; color:#065f46;
+  }
+  .pratique{
+    margin-top:14px; padding:18px 20px; border-radius:10px; background:#eff6ff; border:1px solid #bfdbfe;
+  }
+  .pratique .qh{ font-weight:700; color:var(--azul); margin:0 0 6px; }
+  .pratique ol{ margin:6px 0 0; padding-left:22px; }
+  .pratique li{ margin:9px 0; font-size:15px; }
+  .nota{ font-size:13px; color:var(--suave); margin-top:10px; }
+
+  /* ====== CONSTANTES ====== */
+  .const-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px 26px; margin-top:18px; }
+  .const-item{ padding:13px 16px; border-radius:9px; background:#f8fafc; border:1px solid var(--linha); }
+  .const-item .nome{ font-size:13px; color:var(--suave); display:block; margin-bottom:3px; }
+  .const-item .val{ font-size:16px; }
+
+  /* ====== GABARITO ====== */
+  .gabarito h2{ font-size:30px; margin:0 0 6px; color:#0f172a; }
+  .gab-item{ margin:0 0 16px; padding-bottom:14px; border-bottom:1px solid var(--linha); }
+  .gab-item .gq{ font-weight:700; color:var(--azul); font-size:15px; }
+  .gab-item p{ margin:5px 0; font-size:14.5px; }
+
+  /* ====== Cores por tema ====== */
+  .t-cin{ --accent:var(--azul); }
+  .t-din{ --accent:var(--vermelho); }
+  .t-ene{ --accent:var(--verde); }
+  .t-hid{ --accent:var(--ciano); }
+  .t-ter{ --accent:var(--laranja); }
+  .t-ond{ --accent:var(--roxo); }
+  .t-ele{ --accent:var(--ambar); }
+  .t-gas{ --accent:var(--teal); }
+
+  .rodape{ position:absolute; bottom:18px; right:30px; font-size:11.5px; color:#cbd5e1; }
+
+  /* ====== IMPRESSÃO ====== */
+  @media print{
+    body{ background:#fff; }
+    .pagina{
+      box-shadow:none; margin:0 auto; border-radius:0; width:100%; max-width:100%;
+      padding:30px 26px 40px; page-break-after:always; min-height:auto;
+    }
+    .pagina:last-child{ page-break-after:auto; }
+    a{ color:inherit !important; }
+    @page{ margin:14mm; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== CAPA ===================== -->
+<section class="pagina capa">
+  <div class="eyebrow">Caderno de Estudos · Física</div>
+  <h1>Fórmulas de Física<br>Explicadas</h1>
+  <h2>Cada equação em uma página: significado, exemplo resolvido e questões</h2>
+  <div class="selo">Nível: Vestibular Avançado (ITA / IME / ENEM+)</div>
+  <div class="grid-temas">
+    <span>Cinemática</span><span>Dinâmica</span><span>Trabalho e Energia</span>
+    <span>Hidrostática</span><span>Termologia</span><span>Ondas e Óptica</span>
+    <span>Eletricidade</span><span>Gases</span>
+  </div>
+  <div class="meta">38 equações · 38 exemplos resolvidos · 76 questões com gabarito comentado</div>
+</section>
+
+<!-- ===================== SUMÁRIO ===================== -->
+<section class="pagina sumario">
+  <h2>Sumário</h2>
+  <p class="sub">Clique em uma equação para ir direto à página dela.</p>
+
+  <div class="toc-grupo">
+    <h3>Cinemática</h3>
+    <ol>
+      <li><a href="#eq1"><span class="n">01</span> Velocidade média — \(v=\frac{\Delta d}{\Delta t}\)</a></li>
+      <li><a href="#eq2"><span class="n">02</span> Aceleração média — \(a=\frac{\Delta v}{\Delta t}\)</a></li>
+      <li><a href="#eq3"><span class="n">03</span> Velocidade no MUV — \(v=v_0+at\)</a></li>
+      <li><a href="#eq4"><span class="n">04</span> Função horária — \(d=d_0+v_0t+\frac{1}{2}at^2\)</a></li>
+      <li><a href="#eq5"><span class="n">05</span> Torricelli — \(v^2=v_0^2+2a\Delta d\)</a></li>
+      <li><a href="#eq6"><span class="n">06</span> Aceleração centrípeta — \(a_c=\frac{v^2}{R}\)</a></li>
+      <li><a href="#eq7"><span class="n">07</span> Velocidade linear e angular — \(v=\omega R\)</a></li>
+      <li><a href="#eq8"><span class="n">08</span> Velocidade angular — \(\omega=\frac{2\pi}{T}\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Dinâmica</h3>
+    <ol>
+      <li><a href="#eq9"><span class="n">09</span> 2ª Lei de Newton — \(\vec F=m\vec a\)</a></li>
+      <li><a href="#eq10"><span class="n">10</span> Força peso — \(\vec P=m\vec g\)</a></li>
+      <li><a href="#eq11"><span class="n">11</span> Força de atrito — \(f_a=\mu N\)</a></li>
+      <li><a href="#eq12"><span class="n">12</span> Lei de Hooke — \(F=kx\)</a></li>
+      <li><a href="#eq13"><span class="n">13</span> Quantidade de movimento — \(\vec p=m\vec v\)</a></li>
+      <li><a href="#eq14"><span class="n">14</span> Impulso — \(\vec I=\vec F\,\Delta t=\Delta\vec p\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Trabalho e Energia</h3>
+    <ol>
+      <li><a href="#eq15"><span class="n">15</span> Trabalho — \(\tau=Fd\cos\theta\)</a></li>
+      <li><a href="#eq16"><span class="n">16</span> Energia cinética — \(E_c=\frac{1}{2}mv^2\)</a></li>
+      <li><a href="#eq17"><span class="n">17</span> Energia potencial grav. — \(E_p=mgh\)</a></li>
+      <li><a href="#eq18"><span class="n">18</span> Energia potencial elástica — \(E_p=\frac{1}{2}kx^2\)</a></li>
+      <li><a href="#eq19"><span class="n">19</span> Teorema da energia cinética — \(\tau=\Delta E_c\)</a></li>
+      <li><a href="#eq20"><span class="n">20</span> Potência — \(P=\frac{E}{\Delta t}\)</a></li>
+      <li><a href="#eq21"><span class="n">21</span> Momento (torque) — \(M=Fd\,\mathrm{sen}\,\theta\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Hidrostática</h3>
+    <ol>
+      <li><a href="#eq22"><span class="n">22</span> Pressão — \(p=\frac{F}{A}\)</a></li>
+      <li><a href="#eq23"><span class="n">23</span> Densidade — \(\rho=\frac{m}{V}\)</a></li>
+      <li><a href="#eq24"><span class="n">24</span> Empuxo — \(E=\rho g V\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Termologia</h3>
+    <ol>
+      <li><a href="#eq25"><span class="n">25</span> Calor sensível — \(Q=mc\Delta T\)</a></li>
+      <li><a href="#eq26"><span class="n">26</span> Dilatação linear — \(\Delta L=L_0\alpha\Delta T\)</a></li>
+      <li><a href="#eq27"><span class="n">27</span> Conversão de temperatura — \(T_K=T_C+273{,}15\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Ondas e Óptica</h3>
+    <ol>
+      <li><a href="#eq28"><span class="n">28</span> Pêndulo simples — \(T=2\pi\sqrt{\frac{l}{g}}\)</a></li>
+      <li><a href="#eq29"><span class="n">29</span> Equação da onda — \(v=\lambda f\)</a></li>
+      <li><a href="#eq30"><span class="n">30</span> Snell-Descartes — \(n_1\,\mathrm{sen}\,\theta_1=n_2\,\mathrm{sen}\,\theta_2\)</a></li>
+      <li><a href="#eq31"><span class="n">31</span> Nível sonoro — \(\beta=10\log\frac{I}{I_0}\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Eletricidade</h3>
+    <ol>
+      <li><a href="#eq32"><span class="n">32</span> Corrente elétrica — \(i=\frac{\Delta Q}{\Delta t}\)</a></li>
+      <li><a href="#eq33"><span class="n">33</span> 1ª Lei de Ohm — \(i=\frac{V}{R}\)</a></li>
+      <li><a href="#eq34"><span class="n">34</span> 2ª Lei de Ohm — \(R=\rho\frac{l}{A}\)</a></li>
+      <li><a href="#eq35"><span class="n">35</span> Potência elétrica — \(P=Vi\)</a></li>
+      <li><a href="#eq36"><span class="n">36</span> Força elétrica — \(F_e=qE\)</a></li>
+      <li><a href="#eq37"><span class="n">37</span> Potencial em campo uniforme — \(V=Ed\)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-grupo">
+    <h3>Gases</h3>
+    <ol>
+      <li><a href="#eq38"><span class="n">38</span> Equação de Clapeyron — \(pV=nRT\)</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== CONSTANTES ===================== -->
+<section class="pagina t-cin">
+  <div class="cab">
+    <div class="badge">★</div>
+    <div><div class="tag">Referência</div><h3 class="titulo">Constantes e valores úteis</h3></div>
+  </div>
+  <p>Valores e aproximações que aparecem no formulário e são usados nos exemplos e questões deste caderno.</p>
+  <div class="const-grid">
+    <div class="const-item"><span class="nome">Aceleração da gravidade</span><span class="val">\(g = 10\ \mathrm{m/s^2}\)</span></div>
+    <div class="const-item"><span class="nome">Velocidade da luz no vácuo</span><span class="val">\(c = 3{,}0\times10^{8}\ \mathrm{m/s}\)</span></div>
+    <div class="const-item"><span class="nome">Constante de Planck</span><span class="val">\(h = 6{,}63\times10^{-34}\ \mathrm{J\cdot s}\)</span></div>
+    <div class="const-item"><span class="nome">Calor específico da água</span><span class="val">\(c_{\text{água}} = 1\ \mathrm{cal/g\,^\circ C}\)</span></div>
+    <div class="const-item"><span class="nome">Calor latente de fusão do gelo</span><span class="val">\(L = 80\ \mathrm{cal/g}\)</span></div>
+    <div class="const-item"><span class="nome">Equivalente mecânico do calor</span><span class="val">\(1\ \mathrm{cal} = 4{,}0\ \mathrm{J}\)</span></div>
+    <div class="const-item"><span class="nome">Densidade da água</span><span class="val">\(\rho_{\text{água}} = 1{,}0\ \mathrm{g/cm^3} = 1000\ \mathrm{kg/m^3}\)</span></div>
+    <div class="const-item"><span class="nome">Conversão de velocidade</span><span class="val">\(1\ \mathrm{m/s} = 3{,}6\ \mathrm{km/h}\)</span></div>
+    <div class="const-item"><span class="nome">Constante dos gases</span><span class="val">\(R = 0{,}082\ \mathrm{atm\cdot L/mol\cdot K}\)</span></div>
+    <div class="const-item"><span class="nome">Aproximação</span><span class="val">\(\pi \approx 3\)</span></div>
+    <div class="const-item"><span class="nome">Valores trigonométricos</span><span class="val">\(\mathrm{sen}\,45^\circ=\cos45^\circ=\frac{\sqrt2}{2}\approx0{,}71\)</span></div>
+    <div class="const-item"><span class="nome">Conversão de temperatura</span><span class="val">\(T_K = T_C + 273{,}15\)</span></div>
+  </div>
+  <p class="nota">Observação: em provas costuma-se usar \(g=10\ \mathrm{m/s^2}\) e \(\pi\approx3\) para simplificar as contas, salvo indicação em contrário.</p>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 01 — Velocidade média ===== -->
+<section class="pagina t-cin" id="eq1">
+  <div class="cab">
+    <div class="badge">1</div>
+    <div><div class="tag">Cinemática</div><h2 class="titulo">Velocidade média</h2></div>
+  </div>
+  <div class="formula-box">\[ v_m=\dfrac{\Delta d}{\Delta t}=\dfrac{d-d_0}{t-t_0} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A velocidade média mede o quão rápido a posição varia. É o deslocamento dividido pelo intervalo de tempo gasto. Atenção: <b>velocidade média</b> (usa deslocamento, pode ser negativa) é diferente de <b>velocidade escalar média</b> (usa a distância total percorrida). Ela <em>não</em> é, em geral, a média aritmética das velocidades.</p>
+  <ul class="vars">
+    <li><b>\(v_m\)</b> — velocidade média (m/s)</li>
+    <li><b>\(\Delta d\)</b> — deslocamento ou distância percorrida (m)</li>
+    <li><b>\(\Delta t\)</b> — intervalo de tempo (s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um carro percorre a primeira metade de um trajeto a \(30\ \mathrm{km/h}\) e a segunda metade (mesma distância) a \(60\ \mathrm{km/h}\). Qual a velocidade escalar média no trajeto todo?</p>
+    <p class="passo">Seja a distância total \(2d\). O tempo de cada trecho é distância sobre velocidade:</p>
+    <p class="passo">\( t_1=\dfrac{d}{30}\,,\qquad t_2=\dfrac{d}{60} \)</p>
+    <p class="passo">Tempo total: \( \Delta t=\dfrac{d}{30}+\dfrac{d}{60}=\dfrac{2d+d}{60}=\dfrac{3d}{60}=\dfrac{d}{20} \)</p>
+    <p class="passo">Velocidade média: \( v_m=\dfrac{2d}{\,d/20\,}=2d\cdot\dfrac{20}{d}=40\ \mathrm{km/h} \)</p>
+    <div class="resp">Resposta: \(v_m=40\ \mathrm{km/h}\) — note que <b>não</b> é \(45\) (a média aritmética). Quando os trechos têm a mesma distância, vale a média harmônica.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um corredor completa \(400\ \mathrm{m}\) em \(50\ \mathrm{s}\). Determine sua velocidade média em \(\mathrm{m/s}\) e em \(\mathrm{km/h}\).</li>
+      <li>Agora um carro percorre a primeira <b>metade do tempo</b> a \(40\ \mathrm{km/h}\) e a segunda metade do tempo a \(80\ \mathrm{km/h}\). Calcule a velocidade média e explique por que o resultado é diferente do exemplo acima.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 02 — Aceleração média ===== -->
+<section class="pagina t-cin" id="eq2">
+  <div class="cab">
+    <div class="badge">2</div>
+    <div><div class="tag">Cinemática</div><h2 class="titulo">Aceleração média</h2></div>
+  </div>
+  <div class="formula-box">\[ a_m=\dfrac{\Delta v}{\Delta t}=\dfrac{v-v_0}{t-t_0} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A aceleração média mede a rapidez com que a velocidade muda. É grandeza vetorial: o sinal indica se o movimento está acelerando (mesmo sentido da velocidade) ou freando (sentido oposto). Uma aceleração negativa não significa necessariamente "diminuir de velocidade" — significa apontar no sentido negativo do referencial.</p>
+  <ul class="vars">
+    <li><b>\(a_m\)</b> — aceleração média (m/s²)</li>
+    <li><b>\(\Delta v\)</b> — variação da velocidade (m/s)</li>
+    <li><b>\(\Delta t\)</b> — intervalo de tempo (s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um trem passa de \(72\ \mathrm{km/h}\) para \(144\ \mathrm{km/h}\) em \(10\ \mathrm{s}\). Qual a aceleração média?</p>
+    <p class="passo">Converte para o SI dividindo por \(3{,}6\): \(72\ \mathrm{km/h}=20\ \mathrm{m/s}\) e \(144\ \mathrm{km/h}=40\ \mathrm{m/s}\).</p>
+    <p class="passo">\( a_m=\dfrac{40-20}{10}=\dfrac{20}{10}=2\ \mathrm{m/s^2} \)</p>
+    <div class="resp">Resposta: \(a_m=2\ \mathrm{m/s^2}\) (positiva — o trem está acelerando).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma moto sai do repouso e atinge \(90\ \mathrm{km/h}\) em \(5\ \mathrm{s}\). Qual sua aceleração média?</li>
+      <li>Um carro a \(30\ \mathrm{m/s}\) freia uniformemente e para em \(6\ \mathrm{s}\). Calcule a aceleração média (com sinal) e interprete o sinal.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 03 — v = v0 + at ===== -->
+<section class="pagina t-cin" id="eq3">
+  <div class="cab">
+    <div class="badge">3</div>
+    <div><div class="tag">Cinemática · MUV</div><h2 class="titulo">Velocidade no movimento uniformemente variado</h2></div>
+  </div>
+  <div class="formula-box">\[ v=v_0+a\,t \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>É a função horária da velocidade no MUV (aceleração constante). A velocidade varia de forma <b>linear</b> com o tempo: parte de \(v_0\) e cresce (ou decresce) a uma taxa fixa \(a\). É a "equação da reta" \(v(t)\) cujo coeficiente angular é a aceleração.</p>
+  <ul class="vars">
+    <li><b>\(v\)</b> — velocidade no instante \(t\) (m/s)</li>
+    <li><b>\(v_0\)</b> — velocidade inicial (m/s)</li>
+    <li><b>\(a\)</b> — aceleração constante (m/s²)</li>
+    <li><b>\(t\)</b> — tempo (s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um carro a \(30\ \mathrm{m/s}\) freia com aceleração constante de módulo \(4\ \mathrm{m/s^2}\). Em quanto tempo ele para? E qual sua velocidade em \(t=5\ \mathrm{s}\)?</p>
+    <p class="passo">Como freia, \(a=-4\ \mathrm{m/s^2}\). Parar significa \(v=0\):</p>
+    <p class="passo">\( 0=30+(-4)\,t \;\Rightarrow\; t=\dfrac{30}{4}=7{,}5\ \mathrm{s} \)</p>
+    <p class="passo">Em \(t=5\ \mathrm{s}\): \( v=30-4\cdot5=30-20=10\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: para em \(7{,}5\ \mathrm{s}\); em \(5\ \mathrm{s}\) ainda vai a \(10\ \mathrm{m/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um corpo parte com \(v_0=4\ \mathrm{m/s}\) e acelera a \(3\ \mathrm{m/s^2}\). Qual sua velocidade em \(t=10\ \mathrm{s}\)?</li>
+      <li>Um objeto parte do repouso e atinge \(20\ \mathrm{m/s}\) em \(5\ \mathrm{s}\). Determine a aceleração e a velocidade em \(t=12\ \mathrm{s}\).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 04 — função horária ===== -->
+<section class="pagina t-cin" id="eq4">
+  <div class="cab">
+    <div class="badge">4</div>
+    <div><div class="tag">Cinemática · MUV</div><h2 class="titulo">Função horária da posição</h2></div>
+  </div>
+  <div class="formula-box">\[ d=d_0+v_0\,t+\tfrac{1}{2}a\,t^{2} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Dá a posição em função do tempo no MUV. A posição varia de forma <b>quadrática</b> com o tempo — por isso o gráfico \(d\times t\) é uma parábola. O termo \(\tfrac12 a t^2\) é a "correção" que a aceleração acrescenta ao movimento que seria uniforme.</p>
+  <ul class="vars">
+    <li><b>\(d\)</b> — posição no instante \(t\) (m)</li>
+    <li><b>\(d_0\)</b> — posição inicial (m)</li>
+    <li><b>\(v_0\)</b> — velocidade inicial (m/s) &nbsp;·&nbsp; <b>\(a\)</b> — aceleração (m/s²)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma bola é lançada para cima do chão com \(v_0=20\ \mathrm{m/s}\) (adote \(g=10\ \mathrm{m/s^2}\), \(d_0=0\)). A que altura ela está em \(t=1{,}5\ \mathrm{s}\)?</p>
+    <p class="passo">Para cima, a gravidade é contrária ao movimento: \(a=-g=-10\ \mathrm{m/s^2}\).</p>
+    <p class="passo">\( d=0+20(1{,}5)+\tfrac12(-10)(1{,}5)^2 \)</p>
+    <p class="passo">\( d=30-5\cdot2{,}25=30-11{,}25=18{,}75\ \mathrm{m} \)</p>
+    <div class="resp">Resposta: a bola está a \(18{,}75\ \mathrm{m}\) de altura.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um carro parte de \(d_0=10\ \mathrm{m}\), do repouso, com \(a=2\ \mathrm{m/s^2}\). Qual sua posição em \(t=5\ \mathrm{s}\)?</li>
+      <li>Uma bola é lançada para cima com \(v_0=30\ \mathrm{m/s}\) (\(g=10\)). Calcule a altura em \(t=2\ \mathrm{s}\) e em \(t=4\ \mathrm{s}\) e explique por que os valores coincidem.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 05 — Torricelli ===== -->
+<section class="pagina t-cin" id="eq5">
+  <div class="cab">
+    <div class="badge">5</div>
+    <div><div class="tag">Cinemática · MUV</div><h2 class="titulo">Equação de Torricelli</h2></div>
+  </div>
+  <div class="formula-box">\[ v^{2}=v_0^{2}+2\,a\,\Delta d \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Relaciona velocidade e deslocamento <b>sem envolver o tempo</b>. É a ferramenta ideal quando o problema não cita (nem pede) o tempo. Vem da combinação das duas funções horárias do MUV.</p>
+  <ul class="vars">
+    <li><b>\(v\)</b> — velocidade final (m/s) &nbsp;·&nbsp; <b>\(v_0\)</b> — velocidade inicial (m/s)</li>
+    <li><b>\(a\)</b> — aceleração (m/s²) &nbsp;·&nbsp; <b>\(\Delta d\)</b> — deslocamento (m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um carro a \(20\ \mathrm{m/s}\) freia com \(a=-5\ \mathrm{m/s^2}\). Qual a distância de frenagem até parar?</p>
+    <p class="passo">Parar: \(v=0\). Aplicando Torricelli:</p>
+    <p class="passo">\( 0^2=20^2+2(-5)\,\Delta d \;\Rightarrow\; 0=400-10\,\Delta d \)</p>
+    <p class="passo">\( \Delta d=\dfrac{400}{10}=40\ \mathrm{m} \)</p>
+    <div class="resp">Resposta: a distância de frenagem é \(40\ \mathrm{m}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um móvel parte com \(v_0=10\ \mathrm{m/s}\) e acelera a \(3\ \mathrm{m/s^2}\) por \(50\ \mathrm{m}\). Qual sua velocidade final?</li>
+      <li>Mantida a mesma desaceleração da frenagem, mostre que ao dobrar a velocidade (de \(10\) para \(20\ \mathrm{m/s}\)) a distância de frenagem fica <b>4 vezes</b> maior. Use \(a=-5\ \mathrm{m/s^2}\).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 06 — aceleração centrípeta ===== -->
+<section class="pagina t-cin" id="eq6">
+  <div class="cab">
+    <div class="badge">6</div>
+    <div><div class="tag">Cinemática · Circular</div><h2 class="titulo">Aceleração centrípeta</h2></div>
+  </div>
+  <div class="formula-box">\[ a_c=\dfrac{v^{2}}{R}=\omega^{2}R \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Em todo movimento curvo existe uma aceleração apontando para o <b>centro</b> da curva. Ela não muda o módulo da velocidade — muda a sua <b>direção</b>, mantendo o corpo na trajetória circular. Sem ela, o corpo sairia pela tangente.</p>
+  <ul class="vars">
+    <li><b>\(a_c\)</b> — aceleração centrípeta (m/s²)</li>
+    <li><b>\(v\)</b> — velocidade linear (m/s) &nbsp;·&nbsp; <b>\(R\)</b> — raio da curva (m)</li>
+    <li><b>\(\omega\)</b> — velocidade angular (rad/s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um carro faz uma curva de raio \(R=50\ \mathrm{m}\) a \(20\ \mathrm{m/s}\). Qual a aceleração centrípeta?</p>
+    <p class="passo">\( a_c=\dfrac{v^2}{R}=\dfrac{20^2}{50}=\dfrac{400}{50}=8\ \mathrm{m/s^2} \)</p>
+    <div class="resp">Resposta: \(a_c=8\ \mathrm{m/s^2}\), apontando para o centro da curva.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma pedra gira presa a um fio com \(v=4\ \mathrm{m/s}\) num círculo de raio \(0{,}5\ \mathrm{m}\). Qual a aceleração centrípeta?</li>
+      <li>Por conforto, a aceleração centrípeta de um carro a \(72\ \mathrm{km/h}\) não deve passar de \(5\ \mathrm{m/s^2}\). Qual o raio <b>mínimo</b> da curva?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 07 — v = ωR ===== -->
+<section class="pagina t-cin" id="eq7">
+  <div class="cab">
+    <div class="badge">7</div>
+    <div><div class="tag">Cinemática · Circular</div><h2 class="titulo">Velocidade linear e velocidade angular</h2></div>
+  </div>
+  <div class="formula-box">\[ v=\omega\,R \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Liga a velocidade <b>linear</b> (tangente à trajetória, em m/s) à velocidade <b>angular</b> (quão rápido o ângulo varia, em rad/s). Quanto maior o raio, maior a velocidade linear para a mesma rotação. É essencial em polias, engrenagens e rodas.</p>
+  <ul class="vars">
+    <li><b>\(v\)</b> — velocidade linear/tangencial (m/s)</li>
+    <li><b>\(\omega\)</b> — velocidade angular (rad/s) &nbsp;·&nbsp; <b>\(R\)</b> — raio (m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma roda gira com \(\omega=10\ \mathrm{rad/s}\). Qual a velocidade de um ponto a \(0{,}3\ \mathrm{m}\) do centro?</p>
+    <p class="passo">\( v=\omega R=10\cdot0{,}3=3\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: \(v=3\ \mathrm{m/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um disco gira a \(\omega=4\ \mathrm{rad/s}\). Qual a velocidade de um ponto a \(0{,}25\ \mathrm{m}\) do centro?</li>
+      <li>Duas polias são ligadas por uma correia (mesma velocidade linear). A menor tem \(R_1=10\ \mathrm{cm}\) e gira a \(\omega_1=20\ \mathrm{rad/s}\); a maior tem \(R_2=40\ \mathrm{cm}\). Determine \(\omega_2\).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 08 — ω = 2π/T ===== -->
+<section class="pagina t-cin" id="eq8">
+  <div class="cab">
+    <div class="badge">8</div>
+    <div><div class="tag">Cinemática · Circular</div><h2 class="titulo">Velocidade angular, período e frequência</h2></div>
+  </div>
+  <div class="formula-box">\[ \omega=\dfrac{2\pi}{T}=2\pi f \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Em uma volta completa o corpo varre \(2\pi\) radianos. Dividindo por \(T\) (tempo de uma volta) obtém-se a velocidade angular. Como \(f=1/T\), também vale \(\omega=2\pi f\). Frequência \(f\) é medida em hertz (voltas por segundo).</p>
+  <ul class="vars">
+    <li><b>\(\omega\)</b> — velocidade angular (rad/s)</li>
+    <li><b>\(T\)</b> — período, tempo de uma volta (s) &nbsp;·&nbsp; <b>\(f\)</b> — frequência (Hz)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um ventilador gira a \(300\) rotações por minuto (rpm). Determine \(f\), \(T\) e \(\omega\). (Use \(\pi\approx3\).)</p>
+    <p class="passo">Frequência: \( f=\dfrac{300}{60}=5\ \mathrm{Hz} \)</p>
+    <p class="passo">Período: \( T=\dfrac{1}{f}=\dfrac{1}{5}=0{,}2\ \mathrm{s} \)</p>
+    <p class="passo">Velocidade angular: \( \omega=2\pi f=2\cdot3\cdot5=30\ \mathrm{rad/s} \)</p>
+    <div class="resp">Resposta: \(f=5\ \mathrm{Hz}\), \(T=0{,}2\ \mathrm{s}\), \(\omega\approx30\ \mathrm{rad/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um corpo em movimento circular tem período \(T=2\ \mathrm{s}\). Determine sua frequência e sua velocidade angular (use \(\pi\approx3\)).</li>
+      <li>Uma roda de raio \(0{,}5\ \mathrm{m}\) gira a \(120\ \mathrm{rpm}\). Calcule \(\omega\) e a velocidade linear de um ponto da borda (use \(\pi\approx3\)).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 09 — 2a Lei de Newton ===== -->
+<section class="pagina t-din" id="eq9">
+  <div class="cab">
+    <div class="badge">9</div>
+    <div><div class="tag">Dinâmica</div><h2 class="titulo">2ª Lei de Newton (Princípio Fundamental)</h2></div>
+  </div>
+  <div class="formula-box">\[ \vec{F}_{\text{res}}=m\,\vec{a} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A <b>força resultante</b> (soma vetorial de todas as forças) sobre um corpo é igual à sua massa vezes a aceleração. Quanto maior a massa, mais "difícil" é acelerar (inércia). A aceleração tem sempre a direção e o sentido da força resultante.</p>
+  <ul class="vars">
+    <li><b>\(\vec F_{\text{res}}\)</b> — força resultante (N)</li>
+    <li><b>\(m\)</b> — massa (kg) &nbsp;·&nbsp; <b>\(\vec a\)</b> — aceleração (m/s²)</li>
+    <li>Unidade: \(1\ \mathrm{N}=1\ \mathrm{kg\cdot m/s^2}\)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um bloco de \(2\ \mathrm{kg}\) é puxado por uma força horizontal de \(10\ \mathrm{N}\), enquanto o atrito exerce \(4\ \mathrm{N}\) em sentido contrário. Qual a aceleração?</p>
+    <p class="passo">Força resultante na horizontal: \( F_{\text{res}}=10-4=6\ \mathrm{N} \)</p>
+    <p class="passo">\( a=\dfrac{F_{\text{res}}}{m}=\dfrac{6}{2}=3\ \mathrm{m/s^2} \)</p>
+    <div class="resp">Resposta: \(a=3\ \mathrm{m/s^2}\), no sentido da força aplicada.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma força resultante de \(20\ \mathrm{N}\) atua sobre um corpo de \(5\ \mathrm{kg}\). Qual a aceleração?</li>
+      <li>Um carro de \(1000\ \mathrm{kg}\) acelera do repouso até \(30\ \mathrm{m/s}\) em \(10\ \mathrm{s}\). Qual a força resultante média sobre ele?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 10 — Peso ===== -->
+<section class="pagina t-din" id="eq10">
+  <div class="cab">
+    <div class="badge">10</div>
+    <div><div class="tag">Dinâmica</div><h2 class="titulo">Força peso</h2></div>
+  </div>
+  <div class="formula-box">\[ \vec{P}=m\,\vec{g} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Peso é a força com que um astro atrai um corpo — é um caso particular da 2ª Lei com \(a=g\). Não confunda <b>peso</b> (força, em newtons, varia com o local) com <b>massa</b> (quantidade de matéria, em kg, é invariável).</p>
+  <ul class="vars">
+    <li><b>\(P\)</b> — peso (N) &nbsp;·&nbsp; <b>\(m\)</b> — massa (kg)</li>
+    <li><b>\(g\)</b> — aceleração da gravidade (m/s²); na Terra \(\approx10\)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma pessoa tem massa \(70\ \mathrm{kg}\). Qual seu peso na Terra (\(g=10\)) e na Lua (\(g_L=1{,}6\ \mathrm{m/s^2}\))?</p>
+    <p class="passo">Na Terra: \( P=70\cdot10=700\ \mathrm{N} \)</p>
+    <p class="passo">Na Lua: \( P_L=70\cdot1{,}6=112\ \mathrm{N} \)</p>
+    <div class="resp">Resposta: \(700\ \mathrm{N}\) na Terra e \(112\ \mathrm{N}\) na Lua — a massa (\(70\ \mathrm{kg}\)) não muda.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual o peso, na Terra (\(g=10\)), de um objeto de massa \(2\ \mathrm{kg}\)?</li>
+      <li>Um corpo pesa \(600\ \mathrm{N}\) na Terra. Determine sua massa e o peso que teria em Marte, onde \(g=3{,}7\ \mathrm{m/s^2}\).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 11 — Atrito ===== -->
+<section class="pagina t-din" id="eq11">
+  <div class="cab">
+    <div class="badge">11</div>
+    <div><div class="tag">Dinâmica</div><h2 class="titulo">Força de atrito</h2></div>
+  </div>
+  <div class="formula-box">\[ f_a=\mu\,N \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>O atrito se opõe ao movimento (ou à tendência de movimento) entre superfícies. É proporcional à força normal \(N\) que comprime as superfícies. O coeficiente \(\mu\) (adimensional) depende dos materiais. O atrito <b>estático máximo</b> (antes de deslizar) costuma ser maior que o <b>cinético</b> (já deslizando).</p>
+  <ul class="vars">
+    <li><b>\(f_a\)</b> — força de atrito (N)</li>
+    <li><b>\(\mu\)</b> — coeficiente de atrito (sem unidade) &nbsp;·&nbsp; <b>\(N\)</b> — força normal (N)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um bloco de \(10\ \mathrm{kg}\) está sobre piso horizontal, com \(\mu=0{,}3\) (\(g=10\)). Qual a força de atrito quando ele desliza?</p>
+    <p class="passo">No plano horizontal, a normal equilibra o peso: \( N=P=mg=10\cdot10=100\ \mathrm{N} \)</p>
+    <p class="passo">\( f_a=\mu N=0{,}3\cdot100=30\ \mathrm{N} \)</p>
+    <div class="resp">Resposta: \(f_a=30\ \mathrm{N}\), no sentido contrário ao movimento.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>A normal sobre um corpo é \(50\ \mathrm{N}\) e \(\mu=0{,}4\). Qual a força de atrito?</li>
+      <li>Um bloco de \(5\ \mathrm{kg}\) em piso horizontal tem \(\mu=0{,}2\) (\(g=10\)). Se você o empurra com \(8\ \mathrm{N}\) na horizontal, ele se move? Justifique comparando com o atrito máximo.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 12 — Hooke ===== -->
+<section class="pagina t-din" id="eq12">
+  <div class="cab">
+    <div class="badge">12</div>
+    <div><div class="tag">Dinâmica</div><h2 class="titulo">Lei de Hooke</h2></div>
+  </div>
+  <div class="formula-box">\[ F=k\,x \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A força elástica de uma mola é proporcional à sua deformação \(x\) (esticada ou comprimida) e aponta sempre no sentido de <b>restaurar</b> a mola ao tamanho natural. A constante \(k\) mede a "dureza" da mola.</p>
+  <ul class="vars">
+    <li><b>\(F\)</b> — força elástica (N) &nbsp;·&nbsp; <b>\(x\)</b> — deformação (m)</li>
+    <li><b>\(k\)</b> — constante elástica da mola (N/m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Pendurando um corpo de \(2\ \mathrm{kg}\) numa mola vertical, ela estica \(0{,}05\ \mathrm{m}\) (\(g=10\)). Qual a constante elástica?</p>
+    <p class="passo">No equilíbrio a força elástica iguala o peso: \( F=P=mg=2\cdot10=20\ \mathrm{N} \)</p>
+    <p class="passo">\( k=\dfrac{F}{x}=\dfrac{20}{0{,}05}=400\ \mathrm{N/m} \)</p>
+    <div class="resp">Resposta: \(k=400\ \mathrm{N/m}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma mola de \(k=150\ \mathrm{N/m}\) é esticada \(0{,}2\ \mathrm{m}\). Qual a força elástica?</li>
+      <li>Uma força de \(60\ \mathrm{N}\) estica certa mola em \(0{,}15\ \mathrm{m}\). Determine \(k\) e a deformação produzida por uma força de \(100\ \mathrm{N}\).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 13 — Quantidade de movimento ===== -->
+<section class="pagina t-din" id="eq13">
+  <div class="cab">
+    <div class="badge">13</div>
+    <div><div class="tag">Dinâmica</div><h2 class="titulo">Quantidade de movimento (momento linear)</h2></div>
+  </div>
+  <div class="formula-box">\[ \vec{p}=m\,\vec{v} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Mede a "quantidade de movimento" de um corpo: massa vezes velocidade. É vetorial e, num sistema isolado (sem forças externas), <b>conserva-se</b> — base para o estudo de colisões e explosões.</p>
+  <ul class="vars">
+    <li><b>\(\vec p\)</b> — quantidade de movimento (kg·m/s)</li>
+    <li><b>\(m\)</b> — massa (kg) &nbsp;·&nbsp; <b>\(\vec v\)</b> — velocidade (m/s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma pessoa de \(60\ \mathrm{kg}\), parada sobre gelo sem atrito, lança horizontalmente uma bola de \(2\ \mathrm{kg}\) a \(9\ \mathrm{m/s}\). Com que velocidade ela recua?</p>
+    <p class="passo">Sistema isolado: a quantidade de movimento total se conserva. Antes, tudo parado, \(p_{\text{antes}}=0\).</p>
+    <p class="passo">Depois: \( 0=m_{\text{bola}}v_{\text{bola}}+m_{\text{pessoa}}v_{\text{pessoa}} \)</p>
+    <p class="passo">\( 0=2\cdot9+60\cdot v \;\Rightarrow\; v=-\dfrac{18}{60}=-0{,}3\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: a pessoa recua a \(0{,}3\ \mathrm{m/s}\), em sentido oposto ao da bola.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual a quantidade de movimento de um corpo de \(3\ \mathrm{kg}\) a \(4\ \mathrm{m/s}\)?</li>
+      <li>Uma bola de \(0{,}2\ \mathrm{kg}\) chega a uma parede a \(15\ \mathrm{m/s}\) e volta a \(15\ \mathrm{m/s}\). Calcule o módulo da variação da quantidade de movimento.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 14 — Impulso ===== -->
+<section class="pagina t-din" id="eq14">
+  <div class="cab">
+    <div class="badge">14</div>
+    <div><div class="tag">Dinâmica</div><h2 class="titulo">Impulso e Teorema do Impulso</h2></div>
+  </div>
+  <div class="formula-box">\[ \vec{I}=\vec{F}\,\Delta t=\Delta\vec{p} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Impulso é o "efeito acumulado" de uma força ao longo do tempo. O teorema do impulso diz que o impulso da força resultante é igual à <b>variação da quantidade de movimento</b>. Por isso airbags e joelhos flexionados aumentam \(\Delta t\) para reduzir a força \(F\).</p>
+  <ul class="vars">
+    <li><b>\(\vec I\)</b> — impulso (N·s, equivalente a kg·m/s)</li>
+    <li><b>\(\vec F\)</b> — força (N) &nbsp;·&nbsp; <b>\(\Delta t\)</b> — tempo de atuação (s)</li>
+    <li><b>\(\Delta\vec p\)</b> — variação da quantidade de movimento</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> A bola de \(0{,}2\ \mathrm{kg}\) do exemplo anterior bate na parede a \(15\ \mathrm{m/s}\) e volta a \(15\ \mathrm{m/s}\), num contato de \(0{,}1\ \mathrm{s}\). Qual a força média da parede sobre a bola?</p>
+    <p class="passo">Adotando o sentido inicial como positivo: \( \Delta p=m(v_f-v_i)=0{,}2\,(-15-15)=-6\ \mathrm{kg\cdot m/s} \)</p>
+    <p class="passo">Módulo do impulso: \(|I|=6\ \mathrm{N\cdot s}\). Como \(I=F\,\Delta t\):</p>
+    <p class="passo">\( F=\dfrac{|I|}{\Delta t}=\dfrac{6}{0{,}1}=60\ \mathrm{N} \)</p>
+    <div class="resp">Resposta: a força média é \(60\ \mathrm{N}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma força constante de \(50\ \mathrm{N}\) atua durante \(4\ \mathrm{s}\). Qual o impulso?</li>
+      <li>Uma bola de \(0{,}5\ \mathrm{kg}\) atinge o chão a \(8\ \mathrm{m/s}\) e rebate a \(6\ \mathrm{m/s}\), num contato de \(0{,}05\ \mathrm{s}\). Determine a força média do chão sobre a bola.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 15 — Trabalho ===== -->
+<section class="pagina t-ene" id="eq15">
+  <div class="cab">
+    <div class="badge">15</div>
+    <div><div class="tag">Trabalho e Energia</div><h2 class="titulo">Trabalho de uma força</h2></div>
+  </div>
+  <div class="formula-box">\[ \tau=F\,d\,\cos\theta \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Trabalho é energia transferida por uma força ao longo de um deslocamento. Só a componente da força <b>na direção do movimento</b> realiza trabalho — daí o \(\cos\theta\). Se \(\theta=90^\circ\), o trabalho é nulo; se a força é contrária ao movimento (\(\theta=180^\circ\)), o trabalho é negativo.</p>
+  <ul class="vars">
+    <li><b>\(\tau\)</b> — trabalho (J) &nbsp;·&nbsp; <b>\(F\)</b> — força (N)</li>
+    <li><b>\(d\)</b> — deslocamento (m) &nbsp;·&nbsp; <b>\(\theta\)</b> — ângulo entre \(\vec F\) e o deslocamento</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma força de \(50\ \mathrm{N}\), inclinada \(60^\circ\) em relação ao chão, arrasta uma caixa por \(10\ \mathrm{m}\). Qual o trabalho dessa força?</p>
+    <p class="passo">\( \tau=F\,d\,\cos\theta=50\cdot10\cdot\cos60^\circ \)</p>
+    <p class="passo">Com \(\cos60^\circ=0{,}5\): \( \tau=50\cdot10\cdot0{,}5=250\ \mathrm{J} \)</p>
+    <div class="resp">Resposta: \(\tau=250\ \mathrm{J}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma força de \(20\ \mathrm{N}\) paralela ao deslocamento (\(\theta=0\)) empurra um objeto por \(8\ \mathrm{m}\). Qual o trabalho?</li>
+      <li>Uma pessoa carrega uma caixa de \(100\ \mathrm{N}\) andando \(5\ \mathrm{m}\) na horizontal, mantendo-a na mesma altura. Qual o trabalho da força que sustenta a caixa? Justifique.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 16 — Energia cinética ===== -->
+<section class="pagina t-ene" id="eq16">
+  <div class="cab">
+    <div class="badge">16</div>
+    <div><div class="tag">Trabalho e Energia</div><h2 class="titulo">Energia cinética</h2></div>
+  </div>
+  <div class="formula-box">\[ E_c=\tfrac{1}{2}m\,v^{2} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>É a energia associada ao movimento. Depende do <b>quadrado</b> da velocidade: dobrar a velocidade quadruplica a energia cinética. É sempre positiva e escalar.</p>
+  <ul class="vars">
+    <li><b>\(E_c\)</b> — energia cinética (J)</li>
+    <li><b>\(m\)</b> — massa (kg) &nbsp;·&nbsp; <b>\(v\)</b> — velocidade (m/s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Qual a energia cinética de um corpo de \(2\ \mathrm{kg}\) que se move a \(10\ \mathrm{m/s}\)?</p>
+    <p class="passo">\( E_c=\tfrac12 m v^2=\tfrac12\cdot2\cdot10^2=\tfrac12\cdot2\cdot100=100\ \mathrm{J} \)</p>
+    <div class="resp">Resposta: \(E_c=100\ \mathrm{J}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Calcule a energia cinética de um corpo de \(4\ \mathrm{kg}\) a \(5\ \mathrm{m/s}\).</li>
+      <li>Um carro de \(1000\ \mathrm{kg}\) passa de \(10\ \mathrm{m/s}\) para \(20\ \mathrm{m/s}\). Mostre, com números, que a energia cinética fica \(4\) vezes maior.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 17 — Energia potencial gravitacional ===== -->
+<section class="pagina t-ene" id="eq17">
+  <div class="cab">
+    <div class="badge">17</div>
+    <div><div class="tag">Trabalho e Energia</div><h2 class="titulo">Energia potencial gravitacional</h2></div>
+  </div>
+  <div class="formula-box">\[ E_p=m\,g\,h \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>É a energia "armazenada" por um corpo em razão de sua altura em relação a um nível de referência. Quanto mais alto, maior a energia disponível para virar movimento ao cair. Depende do referencial escolhido para \(h=0\).</p>
+  <ul class="vars">
+    <li><b>\(E_p\)</b> — energia potencial gravitacional (J)</li>
+    <li><b>\(m\)</b> — massa (kg) &nbsp;·&nbsp; <b>\(g\)</b> — gravidade (m/s²) &nbsp;·&nbsp; <b>\(h\)</b> — altura (m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma bola de \(0{,}5\ \mathrm{kg}\) é solta de \(20\ \mathrm{m}\) (\(g=10\)). Usando conservação de energia, com que velocidade ela chega ao chão? (Despreze o ar.)</p>
+    <p class="passo">Energia potencial no alto: \( E_p=mgh=0{,}5\cdot10\cdot20=100\ \mathrm{J} \)</p>
+    <p class="passo">No chão toda \(E_p\) virou \(E_c\): \( mgh=\tfrac12 m v^2 \Rightarrow v=\sqrt{2gh} \)</p>
+    <p class="passo">\( v=\sqrt{2\cdot10\cdot20}=\sqrt{400}=20\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: a bola chega ao chão a \(20\ \mathrm{m/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual a energia potencial gravitacional de um corpo de \(10\ \mathrm{kg}\) a \(3\ \mathrm{m}\) de altura (\(g=10\))?</li>
+      <li>De que altura deve cair um objeto, partindo do repouso, para chegar ao solo a \(30\ \mathrm{m/s}\)? (\(g=10\), sem atrito.)</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 18 — Energia potencial elástica ===== -->
+<section class="pagina t-ene" id="eq18">
+  <div class="cab">
+    <div class="badge">18</div>
+    <div><div class="tag">Trabalho e Energia</div><h2 class="titulo">Energia potencial elástica</h2></div>
+  </div>
+  <div class="formula-box">\[ E_p=\tfrac{1}{2}k\,x^{2} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>É a energia armazenada numa mola deformada. Depende do <b>quadrado</b> da deformação: comprimir o dobro guarda quatro vezes mais energia. Ao soltar, essa energia se transforma em cinética.</p>
+  <ul class="vars">
+    <li><b>\(E_p\)</b> — energia potencial elástica (J)</li>
+    <li><b>\(k\)</b> — constante elástica (N/m) &nbsp;·&nbsp; <b>\(x\)</b> — deformação (m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma mola de \(k=800\ \mathrm{N/m}\), comprimida \(0{,}05\ \mathrm{m}\), lança horizontalmente uma esfera de \(0{,}2\ \mathrm{kg}\). Qual a velocidade de saída? (Superfície sem atrito.)</p>
+    <p class="passo">Energia da mola: \( E_p=\tfrac12 k x^2=\tfrac12\cdot800\cdot(0{,}05)^2=\tfrac12\cdot800\cdot0{,}0025=1\ \mathrm{J} \)</p>
+    <p class="passo">Toda vira cinética: \( \tfrac12 m v^2=1 \Rightarrow \tfrac12\cdot0{,}2\cdot v^2=1 \Rightarrow v^2=10 \)</p>
+    <p class="passo">\( v=\sqrt{10}\approx3{,}2\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: \(v\approx3{,}2\ \mathrm{m/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual a energia potencial elástica de uma mola de \(k=500\ \mathrm{N/m}\) deformada \(0{,}2\ \mathrm{m}\)?</li>
+      <li>Uma mola guarda \(8\ \mathrm{J}\) ao ser comprimida \(0{,}2\ \mathrm{m}\). Qual sua constante elástica \(k\)?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 19 — Teorema da energia cinética ===== -->
+<section class="pagina t-ene" id="eq19">
+  <div class="cab">
+    <div class="badge">19</div>
+    <div><div class="tag">Trabalho e Energia</div><h2 class="titulo">Teorema da energia cinética (Trabalho–Energia)</h2></div>
+  </div>
+  <div class="formula-box">\[ \tau_{\text{res}}=\Delta E_c=E_{c,f}-E_{c,i} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>O trabalho da <b>força resultante</b> sobre um corpo é igual à variação de sua energia cinética. Se o trabalho total é positivo, o corpo acelera; se negativo, freia. É um atalho poderoso para problemas com forças e velocidades.</p>
+  <ul class="vars">
+    <li><b>\(\tau_{\text{res}}\)</b> — trabalho da resultante (J)</li>
+    <li><b>\(\Delta E_c\)</b> — variação da energia cinética (J)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um bloco de \(2\ \mathrm{kg}\) move-se a \(3\ \mathrm{m/s}\). Recebe um trabalho resultante de \(16\ \mathrm{J}\). Qual sua velocidade final?</p>
+    <p class="passo">\( E_{c,i}=\tfrac12\cdot2\cdot3^2=9\ \mathrm{J} \)</p>
+    <p class="passo">\( \tau=\Delta E_c \Rightarrow 16=E_{c,f}-9 \Rightarrow E_{c,f}=25\ \mathrm{J} \)</p>
+    <p class="passo">\( \tfrac12\cdot2\cdot v^2=25 \Rightarrow v^2=25 \Rightarrow v=5\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: \(v=5\ \mathrm{m/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um corpo de \(1\ \mathrm{kg}\) parte do repouso e recebe um trabalho resultante de \(50\ \mathrm{J}\). Qual sua velocidade final?</li>
+      <li>Um carro de \(1200\ \mathrm{kg}\) a \(20\ \mathrm{m/s}\) é freado até parar. Qual o trabalho realizado pelos freios?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 20 — Potência ===== -->
+<section class="pagina t-ene" id="eq20">
+  <div class="cab">
+    <div class="badge">20</div>
+    <div><div class="tag">Trabalho e Energia</div><h2 class="titulo">Potência</h2></div>
+  </div>
+  <div class="formula-box">\[ P=\dfrac{E}{\Delta t}=\dfrac{\tau}{\Delta t} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Potência é a <b>rapidez</b> com que energia é transferida ou trabalho é realizado. Duas máquinas podem fazer o mesmo trabalho, mas a mais potente faz em menos tempo. Para movimento a velocidade constante vale também \(P=F\,v\).</p>
+  <ul class="vars">
+    <li><b>\(P\)</b> — potência (W); \(1\ \mathrm{W}=1\ \mathrm{J/s}\)</li>
+    <li><b>\(E\) ou \(\tau\)</b> — energia ou trabalho (J) &nbsp;·&nbsp; <b>\(\Delta t\)</b> — tempo (s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um elevador eleva \(500\ \mathrm{kg}\) a uma altura de \(10\ \mathrm{m}\) em \(5\ \mathrm{s}\) (\(g=10\)). Qual a potência?</p>
+    <p class="passo">Trabalho contra a gravidade: \( \tau=mgh=500\cdot10\cdot10=50000\ \mathrm{J} \)</p>
+    <p class="passo">\( P=\dfrac{\tau}{\Delta t}=\dfrac{50000}{5}=10000\ \mathrm{W}=10\ \mathrm{kW} \)</p>
+    <div class="resp">Resposta: \(P=10\,000\ \mathrm{W}=10\ \mathrm{kW}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma máquina realiza \(6000\ \mathrm{J}\) de trabalho em \(30\ \mathrm{s}\). Qual sua potência?</li>
+      <li>Um atleta de \(70\ \mathrm{kg}\) sobe \(4\ \mathrm{m}\) de escada em \(2\ \mathrm{s}\) (\(g=10\)). Qual a potência desenvolvida contra a gravidade?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 21 — Momento (torque) ===== -->
+<section class="pagina t-ene" id="eq21">
+  <div class="cab">
+    <div class="badge">21</div>
+    <div><div class="tag">Estática</div><h2 class="titulo">Momento de uma força (torque)</h2></div>
+  </div>
+  <div class="formula-box">\[ M=F\,d\,\mathrm{sen}\,\theta \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>O momento mede a tendência de uma força <b>girar</b> um corpo em torno de um eixo. Depende da força, da distância ao eixo (braço) e do ângulo: a força é mais eficiente quando perpendicular ao braço (\(\theta=90^\circ\), \(\mathrm{sen}=1\)). Em equilíbrio, a soma dos momentos horários iguala a dos anti-horários.</p>
+  <ul class="vars">
+    <li><b>\(M\)</b> — momento/torque (N·m)</li>
+    <li><b>\(F\)</b> — força (N) &nbsp;·&nbsp; <b>\(d\)</b> — distância ao eixo (m) &nbsp;·&nbsp; <b>\(\theta\)</b> — ângulo entre \(\vec F\) e o braço</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma força de \(100\ \mathrm{N}\) é aplicada a \(2\ \mathrm{m}\) do eixo, formando \(30^\circ\) com o braço. Qual o momento?</p>
+    <p class="passo">\( M=F\,d\,\mathrm{sen}\,\theta=100\cdot2\cdot\mathrm{sen}\,30^\circ \)</p>
+    <p class="passo">Com \(\mathrm{sen}\,30^\circ=0{,}5\): \( M=100\cdot2\cdot0{,}5=100\ \mathrm{N\cdot m} \)</p>
+    <div class="resp">Resposta: \(M=100\ \mathrm{N\cdot m}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Aperta-se um parafuso com uma chave de \(0{,}3\ \mathrm{m}\), aplicando \(50\ \mathrm{N}\) perpendicularmente (\(\theta=90^\circ\)). Qual o momento?</li>
+      <li>Numa gangorra, uma criança de \(30\ \mathrm{kg}\) senta a \(1{,}5\ \mathrm{m}\) do apoio. A que distância do apoio deve sentar uma criança de \(45\ \mathrm{kg}\) para equilibrar? (\(g=10\), forças perpendiculares.)</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 22 — Pressão ===== -->
+<section class="pagina t-hid" id="eq22">
+  <div class="cab">
+    <div class="badge">22</div>
+    <div><div class="tag">Hidrostática</div><h2 class="titulo">Pressão</h2></div>
+  </div>
+  <div class="formula-box">\[ p=\dfrac{F}{A} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Pressão é a força distribuída por unidade de área. A <b>mesma</b> força gera pressões muito diferentes conforme a área: por isso facas afiadas cortam melhor e esquis impedem afundar na neve. Unidade: pascal (\(1\ \mathrm{Pa}=1\ \mathrm{N/m^2}\)).</p>
+  <ul class="vars">
+    <li><b>\(p\)</b> — pressão (Pa) &nbsp;·&nbsp; <b>\(F\)</b> — força perpendicular à superfície (N)</li>
+    <li><b>\(A\)</b> — área (m²)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma pessoa de \(600\ \mathrm{N}\) pisa na neve. Compare a pressão que ela exerce com os pés (área total \(0{,}03\ \mathrm{m^2}\)) e com esquis (área total \(0{,}30\ \mathrm{m^2}\)).</p>
+    <p class="passo">Com os pés: \( p=\dfrac{600}{0{,}03}=20\,000\ \mathrm{Pa} \)</p>
+    <p class="passo">Com esquis: \( p=\dfrac{600}{0{,}30}=2\,000\ \mathrm{Pa} \)</p>
+    <div class="resp">Resposta: a pressão cai \(10\) vezes com os esquis — daí não afundar na neve.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma força de \(200\ \mathrm{N}\) é aplicada sobre uma área de \(0{,}4\ \mathrm{m^2}\). Qual a pressão?</li>
+      <li>Uma faca aplica \(10\ \mathrm{N}\). Calcule a pressão quando a lâmina tem área \(0{,}001\ \mathrm{m^2}\) (cega) e \(0{,}00001\ \mathrm{m^2}\) (afiada). Comente.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 23 — Densidade ===== -->
+<section class="pagina t-hid" id="eq23">
+  <div class="cab">
+    <div class="badge">23</div>
+    <div><div class="tag">Hidrostática</div><h2 class="titulo">Densidade (massa específica)</h2></div>
+  </div>
+  <div class="formula-box">\[ \rho=\dfrac{m}{V} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Densidade é a massa contida em cada unidade de volume — diz o quão "compactada" é a matéria. Comparando a densidade de um corpo com a do líquido, prevemos se ele <b>flutua</b> (\(\rho_{\text{corpo}}<\rho_{\text{líquido}}\)) ou <b>afunda</b>.</p>
+  <ul class="vars">
+    <li><b>\(\rho\)</b> — densidade (kg/m³ ou g/cm³)</li>
+    <li><b>\(m\)</b> — massa (kg ou g) &nbsp;·&nbsp; <b>\(V\)</b> — volume (m³ ou cm³)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um objeto tem massa \(540\ \mathrm{g}\) e volume \(200\ \mathrm{cm^3}\). Qual sua densidade?</p>
+    <p class="passo">\( \rho=\dfrac{m}{V}=\dfrac{540}{200}=2{,}7\ \mathrm{g/cm^3} \)</p>
+    <div class="resp">Resposta: \(\rho=2{,}7\ \mathrm{g/cm^3}\) — valor típico do alumínio. Como é maior que \(1{,}0\ \mathrm{g/cm^3}\) (água), o objeto afunda.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um corpo tem \(300\ \mathrm{g}\) e ocupa \(100\ \mathrm{cm^3}\). Qual sua densidade?</li>
+      <li>Um cubo de aresta \(0{,}1\ \mathrm{m}\) tem massa \(8\ \mathrm{kg}\). Calcule a densidade em \(\mathrm{kg/m^3}\) e diga se flutua na água (\(\rho_{\text{água}}=1000\ \mathrm{kg/m^3}\)).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 24 — Empuxo ===== -->
+<section class="pagina t-hid" id="eq24">
+  <div class="cab">
+    <div class="badge">24</div>
+    <div><div class="tag">Hidrostática</div><h2 class="titulo">Empuxo (Princípio de Arquimedes)</h2></div>
+  </div>
+  <div class="formula-box">\[ E=\rho\,g\,V_{\text{sub}} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Todo corpo imerso recebe uma força vertical para cima igual ao <b>peso do líquido deslocado</b>. Aqui \(\rho\) é a densidade do <b>líquido</b> e \(V\) é o volume <b>submerso</b> do corpo. Se o empuxo iguala o peso, o corpo flutua em equilíbrio.</p>
+  <ul class="vars">
+    <li><b>\(E\)</b> — empuxo (N) &nbsp;·&nbsp; <b>\(\rho\)</b> — densidade do líquido (kg/m³)</li>
+    <li><b>\(g\)</b> — gravidade (m/s²) &nbsp;·&nbsp; <b>\(V_{\text{sub}}\)</b> — volume submerso (m³)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um corpo é totalmente imerso em água (\(\rho=1000\ \mathrm{kg/m^3}\), \(g=10\)), deslocando \(0{,}002\ \mathrm{m^3}\). Qual o empuxo?</p>
+    <p class="passo">\( E=\rho\,g\,V=1000\cdot10\cdot0{,}002=20\ \mathrm{N} \)</p>
+    <div class="resp">Resposta: \(E=20\ \mathrm{N}\), para cima.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual o empuxo sobre um corpo que desloca \(0{,}005\ \mathrm{m^3}\) de água (\(g=10\))?</li>
+      <li>Um bloco flutua com metade do volume submerso. Seu volume total é \(0{,}004\ \mathrm{m^3}\). Calcule o empuxo e, a partir dele, a massa do bloco (\(g=10\)).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 25 — Calor sensível ===== -->
+<section class="pagina t-ter" id="eq25">
+  <div class="cab">
+    <div class="badge">25</div>
+    <div><div class="tag">Termologia</div><h2 class="titulo">Calor sensível</h2></div>
+  </div>
+  <div class="formula-box">\[ Q=m\,c\,\Delta T=C\,\Delta T \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>É o calor necessário para <b>variar a temperatura</b> de um corpo (sem mudar de estado). Quanto maior a massa, o calor específico \(c\) ou a variação de temperatura, mais calor é preciso. \(C=mc\) é a capacidade térmica. Se \(Q>0\) o corpo recebe calor; se \(Q<0\), cede.</p>
+  <ul class="vars">
+    <li><b>\(Q\)</b> — calor (cal ou J) &nbsp;·&nbsp; <b>\(m\)</b> — massa (g)</li>
+    <li><b>\(c\)</b> — calor específico (cal/g·°C) &nbsp;·&nbsp; <b>\(\Delta T\)</b> — variação de temperatura (°C)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Quanto calor é preciso para aquecer \(200\ \mathrm{g}\) de água de \(20^\circ\mathrm{C}\) a \(80^\circ\mathrm{C}\)? (\(c_{\text{água}}=1\ \mathrm{cal/g\,^\circ C}\))</p>
+    <p class="passo">\( \Delta T=80-20=60^\circ\mathrm{C} \)</p>
+    <p class="passo">\( Q=m\,c\,\Delta T=200\cdot1\cdot60=12\,000\ \mathrm{cal}=12\ \mathrm{kcal} \)</p>
+    <p class="passo">Em joules (\(1\ \mathrm{cal}=4{,}0\ \mathrm{J}\)): \( Q=12\,000\cdot4=48\,000\ \mathrm{J} \)</p>
+    <div class="resp">Resposta: \(Q=12\,000\ \mathrm{cal}=48\,000\ \mathrm{J}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Quanto calor (em cal) eleva em \(30^\circ\mathrm{C}\) a temperatura de \(500\ \mathrm{g}\) de água?</li>
+      <li>\(300\ \mathrm{g}\) de água a \(25^\circ\mathrm{C}\) recebem \(9000\ \mathrm{cal}\). Qual a temperatura final?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 26 — Dilatação linear ===== -->
+<section class="pagina t-ter" id="eq26">
+  <div class="cab">
+    <div class="badge">26</div>
+    <div><div class="tag">Termologia</div><h2 class="titulo">Dilatação linear</h2></div>
+  </div>
+  <div class="formula-box">\[ \Delta L=L_0\,\alpha\,\Delta T \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Ao aquecer, um corpo aumenta de comprimento proporcionalmente ao tamanho inicial, à variação de temperatura e ao coeficiente \(\alpha\) (próprio de cada material). Por isso trilhos e pontes têm juntas de dilatação.</p>
+  <ul class="vars">
+    <li><b>\(\Delta L\)</b> — variação de comprimento (m) &nbsp;·&nbsp; <b>\(L_0\)</b> — comprimento inicial (m)</li>
+    <li><b>\(\alpha\)</b> — coeficiente de dilatação linear (°C⁻¹) &nbsp;·&nbsp; <b>\(\Delta T\)</b> — variação de temperatura (°C)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma barra de aço de \(10\ \mathrm{m}\) (\(\alpha=12\times10^{-6}\ ^\circ\mathrm{C^{-1}}\)) é aquecida em \(50^\circ\mathrm{C}\). Quanto ela se alonga?</p>
+    <p class="passo">\( \Delta L=L_0\,\alpha\,\Delta T=10\cdot(12\times10^{-6})\cdot50 \)</p>
+    <p class="passo">\( \Delta L=10\cdot50\cdot12\times10^{-6}=6000\times10^{-6}=6\times10^{-3}\ \mathrm{m}=6\ \mathrm{mm} \)</p>
+    <div class="resp">Resposta: a barra alonga \(6\ \mathrm{mm}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma barra de \(2\ \mathrm{m}\) com \(\alpha=20\times10^{-6}\ ^\circ\mathrm{C^{-1}}\) é aquecida em \(100^\circ\mathrm{C}\). Qual o \(\Delta L\)?</li>
+      <li>Um trilho de \(25\ \mathrm{m}\) (\(\alpha=12\times10^{-6}\ ^\circ\mathrm{C^{-1}}\)) dilata \(3\ \mathrm{mm}\). De quantos graus aumentou a temperatura?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 27 — Conversão de temperatura ===== -->
+<section class="pagina t-ter" id="eq27">
+  <div class="cab">
+    <div class="badge">27</div>
+    <div><div class="tag">Termologia</div><h2 class="titulo">Conversão de temperatura (Kelvin ↔ Celsius)</h2></div>
+  </div>
+  <div class="formula-box">\[ T_{(K)}=T_{(^\circ C)}+273{,}15 \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A escala Kelvin é a escala <b>absoluta</b>: começa no zero absoluto (\(0\ \mathrm{K}=-273{,}15^\circ\mathrm{C}\)), a menor temperatura possível. Suas divisões têm o mesmo "tamanho" das do Celsius, por isso basta somar \(273{,}15\) (na prática, \(273\)). Em fórmulas de gases use sempre kelvin.</p>
+  <ul class="vars">
+    <li><b>\(T_{(K)}\)</b> — temperatura absoluta (K)</li>
+    <li><b>\(T_{(^\circ C)}\)</b> — temperatura em Celsius (°C)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Converta \(27^\circ\mathrm{C}\) e \(100^\circ\mathrm{C}\) para kelvin (use \(273\)).</p>
+    <p class="passo">\( 27^\circ\mathrm{C}\to 27+273=300\ \mathrm{K} \)</p>
+    <p class="passo">\( 100^\circ\mathrm{C}\to 100+273=373\ \mathrm{K} \)</p>
+    <div class="resp">Resposta: \(300\ \mathrm{K}\) e \(373\ \mathrm{K}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Converta a temperatura do corpo humano, \(37^\circ\mathrm{C}\), para kelvin (use \(273\)).</li>
+      <li>Um gás está a \(300\ \mathrm{K}\). Qual sua temperatura em \(^\circ\mathrm{C}\)? E quanto vale \(-23^\circ\mathrm{C}\) em kelvin?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 28 — Pêndulo simples ===== -->
+<section class="pagina t-ond" id="eq28">
+  <div class="cab">
+    <div class="badge">28</div>
+    <div><div class="tag">Oscilações</div><h2 class="titulo">Período do pêndulo simples</h2></div>
+  </div>
+  <div class="formula-box">\[ T=2\pi\sqrt{\dfrac{l}{g}} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>O período de oscilação de um pêndulo simples depende <b>apenas</b> do comprimento do fio e da gravidade — não depende da massa nem (para pequenas amplitudes) do tamanho da oscilação. Como aparece a raiz, quadruplicar o comprimento apenas dobra o período.</p>
+  <ul class="vars">
+    <li><b>\(T\)</b> — período (s) &nbsp;·&nbsp; <b>\(l\)</b> — comprimento do fio (m)</li>
+    <li><b>\(g\)</b> — gravidade (m/s²)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Qual o período de um pêndulo de \(0{,}9\ \mathrm{m}\)? (\(g=10\), \(\pi\approx3\))</p>
+    <p class="passo">\( T=2\pi\sqrt{\dfrac{l}{g}}=2\cdot3\cdot\sqrt{\dfrac{0{,}9}{10}}=6\sqrt{0{,}09} \)</p>
+    <p class="passo">\( \sqrt{0{,}09}=0{,}3 \Rightarrow T=6\cdot0{,}3=1{,}8\ \mathrm{s} \)</p>
+    <div class="resp">Resposta: \(T=1{,}8\ \mathrm{s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual o período de um pêndulo de \(0{,}4\ \mathrm{m}\)? (\(g=10\), \(\pi\approx3\))</li>
+      <li>Para <b>dobrar</b> o período de um pêndulo, por qual fator devemos multiplicar seu comprimento? Justifique pela fórmula.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 29 — Equação fundamental da onda ===== -->
+<section class="pagina t-ond" id="eq29">
+  <div class="cab">
+    <div class="badge">29</div>
+    <div><div class="tag">Ondulatória</div><h2 class="titulo">Equação fundamental da onda</h2></div>
+  </div>
+  <div class="formula-box">\[ v=\lambda\,f \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A velocidade de uma onda é igual ao produto do comprimento de onda \(\lambda\) (distância de uma crista à seguinte) pela frequência \(f\) (oscilações por segundo). Num mesmo meio, \(v\) é fixa: aumentar a frequência diminui o comprimento de onda, e vice-versa.</p>
+  <ul class="vars">
+    <li><b>\(v\)</b> — velocidade da onda (m/s) &nbsp;·&nbsp; <b>\(\lambda\)</b> — comprimento de onda (m)</li>
+    <li><b>\(f\)</b> — frequência (Hz)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma onda tem frequência \(50\ \mathrm{Hz}\) e comprimento de onda \(0{,}4\ \mathrm{m}\). Qual sua velocidade?</p>
+    <p class="passo">\( v=\lambda f=0{,}4\cdot50=20\ \mathrm{m/s} \)</p>
+    <div class="resp">Resposta: \(v=20\ \mathrm{m/s}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Uma onda tem \(f=10\ \mathrm{Hz}\) e \(\lambda=2\ \mathrm{m}\). Qual a velocidade de propagação?</li>
+      <li>O som se propaga a \(340\ \mathrm{m/s}\) no ar. Qual o comprimento de onda de um som de \(680\ \mathrm{Hz}\)?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 30 — Snell-Descartes ===== -->
+<section class="pagina t-ond" id="eq30">
+  <div class="cab">
+    <div class="badge">30</div>
+    <div><div class="tag">Óptica</div><h2 class="titulo">Lei de Snell-Descartes (refração)</h2></div>
+  </div>
+  <div class="formula-box">\[ n_1\,\mathrm{sen}\,\theta_1=n_2\,\mathrm{sen}\,\theta_2 \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Descreve como a luz <b>muda de direção</b> ao passar de um meio para outro. Ao entrar num meio mais refringente (\(n\) maior), a luz se aproxima da normal; ao entrar num menos refringente, se afasta. Os ângulos são medidos a partir da <b>normal</b> à superfície.</p>
+  <ul class="vars">
+    <li><b>\(n_1,n_2\)</b> — índices de refração dos meios (sem unidade)</li>
+    <li><b>\(\theta_1\)</b> — ângulo de incidência &nbsp;·&nbsp; <b>\(\theta_2\)</b> — ângulo de refração</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> A luz vai do ar (\(n_1=1\)) para um meio de \(n_2=1{,}6\), com incidência de \(53^\circ\) (\(\mathrm{sen}\,53^\circ\approx0{,}8\)). Qual o ângulo de refração?</p>
+    <p class="passo">\( 1\cdot0{,}8=1{,}6\cdot\mathrm{sen}\,\theta_2 \Rightarrow \mathrm{sen}\,\theta_2=\dfrac{0{,}8}{1{,}6}=0{,}5 \)</p>
+    <p class="passo">\( \mathrm{sen}\,\theta_2=0{,}5 \Rightarrow \theta_2=30^\circ \)</p>
+    <div class="resp">Resposta: \(\theta_2=30^\circ\) — a luz se aproximou da normal, como esperado num meio mais refringente.</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>A luz vai do ar (\(n_1=1\)) com incidência de \(30^\circ\) para um meio onde \(\mathrm{sen}\,\theta_2=0{,}25\). Determine \(n_2\).</li>
+      <li>Explique, usando a fórmula, por que a luz se aproxima da normal ao entrar num meio mais denso (\(n_2>n_1\)).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 31 — Nível sonoro ===== -->
+<section class="pagina t-ond" id="eq31">
+  <div class="cab">
+    <div class="badge">31</div>
+    <div><div class="tag">Ondulatória</div><h2 class="titulo">Nível sonoro (decibéis)</h2></div>
+  </div>
+  <div class="formula-box">\[ \beta=10\,\log\dfrac{I}{I_0} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Como o ouvido percebe intensidades numa enorme faixa, usa-se uma escala <b>logarítmica</b> em decibéis. \(I_0=10^{-12}\ \mathrm{W/m^2}\) é a intensidade de referência (limiar de audição). Cada fator \(10\) na intensidade soma \(10\ \mathrm{dB}\) ao nível sonoro.</p>
+  <ul class="vars">
+    <li><b>\(\beta\)</b> — nível sonoro (dB) &nbsp;·&nbsp; <b>\(I\)</b> — intensidade sonora (W/m²)</li>
+    <li><b>\(I_0=10^{-12}\ \mathrm{W/m^2}\)</b> — intensidade de referência</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Qual o nível sonoro de um som de intensidade \(I=10^{-6}\ \mathrm{W/m^2}\)?</p>
+    <p class="passo">\( \beta=10\log\dfrac{10^{-6}}{10^{-12}}=10\log\left(10^{6}\right) \)</p>
+    <p class="passo">Como \(\log(10^6)=6\): \( \beta=10\cdot6=60\ \mathrm{dB} \)</p>
+    <div class="resp">Resposta: \(\beta=60\ \mathrm{dB}\) (nível de uma conversa).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual o nível sonoro de um som com \(I=10^{-4}\ \mathrm{W/m^2}\)?</li>
+      <li>Se a intensidade de um som aumenta \(100\) vezes, de quantos decibéis sobe o nível sonoro?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 32 — Corrente elétrica ===== -->
+<section class="pagina t-ele" id="eq32">
+  <div class="cab">
+    <div class="badge">32</div>
+    <div><div class="tag">Eletricidade</div><h2 class="titulo">Corrente elétrica</h2></div>
+  </div>
+  <div class="formula-box">\[ i=\dfrac{\Delta Q}{\Delta t} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Corrente é a quantidade de carga elétrica que atravessa um condutor por unidade de tempo — uma medida do "fluxo" de elétrons. Unidade: ampère (\(1\ \mathrm{A}=1\ \mathrm{C/s}\)).</p>
+  <ul class="vars">
+    <li><b>\(i\)</b> — intensidade de corrente (A) &nbsp;·&nbsp; <b>\(\Delta Q\)</b> — carga (C)</li>
+    <li><b>\(\Delta t\)</b> — intervalo de tempo (s)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Por um fio passam \(60\ \mathrm{C}\) de carga em \(30\ \mathrm{s}\). Qual a corrente?</p>
+    <p class="passo">\( i=\dfrac{\Delta Q}{\Delta t}=\dfrac{60}{30}=2\ \mathrm{A} \)</p>
+    <div class="resp">Resposta: \(i=2\ \mathrm{A}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Passam \(120\ \mathrm{C}\) por um condutor em \(60\ \mathrm{s}\). Qual a corrente?</li>
+      <li>Uma corrente de \(5\ \mathrm{A}\) circula por \(4\ \mathrm{s}\). Qual a carga total que passou? (Extra: sabendo que \(e=1{,}6\times10^{-19}\ \mathrm{C}\), quantos elétrons são?)</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 33 — 1a Lei de Ohm ===== -->
+<section class="pagina t-ele" id="eq33">
+  <div class="cab">
+    <div class="badge">33</div>
+    <div><div class="tag">Eletricidade</div><h2 class="titulo">1ª Lei de Ohm</h2></div>
+  </div>
+  <div class="formula-box">\[ i=\dfrac{V}{R}\qquad(\,V=R\,i\,) \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Em um resistor ôhmico, a corrente é diretamente proporcional à tensão aplicada e inversamente proporcional à resistência. A resistência \(R\) é a "dificuldade" que o componente impõe à passagem da corrente. Unidade: ohm (\(\Omega\)).</p>
+  <ul class="vars">
+    <li><b>\(i\)</b> — corrente (A) &nbsp;·&nbsp; <b>\(V\)</b> — tensão / ddp (V)</li>
+    <li><b>\(R\)</b> — resistência (\(\Omega\))</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um resistor de \(4\ \Omega\) é ligado a uma tensão de \(12\ \mathrm{V}\). Qual a corrente?</p>
+    <p class="passo">\( i=\dfrac{V}{R}=\dfrac{12}{4}=3\ \mathrm{A} \)</p>
+    <div class="resp">Resposta: \(i=3\ \mathrm{A}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual a corrente em um resistor de \(5\ \Omega\) ligado a \(20\ \mathrm{V}\)?</li>
+      <li>Um resistor conduz \(2\ \mathrm{A}\) sob \(10\ \mathrm{V}\). Determine sua resistência e a corrente se a tensão subir para \(25\ \mathrm{V}\).</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 34 — 2a Lei de Ohm ===== -->
+<section class="pagina t-ele" id="eq34">
+  <div class="cab">
+    <div class="badge">34</div>
+    <div><div class="tag">Eletricidade</div><h2 class="titulo">2ª Lei de Ohm (resistividade)</h2></div>
+  </div>
+  <div class="formula-box">\[ R=\rho\,\dfrac{l}{A} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>A resistência de um fio depende do material (resistividade \(\rho\)), do comprimento \(l\) (quanto mais longo, maior \(R\)) e da área da seção \(A\) (quanto mais grosso, menor \(R\)). Explica por que fios longos e finos esquentam mais.</p>
+  <ul class="vars">
+    <li><b>\(R\)</b> — resistência (\(\Omega\)) &nbsp;·&nbsp; <b>\(\rho\)</b> — resistividade (\(\Omega\cdot\mathrm{m}\))</li>
+    <li><b>\(l\)</b> — comprimento (m) &nbsp;·&nbsp; <b>\(A\)</b> — área da seção transversal (m²)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um fio de \(20\ \mathrm{m}\), seção \(1\times10^{-6}\ \mathrm{m^2}\) e \(\rho=2\times10^{-8}\ \Omega\cdot\mathrm{m}\). Qual sua resistência?</p>
+    <p class="passo">\( R=\rho\dfrac{l}{A}=2\times10^{-8}\cdot\dfrac{20}{1\times10^{-6}} \)</p>
+    <p class="passo">\( R=2\times10^{-8}\cdot2\times10^{7}=4\times10^{-1}=0{,}4\ \Omega \)</p>
+    <div class="resp">Resposta: \(R=0{,}4\ \Omega\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um fio tem \(\rho=1\times10^{-6}\ \Omega\cdot\mathrm{m}\), \(l=5\ \mathrm{m}\) e \(A=2\times10^{-6}\ \mathrm{m^2}\). Qual sua resistência?</li>
+      <li>O que acontece com \(R\) se dobrarmos o comprimento do fio? E se dobrarmos a área da seção? Justifique pela fórmula.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 35 — Potência elétrica ===== -->
+<section class="pagina t-ele" id="eq35">
+  <div class="cab">
+    <div class="badge">35</div>
+    <div><div class="tag">Eletricidade</div><h2 class="titulo">Potência elétrica</h2></div>
+  </div>
+  <div class="formula-box">\[ P=V\,i=R\,i^{2}=\dfrac{V^{2}}{R} \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>É a rapidez com que um dispositivo consome (ou fornece) energia elétrica. As três formas são equivalentes via 1ª Lei de Ohm; escolha a que tiver os dados do problema. Multiplicando a potência pelo tempo obtém-se a energia (e a conta de luz, em kWh).</p>
+  <ul class="vars">
+    <li><b>\(P\)</b> — potência (W) &nbsp;·&nbsp; <b>\(V\)</b> — tensão (V)</li>
+    <li><b>\(i\)</b> — corrente (A) &nbsp;·&nbsp; <b>\(R\)</b> — resistência (\(\Omega\))</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Um aparelho funciona sob \(120\ \mathrm{V}\) com corrente de \(5\ \mathrm{A}\). Qual sua potência?</p>
+    <p class="passo">\( P=V\,i=120\cdot5=600\ \mathrm{W} \)</p>
+    <div class="resp">Resposta: \(P=600\ \mathrm{W}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Um chuveiro opera a \(220\ \mathrm{V}\) com corrente de \(2\ \mathrm{A}\). Qual sua potência?</li>
+      <li>Uma lâmpada de \(60\ \mathrm{W}\) é ligada em \(120\ \mathrm{V}\). Determine a corrente e a resistência da lâmpada.</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 36 — Força elétrica ===== -->
+<section class="pagina t-ele" id="eq36">
+  <div class="cab">
+    <div class="badge">36</div>
+    <div><div class="tag">Eletricidade</div><h2 class="titulo">Força elétrica em um campo</h2></div>
+  </div>
+  <div class="formula-box">\[ F_e=q\,E \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Uma carga \(q\) imersa em um campo elétrico \(E\) sofre uma força. Cargas positivas são empurradas no sentido do campo; negativas, no sentido contrário. É a definição operacional do campo: \(E=F_e/q\).</p>
+  <ul class="vars">
+    <li><b>\(F_e\)</b> — força elétrica (N) &nbsp;·&nbsp; <b>\(q\)</b> — carga (C)</li>
+    <li><b>\(E\)</b> — campo elétrico (N/C ou V/m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Uma carga \(q=2\times10^{-6}\ \mathrm{C}\) está num campo de \(E=5000\ \mathrm{N/C}\). Qual a força sobre ela?</p>
+    <p class="passo">\( F_e=q\,E=2\times10^{-6}\cdot5000=2\times10^{-6}\cdot5\times10^{3} \)</p>
+    <p class="passo">\( F_e=10\times10^{-3}=1\times10^{-2}=0{,}01\ \mathrm{N} \)</p>
+    <div class="resp">Resposta: \(F_e=0{,}01\ \mathrm{N}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual a força sobre uma carga de \(3\times10^{-6}\ \mathrm{C}\) num campo de \(2000\ \mathrm{N/C}\)?</li>
+      <li>Uma carga sofre força de \(0{,}02\ \mathrm{N}\) num campo de \(4000\ \mathrm{N/C}\). Qual o valor da carga?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 37 — V = Ed ===== -->
+<section class="pagina t-ele" id="eq37">
+  <div class="cab">
+    <div class="badge">37</div>
+    <div><div class="tag">Eletricidade</div><h2 class="titulo">Tensão em um campo uniforme</h2></div>
+  </div>
+  <div class="formula-box">\[ V=E\,d \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Num campo elétrico <b>uniforme</b> (como entre duas placas paralelas), a diferença de potencial entre dois pontos é o campo vezes a distância entre eles, medida na direção do campo. Por isso a unidade do campo também pode ser V/m.</p>
+  <ul class="vars">
+    <li><b>\(V\)</b> — diferença de potencial / tensão (V)</li>
+    <li><b>\(E\)</b> — campo elétrico uniforme (V/m) &nbsp;·&nbsp; <b>\(d\)</b> — distância (m)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Entre duas placas, o campo é \(E=2000\ \mathrm{V/m}\) e a distância é \(d=0{,}05\ \mathrm{m}\). Qual a ddp?</p>
+    <p class="passo">\( V=E\,d=2000\cdot0{,}05=100\ \mathrm{V} \)</p>
+    <div class="resp">Resposta: \(V=100\ \mathrm{V}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Num campo uniforme de \(500\ \mathrm{V/m}\), qual a ddp entre dois pontos separados por \(0{,}2\ \mathrm{m}\)?</li>
+      <li>Duas placas paralelas distam \(0{,}02\ \mathrm{m}\) e há \(120\ \mathrm{V}\) entre elas. Qual o campo elétrico entre as placas?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- ===== EQ 38 — Clapeyron ===== -->
+<section class="pagina t-gas" id="eq38">
+  <div class="cab">
+    <div class="badge">38</div>
+    <div><div class="tag">Gases</div><h2 class="titulo">Equação de Clapeyron (gases ideais)</h2></div>
+  </div>
+  <div class="formula-box">\[ p\,V=n\,R\,T \]</div>
+
+  <h4 class="sec">O que significa</h4>
+  <p>Relaciona as quatro grandezas de estado de um gás ideal: pressão, volume, quantidade de matéria e temperatura. A temperatura deve estar sempre em <b>kelvin</b>. Dela derivam as transformações isotérmica, isobárica e isovolumétrica.</p>
+  <ul class="vars">
+    <li><b>\(p\)</b> — pressão (atm) &nbsp;·&nbsp; <b>\(V\)</b> — volume (L) &nbsp;·&nbsp; <b>\(n\)</b> — nº de mols (mol)</li>
+    <li><b>\(R=0{,}082\ \mathrm{atm\cdot L/mol\cdot K}\)</b> &nbsp;·&nbsp; <b>\(T\)</b> — temperatura absoluta (K)</li>
+  </ul>
+
+  <h4 class="sec">Exemplo resolvido</h4>
+  <div class="exemplo">
+    <p class="passo"><b>Enunciado.</b> Qual a pressão de \(2\ \mathrm{mol}\) de gás ideal a \(300\ \mathrm{K}\) ocupando \(16{,}4\ \mathrm{L}\)? (\(R=0{,}082\))</p>
+    <p class="passo">\( p=\dfrac{nRT}{V}=\dfrac{2\cdot0{,}082\cdot300}{16{,}4}=\dfrac{49{,}2}{16{,}4} \)</p>
+    <p class="passo">\( p=3\ \mathrm{atm} \)</p>
+    <div class="resp">Resposta: \(p=3\ \mathrm{atm}\).</div>
+  </div>
+
+  <h4 class="sec">Pratique</h4>
+  <div class="pratique">
+    <ol>
+      <li>Qual a pressão de \(1\ \mathrm{mol}\) de gás ideal a \(300\ \mathrm{K}\) em \(8{,}2\ \mathrm{L}\)? (\(R=0{,}082\))</li>
+      <li>Um gás ocupa \(10\ \mathrm{L}\) a \(2\ \mathrm{atm}\) e \(300\ \mathrm{K}\). Mantendo o volume fixo, ele é aquecido até \(600\ \mathrm{K}\). Qual a nova pressão?</li>
+    </ol>
+  </div>
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+<!-- fim das equações -->
+
+<!-- ===================== GABARITO ===================== -->
+<section class="pagina gabarito t-cin" id="gabarito">
+  <div class="cab">
+    <div class="badge">✓</div>
+    <div><div class="tag">Respostas</div><h2 class="titulo">Gabarito comentado</h2></div>
+  </div>
+  <p class="sub" style="color:var(--suave)">Respostas das 76 questões "Pratique". Tente resolver antes de conferir.</p>
+  <h4 class="sec" style="margin-top:22px">Cinemática</h4>
+  <div class="gab-item">
+    <p class="gq">01 · Velocidade média</p>
+    <p><b>1.</b> \(v=\frac{400}{50}=8\ \mathrm{m/s}=8\times3{,}6=28{,}8\ \mathrm{km/h}\).</p>
+    <p><b>2.</b> Metades de <em>tempo</em> iguais → média aritmética: \(\frac{40+80}{2}=60\ \mathrm{km/h}\). Difere do exemplo (40 km/h) porque lá os trechos tinham a mesma <em>distância</em> (resulta média harmônica), aqui o mesmo <em>tempo</em>.</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">02 · Aceleração média</p>
+    <p><b>1.</b> \(90\ \mathrm{km/h}=25\ \mathrm{m/s}\); \(a=\frac{25}{5}=5\ \mathrm{m/s^2}\).</p>
+    <p><b>2.</b> \(a=\frac{0-30}{6}=-5\ \mathrm{m/s^2}\). O sinal negativo indica aceleração contrária ao movimento (freagem).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">03 · \(v=v_0+at\)</p>
+    <p><b>1.</b> \(v=4+3\cdot10=34\ \mathrm{m/s}\).</p>
+    <p><b>2.</b> \(a=\frac{20}{5}=4\ \mathrm{m/s^2}\); em \(t=12\): \(v=4\cdot12=48\ \mathrm{m/s}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">04 · Função horária</p>
+    <p><b>1.</b> \(d=10+0+\frac12\cdot2\cdot5^2=10+25=35\ \mathrm{m}\).</p>
+    <p><b>2.</b> \(t=2\): \(d=30\cdot2-5\cdot2^2=40\ \mathrm{m}\); \(t=4\): \(d=30\cdot4-5\cdot4^2=40\ \mathrm{m}\). Coincidem porque em \(t=2\,\mathrm{s}\) a bola sobe e em \(t=4\,\mathrm{s}\) desce pela mesma altura (apogeu em \(t=3\,\mathrm{s}\), \(45\ \mathrm{m}\)).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">05 · Torricelli</p>
+    <p><b>1.</b> \(v^2=10^2+2\cdot3\cdot50=400\Rightarrow v=20\ \mathrm{m/s}\).</p>
+    <p><b>2.</b> Com \(a=-5\): a \(10\ \mathrm{m/s}\), \(d=\frac{100}{10}=10\ \mathrm{m}\); a \(20\ \mathrm{m/s}\), \(d=\frac{400}{10}=40\ \mathrm{m}\). Razão \(40/10=4\) — a distância cresce com o quadrado da velocidade.</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">06 · Aceleração centrípeta</p>
+    <p><b>1.</b> \(a_c=\frac{4^2}{0{,}5}=\frac{16}{0{,}5}=32\ \mathrm{m/s^2}\).</p>
+    <p><b>2.</b> \(72\ \mathrm{km/h}=20\ \mathrm{m/s}\); \(R_{\min}=\frac{v^2}{a_c}=\frac{400}{5}=80\ \mathrm{m}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">07 · \(v=\omega R\)</p>
+    <p><b>1.</b> \(v=4\cdot0{,}25=1\ \mathrm{m/s}\).</p>
+    <p><b>2.</b> Mesma velocidade linear: \(v=\omega_1 R_1=20\cdot0{,}10=2\ \mathrm{m/s}\); \(\omega_2=\frac{v}{R_2}=\frac{2}{0{,}40}=5\ \mathrm{rad/s}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">08 · \(\omega=2\pi/T\)</p>
+    <p><b>1.</b> \(f=\frac{1}{2}=0{,}5\ \mathrm{Hz}\); \(\omega=\frac{2\cdot3}{2}=3\ \mathrm{rad/s}\).</p>
+    <p><b>2.</b> \(f=\frac{120}{60}=2\ \mathrm{Hz}\); \(\omega=2\cdot3\cdot2=12\ \mathrm{rad/s}\); \(v=\omega R=12\cdot0{,}5=6\ \mathrm{m/s}\).</p>
+  </div>
+
+  <h4 class="sec">Dinâmica</h4>
+  <div class="gab-item">
+    <p class="gq">09 · 2ª Lei de Newton</p>
+    <p><b>1.</b> \(a=\frac{20}{5}=4\ \mathrm{m/s^2}\).</p>
+    <p><b>2.</b> \(a=\frac{30}{10}=3\ \mathrm{m/s^2}\); \(F=ma=1000\cdot3=3000\ \mathrm{N}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">10 · Força peso</p>
+    <p><b>1.</b> \(P=2\cdot10=20\ \mathrm{N}\).</p>
+    <p><b>2.</b> \(m=\frac{600}{10}=60\ \mathrm{kg}\); em Marte \(P=60\cdot3{,}7=222\ \mathrm{N}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">11 · Força de atrito</p>
+    <p><b>1.</b> \(f_a=0{,}4\cdot50=20\ \mathrm{N}\).</p>
+    <p><b>2.</b> \(N=mg=50\ \mathrm{N}\); atrito máximo \(=0{,}2\cdot50=10\ \mathrm{N}\). Como \(8\ \mathrm{N}<10\ \mathrm{N}\), o bloco <b>não se move</b> (o atrito estático equilibra os \(8\ \mathrm{N}\)).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">12 · Lei de Hooke</p>
+    <p><b>1.</b> \(F=150\cdot0{,}2=30\ \mathrm{N}\).</p>
+    <p><b>2.</b> \(k=\frac{60}{0{,}15}=400\ \mathrm{N/m}\); para \(100\ \mathrm{N}\): \(x=\frac{100}{400}=0{,}25\ \mathrm{m}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">13 · Quantidade de movimento</p>
+    <p><b>1.</b> \(p=3\cdot4=12\ \mathrm{kg\cdot m/s}\).</p>
+    <p><b>2.</b> \(\Delta p=0{,}2(-15-15)=-6\); módulo \(=6\ \mathrm{kg\cdot m/s}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">14 · Impulso</p>
+    <p><b>1.</b> \(I=F\,\Delta t=50\cdot4=200\ \mathrm{N\cdot s}\).</p>
+    <p><b>2.</b> Tomando "para cima" positivo: \(\Delta p=0{,}5\,(6-(-8))=7\ \mathrm{kg\cdot m/s}\); \(F=\frac{7}{0{,}05}=140\ \mathrm{N}\).</p>
+  </div>
+
+  <h4 class="sec">Trabalho e Energia</h4>
+  <div class="gab-item">
+    <p class="gq">15 · Trabalho</p>
+    <p><b>1.</b> \(\tau=20\cdot8\cdot\cos0^\circ=160\ \mathrm{J}\).</p>
+    <p><b>2.</b> \(\tau=0\): a força que sustenta a caixa é vertical e o deslocamento é horizontal (\(\theta=90^\circ\), \(\cos90^\circ=0\)).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">16 · Energia cinética</p>
+    <p><b>1.</b> \(E_c=\frac12\cdot4\cdot5^2=50\ \mathrm{J}\).</p>
+    <p><b>2.</b> A \(10\ \mathrm{m/s}\): \(E_c=\frac12\cdot1000\cdot100=50\ \mathrm{kJ}\); a \(20\ \mathrm{m/s}\): \(\frac12\cdot1000\cdot400=200\ \mathrm{kJ}\). Razão \(=4\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">17 · Energia potencial gravitacional</p>
+    <p><b>1.</b> \(E_p=10\cdot10\cdot3=300\ \mathrm{J}\).</p>
+    <p><b>2.</b> \(v=\sqrt{2gh}\Rightarrow 30^2=2\cdot10\cdot h\Rightarrow h=\frac{900}{20}=45\ \mathrm{m}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">18 · Energia potencial elástica</p>
+    <p><b>1.</b> \(E_p=\frac12\cdot500\cdot0{,}2^2=\frac12\cdot500\cdot0{,}04=10\ \mathrm{J}\).</p>
+    <p><b>2.</b> \(8=\frac12\,k\,0{,}2^2=0{,}02\,k\Rightarrow k=400\ \mathrm{N/m}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">19 · Teorema da energia cinética</p>
+    <p><b>1.</b> \(\frac12\cdot1\cdot v^2=50\Rightarrow v^2=100\Rightarrow v=10\ \mathrm{m/s}\).</p>
+    <p><b>2.</b> \(\tau=\Delta E_c=0-\frac12\cdot1200\cdot20^2=-240\,000\ \mathrm{J}=-240\ \mathrm{kJ}\) (negativo: os freios retiram energia).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">20 · Potência</p>
+    <p><b>1.</b> \(P=\frac{6000}{30}=200\ \mathrm{W}\).</p>
+    <p><b>2.</b> \(\tau=mgh=70\cdot10\cdot4=2800\ \mathrm{J}\); \(P=\frac{2800}{2}=1400\ \mathrm{W}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">21 · Momento (torque)</p>
+    <p><b>1.</b> \(M=50\cdot0{,}3\cdot\mathrm{sen}\,90^\circ=15\ \mathrm{N\cdot m}\).</p>
+    <p><b>2.</b> Equilíbrio de momentos: \(30\cdot10\cdot1{,}5=45\cdot10\cdot d\Rightarrow 450=450\,d\Rightarrow d=1\ \mathrm{m}\).</p>
+  </div>
+
+  <h4 class="sec">Hidrostática</h4>
+  <div class="gab-item">
+    <p class="gq">22 · Pressão</p>
+    <p><b>1.</b> \(p=\frac{200}{0{,}4}=500\ \mathrm{Pa}\).</p>
+    <p><b>2.</b> Cega: \(p=\frac{10}{0{,}001}=10\,000\ \mathrm{Pa}\); afiada: \(p=\frac{10}{0{,}00001}=1\,000\,000\ \mathrm{Pa}\). A mesma força gera pressão 100× maior na lâmina afiada — por isso corta.</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">23 · Densidade</p>
+    <p><b>1.</b> \(\rho=\frac{300}{100}=3\ \mathrm{g/cm^3}\).</p>
+    <p><b>2.</b> \(V=0{,}1^3=0{,}001\ \mathrm{m^3}\); \(\rho=\frac{8}{0{,}001}=8000\ \mathrm{kg/m^3}\). Como \(8000>1000\), <b>afunda</b>.</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">24 · Empuxo</p>
+    <p><b>1.</b> \(E=1000\cdot10\cdot0{,}005=50\ \mathrm{N}\).</p>
+    <p><b>2.</b> \(V_{\text{sub}}=\frac{0{,}004}{2}=0{,}002\ \mathrm{m^3}\); \(E=1000\cdot10\cdot0{,}002=20\ \mathrm{N}\). Flutuando, \(E=P\Rightarrow m=\frac{20}{10}=2\ \mathrm{kg}\).</p>
+  </div>
+
+  <h4 class="sec">Termologia</h4>
+  <div class="gab-item">
+    <p class="gq">25 · Calor sensível</p>
+    <p><b>1.</b> \(Q=500\cdot1\cdot30=15\,000\ \mathrm{cal}\).</p>
+    <p><b>2.</b> \(\Delta T=\frac{9000}{300\cdot1}=30^\circ\mathrm{C}\); \(T_f=25+30=55^\circ\mathrm{C}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">26 · Dilatação linear</p>
+    <p><b>1.</b> \(\Delta L=2\cdot20\times10^{-6}\cdot100=4\times10^{-3}\ \mathrm{m}=4\ \mathrm{mm}\).</p>
+    <p><b>2.</b> \(\Delta T=\frac{\Delta L}{L_0\alpha}=\frac{0{,}003}{25\cdot12\times10^{-6}}=\frac{0{,}003}{3\times10^{-4}}=10^\circ\mathrm{C}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">27 · Conversão de temperatura</p>
+    <p><b>1.</b> \(37+273=310\ \mathrm{K}\).</p>
+    <p><b>2.</b> \(300-273=27^\circ\mathrm{C}\); \(-23+273=250\ \mathrm{K}\).</p>
+  </div>
+
+  <h4 class="sec">Ondas e Óptica</h4>
+  <div class="gab-item">
+    <p class="gq">28 · Pêndulo simples</p>
+    <p><b>1.</b> \(T=2\cdot3\sqrt{\frac{0{,}4}{10}}=6\sqrt{0{,}04}=6\cdot0{,}2=1{,}2\ \mathrm{s}\).</p>
+    <p><b>2.</b> Como \(T\propto\sqrt{l}\), para dobrar \(T\) é preciso \(\sqrt{l}\) dobrar, ou seja, multiplicar o comprimento por <b>4</b>.</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">29 · Equação da onda</p>
+    <p><b>1.</b> \(v=10\cdot2=20\ \mathrm{m/s}\).</p>
+    <p><b>2.</b> \(\lambda=\frac{v}{f}=\frac{340}{680}=0{,}5\ \mathrm{m}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">30 · Snell-Descartes</p>
+    <p><b>1.</b> \(1\cdot\mathrm{sen}\,30^\circ=n_2\cdot0{,}25\Rightarrow 0{,}5=0{,}25\,n_2\Rightarrow n_2=2\).</p>
+    <p><b>2.</b> Se \(n_2>n_1\), então \(\mathrm{sen}\,\theta_2=\frac{n_1}{n_2}\mathrm{sen}\,\theta_1<\mathrm{sen}\,\theta_1\), logo \(\theta_2<\theta_1\): a luz se aproxima da normal.</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">31 · Nível sonoro</p>
+    <p><b>1.</b> \(\beta=10\log\frac{10^{-4}}{10^{-12}}=10\log(10^{8})=80\ \mathrm{dB}\).</p>
+    <p><b>2.</b> \(\Delta\beta=10\log(100)=10\cdot2=20\ \mathrm{dB}\).</p>
+  </div>
+
+  <h4 class="sec">Eletricidade</h4>
+  <div class="gab-item">
+    <p class="gq">32 · Corrente elétrica</p>
+    <p><b>1.</b> \(i=\frac{120}{60}=2\ \mathrm{A}\).</p>
+    <p><b>2.</b> \(Q=i\,\Delta t=5\cdot4=20\ \mathrm{C}\); nº de elétrons \(=\frac{20}{1{,}6\times10^{-19}}=1{,}25\times10^{20}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">33 · 1ª Lei de Ohm</p>
+    <p><b>1.</b> \(i=\frac{20}{5}=4\ \mathrm{A}\).</p>
+    <p><b>2.</b> \(R=\frac{10}{2}=5\ \Omega\); com \(25\ \mathrm{V}\): \(i=\frac{25}{5}=5\ \mathrm{A}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">34 · 2ª Lei de Ohm</p>
+    <p><b>1.</b> \(R=10^{-6}\cdot\frac{5}{2\times10^{-6}}=\frac{5\times10^{-6}}{2\times10^{-6}}=2{,}5\ \Omega\).</p>
+    <p><b>2.</b> Dobrar \(l\) → \(R\) dobra (\(R\propto l\)); dobrar \(A\) → \(R\) cai pela metade (\(R\propto 1/A\)).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">35 · Potência elétrica</p>
+    <p><b>1.</b> \(P=220\cdot2=440\ \mathrm{W}\).</p>
+    <p><b>2.</b> \(i=\frac{P}{V}=\frac{60}{120}=0{,}5\ \mathrm{A}\); \(R=\frac{V}{i}=\frac{120}{0{,}5}=240\ \Omega\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">36 · Força elétrica</p>
+    <p><b>1.</b> \(F_e=3\times10^{-6}\cdot2000=6\times10^{-3}\ \mathrm{N}\).</p>
+    <p><b>2.</b> \(q=\frac{F_e}{E}=\frac{0{,}02}{4000}=5\times10^{-6}\ \mathrm{C}\).</p>
+  </div>
+  <div class="gab-item">
+    <p class="gq">37 · \(V=Ed\)</p>
+    <p><b>1.</b> \(V=500\cdot0{,}2=100\ \mathrm{V}\).</p>
+    <p><b>2.</b> \(E=\frac{V}{d}=\frac{120}{0{,}02}=6000\ \mathrm{V/m}\).</p>
+  </div>
+
+  <h4 class="sec">Gases</h4>
+  <div class="gab-item">
+    <p class="gq">38 · Equação de Clapeyron</p>
+    <p><b>1.</b> \(p=\frac{nRT}{V}=\frac{1\cdot0{,}082\cdot300}{8{,}2}=\frac{24{,}6}{8{,}2}=3\ \mathrm{atm}\).</p>
+    <p><b>2.</b> Volume constante \(\Rightarrow\frac{p_1}{T_1}=\frac{p_2}{T_2}\): \(\frac{2}{300}=\frac{p_2}{600}\Rightarrow p_2=4\ \mathrm{atm}\).</p>
+  </div>
+
+  <div class="rodape">Física · Fórmulas Explicadas</div>
+</section>
+
+</body>
+</html>
