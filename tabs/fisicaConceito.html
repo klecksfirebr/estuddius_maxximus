@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Física - Conceitos</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      macros: {
+        sen: ['\\operatorname{sen}'],
+        tg:  ['\\operatorname{tg}']
+      }
+    },
+    svg: { fontCache: 'global' },
+    startup: { ready(){ MathJax.startup.defaultReady(); MathJax.startup.promise.then(()=>document.body.classList.add('mjx-ready')); } }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e4e8ee; --line-strong:#cdd3dd;
+    --accent:#3730a3; --accent-2:#4f46e5; --accent-soft:#eef2ff;
+    --paper:#ffffff; --bg:#eef1f5;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f5f7fa; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbfcfe; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#1e293b,#3730a3); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:70ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#f7f9fc; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE CAPÍTULO ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:24px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid #dbe6f2; border-radius:10px;
+    padding:15px; text-align:center; font-size:16px; margin:14px 0; overflow-x:auto; }
+  .formula-box sub, .formula-box sup{ font-size:80%; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.6px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR BLOCO (I a V) ===== */
+  .secM{ --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9; }   /* Mecânica */
+  .secT{ --accent:#be123c; --accent-2:#e11d48; --accent-soft:#fff1f2; }   /* Termologia */
+  .secO{ --accent:#7c3aed; --accent-2:#8b5cf6; --accent-soft:#f5f3ff; }   /* Ótica e Ondas */
+  .secE{ --accent:#0e7490; --accent-2:#0891b2; --accent-soft:#ecfeff; }   /* Eletricidade */
+  .secF{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; }   /* Física Moderna */
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Física - Conceitos</div>
+      <div class="sub">Conteúdos do programa do vestibular, explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+
+        <div class="grp">I · Mecânica</div>
+        <ol>
+          <li><a href="#mec1"><b>1</b> Grandezas e medidas</a></li>
+          <li><a href="#mec2"><b>2</b> Cinemática</a></li>
+          <li><a href="#mec3"><b>3</b> Leis de Newton</a></li>
+          <li><a href="#mec4"><b>4</b> Conservação da energia</a></li>
+          <li><a href="#mec5"><b>5</b> Quantidade de movimento</a></li>
+          <li><a href="#mec6"><b>6</b> Gravitação universal</a></li>
+          <li><a href="#mec7"><b>7</b> Hidrostática</a></li>
+        </ol>
+
+        <div class="grp">II · Termologia</div>
+        <ol>
+          <li><a href="#ter1"><b>1</b> Temperatura e dilatação</a></li>
+          <li><a href="#ter2"><b>2</b> Comportamento dos gases</a></li>
+          <li><a href="#ter3"><b>3</b> Termodinâmica</a></li>
+          <li><a href="#ter4"><b>4</b> Mudanças de fase</a></li>
+        </ol>
+
+        <div class="grp">III · Ótica e Ondas</div>
+        <ol>
+          <li><a href="#ond1"><b>1</b> Ótica geométrica</a></li>
+          <li><a href="#ond2"><b>2</b> Movimento ondulatório</a></li>
+          <li><a href="#ond3"><b>3</b> Ondas sonoras</a></li>
+        </ol>
+
+        <div class="grp">IV · Eletricidade e Eletromagnetismo</div>
+        <ol>
+          <li><a href="#ele1"><b>1</b> Carga elétrica</a></li>
+          <li><a href="#ele2"><b>2</b> Campo elétrico</a></li>
+          <li><a href="#ele3"><b>3</b> Potencial elétrico</a></li>
+          <li><a href="#ele4"><b>4</b> Capacitores</a></li>
+          <li><a href="#ele5"><b>5</b> Corrente elétrica</a></li>
+          <li><a href="#ele6"><b>6</b> Circuitos elétricos</a></li>
+          <li><a href="#ele7"><b>7</b> Campo magnético</a></li>
+          <li><a href="#ele8"><b>8</b> Indução e ondas EM</a></li>
+        </ol>
+
+        <div class="grp">V · Física Moderna</div>
+        <ol>
+          <li><a href="#mod1"><b>1</b> Limites da mecânica clássica</a></li>
+          <li><a href="#mod2"><b>2</b> Relatividade</a></li>
+          <li><a href="#mod3"><b>3</b> Efeito fotoelétrico</a></li>
+          <li><a href="#mod4"><b>4</b> Dualidade onda-partícula</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de Física — Conteúdos Explicados</h1>
+        <p>Um passeio por todo o programa de Física do vestibular, dividido em 5 blocos. Cada tópico responde a três perguntas: <b>o que é</b> (com suas aplicações), <b>como cai na prova</b> e <b>um exemplo</b> — para você reconhecer o assunto no enunciado e entender exatamente do que se trata.</p>
+        <div class="chips">
+          <span>Mecânica</span><span>Cinemática</span><span>Newton</span><span>Energia</span>
+          <span>Termologia</span><span>Termodinâmica</span><span>Ótica</span><span>Ondas</span>
+          <span>Eletricidade</span><span>Magnetismo</span><span>Física Moderna</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que é”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. O índice ao lado agrupa os 26 capítulos nos 5 blocos (I a V); dentro de cada capítulo há atalhos para os tópicos. As fórmulas são renderizadas automaticamente.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha de prova</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== MECÂNICA 1 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec1">
+        <div class="num">I · Mecânica</div>
+        <h2>1. Grandezas Físicas e Medidas</h2>
+        <p>A “gramática” da Física: como medir, expressar números (notação científica, algarismos significativos), ler gráficos e trabalhar com vetores. Aparece em quase toda questão, mesmo que disfarçada.</p>
+        <div class="mini">
+          <a href="#mec1-si">Grandezas e o SI</a>
+          <a href="#mec1-not">Notação científica</a>
+          <a href="#mec1-alg">Algarismos significativos</a>
+          <a href="#mec1-graf">Funções e gráficos</a>
+          <a href="#mec1-vet">Escalares e vetoriais</a>
+          <a href="#mec1-opvet">Operações com vetores</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec1-si">
+        <div class="kicker">Grandezas e Medidas · 1.1</div>
+        <h3>Grandezas físicas e o Sistema Internacional (SI)</h3>
+        <p class="lead">Uma <b>grandeza física</b> é tudo que pode ser medido (comprimento, tempo, massa, força…). O <b>SI</b> padroniza as unidades: as <b>básicas</b> mais usadas são <b>metro</b> (m, comprimento), <b>quilograma</b> (kg, massa), <b>segundo</b> (s, tempo), <b>kelvin</b> (K, temperatura) e <b>ampère</b> (A, corrente). As <b>derivadas</b> combinam as básicas — velocidade (m/s), força (newton = kg·m/s²), energia (joule). Medir corretamente exige usar e <b>converter</b> unidades de forma consistente.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> converter unidades antes de aplicar fórmulas (km/h ↔ m/s dividindo/multiplicando por 3,6; g ↔ kg; cm ↔ m) é a fonte nº 1 de erro. Reconhecer a unidade de uma grandeza (e a análise dimensional) também cai.</div>
+        <div class="ex"><b>Exemplo:</b> 72 km/h equivalem a quantos m/s? <span class="resp">72 ÷ 3,6 = 20 m/s.</span></div>
+        <div class="warn"><b>Pegadinha:</b> na maioria das fórmulas, as grandezas devem estar em <b>unidades do SI</b> (m, kg, s). Converta antes de substituir.</div>
+      </section>
+
+      <section class="card" id="mec1-not">
+        <div class="kicker">Grandezas e Medidas · 1.2</div>
+        <h3>Potências de dez e notação científica</h3>
+        <p class="lead">A <b>notação científica</b> escreve qualquer número como \(a \times 10^{n}\), com \(1 \le a < 10\). Serve para lidar com valores muito grandes (distâncias astronômicas) ou muito pequenos (tamanho do átomo) sem erro. Ao multiplicar potências de dez, <b>somam-se</b> os expoentes; ao dividir, subtraem-se.</p>
+        <div class="formula-box">\( 0{,}00045 = 4{,}5 \times 10^{-4} \qquad (2\times10^{3})(3\times10^{5}) = 6\times10^{8} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> onipresente em contas de Física (massa, carga, distância). Saber operar potências de dez com agilidade evita erros de ordem de grandeza. Estimativas de “ordem de grandeza” aparecem no ENEM.</div>
+        <div class="ex"><b>Exemplo:</b> escreva 320 000 em notação científica. <span class="resp">\(3{,}2 \times 10^{5}\).</span></div>
+      </section>
+
+      <section class="card" id="mec1-alg">
+        <div class="kicker">Grandezas e Medidas · 1.3</div>
+        <h3>Algarismos significativos e operações</h3>
+        <p class="lead">São os dígitos <b>confiáveis</b> de uma medida mais o primeiro <b>duvidoso</b>. Zeros à esquerda não contam (0,0042 → 2 significativos). Nas <b>operações</b>: em multiplicação/divisão, o resultado tem o número de significativos do dado com <b>menos</b> significativos; em soma/subtração, alinha-se pelo número de <b>casas decimais</b> do menos preciso.</p>
+        <div class="formula-box">2,0 (2 alg.) × 3,14 (3 alg.) = 6,28 → <b>6,3</b> (2 alg.)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> dar o resultado com o número correto de significativos e arredondar certo, sobretudo em questões de laboratório/medidas. Interpretar a precisão de um instrumento (régua × paquímetro) também aparece.</div>
+        <div class="ex"><b>Exemplo:</b> quantos algarismos significativos tem 0,0506? <span class="resp">Três (5, 0 e 6).</span></div>
+      </section>
+
+      <section class="card" id="mec1-graf">
+        <div class="kicker">Grandezas e Medidas · 1.4</div>
+        <h3>Funções, gráficos e escalas</h3>
+        <p class="lead">A Física relaciona grandezas por <b>funções</b>, muitas vezes representadas em <b>gráficos</b>. Ler um gráfico é traduzir a curva em informação: o <b>coeficiente angular</b> (inclinação) e a <b>área sob a curva</b> têm significado físico. Ex.: num gráfico velocidade × tempo, a inclinação é a <b>aceleração</b> e a área é o <b>deslocamento</b>.</p>
+        <div class="formula-box">inclinação de v×t = aceleração &nbsp;|&nbsp; área de v×t = deslocamento</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar gráficos de cinemática (s×t, v×t, a×t) extraindo inclinação e área é cobradíssimo. Reconhecer reta (função do 1º grau) × parábola (2º grau) ajuda a identificar o movimento (MRU × MRUV).</div>
+        <div class="ex"><b>Exemplo:</b> num gráfico v×t, a área entre a linha e o eixo do tempo representa o quê? <span class="resp">O deslocamento (distância percorrida).</span></div>
+      </section>
+
+      <section class="card" id="mec1-vet">
+        <div class="kicker">Grandezas e Medidas · 1.5</div>
+        <h3>Grandezas escalares e vetoriais; o vetor</h3>
+        <p class="lead">Grandezas <b>escalares</b> ficam definidas só por um <b>número e unidade</b> (massa, tempo, temperatura, energia). Grandezas <b>vetoriais</b> precisam também de <b>direção e sentido</b> (deslocamento, velocidade, força, aceleração) e são representadas por <b>vetores</b> (setas): o tamanho da seta é o <b>módulo</b> (intensidade), a reta é a <b>direção</b> e a ponta é o <b>sentido</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar grandezas em escalar × vetorial (pegadinha: massa é escalar, peso é vetorial) e identificar os três atributos de um vetor. Base para somar forças e velocidades.</div>
+        <div class="ex"><b>Exemplo:</b> velocidade é grandeza escalar ou vetorial? <span class="resp">Vetorial (tem módulo, direção e sentido).</span></div>
+      </section>
+
+      <section class="card" id="mec1-opvet">
+        <div class="kicker">Grandezas e Medidas · 1.6</div>
+        <h3>Operações com vetores</h3>
+        <p class="lead">Vetores não se somam como números comuns. Na <b>adição</b>, usa-se a regra do polígono (ponta-a-cauda) ou do <b>paralelogramo</b>. Casos úteis: vetores de mesma direção <b>somam</b> os módulos; opostos <b>subtraem</b>; <b>perpendiculares</b> usam Pitágoras. A <b>multiplicação por um número real</b> só muda o módulo (e inverte o sentido se for negativo).</p>
+        <div class="formula-box">perpendiculares: \( R = \sqrt{a^2 + b^2} \) &nbsp;|&nbsp; mesma direção: \(R = a+b\); opostos: \(R=|a-b|\)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> achar o vetor <b>resultante</b> de forças ou velocidades — clássico com vetores perpendiculares (Pitágoras) ou em ângulo (lei dos cossenos). Decompor um vetor em \(x\) e \(y\) (\(\cos\) e \(\sen\)) é essencial em planos inclinados e lançamentos.</div>
+        <div class="ex"><b>Exemplo:</b> duas forças perpendiculares de 3 N e 4 N. Qual a resultante? <span class="resp">\(R = \sqrt{3^2+4^2} = 5\) N.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== MECÂNICA 2 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec2">
+        <div class="num">I · Mecânica</div>
+        <h2>2. Cinemática</h2>
+        <p>O estudo do movimento sem se preocupar com as causas: descrever posição, velocidade e aceleração ao longo do tempo. Domina a primeira parte de toda prova de Física, com muitos gráficos e fórmulas.</p>
+        <div class="mini">
+          <a href="#mec2-conc">Referencial e deslocamento</a>
+          <a href="#mec2-vel">Velocidade e aceleração</a>
+          <a href="#mec2-mru">MRU</a>
+          <a href="#mec2-mruv">MRUV</a>
+          <a href="#mec2-queda">Queda livre</a>
+          <a href="#mec2-mcu">Movimento circular</a>
+          <a href="#mec2-comp">Composição de movimentos</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec2-conc">
+        <div class="kicker">Cinemática · 2.1</div>
+        <h3>Referencial, posição, deslocamento e distância</h3>
+        <p class="lead">Movimento é <b>relativo</b>: depende do <b>referencial</b> escolhido (um passageiro está parado em relação ao ônibus, mas em movimento em relação ao chão). A <b>posição</b> localiza o corpo numa trajetória; o <b>deslocamento</b> (vetorial) é a variação de posição entre dois pontos (Δs = s − s₀); a <b>distância percorrida</b> (escalar) é o comprimento total do caminho. Em idas e voltas, distância e deslocamento diferem.</p>
+        <div class="formula-box">\( \Delta s = s - s_0 \) (deslocamento) &nbsp;≠&nbsp; distância percorrida (caminho total)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a diferença <b>deslocamento × distância</b> é pegadinha clássica (ida e volta: deslocamento zero, distância não). O conceito de movimento relativo aparece em questões com referenciais (esteira, barco, vento).</div>
+        <div class="ex"><b>Exemplo:</b> uma pessoa anda 3 km e volta ao ponto de partida. Deslocamento e distância? <span class="resp">Deslocamento = 0; distância = 6 km.</span></div>
+      </section>
+
+      <section class="card" id="mec2-vel">
+        <div class="kicker">Cinemática · 2.2</div>
+        <h3>Velocidade e aceleração (escalar e vetorial)</h3>
+        <p class="lead">A <b>velocidade</b> mede a rapidez da mudança de posição (v = Δs/Δt); a <b>aceleração</b> mede a mudança da velocidade (a = Δv/Δt). Como vetores, o <b>vetor velocidade</b> é sempre <b>tangente</b> à trajetória, e o <b>vetor aceleração</b> existe sempre que a velocidade muda — em módulo (aceleração tangencial) <b>ou</b> em direção (aceleração centrípeta, nas curvas).</p>
+        <div class="formula-box">\( v_{m} = \dfrac{\Delta s}{\Delta t} \qquad a_{m} = \dfrac{\Delta v}{\Delta t} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular velocidade/aceleração médias e distinguir a parte vetorial — um carro em curva com rapidez constante <b>está acelerado</b> (muda a direção da velocidade). Essa ideia prepara o movimento circular e a força centrípeta.</div>
+        <div class="ex"><b>Exemplo:</b> um carro mantém 60 km/h fazendo uma curva. Está acelerando? <span class="resp">Sim — a direção da velocidade muda (aceleração centrípeta).</span></div>
+      </section>
+
+      <section class="card" id="mec2-mru">
+        <div class="kicker">Cinemática · 2.3</div>
+        <h3>Movimento retilíneo uniforme (MRU)</h3>
+        <p class="lead">É o movimento em <b>linha reta</b> com <b>velocidade constante</b> (aceleração nula): em tempos iguais, percorrem-se distâncias iguais. A posição varia <b>linearmente</b> com o tempo (função do 1º grau), então o gráfico s×t é uma <b>reta inclinada</b> e o gráfico v×t é uma <b>reta horizontal</b>.</p>
+        <div class="formula-box">\( s = s_0 + v\,t \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> usar a função horária para achar posição/tempo de encontro de dois móveis (igualar as funções), e ler gráficos s×t (inclinação = velocidade). Problemas de “trem que passa por um túnel” e ultrapassagens são típicos.</div>
+        <div class="ex"><b>Exemplo:</b> um móvel parte de s₀ = 10 m a 5 m/s. Posição em t = 4 s? <span class="resp">s = 10 + 5·4 = 30 m.</span></div>
+      </section>
+
+      <section class="card" id="mec2-mruv">
+        <div class="kicker">Cinemática · 2.4</div>
+        <h3>Movimento retilíneo uniformemente variado (MRUV)</h3>
+        <p class="lead">É o movimento em linha reta com <b>aceleração constante</b> (a velocidade varia de modo uniforme). A posição varia com o <b>quadrado</b> do tempo (gráfico s×t é uma <b>parábola</b>; v×t é uma reta inclinada). As três equações-chave incluem a <b>equação de Torricelli</b>, útil quando não se conhece o tempo.</p>
+        <div class="formula-box">\( v = v_0 + a t \qquad s = s_0 + v_0 t + \tfrac{1}{2} a t^2 \qquad v^2 = v_0^2 + 2 a \Delta s \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> é o coração da cinemática. Escolher a equação certa (a de Torricelli quando falta o tempo), tratar do sinal de \(a\) (negativo na freada) e interpretar gráficos. Frenagem, arrancada e distância de parada são contextos clássicos.</div>
+        <div class="ex"><b>Exemplo:</b> um carro a 20 m/s freia a −5 m/s². Quanto anda até parar? <span class="resp">Torricelli: 0 = 20² − 2·5·Δs → Δs = 40 m.</span></div>
+      </section>
+
+      <section class="card" id="mec2-queda">
+        <div class="kicker">Cinemática · 2.5</div>
+        <h3>Queda livre</h3>
+        <p class="lead">É um caso de MRUV em que a única aceleração é a da <b>gravidade</b> (\(g \approx 10\) m/s²), desprezando o ar. Todos os corpos caem com a <b>mesma aceleração</b>, independentemente da massa. Na subida, \(g\) “freia” o corpo; na descida, acelera. Valem as equações do MRUV com \(a = g\).</p>
+        <div class="formula-box">\( v = g\,t \qquad h = \tfrac{1}{2} g t^2 \qquad v^2 = 2 g h \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular tempo de queda, altura e velocidade de impacto; e o lançamento vertical (no ponto mais alto, v = 0). A ideia de que <b>a massa não influencia</b> a queda (no vácuo, pluma e martelo caem juntos) é muito cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> de que altura cai um corpo que leva 2 s para chegar ao chão (g = 10)? <span class="resp">h = ½·10·2² = 20 m.</span></div>
+      </section>
+
+      <section class="card" id="mec2-mcu">
+        <div class="kicker">Cinemática · 2.6</div>
+        <h3>Movimento circular uniforme (MCU)</h3>
+        <p class="lead">É o movimento em <b>círculo</b> com rapidez constante. Caracteriza-se pelo <b>período</b> T (tempo de uma volta) e pela <b>frequência</b> f (voltas por segundo, em hertz), com \(f = 1/T\). A <b>velocidade angular</b> \(\omega\) mede o ângulo varrido por segundo. Embora a rapidez seja constante, há <b>aceleração centrípeta</b>, apontando para o centro, porque a direção da velocidade muda.</p>
+        <div class="formula-box">\( f = \dfrac{1}{T} \qquad \omega = \dfrac{2\pi}{T} = 2\pi f \qquad v = \omega R \qquad a_{cp} = \dfrac{v^2}{R} = \omega^2 R \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar T, f, ω e v (engrenagens, polias e satélites). Em <b>engrenagens acopladas</b> a velocidade \(v\) na borda é igual; no <b>mesmo eixo</b>, a velocidade angular \(\omega\) é igual. A aceleração centrípeta prepara a força centrípeta.</div>
+        <div class="ex"><b>Exemplo:</b> uma roda dá 120 voltas por minuto. Qual a frequência? <span class="resp">120 ÷ 60 = 2 Hz (T = 0,5 s).</span></div>
+      </section>
+
+      <section class="card" id="mec2-comp">
+        <div class="kicker">Cinemática · 2.7</div>
+        <h3>Composição de movimentos</h3>
+        <p class="lead">Quando um corpo participa de <b>dois movimentos ao mesmo tempo</b>, eles se combinam <b>vetorialmente</b> e de forma <b>independente</b> (Princípio de Galileu). Exemplos: um barco que atravessa um rio (velocidade do barco + da correnteza) e o <b>lançamento horizontal/oblíquo</b> (movimento horizontal MRU + vertical de queda livre, simultâneos e independentes).</p>
+        <div class="formula-box">\( \vec{v}_{resultante} = \vec{v}_1 + \vec{v}_2 \) (soma vetorial)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>barco no rio</b> (somar velocidades, achar a resultante e o tempo de travessia) e o <b>lançamento de projéteis</b> (tratar x e y separadamente; a trajetória é uma parábola). Saber que o tempo de queda só depende da altura é o truque-chave.</div>
+        <div class="ex"><b>Exemplo:</b> dois objetos saem da mesma altura: um cai e o outro é lançado na horizontal. Qual chega antes ao chão? <span class="resp">Chegam juntos — o movimento vertical é independente do horizontal.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== MECÂNICA 3 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec3">
+        <div class="num">I · Mecânica</div>
+        <h2>3. As Leis de Newton</h2>
+        <p>A dinâmica: por que os corpos se movem (ou não). As três leis de Newton relacionam força, massa e aceleração e explicam desde um objeto em repouso até a órbita dos planetas. Base de toda a Mecânica.</p>
+        <div class="mini">
+          <a href="#mec3-1lei">Força e 1ª lei (inércia)</a>
+          <a href="#mec3-2lei">2ª lei (F = ma)</a>
+          <a href="#mec3-3lei">3ª lei (ação-reação)</a>
+          <a href="#mec3-peso">Peso e atrito</a>
+          <a href="#mec3-rigido">Equilíbrio do corpo rígido</a>
+          <a href="#mec3-curva">Forças em curvas</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec3-1lei">
+        <div class="kicker">Leis de Newton · 3.1</div>
+        <h3>Conceito de força, 1ª lei (inércia) e equilíbrio</h3>
+        <p class="lead">A <b>força</b> é a interação capaz de deformar ou alterar o movimento de um corpo (unidade: <b>newton</b>). A <b>1ª lei de Newton</b> (inércia): um corpo tende a <b>manter</b> seu estado — parado ou em MRU — se a <b>força resultante for nula</b>. O <b>equilíbrio de uma partícula</b> ocorre exatamente quando ΣF = 0 (repouso = equilíbrio estático; MRU = equilíbrio dinâmico).</p>
+        <div class="formula-box">\( \vec{F}_{resultante} = 0 \Rightarrow \) repouso ou MRU (equilíbrio)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer situações de inércia (passageiro “jogado” na freada, cinto de segurança) e resolver equilíbrio de forças (decompor forças, somar a zero). Em planos inclinados e cordas/roldanas, ΣF = 0 em cada eixo é o ponto de partida.</div>
+        <div class="ex"><b>Exemplo:</b> um lustre pendurado e em repouso tem força resultante igual a quanto? <span class="resp">Zero (peso para baixo equilibra a tração para cima).</span></div>
+      </section>
+
+      <section class="card" id="mec3-2lei">
+        <div class="kicker">Leis de Newton · 3.2</div>
+        <h3>2ª lei de Newton e conceito de massa</h3>
+        <p class="lead">A <b>2ª lei</b> (princípio fundamental da dinâmica): a força resultante produz aceleração na <b>mesma direção e sentido</b>, proporcional à força e <b>inversamente</b> à massa — \(F = m\,a\). A <b>massa</b> é a medida da <b>inércia</b> do corpo: quanto maior a massa, mais difícil mudar seu movimento (maior força para a mesma aceleração).</p>
+        <div class="formula-box">\( \vec{F}_{resultante} = m\,\vec{a} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> é a fórmula mais usada da dinâmica. Achar a aceleração do sistema (somar forças, dividir pela massa total) em blocos ligados por cordas, planos inclinados e elevadores. Não confundir <b>massa</b> (kg, escalar) com <b>peso</b> (N, vetorial).</div>
+        <div class="ex"><b>Exemplo:</b> uma força resultante de 10 N atua sobre 2 kg. Qual a aceleração? <span class="resp">a = F/m = 10/2 = 5 m/s².</span></div>
+      </section>
+
+      <section class="card" id="mec3-3lei">
+        <div class="kicker">Leis de Newton · 3.3</div>
+        <h3>3ª lei de Newton (ação e reação)</h3>
+        <p class="lead">A toda <b>ação</b> corresponde uma <b>reação</b> de <b>mesma intensidade e direção</b>, mas <b>sentido oposto</b>. O detalhe crucial: o par ação-reação atua em <b>corpos diferentes</b> (por isso nunca se cancelam entre si). Ex.: o pé empurra o chão para trás, o chão empurra o pé para frente (caminhar); o foguete expele gás, o gás empurra o foguete.</p>
+        <div class="formula-box">\( \vec{F}_{AB} = -\vec{F}_{BA} \) (em corpos diferentes)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o <b>par</b> ação-reação correto (forças em corpos <b>distintos</b>) — a pegadinha é achar que peso e normal são par (não são: agem no mesmo corpo). Propulsão de foguetes e natação ilustram a lei.</div>
+        <div class="ex"><b>Exemplo:</b> o peso de um livro sobre a mesa e a normal da mesa formam um par ação-reação? <span class="resp">Não — agem no mesmo corpo (o livro). Não são par de ação-reação.</span></div>
+      </section>
+
+      <section class="card" id="mec3-peso">
+        <div class="kicker">Leis de Newton · 3.4</div>
+        <h3>Força peso e forças de atrito</h3>
+        <p class="lead">O <b>peso</b> é a força com que a gravidade atrai o corpo: \(P = m\,g\) (sempre para baixo). O <b>atrito</b> é a força que se opõe ao movimento (ou à tendência dele) entre superfícies: o <b>estático</b> impede o início do movimento (até um limite); o <b>cinético</b> atua durante o deslizamento. Sua intensidade depende da <b>normal</b> e do coeficiente \(\mu\): \(F_{at} = \mu\,N\).</p>
+        <div class="formula-box">\( P = m\,g \qquad F_{at} = \mu\,N \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir massa × peso (o peso muda com \(g\); a massa não) e incluir o atrito nos cálculos de dinâmica (freagem, plano inclinado). O atrito como força <b>necessária</b> para andar/frear (nem sempre “vilão”) cai no ENEM.</div>
+        <div class="ex"><b>Exemplo:</b> um corpo de 5 kg num piso com N = 50 N e μ = 0,4. Qual a força de atrito máxima? <span class="resp">F_at = 0,4·50 = 20 N.</span></div>
+      </section>
+
+      <section class="card" id="mec3-rigido">
+        <div class="kicker">Leis de Newton · 3.5</div>
+        <h3>Equilíbrio do corpo rígido: torque e centro de gravidade</h3>
+        <p class="lead">Num corpo extenso, além de não transladar (ΣF = 0), ele não pode <b>girar</b>: a soma dos <b>momentos (torques)</b> deve ser nula. O <b>momento de uma força</b> mede sua capacidade de girar: \(M = F\,d\), onde \(d\) é a distância da força ao eixo (braço de alavanca). O <b>centro de gravidade</b> é o ponto onde se concentra o peso. Equilíbrio total: ΣF = 0 <b>e</b> ΣM = 0.</p>
+        <div class="formula-box">\( M = F \cdot d \qquad \Sigma F = 0 \ \text{e}\ \Sigma M = 0 \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> problemas de <b>alavancas</b>, <b>gangorras</b>, vigas apoiadas e balanças — igualar os torques de cada lado. Quanto maior o braço de alavanca, menor a força necessária (chave de boca, abridor). O centro de gravidade explica estabilidade e tombamento.</div>
+        <div class="ex"><b>Exemplo:</b> numa gangorra, uma criança de 30 kg está a 2 m do apoio. A 1 m do outro lado, quanto deve pesar a outra para equilibrar? <span class="resp">Torques iguais: 30·2 = m·1 → 60 kg.</span></div>
+      </section>
+
+      <section class="card" id="mec3-curva">
+        <div class="kicker">Leis de Newton · 3.6</div>
+        <h3>Forças em trajetórias curvilíneas (centrípeta)</h3>
+        <p class="lead">Para um corpo fazer uma <b>curva</b>, é preciso uma força resultante apontada para o <b>centro</b> da curva — a <b>força centrípeta</b>. Ela não é um novo tipo de força: é o <b>papel</b> que alguma força real desempenha (atrito numa curva de carro, tração de um fio, gravidade numa órbita). Vale \(F_{cp} = m\,v^2/R\).</p>
+        <div class="formula-box">\( F_{cp} = \dfrac{m\,v^2}{R} = m\,\omega^2 R \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar <b>qual força</b> faz o papel de centrípeta (atrito no carro em curva, normal no “globo da morte”, gravidade no satélite) e calcular velocidade máxima em curvas. A “força centrífuga” é fictícia — pegadinha frequente.</div>
+        <div class="ex"><b>Exemplo:</b> o que mantém um carro na curva numa pista plana? <span class="resp">A força de atrito, que faz o papel de força centrípeta.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== MECÂNICA 4 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec4">
+        <div class="num">I · Mecânica</div>
+        <h2>4. Conservação da Energia</h2>
+        <p>Uma das ideias mais poderosas da Física: a energia se transforma, mas não some. Permite resolver problemas sem detalhar forças, ligando trabalho, energia cinética e potencial. Muito cobrada, inclusive no ENEM (eficiência, fontes de energia).</p>
+        <div class="mini">
+          <a href="#mec4-trab">Trabalho e potência</a>
+          <a href="#mec4-cin">Energia cinética</a>
+          <a href="#mec4-grav">Energia potencial gravitacional</a>
+          <a href="#mec4-hooke">Lei de Hooke e energia elástica</a>
+          <a href="#mec4-cons">Conservação da energia mecânica</a>
+          <a href="#mec4-degrad">Degradação e fontes de energia</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec4-trab">
+        <div class="kicker">Energia · 4.1</div>
+        <h3>Trabalho de uma força e potência</h3>
+        <p class="lead">O <b>trabalho</b> mede a energia transferida por uma força ao longo de um deslocamento: \(\tau = F\,d\cos\theta\) (só a componente da força na direção do movimento “trabalha”). É positivo quando ajuda o movimento, negativo quando se opõe (atrito) e nulo se a força é perpendicular ao deslocamento. A <b>potência</b> é a rapidez com que se realiza trabalho: \(P = \tau/\Delta t\) (unidade: watt).</p>
+        <div class="formula-box">\( \tau = F\,d\cos\theta \qquad P = \dfrac{\tau}{\Delta t} = F\,v \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular trabalho (atenção ao ângulo: força perpendicular faz trabalho nulo, como a normal e a centrípeta) e potência de motores. Converter cv/HP em watt e relacionar potência, força e velocidade (P = F·v) são comuns.</div>
+        <div class="ex"><b>Exemplo:</b> uma força de 20 N puxa um corpo por 5 m na direção do movimento. Qual o trabalho? <span class="resp">τ = 20·5·cos0° = 100 J.</span></div>
+      </section>
+
+      <section class="card" id="mec4-cin">
+        <div class="kicker">Energia · 4.2</div>
+        <h3>Energia cinética e teorema trabalho-energia</h3>
+        <p class="lead">A <b>energia cinética</b> é a energia do movimento: \(E_c = \tfrac{1}{2} m v^2\) — cresce com o quadrado da velocidade (dobrar a velocidade quadruplica a energia). O <b>teorema do trabalho-energia</b> diz que o <b>trabalho da força resultante</b> é igual à <b>variação da energia cinética</b>: \(\tau_{res} = \Delta E_c\).</p>
+        <div class="formula-box">\( E_c = \tfrac{1}{2} m v^2 \qquad \tau_{resultante} = \Delta E_c = E_{c,final} - E_{c,inicial} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar trabalho e variação de velocidade (distância de frenagem cresce com v²: por isso o dobro da velocidade exige o quádruplo do espaço para parar) — argumento clássico de segurança no trânsito.</div>
+        <div class="ex"><b>Exemplo:</b> qual a energia cinética de um corpo de 4 kg a 3 m/s? <span class="resp">E_c = ½·4·3² = 18 J.</span></div>
+      </section>
+
+      <section class="card" id="mec4-grav">
+        <div class="kicker">Energia · 4.3</div>
+        <h3>Energia potencial gravitacional</h3>
+        <p class="lead">É a energia <b>armazenada</b> em razão da <b>altura</b> de um corpo num campo gravitacional: \(E_p = m\,g\,h\). Quanto mais alto, mais energia potencial — que pode se converter em cinética ao cair. Depende do nível de referência adotado (onde h = 0).</p>
+        <div class="formula-box">\( E_p = m\,g\,h \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> aparece sempre junto da conservação de energia (montanha-russa, queda, pêndulo). Calcular a energia potencial e convertê-la em cinética é o passo central de muitos problemas. Usinas hidrelétricas a exploram.</div>
+        <div class="ex"><b>Exemplo:</b> energia potencial de 2 kg a 5 m de altura (g = 10)? <span class="resp">E_p = 2·10·5 = 100 J.</span></div>
+      </section>
+
+      <section class="card" id="mec4-hooke">
+        <div class="kicker">Energia · 4.4</div>
+        <h3>Força elástica (Lei de Hooke) e energia potencial elástica</h3>
+        <p class="lead">Numa mola, a <b>força elástica</b> é proporcional à deformação e aponta no sentido de restaurar a posição natural — <b>Lei de Hooke</b>: \(F = k\,x\), onde \(k\) é a constante da mola. Ao comprimir/esticar, armazena-se <b>energia potencial elástica</b>: \(E_{pe} = \tfrac{1}{2} k x^2\), liberada quando a mola volta.</p>
+        <div class="formula-box">\( F = k\,x \qquad E_{pe} = \tfrac{1}{2} k x^2 \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> achar a constante \(k\) (ou a deformação) por gráficos F×x (a inclinação é \(k\); a área é a energia), e usar a energia elástica em conservação (estilingue, dardo, amortecedor, trampolim). Associação de molas aparece em provas mais difíceis.</div>
+        <div class="ex"><b>Exemplo:</b> uma mola de k = 200 N/m é esticada 0,1 m. Qual a força elástica? <span class="resp">F = 200·0,1 = 20 N.</span></div>
+      </section>
+
+      <section class="card" id="mec4-cons">
+        <div class="kicker">Energia · 4.5</div>
+        <h3>Forças conservativas e conservação da energia mecânica</h3>
+        <p class="lead">Forças <b>conservativas</b> (peso, elástica) “devolvem” a energia; forças <b>dissipativas</b> (atrito, resistência do ar) a transformam em calor. Sem dissipação, a <b>energia mecânica</b> (cinética + potencial) se <b>conserva</b>: \(E_{mec} = E_c + E_p = \text{constante}\). Com atrito, parte vira calor e a energia mecânica diminui (mas a energia total se conserva).</p>
+        <div class="formula-box">sem atrito: \( E_{c} + E_{p} = \text{constante} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> é o método mais elegante para achar velocidades/alturas (montanha-russa, pêndulo, rampa) — igualar a energia em dois pontos. Quando há atrito, o “que falta” da energia mecânica é o trabalho dissipado (calor). Cobradíssimo.</div>
+        <div class="ex"><b>Exemplo:</b> um corpo cai de 5 m (sem atrito, g = 10). Qual a velocidade ao chegar ao chão? <span class="resp">mgh = ½mv² → v = √(2·10·5) = 10 m/s.</span></div>
+      </section>
+
+      <section class="card" id="mec4-degrad">
+        <div class="kicker">Energia · 4.6</div>
+        <h3>Degradação da energia e fontes renováveis</h3>
+        <p class="lead">Em toda transformação real, parte da energia se <b>degrada</b> em forma de <b>calor</b> (menos aproveitável) — por isso nenhuma máquina é 100% eficiente. O <b>rendimento</b> mede a fração útil: η = energia útil ÷ energia total. As <b>fontes de energia</b> dividem-se em <b>renováveis</b> (solar, eólica, hidráulica, biomassa — repõem-se) e <b>não renováveis</b> (combustíveis fósseis, nuclear).</p>
+        <div class="formula-box">\( \eta = \dfrac{E_{útil}}{E_{total}} \) (sempre &lt; 1 nas máquinas reais)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular rendimento e discutir <b>matriz energética</b>, vantagens/impactos das fontes — tema certeiro no ENEM, interdisciplinar com Química e Geografia. A ideia de que “energia não se perde, se degrada” liga com a 2ª lei da termodinâmica.</div>
+        <div class="ex"><b>Exemplo:</b> um motor recebe 1000 J e fornece 300 J úteis. Qual o rendimento? <span class="resp">η = 300/1000 = 0,3 = 30%.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== MECÂNICA 5 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec5">
+        <div class="num">I · Mecânica</div>
+        <h2>5. Conservação da Quantidade de Movimento</h2>
+        <p>O “momento linear” e sua conservação explicam colisões, explosões e a propulsão. Junto com a energia, é uma ferramenta poderosa para resolver interações entre corpos sem analisar as forças em detalhe.</p>
+        <div class="mini">
+          <a href="#mec5-imp">Impulso e quantidade de movimento</a>
+          <a href="#mec5-cons">Conservação do momento</a>
+          <a href="#mec5-colis">Colisões</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec5-imp">
+        <div class="kicker">Quantidade de Movimento · 5.1</div>
+        <h3>Impulso, quantidade de movimento e o teorema</h3>
+        <p class="lead">A <b>quantidade de movimento</b> (momento linear) é \(Q = m\,v\) — vetorial, no sentido da velocidade. O <b>impulso</b> de uma força é \(I = F\,\Delta t\). O <b>teorema do impulso</b> liga os dois: o impulso da força resultante é igual à <b>variação da quantidade de movimento</b>: \(I = \Delta Q\).</p>
+        <div class="formula-box">\( Q = m\,v \qquad I = F\,\Delta t = \Delta Q \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar por que <b>aumentar o tempo</b> da interação <b>reduz a força</b> (airbag, joelhos flexionados ao cair, luva de boxe) — mesma variação de momento, força menor. Calcular impulso pela área de um gráfico F×t também cai.</div>
+        <div class="ex"><b>Exemplo:</b> por que o airbag reduz lesões? <span class="resp">Aumenta o tempo de parada (Δt), reduzindo a força (mesma variação de Q).</span></div>
+      </section>
+
+      <section class="card" id="mec5-cons">
+        <div class="kicker">Quantidade de Movimento · 5.2</div>
+        <h3>Conservação da quantidade de movimento</h3>
+        <p class="lead">Num <b>sistema isolado</b> (sem forças externas resultantes), a <b>quantidade de movimento total se conserva</b>: a soma dos \(m\,v\) antes é igual à soma depois. As <b>forças internas</b> (entre os corpos) são <b>impulsivas</b> e formam pares de ação-reação que se cancelam. Vale mesmo em colisões e explosões.</p>
+        <div class="formula-box">\( Q_{antes} = Q_{depois} \quad\Rightarrow\quad m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2' \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> achar a velocidade após uma colisão/explosão igualando o momento total antes e depois. O <b>recuo</b> (arma/bala, foguete, pessoa que pula de um barco) é aplicação certeira. Atenção aos <b>sinais</b> dos vetores.</div>
+        <div class="ex"><b>Exemplo:</b> um atirador de 80 kg dispara uma bala; o sistema estava em repouso. O atirador recua porque... <span class="resp">O momento total deve continuar zero: a bala vai para frente e o atirador recua.</span></div>
+      </section>
+
+      <section class="card" id="mec5-colis">
+        <div class="kicker">Quantidade de Movimento · 5.3</div>
+        <h3>Colisões</h3>
+        <p class="lead">Em <b>toda</b> colisão (sistema isolado) o <b>momento se conserva</b>; o que muda é a energia cinética. Na <b>colisão elástica</b>, a energia cinética <b>também se conserva</b> (corpos se separam). Na <b>inelástica</b>, parte vira calor/deformação; no caso extremo (<b>perfeitamente inelástica</b>), os corpos <b>seguem juntos</b> após o choque.</p>
+        <table class="tab"><thead><tr><th>Tipo</th><th>Momento</th><th>E. cinética</th></tr></thead><tbody>
+          <tr><th>Elástica</th><td>conserva</td><td>conserva</td></tr>
+          <tr><th>Inelástica</th><td>conserva</td><td>diminui</td></tr>
+          <tr><th>Perfeit. inelástica</th><td>conserva</td><td>diminui (corpos juntos)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o tipo de colisão e aplicar a conservação adequada. Na perfeitamente inelástica (corpos grudam), usa-se só o momento. Comparar a energia cinética antes/depois revela quanto se dissipou. Pêndulo balístico é clássico.</div>
+        <div class="ex"><b>Exemplo:</b> dois carrinhos que se grudam após a batida sofreram qual colisão? <span class="resp">Perfeitamente inelástica (seguem juntos; energia cinética não se conserva).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== MECÂNICA 6 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec6">
+        <div class="num">I · Mecânica</div>
+        <h2>6. Gravitação Universal</h2>
+        <p>A física que rege planetas, luas e satélites: das leis de Kepler (como os planetas se movem) à lei de Newton (por que se movem assim). Tema recorrente, ligado a órbitas e à variação da gravidade.</p>
+        <div class="mini">
+          <a href="#mec6-kepler">Leis de Kepler</a>
+          <a href="#mec6-grav">Lei da gravitação universal</a>
+          <a href="#mec6-sat">Satélites em órbita</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec6-kepler">
+        <div class="kicker">Gravitação · 6.1</div>
+        <h3>As leis de Kepler</h3>
+        <p class="lead">Descrevem o movimento dos planetas: <b>1ª (órbitas)</b> — as órbitas são <b>elipses</b>, com o Sol num dos focos; <b>2ª (áreas)</b> — o planeta varre <b>áreas iguais em tempos iguais</b>, logo vai mais <b>rápido</b> perto do Sol (periélio) e mais lento longe (afélio); <b>3ª (períodos)</b> — o quadrado do período é proporcional ao cubo do raio médio da órbita (\(T^2 \propto R^3\)).</p>
+        <div class="formula-box">\( \dfrac{T^2}{R^3} = \text{constante} \) (mesma para todos os planetas de um sistema)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> usar a <b>3ª lei</b> para comparar períodos e raios de órbitas, e a <b>2ª lei</b> para concluir onde o planeta é mais veloz (perto do Sol). Confirmar que a órbita é elíptica (não circular) é pegadinha comum.</div>
+        <div class="ex"><b>Exemplo:</b> um planeta está mais rápido no periélio ou no afélio? <span class="resp">No periélio (mais perto do Sol) — 2ª lei de Kepler.</span></div>
+      </section>
+
+      <section class="card" id="mec6-grav">
+        <div class="kicker">Gravitação · 6.2</div>
+        <h3>Lei da Gravitação Universal e variação de g</h3>
+        <p class="lead">Newton mostrou que <b>dois corpos quaisquer</b> se atraem com força proporcional ao produto das massas e <b>inversamente ao quadrado da distância</b>: \(F = G\,\dfrac{M\,m}{d^2}\). Dessa lei sai a <b>aceleração da gravidade</b> \(g = G\,M/d^2\): por isso \(g\) <b>diminui com a altitude</b> (maior distância ao centro) e varia um pouco com a <b>latitude</b> (a Terra é achatada e gira).</p>
+        <div class="formula-box">\( F = G\,\dfrac{M\,m}{d^2} \qquad g = G\,\dfrac{M}{d^2} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> aplicar a proporção do inverso do quadrado (dobrar a distância → força cai 4×) e explicar a variação de \(g\) com a altitude/latitude. Comparar o peso de um corpo na Terra × em outro planeta (muda \(g\)) é frequente.</div>
+        <div class="ex"><b>Exemplo:</b> se a distância entre dois corpos dobra, a força gravitacional fica... <span class="resp">Quatro vezes menor (inverso do quadrado).</span></div>
+      </section>
+
+      <section class="card" id="mec6-sat">
+        <div class="kicker">Gravitação · 6.3</div>
+        <h3>Movimento de satélites em órbitas circulares</h3>
+        <p class="lead">Num satélite em órbita circular, a <b>força gravitacional</b> faz o papel de <b>força centrípeta</b> — é ela que o mantém “caindo em volta” da Terra. Igualando as duas, obtém-se a <b>velocidade orbital</b>, que depende só do raio da órbita (não da massa do satélite): \(v = \sqrt{G M / r}\). Quanto mais alta a órbita, menor a velocidade e maior o período. Satélites <b>geoestacionários</b> têm período de 24 h.</p>
+        <div class="formula-box">\( \dfrac{G M m}{r^2} = \dfrac{m v^2}{r} \ \Rightarrow\ v = \sqrt{\dfrac{G M}{r}} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> deduzir a velocidade/período orbital igualando gravidade e centrípeta, e entender o satélite <b>geoestacionário</b> (fica “parado” sobre um ponto, usado em comunicações/TV). A “ausência de peso” na ISS (queda livre contínua) é cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> a velocidade de um satélite em órbita depende da massa dele? <span class="resp">Não — depende do raio da órbita e da massa do planeta.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== MECÂNICA 7 ===================== -->
+      <div class="area secM">
+      <div class="chapter" id="mec7">
+        <div class="num">I · Mecânica</div>
+        <h2>7. Hidrostática</h2>
+        <p>O estudo dos fluidos em equilíbrio: pressão, empuxo e os princípios de Stevin, Pascal e Arquimedes. Explica desde por que objetos flutuam até como funciona uma prensa hidráulica. Muito cobrada e cheia de aplicações.</p>
+        <div class="mini">
+          <a href="#mec7-dens">Densidade e pressão</a>
+          <a href="#mec7-stevin">Stevin e pressão atmosférica</a>
+          <a href="#mec7-pascal">Princípio de Pascal</a>
+          <a href="#mec7-arq">Princípio de Arquimedes</a>
+        </div>
+      </div>
+
+      <section class="card" id="mec7-dens">
+        <div class="kicker">Hidrostática · 7.1</div>
+        <h3>Densidade e pressão</h3>
+        <p class="lead">A <b>densidade (massa específica)</b> é a massa por unidade de volume: \(d = m/V\) — quem decide se algo afunda ou flutua. A <b>pressão</b> é a força distribuída por unidade de área: \(p = F/A\) (unidade: pascal). Por isso, a <b>mesma força</b> faz mais pressão numa área menor (faca afiada, salto agulha) e menos numa área maior (esqui, raquete de neve).</p>
+        <div class="formula-box">\( d = \dfrac{m}{V} \qquad p = \dfrac{F}{A} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar densidade à flutuação e a pressão à área de contato (por que objetos pontiagudos perfuram; por que distribuir o peso evita afundar na lama/neve). Cálculos de densidade e conversão de unidades caem direto.</div>
+        <div class="ex"><b>Exemplo:</b> por que uma faca corta melhor quando afiada? <span class="resp">Menor área de contato → maior pressão para a mesma força.</span></div>
+      </section>
+
+      <section class="card" id="mec7-stevin">
+        <div class="kicker">Hidrostática · 7.2</div>
+        <h3>Lei de Stevin e pressão atmosférica (Torricelli)</h3>
+        <p class="lead">A <b>Lei de Stevin</b> diz que a pressão num líquido <b>aumenta com a profundidade</b>: \(p = p_0 + d\,g\,h\). Depende só da profundidade (não do formato do recipiente) — pontos na mesma altura têm a mesma pressão (vasos comunicantes). A <b>pressão atmosférica</b> é o peso do ar sobre nós; <b>Torricelli</b> a mediu com um tubo de mercúrio: ao nível do mar vale ~760 mmHg (1 atm).</p>
+        <div class="formula-box">\( p = p_0 + d\,g\,h \qquad p_{atm} = 760\ \text{mmHg} = 1\ \text{atm} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a pressão a certa profundidade e entender vasos comunicantes (o líquido nivela). A experiência de Torricelli e a queda da pressão atmosférica com a altitude (ouvido “tampa” na serra/avião) são clássicas.</div>
+        <div class="ex"><b>Exemplo:</b> a pressão no fundo de um lago depende do formato do lago? <span class="resp">Não — depende só da profundidade (Lei de Stevin).</span></div>
+      </section>
+
+      <section class="card" id="mec7-pascal">
+        <div class="kicker">Hidrostática · 7.3</div>
+        <h3>Princípio de Pascal</h3>
+        <p class="lead">Diz que uma <b>variação de pressão</b> aplicada a um líquido em equilíbrio se transmite <b>integralmente</b> a todos os pontos do fluido. É a base da <b>prensa hidráulica</b>: uma pequena força num êmbolo de área menor gera uma grande força num êmbolo de área maior, pois a pressão é a mesma. Multiplica força (mas não energia — o êmbolo grande se desloca menos).</p>
+        <div class="formula-box">\( \dfrac{F_1}{A_1} = \dfrac{F_2}{A_2} \) (mesma pressão transmitida)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a força multiplicada numa prensa/elevador/freio hidráulico (razão das áreas). A pegadinha: a prensa multiplica <b>força</b>, não energia — o lado que recebe mais força se move proporcionalmente menos.</div>
+        <div class="ex"><b>Exemplo:</b> numa prensa, A₂ é 10× A₁. Uma força de 50 N em A₁ gera quanto em A₂? <span class="resp">500 N (a força é multiplicada pela razão das áreas).</span></div>
+      </section>
+
+      <section class="card" id="mec7-arq">
+        <div class="kicker">Hidrostática · 7.4</div>
+        <h3>Princípio de Arquimedes (empuxo)</h3>
+        <p class="lead">Todo corpo imerso num fluido recebe uma força vertical <b>para cima</b> — o <b>empuxo</b> — de intensidade igual ao <b>peso do fluido deslocado</b>: \(E = d_{fluido}\,V_{deslocado}\,g\). Comparando empuxo e peso: se o empuxo for maior, o corpo <b>flutua</b>; se menor, <b>afunda</b>; se igual, fica em equilíbrio (boia). É por isso que objetos parecem mais leves na água.</p>
+        <div class="formula-box">\( E = d_{fluido}\,V_{desloc.}\,g \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> decidir se o corpo flutua/afunda (comparar densidades ou peso × empuxo), calcular o empuxo e a fração submersa de um corpo flutuante. Navios (de aço, mas flutuam pelo grande volume), balões e o “peso aparente” são contextos certeiros.</div>
+        <div class="ex"><b>Exemplo:</b> por que um navio de aço flutua, se o aço é mais denso que a água? <span class="resp">Seu formato desloca um grande volume de água; o empuxo iguala o peso total.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== TERMOLOGIA 1 ===================== -->
+      <div class="area secT">
+      <div class="chapter" id="ter1">
+        <div class="num">II · Termologia</div>
+        <h2>1. Temperatura e Dilatação</h2>
+        <p>O estudo do calor começa medindo temperatura e vendo como os corpos se dilatam ao aquecer. Cai em conversão de escalas, cálculo de dilatação e no curioso comportamento anômalo da água.</p>
+        <div class="mini">
+          <a href="#ter1-temp">Temperatura e escalas</a>
+          <a href="#ter1-sol">Dilatação dos sólidos</a>
+          <a href="#ter1-liq">Dilatação dos líquidos</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter1-temp">
+        <div class="kicker">Temperatura e Dilatação · 1.1</div>
+        <h3>Temperatura, equilíbrio térmico e escalas</h3>
+        <p class="lead">A <b>temperatura</b> mede o grau de <b>agitação das partículas</b> (energia cinética média). Dois corpos em contato trocam calor até atingir a <b>mesma</b> temperatura — o <b>equilíbrio térmico</b> (Lei Zero da Termodinâmica). As escalas mais usadas: <b>Celsius</b> (°C), <b>Fahrenheit</b> (°F) e a absoluta <b>Kelvin</b> (K).</p>
+        <div class="formula-box">\( T_K = T_C + 273 \qquad \dfrac{T_C}{5} = \dfrac{T_F - 32}{9} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> converter entre escalas (especialmente °C ↔ K, exigida em gases e termodinâmica) e aplicar o equilíbrio térmico em problemas de mistura. A temperatura como medida de agitação (não de “quantidade de calor”) é cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> a que temperatura na escala Kelvin equivale 50 °C? <span class="resp">50 + 273 = 323 K.</span></div>
+      </section>
+
+      <section class="card" id="ter1-sol">
+        <div class="kicker">Temperatura e Dilatação · 1.2</div>
+        <h3>Dilatação dos sólidos</h3>
+        <p class="lead">Ao aquecer, as partículas vibram mais e se afastam: o sólido <b>dilata</b>. A dilatação <b>linear</b> (comprimento) é \(\Delta L = L_0\,\alpha\,\Delta T\); há ainda a <b>superficial</b> (área, com 2α) e a <b>volumétrica</b> (volume, com 3α). O coeficiente \(\alpha\) depende do material.</p>
+        <div class="formula-box">\( \Delta L = L_0\,\alpha\,\Delta T \qquad (\text{área: } 2\alpha,\ \text{volume: } 3\alpha) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a dilatação de trilhos, pontes, fios e a folga deixada para o material “respirar”. Aplicações: juntas de dilatação, lâmina bimetálica (termostatos), por que vidro grosso trinca com choque térmico.</div>
+        <div class="ex"><b>Exemplo:</b> por que se deixam vãos entre trilhos de trem? <span class="resp">Para permitir a dilatação dos trilhos no calor, sem entortá-los.</span></div>
+      </section>
+
+      <section class="card" id="ter1-liq">
+        <div class="kicker">Temperatura e Dilatação · 1.3</div>
+        <h3>Dilatação dos líquidos e a anomalia da água</h3>
+        <p class="lead">Líquidos dilatam mais que sólidos e seguem a dilatação volumétrica. Como estão num recipiente (que também dilata), mede-se a <b>dilatação aparente</b> (a real menos a do frasco). A <b>água</b> tem comportamento <b>anômalo</b>: entre 0 °C e 4 °C ela <b>contrai</b> ao aquecer (e dilata ao resfriar), sendo <b>mais densa a 4 °C</b>.</p>
+        <div class="formula-box">dilatação real = dilatação aparente + dilatação do frasco</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>anomalia da água</b> é a estrela: explica por que o <b>gelo flutua</b> e por que os lagos congelam de cima para baixo (preservando a vida aquática embaixo). A diferença real × aparente cai em cálculos com termômetros.</div>
+        <div class="ex"><b>Exemplo:</b> por que os peixes sobrevivem sob o gelo num lago congelado? <span class="resp">A água a 4 °C (mais densa) fica no fundo; o gelo, menos denso, flutua e isola — a água embaixo não congela.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== TERMOLOGIA 2 ===================== -->
+      <div class="area secT">
+      <div class="chapter" id="ter2">
+        <div class="num">II · Termologia</div>
+        <h2>2. Comportamento dos Gases</h2>
+        <p>Como os gases respondem a variações de pressão, volume e temperatura, resumido na equação dos gases ideais e explicado pela teoria cinética. Base para a termodinâmica e ligação com a Química.</p>
+        <div class="mini">
+          <a href="#ter2-transf">Transformações gasosas</a>
+          <a href="#ter2-estado">Equação de estado</a>
+          <a href="#ter2-cinetica">Teoria cinética</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter2-transf">
+        <div class="kicker">Gases · 2.1</div>
+        <h3>Transformações gasosas</h3>
+        <p class="lead">Mantendo uma grandeza fixa, relacionam-se as outras duas. <b>Isotérmica</b> (T constante): P e V inversamente proporcionais (Boyle). <b>Isobárica</b> (P constante): V e T diretamente proporcionais (Charles). <b>Isovolumétrica/isocórica</b> (V constante): P e T diretamente proporcionais (Gay-Lussac). Tudo se reúne na <b>lei geral</b>.</p>
+        <div class="formula-box">\( \dfrac{P_1 V_1}{T_1} = \dfrac{P_2 V_2}{T_2} \qquad (T \text{ em kelvin}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> dado um estado inicial e a mudança de variáveis, achar a final pela lei geral — e interpretar gráficos (isotermas são hipérboles). <b>Sempre usar T em kelvin</b> é a regra de ouro (e a pegadinha campeã).</div>
+        <div class="ex"><b>Exemplo:</b> um gás a T constante passa de 4 atm/2 L para 2 atm. Novo volume? <span class="resp">Boyle: 4·2 = 2·V → V = 4 L.</span></div>
+      </section>
+
+      <section class="card" id="ter2-estado">
+        <div class="kicker">Gases · 2.2</div>
+        <h3>Lei de Avogadro e equação de estado do gás ideal</h3>
+        <p class="lead">A <b>Lei de Avogadro</b>: volumes iguais de gases, nas mesmas condições de P e T, têm o mesmo número de moléculas (1 mol ocupa 22,4 L nas CNTP). A <b>equação de estado</b> (Clapeyron) reúne tudo: \(P V = n R T\), relacionando pressão, volume, quantidade de matéria e temperatura num único estado.</p>
+        <div class="formula-box">\( P V = n R T \qquad R = 0{,}082\ \text{atm·L·mol}^{-1}\text{K}^{-1} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> usar \(PV = nRT\) para achar qualquer variável (ou a massa, via n = m/M). Interdisciplinar com a Química. Cuidado com unidades compatíveis com o R e com a temperatura em <b>kelvin</b>.</div>
+        <div class="ex"><b>Exemplo:</b> 2 mol de gás ideal a 300 K e 0,082·... quê pressão num volume de 2 L? <span class="resp">P = nRT/V = (2·0,082·300)/2 ≈ 24,6 atm.</span></div>
+      </section>
+
+      <section class="card" id="ter2-cinetica">
+        <div class="kicker">Gases · 2.3</div>
+        <h3>Modelo molecular e interpretação cinética da temperatura</h3>
+        <p class="lead">Na <b>teoria cinética</b>, o gás é um enxame de partículas em movimento aleatório, com colisões elásticas e sem forças entre si. A <b>pressão</b> resulta das colisões com as paredes. O ponto central: a <b>temperatura absoluta</b> é proporcional à <b>energia cinética média</b> das partículas — aquecer um gás é, literalmente, agitá-lo mais.</p>
+        <div class="formula-box">\( E_{c,média} \propto T \) (T em kelvin)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar temperatura à agitação molecular e explicar a pressão pelas colisões. Concluir que, na mesma temperatura, gases diferentes têm a <b>mesma energia cinética média</b> (mas velocidades diferentes, conforme a massa) é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o que acontece com a energia cinética média das moléculas ao dobrar a temperatura absoluta? <span class="resp">Dobra (são proporcionais).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== TERMOLOGIA 3 ===================== -->
+      <div class="area secT">
+      <div class="chapter" id="ter3">
+        <div class="num">II · Termologia</div>
+        <h2>3. Leis da Termodinâmica</h2>
+        <p>Como calor e trabalho se relacionam com a energia. Inclui calorimetria, a 1ª lei (conservação da energia) e a 2ª lei (sentido das transformações, máquinas térmicas e o ciclo de Carnot). Tema denso e frequente.</p>
+        <div class="mini">
+          <a href="#ter3-calor">Calor e transferência</a>
+          <a href="#ter3-especifico">Calor específico</a>
+          <a href="#ter3-1lei">1ª lei da termodinâmica</a>
+          <a href="#ter3-2lei">2ª lei e Carnot</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter3-calor">
+        <div class="kicker">Termodinâmica · 3.1</div>
+        <h3>Conceito de calor e formas de transferência</h3>
+        <p class="lead">O <b>calor</b> é energia térmica <b>em trânsito</b>, que flui espontaneamente do corpo mais quente para o mais frio. Transfere-se de três modos: <b>condução</b> (de partícula a partícula, sem transporte de matéria — típica de sólidos/metais), <b>convecção</b> (por correntes de fluido quente que sobe e frio que desce — ar e água) e <b>irradiação</b> (ondas eletromagnéticas, atravessa o vácuo — como o calor do Sol).</p>
+        <div class="formula-box">condução · convecção · irradiação (esta atravessa o vácuo)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o tipo de transferência num exemplo (panela esquenta por condução; geladeira/ar-condicionado por convecção; Sol por irradiação) e aplicar a isolantes/condutores. A garrafa térmica (que barra os três) é exemplo certeiro.</div>
+        <div class="ex"><b>Exemplo:</b> como o calor do Sol chega à Terra atravessando o vácuo? <span class="resp">Por irradiação (ondas eletromagnéticas).</span></div>
+      </section>
+
+      <section class="card" id="ter3-especifico">
+        <div class="kicker">Termodinâmica · 3.2</div>
+        <h3>Capacidade térmica e calor específico</h3>
+        <p class="lead">O <b>calor específico</b> (c) é a quantidade de calor para elevar 1 °C em 1 g (ou 1 kg) de uma substância — o da água é alto. O calor trocado é \(Q = m\,c\,\Delta T\) (calor <b>sensível</b>, que muda a temperatura). A <b>capacidade térmica</b> (C = m·c) refere-se ao corpo todo. Em misturas, o calor cedido pelo quente = calor recebido pelo frio.</p>
+        <div class="formula-box">\( Q = m\,c\,\Delta T \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular calor trocado e a <b>temperatura de equilíbrio</b> de misturas (calor cedido = recebido). O <b>alto calor específico da água</b> (modera o clima litorâneo, serve de refrigerante) é aplicação recorrente.</div>
+        <div class="ex"><b>Exemplo:</b> calor para aquecer 100 g de água (c = 1 cal/g°C) de 25 °C a 75 °C? <span class="resp">Q = 100·1·50 = 5000 cal.</span></div>
+      </section>
+
+      <section class="card" id="ter3-1lei">
+        <div class="kicker">Termodinâmica · 3.3</div>
+        <h3>1ª lei da termodinâmica</h3>
+        <p class="lead">É a <b>conservação da energia</b> aplicada a gases: o calor (Q) trocado por um gás se reparte entre realizar <b>trabalho</b> (τ, ao variar o volume) e alterar a <b>energia interna</b> (ΔU, ligada à temperatura): \(Q = \tau + \Delta U\). O gás <b>realiza</b> trabalho ao expandir e <b>recebe</b> trabalho ao ser comprimido. Numa expansão isobárica, \(\tau = P\,\Delta V\).</p>
+        <div class="formula-box">\( Q = \tau + \Delta U \qquad \tau = P\,\Delta V \ (\text{isobárica}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> aplicar a 1ª lei a transformações (isotérmica: ΔU = 0, então Q = τ; isovolumétrica: τ = 0, então Q = ΔU) e calcular o trabalho como <b>área</b> num gráfico P×V. Sinais de Q e τ são a pegadinha.</div>
+        <div class="ex"><b>Exemplo:</b> numa transformação isotérmica, todo o calor recebido vira o quê? <span class="resp">Trabalho (ΔU = 0, pois a temperatura não muda).</span></div>
+      </section>
+
+      <section class="card" id="ter3-2lei">
+        <div class="kicker">Termodinâmica · 3.4</div>
+        <h3>2ª lei, máquinas térmicas e ciclo de Carnot</h3>
+        <p class="lead">A <b>2ª lei</b> dá o <b>sentido</b> das transformações: o calor flui espontaneamente do quente para o frio, e <b>nenhuma máquina térmica converte todo o calor em trabalho</b> (sempre rejeita parte para uma fonte fria). O <b>rendimento</b> é η = trabalho útil ÷ calor recebido. O <b>ciclo de Carnot</b> é a máquina <b>ideal</b>, de rendimento <b>máximo</b>, que depende só das temperaturas das fontes.</p>
+        <div class="formula-box">\( \eta = \dfrac{\tau}{Q_{quente}} = 1 - \dfrac{Q_{frio}}{Q_{quente}} \qquad \eta_{Carnot} = 1 - \dfrac{T_{frio}}{T_{quente}} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o rendimento de máquinas térmicas (motores, geladeiras) e o limite de Carnot (com T em kelvin). A ideia de que η = 100% é <b>impossível</b> (2ª lei) e o conceito de <b>entropia</b> (desordem que tende a aumentar) caem em teoria.</div>
+        <div class="ex"><b>Exemplo:</b> uma máquina de Carnot opera entre 300 K e 600 K. Rendimento máximo? <span class="resp">η = 1 − 300/600 = 0,5 = 50%.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== TERMOLOGIA 4 ===================== -->
+      <div class="area secT">
+      <div class="chapter" id="ter4">
+        <div class="num">II · Termologia</div>
+        <h2>4. Mudanças de Fase</h2>
+        <p>Como a matéria passa de sólido a líquido a gás e a influência da pressão. Inclui o calor latente, a sublimação e a leitura de diagramas de fases. Liga com a Química e com a hidrostática.</p>
+        <div class="mini">
+          <a href="#ter4-fases">Estados e mudanças</a>
+          <a href="#ter4-pressao">Influência da pressão</a>
+          <a href="#ter4-diagrama">Diagrama de fases</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter4-fases">
+        <div class="kicker">Mudanças de Fase · 4.1</div>
+        <h3>Estados e mudanças de fase (calor latente)</h3>
+        <p class="lead">As mudanças: <b>fusão</b> (sólido→líquido) e <b>solidificação</b> (inverso); <b>vaporização</b> (líquido→gás) e <b>condensação</b> (inverso). Durante a mudança de fase, o calor recebido (<b>calor latente</b>, \(Q = m\,L\)) <b>não altera a temperatura</b> — ela fica constante enquanto a substância muda de estado. Por isso o gelo derretendo permanece a 0 °C.</p>
+        <div class="formula-box">\( Q = m\,L \) (calor latente — temperatura constante na mudança)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar <b>gráficos de aquecimento</b> (os <b>patamares</b> horizontais são as mudanças de fase) e calcular o calor total somando calor sensível (mcΔT) + latente (mL). A sensação de frio ao suar (evaporação absorve calor) é aplicação.</div>
+        <div class="ex"><b>Exemplo:</b> enquanto o gelo derrete, o que acontece com a temperatura? <span class="resp">Fica constante (0 °C) — o calor é usado para mudar de fase.</span></div>
+      </section>
+
+      <section class="card" id="ter4-pressao">
+        <div class="kicker">Mudanças de Fase · 4.2</div>
+        <h3>Influência da pressão e sublimação</h3>
+        <p class="lead">A <b>pressão</b> altera as temperaturas de mudança de fase. Para a maioria, mais pressão <b>aumenta</b> o ponto de ebulição (panela de pressão cozinha mais rápido; na serra a água ferve antes). A <b>sublimação</b> é a passagem direta <b>sólido↔gás</b> (gelo seco, naftalina). A água é exceção: mais pressão <b>abaixa</b> o ponto de fusão (regelo).</p>
+        <div class="formula-box">↑ pressão → ↑ temperatura de ebulição (panela de pressão)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar a <b>panela de pressão</b> e a ebulição em altitude (pressão menor → ferve a menos de 100 °C), e identificar a <b>sublimação</b>. A relação pressão-temperatura prepara a leitura do diagrama de fases.</div>
+        <div class="ex"><b>Exemplo:</b> por que a panela de pressão cozinha mais rápido? <span class="resp">A pressão interna maior eleva o ponto de ebulição da água acima de 100 °C.</span></div>
+      </section>
+
+      <section class="card" id="ter4-diagrama">
+        <div class="kicker">Mudanças de Fase · 4.3</div>
+        <h3>Diagrama de fases e gás real</h3>
+        <p class="lead">O <b>diagrama de fases</b> (pressão × temperatura) mostra em que condições a substância é sólida, líquida ou gasosa, separadas por curvas. O <b>ponto triplo</b> é onde as três fases coexistem; o <b>ponto crítico</b> marca o limite acima do qual não há distinção líquido-gás. O <b>gás real</b> desvia do ideal em <b>alta pressão e baixa temperatura</b> (quando as forças entre moléculas e o volume delas deixam de ser desprezíveis).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> ler o diagrama de fases para prever o estado da substância em dadas P e T, e identificar o ponto triplo. Saber <b>quando</b> o gás real foge do comportamento ideal (alta P, baixa T) cai em teoria.</div>
+        <div class="ex"><b>Exemplo:</b> no diagrama de fases, o ponto onde sólido, líquido e gás coexistem chama-se? <span class="resp">Ponto triplo.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÓTICA E ONDAS 1 ===================== -->
+      <div class="area secO">
+      <div class="chapter" id="ond1">
+        <div class="num">III · Ótica e Ondas</div>
+        <h2>1. Ótica Geométrica</h2>
+        <p>O comportamento da luz tratada como “raios”: reflexão (espelhos), refração (lentes) e formação de imagens. Explica espelhos, lupas, óculos e a própria visão. Cheia de construções gráficas e fórmulas.</p>
+        <div class="mini">
+          <a href="#ond1-reflex">Reflexão e espelho plano</a>
+          <a href="#ond1-esfericos">Espelhos esféricos</a>
+          <a href="#ond1-refrac">Refração e reflexão total</a>
+          <a href="#ond1-lentes">Lentes esféricas</a>
+          <a href="#ond1-instr">Instrumentos e visão</a>
+        </div>
+      </div>
+
+      <section class="card" id="ond1-reflex">
+        <div class="kicker">Ótica Geométrica · 1.1</div>
+        <h3>Reflexão da luz e espelho plano</h3>
+        <p class="lead">Na <b>reflexão</b>, a luz “bate e volta”: o <b>ângulo de incidência é igual ao de reflexão</b> (medidos em relação à normal). No <b>espelho plano</b>, a imagem é <b>virtual</b> (atrás do espelho), <b>direita</b>, do <b>mesmo tamanho</b> e <b>simétrica</b> (mesma distância do objeto ao espelho). Há ainda a inversão lateral (esquerda↔direita).</p>
+        <div class="formula-box">ângulo de incidência = ângulo de reflexão</div>
+        <div class="uso"><b>Como cai no vestibular:</b> propriedades da imagem no espelho plano (virtual, mesmo tamanho, simétrica), cálculo de quantas imagens dois espelhos formam (associação angular) e o campo visual. A altura mínima de um espelho para a pessoa se ver inteira (metade da altura) é clássica.</div>
+        <div class="ex"><b>Exemplo:</b> a imagem no espelho plano é real ou virtual? <span class="resp">Virtual (formada atrás do espelho, do mesmo tamanho do objeto).</span></div>
+      </section>
+
+      <section class="card" id="ond1-esfericos">
+        <div class="kicker">Ótica Geométrica · 1.2</div>
+        <h3>Espelhos esféricos</h3>
+        <p class="lead">São calotas espelhadas: <b>côncavos</b> (refletem na parte interna, convergentes) e <b>convexos</b> (parte externa, divergentes). A imagem depende da posição do objeto em relação ao <b>foco (F)</b> e ao <b>centro (C)</b>. A <b>equação de Gauss</b> e a <b>ampliação</b> relacionam as distâncias do objeto (p) e da imagem (p').</p>
+        <div class="formula-box">\( \dfrac{1}{f} = \dfrac{1}{p} + \dfrac{1}{p'} \qquad A = \dfrac{i}{o} = -\dfrac{p'}{p} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> usar Gauss para achar a posição/natureza da imagem e a ampliação (sinais: imagem real p'>0, virtual p'<0). Côncavo = espelho de maquiagem/dentista (amplia); convexo = retrovisor e segurança de loja (amplo campo, imagem reduzida).</div>
+        <div class="ex"><b>Exemplo:</b> que espelho é usado em retrovisores e em lojas para “ver mais”? <span class="resp">O convexo (campo visual amplo, imagem reduzida e direita).</span></div>
+      </section>
+
+      <section class="card" id="ond1-refrac">
+        <div class="kicker">Ótica Geométrica · 1.3</div>
+        <h3>Refração da luz e reflexão total</h3>
+        <p class="lead">A <b>refração</b> é o desvio da luz ao mudar de meio (muda a velocidade), regido pela <b>Lei de Snell-Descartes</b>: \(n_1\sen\theta_1 = n_2\sen\theta_2\), onde \(n\) é o índice de refração. Ao passar para um meio menos refringente, se o ângulo for grande o bastante (acima do <b>ângulo limite</b>), ocorre <b>reflexão total</b> — a luz não sai, é toda refletida.</p>
+        <div class="formula-box">\( n_1\,\sen\theta_1 = n_2\,\sen\theta_2 \qquad n = \dfrac{c}{v} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> aplicar Snell (a “canudo quebrado” na água, a profundidade aparente) e a <b>reflexão total</b>, base das <b>fibras ópticas</b> (internet, endoscopia) e do brilho do diamante. Dispersão (arco-íris, prisma) aparece junto.</div>
+        <div class="ex"><b>Exemplo:</b> qual fenômeno mantém a luz “presa” dentro de uma fibra óptica? <span class="resp">A reflexão total interna.</span></div>
+      </section>
+
+      <section class="card" id="ond1-lentes">
+        <div class="kicker">Ótica Geométrica · 1.4</div>
+        <h3>Lentes esféricas delgadas</h3>
+        <p class="lead">Lentes desviam a luz por refração. As <b>convergentes</b> (mais grossas no meio) concentram os raios num foco; as <b>divergentes</b> (mais finas no meio) espalham os raios. Valem as <b>mesmas equações</b> dos espelhos (Gauss e ampliação). A <b>vergência</b> (“grau”) é \(V = 1/f\), em dioptrias.</p>
+        <div class="formula-box">\( \dfrac{1}{f} = \dfrac{1}{p} + \dfrac{1}{p'} \qquad V = \dfrac{1}{f}\ (\text{dioptrias}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar a imagem (lupa = convergente formando imagem virtual ampliada) e o “grau” das lentes. Convergentes corrigem hipermetropia; divergentes corrigem miopia (ligação com a óptica da visão).</div>
+        <div class="ex"><b>Exemplo:</b> uma lupa que amplia a letra usa qual tipo de lente? <span class="resp">Convergente (objeto entre a lente e o foco → imagem virtual ampliada).</span></div>
+      </section>
+
+      <section class="card" id="ond1-instr">
+        <div class="kicker">Ótica Geométrica · 1.5</div>
+        <h3>Instrumentos óticos e a ótica da visão</h3>
+        <p class="lead">Instrumentos ópticos combinam lentes/espelhos: <b>lupa</b>, <b>microscópio</b> (vê o muito pequeno), <b>luneta/telescópio</b> (vê o muito distante), câmera e projetor. No <b>olho</b>, o cristalino é uma lente convergente que projeta a imagem na retina. Defeitos: <b>miopia</b> (imagem antes da retina; corrige com lente <b>divergente</b>), <b>hipermetropia</b> (imagem depois; lente <b>convergente</b>), <b>astigmatismo</b> e <b>presbiopia</b>.</p>
+        <table class="tab"><thead><tr><th>Defeito</th><th>Imagem forma-se</th><th>Correção</th></tr></thead><tbody>
+          <tr><th>Miopia</th><td>antes da retina</td><td>lente divergente</td></tr>
+          <tr><th>Hipermetropia</th><td>depois da retina</td><td>lente convergente</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> associar o defeito visual à lente corretora (miopia→divergente; hipermetropia→convergente) — interdisciplinar com Biologia. O funcionamento do olho como sistema óptico e o cálculo do “grau” caem com frequência.</div>
+        <div class="ex"><b>Exemplo:</b> a miopia é corrigida com qual lente? <span class="resp">Lente divergente (côncava).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÓTICA E ONDAS 2 ===================== -->
+      <div class="area secO">
+      <div class="chapter" id="ond2">
+        <div class="num">III · Ótica e Ondas</div>
+        <h2>2. Movimento Ondulatório</h2>
+        <p>Das oscilações (MHS, pêndulo) às ondas que transportam energia sem transportar matéria. Define os elementos de uma onda e fenômenos como interferência e difração — incluindo a natureza ondulatória da luz.</p>
+        <div class="mini">
+          <a href="#ond2-mhs">MHS e pêndulo</a>
+          <a href="#ond2-ondas">Ondas: tipos e elementos</a>
+          <a href="#ond2-veloc">Velocidade da onda</a>
+          <a href="#ond2-interf">Interferência e difração</a>
+        </div>
+      </div>
+
+      <section class="card" id="ond2-mhs">
+        <div class="kicker">Ondulatória · 2.1</div>
+        <h3>Movimento harmônico simples (MHS) e pêndulo</h3>
+        <p class="lead">O <b>MHS</b> é uma oscilação <b>periódica</b> em torno de um ponto de equilíbrio, sob força restauradora proporcional ao deslocamento (massa-mola). Caracteriza-se por <b>período</b> e <b>frequência</b>. O <b>pêndulo simples</b> oscila com período que depende só do <b>comprimento</b> e da <b>gravidade</b> — <b>não</b> da massa nem (para ângulos pequenos) da amplitude.</p>
+        <div class="formula-box">\( T_{mola} = 2\pi\sqrt{\dfrac{m}{k}} \qquad T_{pêndulo} = 2\pi\sqrt{\dfrac{L}{g}} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> analisar o que altera o período (no pêndulo, só L e g; na mola, m e k). Por isso o pêndulo serve de relógio e mede g. A troca de energia cinética ↔ potencial ao longo da oscilação conecta com a Mecânica.</div>
+        <div class="ex"><b>Exemplo:</b> o período de um pêndulo simples depende da massa pendurada? <span class="resp">Não — depende apenas do comprimento e da gravidade.</span></div>
+      </section>
+
+      <section class="card" id="ond2-ondas">
+        <div class="kicker">Ondulatória · 2.2</div>
+        <h3>Ondas: tipos e elementos</h3>
+        <p class="lead">Uma <b>onda</b> transporta <b>energia</b> sem transportar matéria. Quanto à natureza: <b>mecânicas</b> (precisam de meio — som, corda, água) × <b>eletromagnéticas</b> (propagam-se no vácuo — luz). Quanto à direção: <b>transversais</b> (vibração perpendicular à propagação) × <b>longitudinais</b> (vibração na mesma direção — som). Elementos: <b>comprimento de onda (λ)</b>, <b>amplitude</b>, <b>período</b> e <b>frequência</b>.</p>
+        <div class="formula-box">mecânica (precisa de meio) × eletromagnética (vácuo) · transversal × longitudinal</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar uma onda (o som é mecânica e longitudinal; a luz é eletromagnética e transversal) e identificar λ, amplitude e frequência num gráfico. A amplitude liga-se à energia; a frequência, ao “tipo” (cor/altura do som).</div>
+        <div class="ex"><b>Exemplo:</b> o som consegue se propagar no vácuo do espaço? <span class="resp">Não — é onda mecânica e precisa de um meio material.</span></div>
+      </section>
+
+      <section class="card" id="ond2-veloc">
+        <div class="kicker">Ondulatória · 2.3</div>
+        <h3>Velocidade, comprimento de onda e frequência</h3>
+        <p class="lead">A <b>equação fundamental da ondulatória</b> liga as três grandezas: \(v = \lambda\,f\). A <b>velocidade</b> depende do <b>meio</b>; a <b>frequência</b> depende da <b>fonte</b> e não muda ao trocar de meio. Logo, quando uma onda passa para outro meio (muda v), o <b>comprimento de onda muda</b>, mas a frequência permanece.</p>
+        <div class="formula-box">\( v = \lambda\,f \qquad f = \dfrac{1}{T} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular qualquer das três grandezas e, sobretudo, lembrar que ao mudar de meio a <b>frequência se conserva</b> (muda λ e v) — pegadinha clássica na refração. Relação com cor (luz) e altura (som).</div>
+        <div class="ex"><b>Exemplo:</b> uma onda de 2 m de comprimento e frequência 5 Hz tem que velocidade? <span class="resp">v = 2·5 = 10 m/s.</span></div>
+      </section>
+
+      <section class="card" id="ond2-interf">
+        <div class="kicker">Ondulatória · 2.4</div>
+        <h3>Interferência, difração e a natureza ondulatória da luz</h3>
+        <p class="lead">Quando ondas se encontram, há <b>interferência</b>: <b>construtiva</b> (cristas coincidem, somam) ou <b>destrutiva</b> (crista encontra vale, cancelam). A <b>difração</b> é a capacidade de a onda <b>contornar obstáculos</b> e se espalhar ao passar por fendas. Esses fenômenos (especialmente a experiência da dupla fenda de Young) comprovam a <b>natureza ondulatória da luz</b>.</p>
+        <div class="formula-box">construtiva: cristas em fase (reforço) · destrutiva: em oposição (cancelamento)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer interferência (cores em bolhas de sabão e em CDs) e difração (ouvir som atrás de um muro; espalhamento em fendas). A dupla fenda como prova de que a luz é onda é cobrada — e prepara a dualidade onda-partícula (Física Moderna).</div>
+        <div class="ex"><b>Exemplo:</b> por que conseguimos ouvir alguém atrás de uma parede, mesmo sem vê-lo? <span class="resp">Difração: o som (onda) contorna o obstáculo; a luz, de λ muito menor, difrata pouco.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÓTICA E ONDAS 3 ===================== -->
+      <div class="area secO">
+      <div class="chapter" id="ond3">
+        <div class="num">III · Ótica e Ondas</div>
+        <h2>3. Ondas Sonoras</h2>
+        <p>O som como onda mecânica: como se propaga, o que distingue um som de outro (qualidades fisiológicas) e o efeito Doppler. Tema com muitas aplicações do cotidiano (música, ultrassom, radar).</p>
+        <div class="mini">
+          <a href="#ond3-som">Som e faixa audível</a>
+          <a href="#ond3-qual">Qualidades do som</a>
+          <a href="#ond3-doppler">Efeito Doppler</a>
+        </div>
+      </div>
+
+      <section class="card" id="ond3-som">
+        <div class="kicker">Ondas Sonoras · 3.1</div>
+        <h3>O som como onda mecânica e a faixa audível</h3>
+        <p class="lead">O <b>som</b> é uma onda <b>mecânica longitudinal</b> (compressões e rarefações do ar) — precisa de meio, não se propaga no vácuo. O ouvido humano percebe entre <b>20 Hz e 20 000 Hz</b>; abaixo é <b>infrassom</b> (elefantes, terremotos) e acima é <b>ultrassom</b> (morcegos, ecografia). A velocidade do som no ar é ~340 m/s (maior em líquidos e sólidos).</p>
+        <div class="formula-box">audível: 20 Hz – 20 000 Hz · infrassom (&lt;20) · ultrassom (&gt;20 000)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar a frequência (infra/audível/ultra) e aplicar a velocidade do som (ex.: <b>trovão</b> — calcular a distância pelo atraso luz/som; <b>sonar</b> e <b>ecografia</b> com ultrassom). Que o som é mais rápido na água/sólidos que no ar é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o ultrassom usado em exames tem frequência acima ou abaixo de 20 kHz? <span class="resp">Acima de 20 000 Hz (por isso é inaudível).</span></div>
+      </section>
+
+      <section class="card" id="ond3-qual">
+        <div class="kicker">Ondas Sonoras · 3.2</div>
+        <h3>Qualidades fisiológicas do som</h3>
+        <p class="lead">Três características distinguem os sons: a <b>altura</b> (grave × agudo) depende da <b>frequência</b> (mais frequência = mais agudo); a <b>intensidade</b> (forte × fraco, volume) depende da <b>amplitude</b> (medida em decibéis); e o <b>timbre</b> distingue a “voz” de cada fonte (por que um piano e um violino tocando a mesma nota soam diferentes).</p>
+        <table class="tab"><thead><tr><th>Qualidade</th><th>Depende de</th></tr></thead><tbody>
+          <tr><th>Altura (grave/agudo)</th><td>frequência</td></tr>
+          <tr><th>Intensidade (volume)</th><td>amplitude</td></tr>
+          <tr><th>Timbre</th><td>forma da onda (fonte)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> associar a qualidade ao parâmetro da onda — pegadinha: <b>altura</b> não é “volume”, é grave/agudo (frequência). O timbre como “identidade” da fonte e a escala de decibéis (poluição sonora) aparecem em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> o que torna uma nota mais aguda? <span class="resp">A maior frequência (altura do som).</span></div>
+      </section>
+
+      <section class="card" id="ond3-doppler">
+        <div class="kicker">Ondas Sonoras · 3.3</div>
+        <h3>Efeito Doppler</h3>
+        <p class="lead">É a <b>mudança aparente da frequência</b> percebida quando há <b>movimento relativo</b> entre a fonte e o observador. <b>Aproximação</b> → as ondas “se comprimem” → frequência maior (som mais <b>agudo</b>). <b>Afastamento</b> → ondas “se esticam” → frequência menor (mais <b>grave</b>). É o que se ouve na sirene de uma ambulância que passa.</p>
+        <div class="formula-box">aproxima → som mais agudo · afasta → som mais grave</div>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar a variação do som da <b>ambulância/Fórmula 1</b> e a aplicação no <b>radar de velocidade</b> e na astronomia (o <b>desvio para o vermelho</b> mostra galáxias se afastando — expansão do universo). Sentido da variação (agudo/grave) é o foco.</div>
+        <div class="ex"><b>Exemplo:</b> a sirene de uma ambulância que se aproxima soa mais aguda ou mais grave? <span class="resp">Mais aguda (frequência aparente maior na aproximação).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 1 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele1">
+        <div class="num">IV · Eletricidade</div>
+        <h2>1. Carga Elétrica</h2>
+        <p>O ponto de partida da eletricidade: o que é carga, como os corpos se eletrizam e como duas cargas interagem (Lei de Coulomb). Base para campo e potencial elétricos.</p>
+        <div class="mini">
+          <a href="#ele1-eletriz">Processos de eletrização</a>
+          <a href="#ele1-cond">Condutores, indução e eletroscópio</a>
+          <a href="#ele1-coulomb">Lei de Coulomb</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele1-eletriz">
+        <div class="kicker">Carga Elétrica · 1.1</div>
+        <h3>Carga elétrica e processos de eletrização</h3>
+        <p class="lead">A matéria tem cargas <b>positivas</b> (prótons) e <b>negativas</b> (elétrons); cargas de <b>mesmo sinal se repelem</b>, de sinais opostos se atraem. Um corpo neutro fica eletrizado ao <b>ganhar ou perder elétrons</b>. Três processos: <b>atrito</b> (corpos diferentes, ficam com cargas opostas), <b>contato</b> (ficam com cargas de <b>mesmo sinal</b>, dividindo a carga) e <b>indução</b> (aproximação sem tocar, com aterramento). Vale a <b>conservação da carga</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar o sinal/quantidade de carga após atrito, contato (a carga se divide; se os corpos forem iguais, igualmente) ou indução. Exemplos: pente que atrai papel, choque ao tocar a maçaneta, série triboelétrica.</div>
+        <div class="ex"><b>Exemplo:</b> dois corpos idênticos, um com 8 C e outro neutro, são postos em contato. Carga final de cada um? <span class="resp">4 C cada (a carga total se divide igualmente).</span></div>
+      </section>
+
+      <section class="card" id="ele1-cond">
+        <div class="kicker">Carga Elétrica · 1.2</div>
+        <h3>Condutores e isolantes; indução, polarização e eletroscópio</h3>
+        <p class="lead">Nos <b>condutores</b> (metais) os elétrons se movem livremente; nos <b>isolantes</b> (dielétricos: borracha, plástico, vidro) ficam presos. Na <b>indução</b>, a aproximação de um corpo carregado <b>separa</b> as cargas do condutor; nos isolantes ocorre <b>polarização</b> (as moléculas se orientam). O <b>eletroscópio</b> detecta cargas: ao ser eletrizado, as folhas se <b>afastam</b> (repulsão).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar por que um corpo carregado atrai um pedaço de papel neutro (<b>polarização/indução</b>) e o funcionamento do eletroscópio. Distinguir condutor × isolante e o papel do aterramento na indução é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> por que um canudo atritado atrai pedacinhos de papel neutro? <span class="resp">Por indução/polarização: ele separa/orienta as cargas do papel, gerando atração.</span></div>
+      </section>
+
+      <section class="card" id="ele1-coulomb">
+        <div class="kicker">Carga Elétrica · 1.3</div>
+        <h3>Lei de Coulomb</h3>
+        <p class="lead">Descreve a <b>força elétrica</b> entre duas cargas puntuais: é proporcional ao produto das cargas e <b>inversamente proporcional ao quadrado da distância</b> — \(F = k\dfrac{Q_1 Q_2}{d^2}\). Mesma forma matemática da gravitação (inverso do quadrado), mas pode ser atrativa ou repulsiva. A força é vetorial e age na linha que une as cargas.</p>
+        <div class="formula-box">\( F = k\,\dfrac{Q_1 Q_2}{d^2} \qquad k \approx 9\times10^{9}\ \text{N·m}^2/\text{C}^2 \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a força entre cargas e aplicar a proporção do inverso do quadrado (dobrar a distância → força 4× menor). Equilíbrio de cargas (somar forças vetorialmente) e comparação com a gravitação são frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> se a distância entre duas cargas é reduzida à metade, a força elétrica fica... <span class="resp">Quatro vezes maior (inverso do quadrado).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 2 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele2">
+        <div class="num">IV · Eletricidade</div>
+        <h2>2. Campo Elétrico</h2>
+        <p>A região do espaço alterada por uma carga, onde outras cargas sentem força. Conceito-chave para entender a ação à distância, as linhas de força e o comportamento dos condutores.</p>
+        <div class="mini">
+          <a href="#ele2-campo">Conceito e campo de carga puntual</a>
+          <a href="#ele2-linhas">Linhas de força</a>
+          <a href="#ele2-condutor">Condutor, blindagem e poder das pontas</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele2-campo">
+        <div class="kicker">Campo Elétrico · 2.1</div>
+        <h3>Conceito de campo elétrico e campo de carga puntual</h3>
+        <p class="lead">O <b>campo elétrico</b> é a propriedade do espaço ao redor de uma carga que faz outra carga sentir força: \(E = F/q\) (vetorial, unidade N/C). Para uma <b>carga puntual</b>, \(E = kQ/d^2\). O sentido do campo: <b>sai</b> das cargas positivas e <b>entra</b> nas negativas. Uma carga \(q\) imersa no campo sofre força \(F = qE\).</p>
+        <div class="formula-box">\( E = \dfrac{F}{q} \qquad E = k\,\dfrac{Q}{d^2} \qquad F = q\,E \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o campo de uma carga e a força sobre outra (\(F = qE\)), e o campo resultante de várias cargas (soma vetorial). Direção/sentido do campo (sai do +, entra no −) é cobrado direto.</div>
+        <div class="ex"><b>Exemplo:</b> uma carga de 2 C num campo de 5 N/C sofre que força? <span class="resp">F = qE = 2·5 = 10 N.</span></div>
+      </section>
+
+      <section class="card" id="ele2-linhas">
+        <div class="kicker">Campo Elétrico · 2.2</div>
+        <h3>Linhas de força</h3>
+        <p class="lead">São linhas imaginárias que <b>representam</b> o campo elétrico: o campo é <b>tangente</b> a elas, e onde estão mais <b>próximas</b>, o campo é mais <b>intenso</b>. Saem das cargas positivas e entram nas negativas; nunca se cruzam. Um <b>campo uniforme</b> (entre placas paralelas) tem linhas <b>paralelas e igualmente espaçadas</b>.</p>
+        <div class="formula-box">linhas saem do (+), entram no (−) · mais densas = campo mais forte</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar desenhos de linhas de força (identificar sinal das cargas, onde o campo é maior) e reconhecer o campo uniforme entre placas (usado em capacitores e no desvio de partículas). As linhas nunca se cruzam — detalhe cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> num desenho, onde as linhas de força estão mais juntas, o campo é... <span class="resp">Mais intenso.</span></div>
+      </section>
+
+      <section class="card" id="ele2-condutor">
+        <div class="kicker">Campo Elétrico · 2.3</div>
+        <h3>Condutor eletrizado, blindagem e poder das pontas</h3>
+        <p class="lead">Num condutor em equilíbrio, o excesso de carga vai todo para a <b>superfície</b> e o <b>campo elétrico no interior é nulo</b>. Isso explica a <b>blindagem eletrostática</b> (gaiola de Faraday): o interior fica protegido de campos externos. A carga se acumula mais nas <b>pontas</b> (maior densidade), onde o campo fica muito intenso — o <b>poder das pontas</b>, base do para-raios.</p>
+        <div class="formula-box">campo interno do condutor = 0 (blindagem) · carga se concentra nas pontas</div>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar a <b>gaiola de Faraday</b> (por que estar dentro do carro protege de raios; por que o celular perde sinal no elevador) e o <b>para-raios</b> (poder das pontas + rigidez dielétrica). Campo nulo dentro do condutor é cobrado direto.</div>
+        <div class="ex"><b>Exemplo:</b> por que é mais seguro ficar dentro de um carro durante uma tempestade? <span class="resp">A carroceria metálica age como gaiola de Faraday (campo nulo no interior).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 3 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele3">
+        <div class="num">IV · Eletricidade</div>
+        <h2>3. Potencial Elétrico</h2>
+        <p>A “energia por carga” num ponto do campo. Diferença de potencial (voltagem) é o que move as cargas nos circuitos — conceito central que liga eletrostática e eletrodinâmica.</p>
+        <div class="mini">
+          <a href="#ele3-ddp">Diferença de potencial</a>
+          <a href="#ele3-pot">Potencial e equipotenciais</a>
+          <a href="#ele3-dist">Distribuição de cargas</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele3-ddp">
+        <div class="kicker">Potencial Elétrico · 3.1</div>
+        <h3>Diferença de potencial (voltagem) e campo uniforme</h3>
+        <p class="lead">O <b>potencial elétrico</b> mede a energia potencial por unidade de carga num ponto (unidade: <b>volt</b>). A <b>diferença de potencial (ddp ou tensão)</b> entre dois pontos é o que realmente importa — é ela que faz a carga se mover e realiza trabalho: \(\tau = q\,U\). Num <b>campo uniforme</b> (entre placas), vale \(U = E\,d\).</p>
+        <div class="formula-box">\( \tau = q\,U \qquad U = E\,d \ (\text{campo uniforme}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar tensão, campo e distância entre placas (U = E·d) e calcular o trabalho para mover uma carga (τ = qU). A ddp como “empurrão” das cargas conecta com corrente e circuitos.</div>
+        <div class="ex"><b>Exemplo:</b> entre placas separadas por 0,02 m há campo de 1000 N/C. Qual a ddp? <span class="resp">U = E·d = 1000·0,02 = 20 V.</span></div>
+      </section>
+
+      <section class="card" id="ele3-pot">
+        <div class="kicker">Potencial Elétrico · 3.2</div>
+        <h3>Potencial de carga puntual e superfícies equipotenciais</h3>
+        <p class="lead">O potencial criado por uma carga puntual é \(V = kQ/d\) (escalar — soma-se algebricamente, com sinal). As <b>superfícies equipotenciais</b> reúnem pontos de mesmo potencial; são <b>perpendiculares</b> às linhas de força. Mover uma carga <b>sobre</b> uma equipotencial não realiza trabalho (ddp nula).</p>
+        <div class="formula-box">\( V = k\,\dfrac{Q}{d} \) (escalar) · equipotenciais ⊥ linhas de força</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o potencial (somando o de várias cargas, com sinal) e interpretar equipotenciais. A ideia de que não há trabalho ao mover carga numa equipotencial cai em teoria. Diferença entre grandeza <b>escalar</b> (potencial) e vetorial (campo) é pegadinha.</div>
+        <div class="ex"><b>Exemplo:</b> qual o trabalho para mover uma carga entre dois pontos de mesmo potencial? <span class="resp">Zero (ddp nula → τ = qU = 0).</span></div>
+      </section>
+
+      <section class="card" id="ele3-dist">
+        <div class="kicker">Potencial Elétrico · 3.3</div>
+        <h3>Distribuição de cargas entre condutores em contato</h3>
+        <p class="lead">Quando dois condutores se tocam, as cargas se redistribuem até que ambos fiquem com o <b>mesmo potencial</b> (não necessariamente a mesma carga). Em esferas, a carga se distribui proporcionalmente ao <b>raio</b> — a maior fica com mais carga. O fluxo de carga cessa quando os potenciais se igualam.</p>
+        <div class="formula-box">no equilíbrio: \( V_1 = V_2 \) (mesmo potencial, cargas conforme o raio)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> achar a carga/potencial final após o contato entre condutores (igualar potenciais). Conceito análogo ao equilíbrio térmico (lá iguala temperatura; aqui, potencial) — comparação que ajuda a fixar.</div>
+        <div class="ex"><b>Exemplo:</b> o que se iguala quando dois condutores são postos em contato? <span class="resp">O potencial elétrico de ambos.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 4 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele4">
+        <div class="num">IV · Eletricidade</div>
+        <h2>4. Capacitores</h2>
+        <p>Dispositivos que armazenam carga e energia elétrica. Presentes em flashes, fontes e circuitos eletrônicos. Cai em capacitância, efeito do dielétrico e associações.</p>
+        <div class="mini">
+          <a href="#ele4-cap">Capacitância e dielétrico</a>
+          <a href="#ele4-assoc">Associação e energia</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele4-cap">
+        <div class="kicker">Capacitores · 4.1</div>
+        <h3>Capacitância e influência do dielétrico</h3>
+        <p class="lead">O <b>capacitor</b> armazena carga em duas placas separadas por um isolante. A <b>capacitância</b> mede quanta carga ele guarda por volt: \(C = Q/U\) (unidade: <b>farad</b>). Depende da <b>geometria</b> (área das placas, distância) e do <b>dielétrico</b> entre elas: inserir um dielétrico <b>aumenta</b> a capacitância.</p>
+        <div class="formula-box">\( C = \dfrac{Q}{U} \) (unidade: farad)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar Q, U e C, e prever o efeito de mudar área, distância ou dielétrico na capacitância. O capacitor como armazenador que <b>descarrega rápido</b> (flash de câmera, desfibrilador) é aplicação certeira.</div>
+        <div class="ex"><b>Exemplo:</b> um capacitor acumula 6 C sob 3 V. Qual a capacitância? <span class="resp">C = Q/U = 6/3 = 2 F.</span></div>
+      </section>
+
+      <section class="card" id="ele4-assoc">
+        <div class="kicker">Capacitores · 4.2</div>
+        <h3>Associação de capacitores e energia armazenada</h3>
+        <p class="lead">Capacitores associam-se de modo <b>oposto</b> aos resistores: em <b>paralelo</b> as capacitâncias se <b>somam</b>; em <b>série</b>, somam-se os inversos. A energia armazenada é \(E = \tfrac{1}{2}CU^2\) (também \(=\tfrac{1}{2}QU\)).</p>
+        <div class="formula-box">paralelo: \(C_{eq}=C_1+C_2\) · série: \(\dfrac{1}{C_{eq}}=\dfrac{1}{C_1}+\dfrac{1}{C_2}\) · \(E=\tfrac{1}{2}CU^2\)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a capacitância equivalente (cuidado: é o <b>inverso</b> da regra dos resistores) e a energia armazenada. Aparece em circuitos mistos e na comparação carga/energia antes e depois de inserir dielétrico.</div>
+        <div class="ex"><b>Exemplo:</b> dois capacitores de 3 F em paralelo equivalem a quanto? <span class="resp">6 F (em paralelo, somam-se).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 5 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele5">
+        <div class="num">IV · Eletricidade</div>
+        <h2>5. Corrente Elétrica</h2>
+        <p>O movimento ordenado de cargas e suas leis: corrente, resistência, Lei de Ohm, associação de resistores e potência. A base da eletrônica e das instalações elétricas — campeão de questões.</p>
+        <div class="mini">
+          <a href="#ele5-corr">Corrente e circuitos</a>
+          <a href="#ele5-ohm">Resistência e Lei de Ohm</a>
+          <a href="#ele5-assoc">Associação de resistores</a>
+          <a href="#ele5-pot">Potência e efeito Joule</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele5-corr">
+        <div class="kicker">Corrente Elétrica · 5.1</div>
+        <h3>Corrente elétrica e circuitos simples</h3>
+        <p class="lead">A <b>corrente elétrica</b> é o fluxo ordenado de cargas (elétrons) num condutor, medido em <b>ampère</b>: \(i = Q/\Delta t\). Para haver corrente, é preciso uma <b>ddp</b> (fornecida por um gerador/pilha) e um <b>circuito fechado</b>. A corrente contínua (CC, pilhas) tem sentido fixo; a alternada (CA, tomada) inverte periodicamente.</p>
+        <div class="formula-box">\( i = \dfrac{Q}{\Delta t} \) (unidade: ampère)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular corrente (carga ÷ tempo) e nº de elétrons que passam. Reconhecer os elementos de um circuito (gerador, resistor, chave) e a diferença CC × CA. Liga com a Lei de Ohm e potência.</div>
+        <div class="ex"><b>Exemplo:</b> se passam 10 C por um fio em 2 s, qual a corrente? <span class="resp">i = 10/2 = 5 A.</span></div>
+      </section>
+
+      <section class="card" id="ele5-ohm">
+        <div class="kicker">Corrente Elétrica · 5.2</div>
+        <h3>Resistência elétrica e Lei de Ohm</h3>
+        <p class="lead">A <b>resistência</b> mede a oposição à passagem da corrente (unidade: <b>ohm</b>). A <b>1ª Lei de Ohm</b>: nos condutores ôhmicos, a corrente é proporcional à tensão — \(U = R\,i\). A <b>2ª Lei de Ohm</b> mostra que R depende do material (resistividade), do comprimento e da área do fio. A resistência também <b>varia com a temperatura</b> (nos metais, aumenta ao aquecer).</p>
+        <div class="formula-box">\( U = R\,i \qquad R = \rho\,\dfrac{L}{A} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> aplicar U = R·i (e interpretar gráficos U×i, onde a inclinação é R) e a 2ª lei (fio mais fino/longo = mais resistência). O chuveiro (resistência que aquece) e a variação com a temperatura são contextos clássicos.</div>
+        <div class="ex"><b>Exemplo:</b> um resistor de 10 Ω é percorrido por 2 A. Qual a tensão nele? <span class="resp">U = R·i = 10·2 = 20 V.</span></div>
+      </section>
+
+      <section class="card" id="ele5-assoc">
+        <div class="kicker">Corrente Elétrica · 5.3</div>
+        <h3>Associação de resistores</h3>
+        <p class="lead">Em <b>série</b>, os resistores são percorridos pela <b>mesma corrente</b> e as resistências se <b>somam</b> (\(R_{eq}=R_1+R_2+\dots\)); a tensão se divide. Em <b>paralelo</b>, todos têm a <b>mesma tensão</b> e somam-se os <b>inversos</b> (\(R_{eq}\) fica <b>menor</b> que o menor resistor); a corrente se divide.</p>
+        <div class="formula-box">série: \(R_{eq}=R_1+R_2\) · paralelo: \(\dfrac{1}{R_{eq}}=\dfrac{1}{R_1}+\dfrac{1}{R_2}\)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reduzir circuitos mistos ao resistor equivalente e achar corrente/tensão em cada trecho. Por que as casas são ligadas em <b>paralelo</b> (mesma tensão; um aparelho não desliga o outro) é aplicação certeira.</div>
+        <div class="ex"><b>Exemplo:</b> dois resistores de 6 Ω em paralelo equivalem a quanto? <span class="resp">3 Ω (em paralelo de iguais, divide-se pelo número).</span></div>
+      </section>
+
+      <section class="card" id="ele5-pot">
+        <div class="kicker">Corrente Elétrica · 5.4</div>
+        <h3>Potência elétrica, efeito Joule e medidas</h3>
+        <p class="lead">A <b>potência elétrica</b> é a energia consumida por segundo: \(P = U\,i\) (e, combinando com Ohm, \(P = R\,i^2 = U^2/R\)). No <b>efeito Joule</b>, a corrente aquece o resistor (chuveiro, ferro, lâmpada incandescente). A energia consumida (conta de luz) é \(E = P\,\Delta t\), medida em <b>kWh</b>. <b>Amperímetro</b> mede corrente (ligado em série); <b>voltímetro</b> mede tensão (em paralelo).</p>
+        <div class="formula-box">\( P = U\,i = R\,i^2 = \dfrac{U^2}{R} \qquad E = P\,\Delta t \ (\text{kWh}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular potência de aparelhos e o <b>consumo em kWh</b> (conta de energia) — clássico do ENEM. Entender por que a transmissão usa <b>alta tensão</b> (reduz a corrente e as perdas por Joule, P = R·i²) é muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> um chuveiro de 5500 W ligado por 2 h consome quanto? <span class="resp">E = 5,5 kW · 2 h = 11 kWh.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 6 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele6">
+        <div class="num">IV · Eletricidade</div>
+        <h2>6. Circuitos Elétricos</h2>
+        <p>Geradores e receptores reais, que têm resistência interna. A Lei de Ohm-Pouillet descreve o circuito completo e a tensão nos terminais — fechando o estudo da eletrodinâmica.</p>
+        <div class="mini">
+          <a href="#ele6-gerador">Gerador e fem (Pouillet)</a>
+          <a href="#ele6-receptor">Receptor e fcem</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele6-gerador">
+        <div class="kicker">Circuitos · 6.1</div>
+        <h3>Gerador, força eletromotriz e Lei de Ohm-Pouillet</h3>
+        <p class="lead">Um <b>gerador</b> (pilha, bateria) converte outra energia em elétrica; sua <b>força eletromotriz (fem, ε)</b> é a tensão total que ele “tentaria” fornecer. Mas ele tem <b>resistência interna (r)</b>, que consome parte da tensão. A <b>Lei de Ohm-Pouillet</b> dá a corrente do circuito em série: \(i = \dfrac{\varepsilon}{R + r}\). A <b>tensão nos terminais</b> é \(U = \varepsilon - r\,i\) (menor que a fem quando há corrente).</p>
+        <div class="formula-box">\( i = \dfrac{\varepsilon}{R + r} \qquad U = \varepsilon - r\,i \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a corrente do circuito (Pouillet) e a tensão real nos terminais da bateria. Explicar por que a tensão “cai” quando o aparelho liga (corrente alta) e por que pilha velha (r grande) fornece menos — aplicação certeira.</div>
+        <div class="ex"><b>Exemplo:</b> bateria de ε = 12 V e r = 1 Ω alimenta R = 5 Ω. Qual a corrente? <span class="resp">i = 12/(5+1) = 2 A.</span></div>
+      </section>
+
+      <section class="card" id="ele6-receptor">
+        <div class="kicker">Circuitos · 6.2</div>
+        <h3>Receptor e força contraeletromotriz</h3>
+        <p class="lead">Um <b>receptor</b> converte energia elétrica em <b>outra forma útil</b> que não seja só calor (motor → movimento; bateria carregando → química). Sua <b>força contraeletromotriz (fcem, ε')</b> é a parte da energia que ele aproveita; o resto vira calor na sua resistência interna. A <b>tensão nos terminais</b> de um receptor é \(U = \varepsilon' + r'\,i\).</p>
+        <div class="formula-box">\( U = \varepsilon' + r'\,i \) (tensão sobre um receptor)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar gerador (fornece, U = ε − ri) de receptor (consome, U = ε' + r'i) e calcular a corrente num circuito que tenha os dois (motor alimentado por bateria, recarga de celular). O rendimento do motor (ε'/U) também cai.</div>
+        <div class="ex"><b>Exemplo:</b> num motor (receptor), a tensão nos terminais é maior ou menor que sua fcem? <span class="resp">Maior — parte da tensão se perde na resistência interna (U = ε' + r'i).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 7 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele7">
+        <div class="num">IV · Eletromagnetismo</div>
+        <h2>7. Campo Magnético</h2>
+        <p>O magnetismo e sua ligação com a eletricidade: ímãs, o campo magnético, e as forças que ele exerce sobre cargas e correntes. A experiência de Oersted uniu eletricidade e magnetismo.</p>
+        <div class="mini">
+          <a href="#ele7-imas">Ímãs e experiência de Oersted</a>
+          <a href="#ele7-forca">Força magnética sobre carga</a>
+          <a href="#ele7-condutor">Força em condutor</a>
+          <a href="#ele7-fontes">Campo de fio e solenoide</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele7-imas">
+        <div class="kicker">Campo Magnético · 7.1</div>
+        <h3>Ímãs, magnetismo terrestre e experiência de Oersted</h3>
+        <p class="lead">Todo <b>ímã</b> tem dois polos (norte e sul): polos iguais se repelem, opostos se atraem, e é <b>impossível separar</b> os polos (cortar um ímã gera dois ímãs — <b>inseparabilidade</b>). A Terra é um grande ímã (por isso a bússola aponta para o norte). A <b>experiência de Oersted</b> mostrou que uma <b>corrente elétrica gera campo magnético</b> (a bússola perto de um fio se desvia) — unindo eletricidade e magnetismo no eletromagnetismo.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>inseparabilidade dos polos</b> e a experiência de <b>Oersted</b> (corrente cria campo) são conceitos certeiros. O campo magnético terrestre e o funcionamento da bússola aparecem em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> o que acontece se um ímã é cortado ao meio? <span class="resp">Formam-se dois ímãs completos, cada um com polo norte e sul.</span></div>
+      </section>
+
+      <section class="card" id="ele7-forca">
+        <div class="kicker">Campo Magnético · 7.2</div>
+        <h3>Vetor indução e força magnética sobre uma carga</h3>
+        <p class="lead">O campo magnético é descrito pelo <b>vetor indução magnética</b> \(\vec{B}\) (unidade: tesla). Uma carga \(q\) que se move com velocidade \(v\) num campo \(B\) sofre <b>força magnética</b> \(F = q\,v\,B\sen\theta\) — <b>máxima</b> quando v ⊥ B e <b>nula</b> quando v é paralela a B. A força é <b>perpendicular</b> a v e a B (regra da mão direita), por isso faz a carga descrever <b>círculos</b>.</p>
+        <div class="formula-box">\( F = q\,v\,B\,\sen\theta \) (máxima se \(\theta=90°\); nula se \(\theta=0°\))</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a força magnética e seu sentido (mão direita), e entender por que ela <b>não realiza trabalho</b> (é perpendicular à velocidade → só muda a direção, mantendo a rapidez). Base de aceleradores de partículas e do movimento circular de cargas.</div>
+        <div class="ex"><b>Exemplo:</b> uma carga entra paralela ao campo magnético. Qual a força magnética? <span class="resp">Nula (θ = 0°, então sen θ = 0).</span></div>
+      </section>
+
+      <section class="card" id="ele7-condutor">
+        <div class="kicker">Campo Magnético · 7.3</div>
+        <h3>Força magnética sobre um condutor</h3>
+        <p class="lead">Como a corrente é carga em movimento, um <b>fio percorrido por corrente</b> dentro de um campo magnético sofre força: \(F = B\,i\,L\sen\theta\), onde \(L\) é o comprimento do fio. É essa força que faz girar os <b>motores elétricos</b>. Dois fios paralelos com corrente também se atraem ou repelem.</p>
+        <div class="formula-box">\( F = B\,i\,L\,\sen\theta \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a força sobre o condutor e o sentido (mão direita). O <b>motor elétrico</b> (converte energia elétrica em movimento por essa força) é a aplicação mais cobrada — conecta com a indução (gerador é o inverso).</div>
+        <div class="ex"><b>Exemplo:</b> qual dispositivo usa a força magnética sobre um condutor para girar? <span class="resp">O motor elétrico.</span></div>
+      </section>
+
+      <section class="card" id="ele7-fontes">
+        <div class="kicker">Campo Magnético · 7.4</div>
+        <h3>Campo de um fio, de um solenoide e influência do meio</h3>
+        <p class="lead">Uma <b>corrente</b> cria campo magnético ao seu redor: num <b>fio retilíneo longo</b>, as linhas são circunferências concêntricas (intensidade \(B = \mu i / 2\pi d\), cai com a distância). Num <b>solenoide</b> (bobina), os campos das espiras se somam, criando um campo <b>uniforme e intenso</b> no interior — um <b>eletroímã</b>. O <b>meio</b> influencia: um núcleo de ferro multiplica o campo.</p>
+        <div class="formula-box">fio: \(B = \dfrac{\mu\,i}{2\pi d}\) · solenoide: campo uniforme interno (eletroímã)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar o sentido do campo (regra da mão direita) e reconhecer o <b>solenoide/eletroímã</b> (guindaste de ferro-velho, campainha, relé). Que o campo do fio <b>diminui com a distância</b> e aumenta com a corrente é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> como se aumenta a força de um eletroímã? <span class="resp">Aumentando a corrente, o número de espiras ou colocando um núcleo de ferro.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ELETRICIDADE 8 ===================== -->
+      <div class="area secE">
+      <div class="chapter" id="ele8">
+        <div class="num">IV · Eletromagnetismo</div>
+        <h2>8. Indução Eletromagnética e Ondas EM</h2>
+        <p>O inverso de Oersted: campos magnéticos variáveis geram corrente (Faraday e Lenz). É a base dos geradores, transformadores e das ondas eletromagnéticas — inclusive a luz.</p>
+        <div class="mini">
+          <a href="#ele8-faraday">Lei de Faraday</a>
+          <a href="#ele8-lenz">Lei de Lenz</a>
+          <a href="#ele8-gerador">Gerador e transformador</a>
+          <a href="#ele8-ondas">Ondas eletromagnéticas</a>
+        </div>
+      </div>
+
+      <section class="card" id="ele8-faraday">
+        <div class="kicker">Indução · 8.1</div>
+        <h3>Força eletromotriz induzida — Lei de Faraday</h3>
+        <p class="lead">A <b>indução eletromagnética</b>: a <b>variação do fluxo magnético</b> através de uma espira gera uma <b>fem induzida</b> (e corrente). A <b>Lei de Faraday</b> diz que a fem é proporcional à <b>rapidez</b> da variação do fluxo: \(\varepsilon = -\dfrac{\Delta\Phi}{\Delta t}\). Pode-se variar o fluxo movendo um ímã perto da bobina, mudando a área ou a corrente vizinha.</p>
+        <div class="formula-box">\( \varepsilon = -\dfrac{\Delta \Phi}{\Delta t} \qquad \Phi = B\,A\cos\theta \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> entender que <b>só campo variável induz</b> corrente (ímã parado dentro da bobina não gera nada) e que quanto mais rápida a variação, maior a fem. Base do gerador, do microfone, do cartão magnético e da carga por indução (escova de dente sem fio).</div>
+        <div class="ex"><b>Exemplo:</b> um ímã parado dentro de uma bobina induz corrente? <span class="resp">Não — é preciso variar o fluxo (mover o ímã).</span></div>
+      </section>
+
+      <section class="card" id="ele8-lenz">
+        <div class="kicker">Indução · 8.2</div>
+        <h3>Lei de Lenz</h3>
+        <p class="lead">Dá o <b>sentido</b> da corrente induzida: ela surge de modo a <b>se opor à variação</b> que a criou (o sinal negativo na lei de Faraday). É uma manifestação da <b>conservação de energia</b>: a corrente induzida “reage” à mudança. Por isso, ao empurrar um ímã para dentro da bobina, surge uma força que <b>dificulta</b> o movimento.</p>
+        <div class="formula-box">a corrente induzida se opõe à variação do fluxo (conservação de energia)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar o sentido da corrente induzida e explicar a <b>frenagem eletromagnética</b> (ímã caindo num tubo de cobre cai devagar; freios de trens e caminhões). A relação com a conservação de energia é o conceito-chave.</div>
+        <div class="ex"><b>Exemplo:</b> por que um ímã solto dentro de um tubo de cobre cai lentamente? <span class="resp">As correntes induzidas (Lei de Lenz) criam forças que se opõem à queda.</span></div>
+      </section>
+
+      <section class="card" id="ele8-gerador">
+        <div class="kicker">Indução · 8.3</div>
+        <h3>Gerador de energia e transformador</h3>
+        <p class="lead">O <b>gerador</b> aplica a indução: uma bobina girando num campo magnético produz <b>corrente alternada</b> (é o inverso do motor) — é assim que usinas (hidrelétrica, eólica, térmica) geram eletricidade. O <b>transformador</b> usa a indução entre duas bobinas para <b>aumentar ou reduzir a tensão</b> da corrente alternada, conforme a razão de espiras: \(U_1/U_2 = N_1/N_2\).</p>
+        <div class="formula-box">\( \dfrac{U_1}{U_2} = \dfrac{N_1}{N_2} \) (transformador, em CA)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular tensões/correntes num transformador (mais espiras = mais tensão) e entender por que ele <b>só funciona em CA</b>. Liga com a transmissão de energia em alta tensão (reduz perdas) — tema certeiro do ENEM.</div>
+        <div class="ex"><b>Exemplo:</b> um transformador com o dobro de espiras na saída faz o quê com a tensão? <span class="resp">Dobra a tensão (e reduz a corrente proporcionalmente).</span></div>
+      </section>
+
+      <section class="card" id="ele8-ondas">
+        <div class="kicker">Ondas EM · 8.4</div>
+        <h3>Ondas eletromagnéticas e o espectro</h3>
+        <p class="lead">Campos elétricos e magnéticos variáveis se sustentam mutuamente e se propagam como <b>ondas eletromagnéticas</b> — que <b>não precisam de meio</b> (viajam no vácuo) à velocidade da luz (\(c \approx 3\times10^8\) m/s). A <b>luz é uma onda EM</b>. O <b>espectro eletromagnético</b> ordena-as por frequência/energia: ondas de rádio, micro-ondas, infravermelho, <b>visível</b>, ultravioleta, raios X e gama.</p>
+        <div class="formula-box">\( c = \lambda f \approx 3\times10^{8}\ \text{m/s} \) · rádio → micro → IV → visível → UV → X → gama</div>
+        <div class="uso"><b>Como cai no vestibular:</b> ordenar as radiações por energia/frequência e associar aplicações (rádio/celular, micro-ondas, controle remoto-IV, raios X-medicina). A natureza EM da luz e a transmissão/distribuição de energia (alta tensão, perdas) caem com frequência.</div>
+        <div class="ex"><b>Exemplo:</b> as ondas de rádio e a luz visível viajam à mesma velocidade no vácuo? <span class="resp">Sim — ambas são ondas EM e viajam a c ≈ 3×10⁸ m/s.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== FÍSICA MODERNA 1 ===================== -->
+      <div class="area secF">
+      <div class="chapter" id="mod1">
+        <div class="num">V · Física Moderna</div>
+        <h2>1. Limites da Mecânica Clássica</h2>
+        <p>No fim do século XIX, a física de Newton e Maxwell parecia explicar tudo — mas alguns experimentos não se encaixavam. Esses “limites” abriram caminho para a relatividade e a física quântica.</p>
+        <div class="mini">
+          <a href="#mod1-limites">Onde a física clássica falha</a>
+        </div>
+      </div>
+
+      <section class="card" id="mod1-limites">
+        <div class="kicker">Física Moderna · 1.1</div>
+        <h3>Os limites da mecânica clássica</h3>
+        <p class="lead">A <b>mecânica clássica</b> (Newton) descreve muito bem o mundo cotidiano, mas <b>falha</b> em dois extremos. No <b>muito rápido</b> (velocidades próximas à da luz), surgem efeitos que só a <b>Relatividade</b> de Einstein explica. No <b>muito pequeno</b> (átomos, elétrons, luz), o comportamento é descrito pela <b>Física Quântica</b>. Problemas históricos que a física clássica não resolveu: a <b>radiação do corpo negro</b> (resolvida por Planck, com a ideia de energia <b>quantizada</b>) e o <b>efeito fotoelétrico</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer <b>quando</b> a física clássica deixa de valer (altíssimas velocidades → relatividade; escala atômica → quântica) e que a física moderna não “anula” a clássica, mas a <b>amplia</b>. Costuma aparecer em textos introdutórios seguidos de interpretação.</div>
+        <div class="ex"><b>Exemplo:</b> para descrever um elétron dentro do átomo, usa-se a mecânica de Newton? <span class="resp">Não — na escala atômica vale a física quântica.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== FÍSICA MODERNA 2 ===================== -->
+      <div class="area secF">
+      <div class="chapter" id="mod2">
+        <div class="num">V · Física Moderna</div>
+        <h2>2. Princípios da Mecânica Relativística</h2>
+        <p>A teoria da relatividade restrita de Einstein (1905) reformulou as ideias de espaço, tempo e energia para objetos muito velozes. Cai em conceitos qualitativos e na famosa equação E = mc².</p>
+        <div class="mini">
+          <a href="#mod2-postulados">Postulados e consequências</a>
+          <a href="#mod2-emc2">Equivalência massa-energia</a>
+        </div>
+      </div>
+
+      <section class="card" id="mod2-postulados">
+        <div class="kicker">Relatividade · 2.1</div>
+        <h3>Postulados da relatividade e suas consequências</h3>
+        <p class="lead">A <b>Relatividade Restrita</b> baseia-se em dois postulados: (1) as <b>leis da física</b> são as mesmas em todos os referenciais inerciais; (2) a <b>velocidade da luz no vácuo é constante</b> (c ≈ 3×10⁸ m/s) para qualquer observador, não importa seu movimento. Disso seguem efeitos surpreendentes em altas velocidades: <b>dilatação do tempo</b> (relógios em movimento “andam mais devagar”), <b>contração do comprimento</b> e a relatividade da simultaneidade.</p>
+        <div class="formula-box">c = constante para todos os observadores · tempo e espaço são relativos</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar qualitativamente a <b>dilatação do tempo</b> (o “paradoxo dos gêmeos”; múons que chegam à superfície) e a constância de c. Em geral são questões conceituais/textuais, sem contas pesadas. A ideia de que nada supera a luz é cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> um astronauta viaja a velocidade altíssima e volta. Para ele, passou menos ou mais tempo que na Terra? <span class="resp">Menos tempo (dilatação do tempo — ele “envelhece” menos).</span></div>
+      </section>
+
+      <section class="card" id="mod2-emc2">
+        <div class="kicker">Relatividade · 2.2</div>
+        <h3>Equivalência massa-energia (E = mc²)</h3>
+        <p class="lead">A relatividade revelou que <b>massa e energia são equivalentes</b>: uma pode se converter na outra, segundo \(E = m c^2\). Como \(c^2\) é gigantesco, uma <b>pequena massa</b> equivale a uma <b>enorme energia</b>. É o princípio por trás da energia <b>nuclear</b> (fissão e fusão), em que uma fração da massa “desaparece” e vira energia, e da energia que o <b>Sol</b> produz.</p>
+        <div class="formula-box">\( E = m\,c^2 \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar E = mc² como fonte da energia <b>nuclear</b> e <b>estelar</b> (a massa que “falta” após fusão/fissão vira energia) — liga com a Área da Estrutura Atômica da Química. Em geral é conceitual, mas pode pedir uma estimativa de energia.</div>
+        <div class="ex"><b>Exemplo:</b> de onde vem a imensa energia liberada numa reação nuclear? <span class="resp">Da conversão de uma pequena quantidade de massa em energia (E = mc²).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== FÍSICA MODERNA 3 ===================== -->
+      <div class="area secF">
+      <div class="chapter" id="mod3">
+        <div class="num">V · Física Moderna</div>
+        <h2>3. Efeito Fotoelétrico</h2>
+        <p>O experimento que provou que a luz também é feita de “pacotes” de energia (fótons) e rendeu o Nobel a Einstein. Marco da física quântica, cada vez mais presente nas provas.</p>
+        <div class="mini">
+          <a href="#mod3-foto">O efeito fotoelétrico e o fóton</a>
+        </div>
+      </div>
+
+      <section class="card" id="mod3-foto">
+        <div class="kicker">Física Moderna · 3.1</div>
+        <h3>Efeito fotoelétrico e o conceito de fóton</h3>
+        <p class="lead">O <b>efeito fotoelétrico</b> é a emissão de elétrons por um metal quando iluminado. O surpreendente: depende da <b>frequência</b> da luz, não da intensidade — abaixo de uma frequência mínima, <b>nenhum</b> elétron sai, por mais intensa que seja a luz. Einstein explicou: a luz é feita de <b>fótons</b>, “pacotes” de energia \(E = h\,f\) (h = constante de Planck). Cada fóton entrega sua energia a um elétron; só arranca o elétron se tiver energia suficiente (acima da <b>função trabalho</b>).</p>
+        <div class="formula-box">\( E_{fóton} = h\,f \qquad h\,f = W + E_{c,máx} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> entender que o efeito depende da <b>frequência</b> (cor), não da intensidade (pegadinha clássica), e calcular a energia do fóton (E = hf) ou a energia cinética do elétron emitido. Aplicações: <b>células fotovoltaicas</b> (energia solar), sensores e fotômetros.</div>
+        <div class="ex"><b>Exemplo:</b> aumentar a intensidade de uma luz vermelha fraca arranca elétrons de um metal que só responde ao azul? <span class="resp">Não — depende da frequência; luz vermelha (baixa frequência) não arranca, por mais intensa que seja.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== FÍSICA MODERNA 4 ===================== -->
+      <div class="area secF">
+      <div class="chapter" id="mod4">
+        <div class="num">V · Física Moderna</div>
+        <h2>4. Dualidade Onda-Partícula</h2>
+        <p>A ideia mais intrigante da física quântica: luz e matéria se comportam ora como onda, ora como partícula. Fecha o programa conectando ótica, ondas e o mundo atômico.</p>
+        <div class="mini">
+          <a href="#mod4-dual">Dualidade onda-partícula</a>
+        </div>
+      </div>
+
+      <section class="card" id="mod4-dual">
+        <div class="kicker">Física Moderna · 4.1</div>
+        <h3>Dualidade onda-partícula</h3>
+        <p class="lead">A <b>luz</b> ora se comporta como <b>onda</b> (interferência, difração) ora como <b>partícula</b> (efeito fotoelétrico, fótons) — é a <b>dualidade onda-partícula</b>. De Broglie propôs que a <b>matéria</b> também tem essa natureza dupla: a toda partícula está associado um comprimento de onda \(\lambda = h/(m v)\). Para objetos grandes, esse λ é desprezível (por isso não notamos), mas para <b>elétrons</b> é mensurável — comprovado pela <b>difração de elétrons</b> e usado no <b>microscópio eletrônico</b>.</p>
+        <div class="formula-box">\( \lambda = \dfrac{h}{m\,v} \) (comprimento de onda de De Broglie)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> entender que luz e matéria têm <b>natureza dupla</b> (o comportamento que aparece depende do experimento) e que o caráter ondulatório só é relevante na escala atômica. O <b>microscópio eletrônico</b> (usa o λ pequeno dos elétrons para enxergar o muito pequeno) liga com a Biologia/Química.</div>
+        <div class="ex"><b>Exemplo:</b> por que não percebemos o “comprimento de onda” de uma bola de futebol em movimento? <span class="resp">Sua massa é enorme, então λ = h/mv é absurdamente pequeno (imperceptível).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Física · organizado nos 5 blocos do programa do vestibular. Conferir sempre as unidades (SI) e o referencial antes de aplicar as fórmulas.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

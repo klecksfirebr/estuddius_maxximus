@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Guia de Biologia para o Vestibular — Conteúdos Explicados</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' },
+    startup: { ready(){ MathJax.startup.defaultReady(); MathJax.startup.promise.then(()=>document.body.classList.add('mjx-ready')); } }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e4e8ee; --line-strong:#cdd3dd;
+    --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4;
+    --paper:#ffffff; --bg:#eef1f5;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f5f7fa; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbfcfe; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#166534,#16a34a); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:70ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#f7f9fc; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE ÁREA ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:25px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid #dbe6f2; border-radius:10px;
+    padding:15px; text-align:center; font-size:16px; margin:14px 0; overflow-x:auto; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.6px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR ÁREA ===== */
+  .a1{ --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9; }
+  .a2{ --accent:#0e7490; --accent-2:#0891b2; --accent-soft:#ecfeff; }
+  .a3{ --accent:#be123c; --accent-2:#e11d48; --accent-soft:#fff1f2; }
+  .a4{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; }
+  .a5{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }
+  .a6{ --accent:#6d28d9; --accent-2:#7c3aed; --accent-soft:#f5f3ff; }
+  .a7{ --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#f0fdfa; }
+  .a8{ --accent:#a16207; --accent-2:#ca8a04; --accent-soft:#fefce8; }
+  .a9{ --accent:#166534; --accent-2:#15803d; --accent-soft:#f0fdf4; }
+  .a10{ --accent:#9333ea; --accent-2:#a855f7; --accent-soft:#faf5ff; }
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Guia de Biologia</div>
+      <div class="sub">Conteúdos do programa do vestibular, explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+        <div class="grp">As 10 áreas</div>
+        <ol>
+          <li><a href="#a1"><b>1</b> A Investigação nas Ciências Biológicas</a></li>
+          <li><a href="#a2"><b>2</b> Biologia Celular e Molecular</a></li>
+          <li><a href="#a3"><b>3</b> Histologia</a></li>
+          <li><a href="#a4"><b>4</b> Reprodução e Desenvolvimento</a></li>
+          <li><a href="#a5"><b>5</b> Os Seres Vivos (Reinos)</a></li>
+          <li><a href="#a6"><b>6</b> Genética</a></li>
+          <li><a href="#a7"><b>7</b> Biotecnologia</a></li>
+          <li><a href="#a8"><b>8</b> Origem da Vida e Evolução</a></li>
+          <li><a href="#a9"><b>9</b> Ecologia</a></li>
+          <li><a href="#a10"><b>10</b> Anatomia, Fisiologia e Saúde Humana</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de Biologia — Conteúdos Explicados</h1>
+        <p>Um passeio por todo o programa de Biologia do vestibular. Cada tópico responde a três perguntas: <b>o que é</b> (com suas aplicações), <b>como cai na prova</b> e <b>um exemplo</b> — para você reconhecer o assunto no enunciado e entender exatamente do que se trata.</p>
+        <div class="chips">
+          <span>Método científico</span><span>Citologia</span><span>Histologia</span>
+          <span>Reprodução</span><span>Reinos</span><span>Genética</span>
+          <span>Biotecnologia</span><span>Evolução</span><span>Ecologia</span><span>Fisiologia humana</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que é”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. Use o índice ao lado para saltar entre as 10 áreas; dentro de cada área há atalhos para os tópicos.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha de prova</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== ÁREA 1 ===================== -->
+      <div class="area a1">
+      <div class="chapter" id="a1">
+        <div class="num">Área 1</div>
+        <h2>A Investigação nas Ciências Biológicas</h2>
+        <p>É a “porta de entrada”: o que é vida, como a Biologia surgiu e, principalmente, como cientistas trabalham. Cai em questões de interpretação de experimentos (controle, variáveis), na diferença entre hipótese/teoria/lei e em textos sobre ciência e sociedade — temas frequentes no ENEM.</p>
+        <div class="mini">
+          <a href="#a1-vida">Conceito de vida</a>
+          <a href="#a1-origem">Origem da Biologia</a>
+          <a href="#a1-metodo">Método científico</a>
+          <a href="#a1-htl">Hipótese, Teoria e Lei</a>
+          <a href="#a1-soc">Biologia e sociedade</a>
+        </div>
+      </div>
+
+      <section class="card" id="a1-vida">
+        <div class="kicker">Investigação Científica · 1.1</div>
+        <h3>O conceito de vida e as características dos seres vivos</h3>
+        <p class="lead">Definir “vida” não é trivial, mas reconhece-se um ser vivo por um <b>conjunto</b> de características: <b>organização celular</b> (todo ser vivo é feito de células), <b>composição química</b> baseada em moléculas orgânicas, <b>metabolismo</b> (reações de síntese e degradação), <b>crescimento e desenvolvimento</b>, <b>resposta a estímulos</b> (irritabilidade), <b>homeostase</b> (equilíbrio interno), <b>reprodução</b> e <b>capacidade de evoluir</b> (hereditariedade com variação). Vírus desafiam essa definição: têm material genético e evoluem, mas não têm célula nem metabolismo próprio — por isso são chamados de seres acelulares ou “entes na fronteira da vida”.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> pede-se apontar qual característica está ausente em um exemplo (ex.: por que o vírus não é considerado célula viva), ou identificar processos como metabolismo e homeostase em um texto. A organização <b>átomo → molécula → célula → tecido → órgão → sistema → organismo → população → comunidade → ecossistema → biosfera</b> é cobrada como “níveis de organização”.</div>
+        <div class="ex"><b>Exemplo:</b> um cristal cresce e tem organização, mas não é vivo. Por quê? <span class="resp">Falta metabolismo, reprodução e resposta a estímulos — não basta uma só característica.</span></div>
+      </section>
+
+      <section class="card" id="a1-origem">
+        <div class="kicker">Investigação Científica · 1.2</div>
+        <h3>A origem da Biologia e as bases do pensamento científico</h3>
+        <p class="lead">A Biologia como ciência organizada nasce quando a observação da natureza deixa de se apoiar em explicações sobrenaturais e passa a se basear em <b>observação sistemática, experimentação e razão</b>. Marcos: Aristóteles (primeiras classificações), a invenção do microscópio (Hooke descreve a “célula”, Leeuwenhoek vê microrganismos), Lineu (sistema de nomenclatura), Darwin (evolução por seleção natural) e Mendel (hereditariedade). O <b>pensamento científico</b> exige evidências, é <b>provisório</b> (revisável diante de novos dados) e <b>autocorretivo</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> textos sobre história da ciência cobram a ideia de que o conhecimento científico é <b>construído coletivamente e revisável</b>, em oposição a verdades absolutas. Associar cientista a descoberta (Hooke–célula, Lineu–nomenclatura, Darwin–seleção natural, Mendel–genética) é frequente.</div>
+        <div class="ex"><b>Exemplo:</b> por que a ciência muda de opinião (ex.: classificação dos reinos)? <span class="resp">Porque é autocorretiva: novas evidências (genéticas, p.ex.) reformulam modelos antigos.</span></div>
+      </section>
+
+      <section class="card" id="a1-metodo">
+        <div class="kicker">Investigação Científica · 1.3</div>
+        <h3>O método científico e as metodologias dos cientistas</h3>
+        <p class="lead">É o roteiro de investigação: <b>observação</b> de um fenômeno → <b>problema</b> (pergunta) → <b>hipótese</b> (explicação testável) → <b>experimento</b> → <b>análise dos resultados</b> → <b>conclusão</b> (que confirma ou refuta a hipótese). Num experimento bem desenhado existe o <b>grupo controle</b> (sem o fator testado) e o <b>grupo experimental</b>, mudando-se apenas <b>uma variável independente</b> por vez para isolar a causa. A <b>variável dependente</b> é o que se mede; as <b>variáveis de controle</b> são mantidas constantes.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> é o tópico campeão de interpretação. Dão um experimento (ex.: efeito de um adubo nas plantas) e pedem para identificar a <b>hipótese</b>, a <b>variável independente/dependente</b>, o <b>grupo controle</b> ou apontar a falha no desenho experimental (ausência de controle, mais de uma variável alterada, amostra pequena).</div>
+        <div class="ex"><b>Exemplo:</b> testa-se um remédio dando-o a 50 pessoas e placebo a outras 50. Quem é o controle? <span class="resp">O grupo que recebe o placebo; a variável independente é o remédio.</span></div>
+        <div class="warn"><b>Pegadinha:</b> correlação não é causa. Duas coisas variarem juntas (ex.: vendas de sorvete e afogamentos) não significa que uma cause a outra.</div>
+      </section>
+
+      <section class="card" id="a1-htl">
+        <div class="kicker">Investigação Científica · 1.4</div>
+        <h3>Hipótese, Teoria e Lei</h3>
+        <p class="lead">São níveis diferentes de afirmação científica. A <b>hipótese</b> é uma resposta provisória e <b>testável</b> a um problema. A <b>teoria</b> é uma explicação <b>ampla e bem sustentada</b> por muitas evidências, que organiza fatos e faz previsões (ex.: Teoria da Evolução, Teoria Celular) — não é um “palpite”. A <b>lei</b> descreve <b>como</b> um fenômeno ocorre, geralmente de forma matemática ou regular (ex.: Leis de Mendel), mas não explica necessariamente <b>por quê</b>. Importante: uma teoria não “vira” lei; são coisas distintas.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a confusão popular “teoria = chute” é explorada. A prova valoriza saber que <b>teoria</b> é o ápice do conhecimento científico, bem fundamentada, e que <b>lei</b> descreve uma regularidade. Saber dar exemplos (Leis de Mendel × Teoria da Evolução) garante o ponto.</div>
+        <div class="ex"><b>Exemplo:</b> “A evolução é só uma teoria, logo é frágil.” Onde está o erro? <span class="resp">Confunde o sentido cotidiano com o científico: teoria é explicação robusta e amplamente comprovada.</span></div>
+      </section>
+
+      <section class="card" id="a1-soc">
+        <div class="kicker">Investigação Científica · 1.5</div>
+        <h3>Biologia e suas implicações na sociedade</h3>
+        <p class="lead">O avanço biológico gera benefícios e dilemas: vacinas e antibióticos, transgênicos, clonagem, células-tronco, testes de DNA, edição genética (CRISPR), além de questões ambientais. A <b>bioética</b> discute os limites e responsabilidades desses usos. Ciência não é neutra em seus impactos: depende de financiamento, contexto social e de decisões coletivas sobre como aplicar o conhecimento.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> textos jornalísticos seguidos de questões sobre <b>impactos éticos, sociais e ambientais</b> (ex.: prós e contras de transgênicos, uso de células-tronco embrionárias, patentes de genes). O ENEM costuma cobrar posicionamento crítico fundamentado, não opinião solta.</div>
+        <div class="ex"><b>Exemplo:</b> citar um benefício e um risco dos alimentos transgênicos. <span class="resp">Benefício: maior produtividade/resistência a pragas. Risco: impactos ambientais e concentração econômica em sementes patenteadas.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 2 ===================== -->
+      <div class="area a2">
+      <div class="chapter" id="a2">
+        <div class="num">Área 2</div>
+        <h2>Biologia Celular e Molecular</h2>
+        <p>O núcleo duro da Biologia: do que as células são feitas (água, sais, carboidratos, lipídios, proteínas, ácidos nucleicos), como são estudadas, suas estruturas e como funcionam (transportes, organelas, divisão celular, respiração, fotossíntese e expressão gênica). É a área que mais cai e a base para Genética, Fisiologia e Evolução.</p>
+        <div class="mini">
+          <a href="#a2-agua">Água e sais minerais</a>
+          <a href="#a2-carbo">Carboidratos</a>
+          <a href="#a2-lip">Lipídios</a>
+          <a href="#a2-prot">Proteínas</a>
+          <a href="#a2-enz">Enzimas</a>
+          <a href="#a2-acnu">Ácidos nucleicos</a>
+          <a href="#a2-vit">Vitaminas</a>
+          <a href="#a2-metodos">Métodos de estudo</a>
+          <a href="#a2-memb">Membrana e transportes</a>
+          <a href="#a2-cito">Citoplasma e organelas</a>
+          <a href="#a2-nucleo">Núcleo, cromossomos e genes</a>
+          <a href="#a2-ciclo">Ciclo celular e interfase</a>
+          <a href="#a2-mitose">Mitose</a>
+          <a href="#a2-meiose">Meiose</a>
+          <a href="#a2-resp">Respiração celular</a>
+          <a href="#a2-ferm">Fermentação</a>
+          <a href="#a2-foto">Fotossíntese</a>
+          <a href="#a2-dna">DNA e duplicação</a>
+          <a href="#a2-sintese">Transcrição e tradução</a>
+        </div>
+      </div>
+
+      <section class="card" id="a2-agua">
+        <div class="kicker">Citologia · 2.1</div>
+        <h3>Compostos inorgânicos: água e sais minerais</h3>
+        <p class="lead">São substâncias sem cadeia de carbono ligadas à vida. A <b>água</b> é o composto mais abundante das células: atua como <b>solvente universal</b> (meio das reações), no <b>transporte</b> de substâncias, na <b>regulação térmica</b> (alto calor específico — sua/transpiração esfriam o corpo) e como <b>reagente</b> (hidrólise). É polar, o que explica suas pontes de hidrogênio. Os <b>sais minerais</b> aparecem dissolvidos (íons como Na⁺, K⁺, Ca²⁺, Cl⁻ — impulso nervoso, contração muscular, equilíbrio osmótico) ou imobilizados (cálcio e fósforo nos ossos, ferro na hemoglobina, iodo nos hormônios da tireoide).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar a função do íon à fisiologia (Ca²⁺–contração/coagulação, Fe–transporte de O₂, I–tireoide), e justificar propriedades da água pela <b>polaridade</b> e <b>pontes de hidrogênio</b>. A relação entre teor de água e atividade metabólica (tecidos jovens têm mais água) é comum.</div>
+        <div class="ex"><b>Exemplo:</b> por que suar refresca? <span class="resp">A água absorve muito calor para evaporar (alto calor de vaporização), retirando calor do corpo.</span></div>
+      </section>
+
+      <section class="card" id="a2-carbo">
+        <div class="kicker">Citologia · 2.2</div>
+        <h3>Carboidratos (glicídios)</h3>
+        <p class="lead">São açúcares, fonte <b>principal de energia</b> (a glicose é o “combustível” da respiração). Classificam-se em <b>monossacarídeos</b> (glicose, frutose, galactose), <b>dissacarídeos</b> (sacarose = glicose+frutose; lactose; maltose) e <b>polissacarídeos</b> (amido — reserva vegetal; glicogênio — reserva animal no fígado/músculo; celulose — estrutura da parede vegetal; quitina — exoesqueleto de artrópodes e parede de fungos). Fórmula geral aproximada \((CH_2O)_n\).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir <b>função energética</b> (amido, glicogênio) de <b>função estrutural</b> (celulose, quitina), e identificar o monossacarídeo que forma cada um. A celulose como fibra não digerível por humanos (faltam enzimas) é clássica.</div>
+        <div class="ex"><b>Exemplo:</b> qual a reserva energética de carboidrato no fígado humano? <span class="resp">O glicogênio.</span></div>
+      </section>
+
+      <section class="card" id="a2-lip">
+        <div class="kicker">Citologia · 2.3</div>
+        <h3>Lipídios</h3>
+        <p class="lead">Grupo diverso, unido por serem <b>insolúveis em água</b> (apolares). Funções: <b>reserva energética</b> de longo prazo (triglicerídeos — mais energia por grama que os carboidratos), <b>isolamento térmico</b> e proteção, e papel <b>estrutural</b> — os <b>fosfolipídios</b> formam a bicamada das membranas. Incluem ainda os <b>esteroides</b> (colesterol, que dá fluidez à membrana e origina hormônios sexuais e a vitamina D) e as <b>ceras</b> (impermeabilização, como na cutícula das folhas).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>fosfolipídios</b> e seu caráter <b>anfipático</b> (cabeça polar/hidrofílica + cauda apolar/hidrofóbica) explicam a estrutura da membrana — tema recorrente. Também cobram o colesterol como precursor de hormônios esteroides e a vitamina D.</div>
+        <div class="ex"><b>Exemplo:</b> por que os fosfolipídios formam bicamada na água? <span class="resp">As caudas apolares se voltam para dentro (fugindo da água) e as cabeças polares ficam para fora.</span></div>
+      </section>
+
+      <section class="card" id="a2-prot">
+        <div class="kicker">Citologia · 2.4</div>
+        <h3>Proteínas</h3>
+        <p class="lead">São polímeros de <b>aminoácidos</b> (20 tipos), unidos por <b>ligações peptídicas</b>. São as moléculas mais <b>versáteis</b>: estrutura (colágeno, queratina), transporte (hemoglobina), defesa (anticorpos), movimento (actina/miosina), hormônios (insulina) e, sobretudo, <b>catálise</b> (enzimas). Têm até quatro níveis de organização (primária, secundária, terciária, quaternária); a <b>forma</b> determina a função. Calor ou pH extremo causam <b>desnaturação</b> (perda da forma e da função).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar <b>sequência de aminoácidos → forma → função</b>, e explicar a desnaturação (ex.: clara de ovo cozinhando, febre alta). A ideia de que a ordem dos aminoácidos é definida pelo gene conecta com a síntese proteica.</div>
+        <div class="ex"><b>Exemplo:</b> por que febre muito alta é perigosa em nível molecular? <span class="resp">O calor desnatura proteínas/enzimas, comprometendo o metabolismo.</span></div>
+      </section>
+
+      <section class="card" id="a2-enz">
+        <div class="kicker">Citologia · 2.5</div>
+        <h3>Enzimas</h3>
+        <p class="lead">São proteínas (em geral) que <b>catalisam</b> reações: aceleram-nas reduzindo a <b>energia de ativação</b>, sem serem consumidas. Agem com <b>especificidade</b> pelo modelo <b>chave-fechadura</b>: o <b>substrato</b> encaixa no <b>sítio ativo</b>. Sua atividade depende de <b>temperatura</b> e <b>pH ótimos</b> (fora deles, cai ou cessa por desnaturação). Muitas precisam de <b>cofatores</b> (íons) ou <b>coenzimas</b> (muitas derivadas de vitaminas).</p>
+        <div class="formula-box">substrato + enzima → complexo enzima-substrato → produto + enzima (reutilizada)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar <b>gráficos</b> de velocidade da reação × temperatura/pH (curva com pico no ótimo), explicar a queda após o ótimo por <b>desnaturação</b> e a especificidade enzima-substrato. A pepsina (pH ácido do estômago) × amilase/tripsina (pH neutro/básico) é exemplo recorrente.</div>
+        <div class="ex"><b>Exemplo:</b> num gráfico, a atividade enzimática sobe até 37 °C e despenca a 50 °C. Por quê? <span class="resp">Acima do ótimo, o calor desnatura a enzima.</span></div>
+      </section>
+
+      <section class="card" id="a2-acnu">
+        <div class="kicker">Citologia · 2.6</div>
+        <h3>Ácidos nucleicos: DNA e RNA</h3>
+        <p class="lead">São os polímeros de <b>nucleotídeos</b> (fosfato + açúcar + base nitrogenada) que guardam e expressam a informação genética. O <b>DNA</b> é dupla-fita, açúcar <b>desoxirribose</b>, bases A-T-C-G, e armazena o “manual” da célula. O <b>RNA</b> é simples-fita, açúcar <b>ribose</b>, troca a timina pela <b>uracila</b> (U) e executa a leitura desse manual em três tipos: <b>RNAm</b> (mensageiro, leva a receita), <b>RNAt</b> (transportador, traz aminoácidos) e <b>RNAr</b> (ribossômico, forma o ribossomo). No DNA, o pareamento é <b>A–T</b> e <b>C–G</b>.</p>
+        <div class="formula-box">DNA: A–T, C–G &nbsp;|&nbsp; no RNA, T é substituída por U (A–U)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> completar a fita complementar, calcular porcentagem de bases (se A=30%, então T=30%, C=G=20% — <b>regra de Chargaff</b>), e diferenciar DNA × RNA (fita, açúcar, base, função). Base obrigatória para síntese proteica.</div>
+        <div class="ex"><b>Exemplo:</b> uma fita de DNA é ATG CCA. Qual a fita complementar? <span class="resp">TAC GGT.</span></div>
+      </section>
+
+      <section class="card" id="a2-vit">
+        <div class="kicker">Citologia · 2.7</div>
+        <h3>Vitaminas</h3>
+        <p class="lead">São compostos orgânicos necessários em <b>pequenas quantidades</b>, que o corpo geralmente não produz (precisam vir da dieta) e que muitas vezes atuam como <b>coenzimas</b>. Dividem-se em <b>hidrossolúveis</b> (complexo B e C — não são estocadas, o excesso é eliminado) e <b>lipossolúveis</b> (A, D, E, K — armazenadas na gordura, podem causar hipervitaminose). Sua falta causa <b>avitaminoses</b> específicas (escorbuto–vit. C; raquitismo–vit. D; cegueira noturna–vit. A; problemas de coagulação–vit. K).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar vitamina à <b>doença carencial</b> e à fonte alimentar, e classificar em hidro/lipossolúvel. O papel da vitamina D + cálcio nos ossos e o da vitamina K na coagulação aparecem com frequência.</div>
+        <div class="ex"><b>Exemplo:</b> qual avitaminose causa o escorbuto? <span class="resp">A falta de vitamina C.</span></div>
+      </section>
+
+      <section class="card" id="a2-metodos">
+        <div class="kicker">Citologia · 2.8</div>
+        <h3>Métodos de estudo das células</h3>
+        <p class="lead">Como a célula é minúscula, usa-se: <b>microscopia óptica</b> (luz; aumenta até ~1.000–1.500×, vê células e núcleos em material vivo ou corado); <b>microscopia eletrônica</b> (feixe de elétrons; aumenta centenas de milhares de vezes e revela <b>ultraestrutura</b> e organelas — de transmissão/MET para o interior, de varredura/MEV para a superfície em 3D, mas só material morto); <b>fracionamento celular</b> (centrifugação que separa as organelas por densidade para estudá-las isoladas); e <b>traçadores radioativos</b> (isótopos marcam moléculas para seguir vias metabólicas, como nos experimentos da fotossíntese).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> escolher o método adequado ao objetivo (ver organela em detalhe → MET; ver superfície → MEV; isolar mitocôndrias → fracionamento; rastrear um átomo numa via → radioisótopo). A limitação “elétron não vê material vivo” é cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> para descobrir o destino do carbono na fotossíntese, qual técnica? <span class="resp">Traçadores radioativos (carbono-14).</span></div>
+      </section>
+
+      <section class="card" id="a2-memb">
+        <div class="kicker">Citologia · 2.9</div>
+        <h3>Membrana plasmática e transportes</h3>
+        <p class="lead">A membrana é uma <b>bicamada de fosfolipídios</b> com proteínas embutidas (modelo do <b>mosaico fluido</b>) que controla as trocas: é <b>seletivamente permeável</b>. O <b>transporte passivo</b> não gasta energia e segue o gradiente: <b>difusão simples</b> (gases, lipossolúveis), <b>difusão facilitada</b> (por proteínas) e <b>osmose</b> (passagem de água para o meio mais concentrado em soluto). O <b>transporte ativo</b> gasta ATP para mover substâncias <b>contra</b> o gradiente (ex.: bomba de sódio-potássio). Para partículas grandes há <b>endocitose</b> (fagocitose/pinocitose) e <b>exocitose</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> osmose é campeã — prever se a célula <b>incha</b> (meio hipotônico), <b>murcha/plasmolisa</b> (hipertônico) ou fica estável (isotônico), e o porquê de hemácias estourarem em água pura. Diferenciar transporte passivo × ativo (gasto de ATP, sentido do gradiente) é essencial.</div>
+        <div class="ex"><b>Exemplo:</b> uma hemácia em água destilada... <span class="resp">A água entra por osmose e a célula incha e pode romper (hemólise) — meio hipotônico.</span></div>
+        <div class="warn"><b>Pegadinha:</b> na osmose quem se move é a <b>água</b>, do meio <b>menos</b> concentrado (hipotônico) para o <b>mais</b> concentrado em soluto (hipertônico) — não o soluto.</div>
+      </section>
+
+      <section class="card" id="a2-cito">
+        <div class="kicker">Citologia · 2.10</div>
+        <h3>Citoplasma e organelas</h3>
+        <p class="lead">O citoplasma é o conteúdo entre a membrana e o núcleo. Cada <b>organela</b> tem sua função: <b>mitocôndria</b> (respiração celular, produz ATP — “usina”); <b>ribossomo</b> (síntese de proteínas); <b>retículo endoplasmático rugoso</b> (com ribossomos, produz proteínas) e <b>liso</b> (lipídios, desintoxicação); <b>complexo golgiense</b> (empacota e secreta); <b>lisossomo</b> (digestão intracelular); <b>peroxissomo</b> (degrada peróxidos); <b>vacúolo</b> (reserva/turgor, grande em vegetais); <b>cloroplasto</b> (fotossíntese, só em vegetais/algas); <b>centríolos</b> (divisão celular, cílios e flagelos).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar organela à função e <b>deduzir o tipo celular</b> pela quantidade de organelas (muitas mitocôndrias → célula muscular; muito RE rugoso/golgi → célula secretora; cloroplastos e parede → vegetal). Diferenças <b>animal × vegetal</b> (parede, cloroplasto, vacúolo grande, centríolos) são clássicas.</div>
+        <div class="ex"><b>Exemplo:</b> uma célula com pouquíssimas mitocôndrias e cheia de cloroplastos é de quê? <span class="resp">De um vegetal (provavelmente célula fotossintetizante da folha).</span></div>
+      </section>
+
+      <section class="card" id="a2-nucleo">
+        <div class="kicker">Citologia · 2.11</div>
+        <h3>Núcleo, cromossomos e genes (procarionte × eucarionte)</h3>
+        <p class="lead">O <b>núcleo</b> guarda o DNA e comanda a célula; é envolto pela <b>carioteca</b> (envoltório nuclear com poros) e contém o <b>nucléolo</b> (fabrica RNAr). O DNA associado a proteínas forma a <b>cromatina</b>, que se condensa em <b>cromossomos</b> na divisão. Um <b>gene</b> é um trecho de DNA que codifica uma informação (geralmente uma proteína). Diferença central: <b>procariontes</b> (bactérias) <b>não têm núcleo</b> nem organelas membranosas — o DNA é circular e livre no citoplasma; <b>eucariontes</b> têm núcleo organizado e DNA linear associado a histonas, com íntrons e éxons.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a distinção <b>procarionte × eucarionte</b> (presença de carioteca e organelas) é uma das mais cobradas. Conceitos de <b>cromossomos homólogos</b>, <b>cariótipo</b>, <b>haploide (n)</b> e <b>diploide (2n)</b> entram aqui e preparam a Genética.</div>
+        <div class="ex"><b>Exemplo:</b> a célula humana tem 46 cromossomos. Quantos pares de homólogos? <span class="resp">23 pares (2n = 46; n = 23).</span></div>
+      </section>
+
+      <section class="card" id="a2-ciclo">
+        <div class="kicker">Citologia · 2.12</div>
+        <h3>Ciclo celular, interfase e pontos de checagem</h3>
+        <p class="lead">É a “vida” da célula entre duas divisões. A maior parte é a <b>interfase</b> (G1 = crescimento; <b>S</b> = duplicação do DNA; G2 = preparação para dividir), seguida da <b>divisão</b> (mitose/meiose). Os <b>pontos de checagem</b> (checkpoints) monitoram se está tudo certo antes de avançar — DNA duplicado corretamente, sem danos, cromossomos ligados ao fuso. Falhas nesse controle levam à proliferação descontrolada: a base do <b>câncer</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> saber que o DNA é duplicado na fase <b>S</b> (antes da divisão), e relacionar a perda de controle do ciclo (mutações em genes reguladores, como os supressores de tumor) ao <b>câncer</b>. A interfase como fase de intensa atividade (não “repouso”) é cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> em que fase a célula duplica seu DNA? <span class="resp">Na fase S da interfase.</span></div>
+      </section>
+
+      <section class="card" id="a2-mitose">
+        <div class="kicker">Citologia · 2.13</div>
+        <h3>Mitose</h3>
+        <p class="lead">É a divisão que gera <b>duas células-filhas idênticas</b> à mãe, com o <b>mesmo número de cromossomos</b> (2n → 2n). Etapas: <b>prófase</b> (cromossomos se condensam, some a carioteca), <b>metáfase</b> (cromossomos alinhados no centro — placa equatorial), <b>anáfase</b> (cromátides-irmãs se separam para os polos) e <b>telófase</b> (formam-se dois núcleos), seguida da <b>citocinese</b>. Serve para <b>crescimento</b>, <b>regeneração</b> e reprodução assexuada.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar a fase por uma figura (metáfase = alinhados; anáfase = separando), e reforçar que a mitose <b>conserva</b> o número cromossômico e a identidade genética (sem variabilidade). Comparar com a meiose é quase certo.</div>
+        <div class="ex"><b>Exemplo:</b> uma célula 2n=8 entra em mitose. Cada célula-filha terá quantos cromossomos? <span class="resp">8 (2n) — iguais à célula-mãe.</span></div>
+      </section>
+
+      <section class="card" id="a2-meiose">
+        <div class="kicker">Citologia · 2.14</div>
+        <h3>Meiose</h3>
+        <p class="lead">É a divisão que <b>reduz à metade</b> o número de cromossomos (2n → n) e produz <b>quatro células-filhas geneticamente diferentes</b> — os <b>gametas</b>. Ocorre em duas etapas (meiose I, reducional; meiose II, equacional). Gera <b>variabilidade genética</b> por dois mecanismos: o <b>crossing-over</b> (permutação, troca de pedaços entre homólogos na prófase I) e a <b>segregação independente</b> dos cromossomos.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> comparar mitose × meiose (nº de filhas, número cromossômico, identidade genética, função), e apontar a meiose como fonte de <b>variabilidade</b> (com a fecundação) — ligação direta com Genética e Evolução. O crossing-over como gerador de recombinação é muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> por que irmãos não são idênticos (exceto gêmeos univitelinos)? <span class="resp">Por causa da variabilidade da meiose (crossing-over e segregação independente) somada à fecundação.</span></div>
+        <div class="warn"><b>Pegadinha:</b> mitose mantém 2n e gera 2 células iguais; meiose reduz a n e gera 4 células diferentes. Não troque os números.</div>
+      </section>
+
+      <section class="card" id="a2-resp">
+        <div class="kicker">Metabolismo · 2.15</div>
+        <h3>Respiração celular</h3>
+        <p class="lead">É a “queima” controlada da glicose com <b>oxigênio</b> para produzir <b>ATP</b> (energia). Tem três etapas: <b>glicólise</b> (no citoplasma, quebra a glicose em piruvato), <b>ciclo de Krebs</b> (na matriz mitocondrial) e <b>cadeia respiratória/fosforilação oxidativa</b> (nas cristas mitocondriais, onde o O₂ é o aceptor final e se forma a maior parte do ATP). Rende cerca de <b>30–38 ATP</b> por glicose. Produtos finais: CO₂ e H₂O.</p>
+        <div class="formula-box">\( C_6H_{12}O_6 + 6\,O_2 \rightarrow 6\,CO_2 + 6\,H_2O + \text{energia (ATP)} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> localizar cada etapa (glicólise no citoplasma; Krebs e cadeia na mitocôndria), o papel do <b>O₂ como aceptor final</b> de elétrons, e identificar reagentes/produtos. É o “espelho” da fotossíntese — costumam ser comparadas.</div>
+        <div class="ex"><b>Exemplo:</b> qual o aceptor final de elétrons na respiração aeróbia? <span class="resp">O oxigênio (O₂), formando água.</span></div>
+      </section>
+
+      <section class="card" id="a2-ferm">
+        <div class="kicker">Metabolismo · 2.16</div>
+        <h3>Fermentação</h3>
+        <p class="lead">É a obtenção de energia <b>sem oxigênio</b> (anaeróbia). Faz só a glicólise e regenera as coenzimas, com <b>baixo rendimento</b> (2 ATP por glicose). Na <b>fermentação alcoólica</b> (leveduras) o produto é <b>etanol + CO₂</b> (pão, cerveja, vinho, etanol combustível); na <b>fermentação láctica</b> (bactérias e músculo humano em esforço intenso) o produto é <b>ácido láctico</b> (iogurte, queijo; e a fadiga muscular).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar tipo de fermentação ao produto e à aplicação (pão/cerveja → alcoólica; iogurte → láctica), e contrastar com a respiração (rendimento muito menor de ATP). A fermentação láctica no músculo durante exercício intenso é exemplo recorrente.</div>
+        <div class="ex"><b>Exemplo:</b> o que faz o pão crescer? <span class="resp">O CO₂ liberado pela fermentação alcoólica das leveduras.</span></div>
+      </section>
+
+      <section class="card" id="a2-foto">
+        <div class="kicker">Metabolismo · 2.17</div>
+        <h3>Fotossíntese</h3>
+        <p class="lead">É a produção de <b>matéria orgânica</b> (glicose) a partir de CO₂ e água, usando a <b>energia da luz</b> captada pela <b>clorofila</b> nos <b>cloroplastos</b>. Tem a <b>fase clara/fotoquímica</b> (nos tilacoides: a luz quebra a água — <b>fotólise</b> — liberando O₂ e gerando ATP e NADPH) e a <b>fase escura/ciclo de Calvin</b> (no estroma: o CO₂ é “fixado” em glicose usando o ATP e o NADPH). É a base das cadeias alimentares e a fonte do O₂ atmosférico.</p>
+        <div class="formula-box">\( 6\,CO_2 + 6\,H_2O \xrightarrow{\text{luz}} C_6H_{12}O_6 + 6\,O_2 \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar reagentes/produtos, localizar as fases (clara nos tilacoides, escura no estroma), e saber que o <b>O₂ vem da água</b> (fotólise), não do CO₂. Gráficos de taxa de fotossíntese × luz/CO₂/temperatura (fatores limitantes) são frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> de onde vem o oxigênio liberado na fotossíntese? <span class="resp">Da quebra da água (fotólise), na fase clara.</span></div>
+      </section>
+
+      <section class="card" id="a2-dna">
+        <div class="kicker">Genética molecular · 2.18</div>
+        <h3>Estrutura do DNA e sua duplicação (replicação)</h3>
+        <p class="lead">O DNA é uma <b>dupla-hélice</b> (Watson e Crick): duas fitas <b>antiparalelas</b> unidas pelo pareamento A–T e C–G. Antes de a célula se dividir (fase S), o DNA se <b>duplica</b> de forma <b>semiconservativa</b>: as fitas se separam e cada uma serve de <b>molde</b> para a síntese de uma nova fita (pela <b>DNA-polimerase</b>). Resultado: duas moléculas idênticas, cada uma com uma fita velha e uma nova.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o termo <b>semiconservativa</b> (cada molécula-filha conserva metade da original) é cobrado diretamente, assim como completar a fita-molde. Liga-se ao ciclo celular (duplicação na fase S) e às mutações (erros na cópia).</div>
+        <div class="ex"><b>Exemplo:</b> por que a duplicação do DNA é chamada de semiconservativa? <span class="resp">Cada nova molécula tem uma fita antiga (conservada) e uma fita recém-sintetizada.</span></div>
+      </section>
+
+      <section class="card" id="a2-sintese">
+        <div class="kicker">Genética molecular · 2.19</div>
+        <h3>Síntese proteica: transcrição e tradução</h3>
+        <p class="lead">É como o gene “vira” proteína (o <b>dogma central</b>: DNA → RNA → proteína). Na <b>transcrição</b> (no núcleo), o DNA é copiado em <b>RNA mensageiro</b> pela RNA-polimerase. Na <b>tradução</b> (no ribossomo), o RNAm é lido em trincas (<b>códons</b>); cada códon corresponde a um aminoácido, trazido pelo <b>RNAt</b> (que tem o <b>anticódon</b>), montando a cadeia proteica. O conjunto de regras códon→aminoácido é o <b>código genético</b> (universal e degenerado — vários códons para um mesmo aminoácido).</p>
+        <div class="formula-box">DNA &nbsp;—transcrição→&nbsp; RNAm &nbsp;—tradução→&nbsp; proteína</div>
+        <div class="uso"><b>Como cai no vestibular:</b> traduzir uma sequência (DNA → RNAm → aminoácidos usando a tabela de códons), localizar onde ocorre cada etapa (transcrição no núcleo, tradução no ribossomo) e relacionar <b>mutação</b> → mudança no códon → possível troca de aminoácido (ex.: anemia falciforme). “Universal e degenerado” é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o DNA-molde é TAC. Qual o códon no RNAm? <span class="resp">AUG (que sinaliza início e codifica metionina).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 3 ===================== -->
+      <div class="area a3">
+      <div class="chapter" id="a3">
+        <div class="num">Área 3</div>
+        <h2>Histologia</h2>
+        <p>O estudo dos <b>tecidos</b> — conjuntos de células semelhantes que atuam juntas. Cai relacionando estrutura à função, identificando tecidos por descrições ou imagens, e nas comparações entre tecidos animais e vegetais. Conecta a Citologia com a Fisiologia.</p>
+        <div class="mini">
+          <a href="#a3-epi">Tecido epitelial</a>
+          <a href="#a3-conj">Tecido conjuntivo</a>
+          <a href="#a3-musc">Tecido muscular</a>
+          <a href="#a3-nerv">Tecido nervoso</a>
+          <a href="#a3-merist">Vegetais: meristemas</a>
+          <a href="#a3-revest">Vegetais: revestimento e parênquima</a>
+          <a href="#a3-cond">Vegetais: sustentação e condução</a>
+        </div>
+      </div>
+
+      <section class="card" id="a3-epi">
+        <div class="kicker">Tecidos animais · 3.1</div>
+        <h3>Tecido epitelial</h3>
+        <p class="lead">Reveste superfícies e cavidades e forma as <b>glândulas</b>. Características: células <b>justapostas</b> (pouquíssima substância entre elas), <b>avascular</b> (sem vasos — nutre-se por difusão do tecido vizinho) e com grande capacidade de <b>regeneração</b>. Funções: <b>proteção</b> (pele), <b>absorção</b> (intestino), <b>secreção</b> (glândulas — exócrinas liberam por ductos; endócrinas lançam hormônios no sangue) e percepção sensorial.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer pelas características (justaposto, avascular) e diferenciar glândulas <b>exócrinas × endócrinas</b>. A relação da forma das células (pavimentoso, cúbico, prismático) com a função aparece em imagens.</div>
+        <div class="ex"><b>Exemplo:</b> por que um corte na pele não sangra se for muito superficial? <span class="resp">A epiderme (epitélio) é avascular; só sangra ao atingir o tecido conjuntivo abaixo.</span></div>
+      </section>
+
+      <section class="card" id="a3-conj">
+        <div class="kicker">Tecidos animais · 3.2</div>
+        <h3>Tecido conjuntivo</h3>
+        <p class="lead">É o tecido de <b>preenchimento, sustentação e união</b>, marcado por <b>muita matriz extracelular</b> (substância fundamental + fibras de colágeno, elásticas). Possui vários tipos especializados: <b>conjuntivo propriamente dito</b> (sob a pele, envolve órgãos), <b>adiposo</b> (reserva de gordura, isolamento), <b>cartilaginoso</b> (cartilagem, flexível), <b>ósseo</b> (matriz rígida com cálcio — sustentação) e <b>sanguíneo</b> (matriz líquida, o plasma; transporte e defesa). Origina-se do mesoderma.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>matriz extracelular abundante</b> é a marca registrada; o <b>sangue</b> como tecido conjuntivo (matriz líquida) é uma “surpresa” muito cobrada. Relacionar cada tipo à função (ósseo–sustentação, adiposo–reserva, sanguíneo–transporte) é comum.</div>
+        <div class="ex"><b>Exemplo:</b> por que o sangue é classificado como tecido conjuntivo? <span class="resp">Tem células dispersas em abundante matriz extracelular (o plasma).</span></div>
+      </section>
+
+      <section class="card" id="a3-musc">
+        <div class="kicker">Tecidos animais · 3.3</div>
+        <h3>Tecido muscular</h3>
+        <p class="lead">Especializado em <b>contração</b> (movimento), graças às proteínas <b>actina e miosina</b>. Três tipos: <b>estriado esquelético</b> (preso aos ossos, contração <b>voluntária</b>, células multinucleadas com estrias); <b>estriado cardíaco</b> (coração, <b>involuntário</b>, estriado, com discos intercalares); e <b>liso</b> (paredes de vísceras e vasos, <b>involuntário</b>, sem estrias).</p>
+        <table class="tab"><thead><tr><th>Tipo</th><th>Estrias</th><th>Controle</th><th>Onde</th></tr></thead><tbody>
+          <tr><th>Esquelético</th><td>sim</td><td>voluntário</td><td>músculos do esqueleto</td></tr>
+          <tr><th>Cardíaco</th><td>sim</td><td>involuntário</td><td>coração</td></tr>
+          <tr><th>Liso</th><td>não</td><td>involuntário</td><td>vísceras, vasos</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar pelo trio <b>estrias / controle / localização</b>. O cardíaco é a “pegadinha”: é estriado <b>mas</b> involuntário. Relacionar com a contração (actina-miosina, papel do cálcio) aparece junto com Fisiologia.</div>
+        <div class="ex"><b>Exemplo:</b> o músculo do coração é estriado e voluntário? <span class="resp">Estriado sim, mas <b>involuntário</b> (cardíaco).</span></div>
+      </section>
+
+      <section class="card" id="a3-nerv">
+        <div class="kicker">Tecidos animais · 3.4</div>
+        <h3>Tecido nervoso</h3>
+        <p class="lead">Especializado em <b>receber, conduzir e processar</b> informações na forma de impulsos elétricos. Sua célula principal é o <b>neurônio</b> (dendritos recebem o estímulo; o corpo celular o processa; o axônio o transmite). As <b>células da glia</b> (ex.: a bainha de mielina, feita por células de Schwann) dão suporte, nutrição e isolamento, acelerando a condução. A comunicação entre neurônios ocorre nas <b>sinapses</b>, com <b>neurotransmissores</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar as partes do neurônio e o <b>sentido</b> do impulso (dendrito → corpo → axônio), o papel da <b>mielina</b> (condução saltatória, mais rápida) e da sinapse. Conecta diretamente com o sistema nervoso (Área 10).</div>
+        <div class="ex"><b>Exemplo:</b> qual parte do neurônio transmite o impulso para a próxima célula? <span class="resp">O axônio (terminando na sinapse).</span></div>
+      </section>
+
+      <section class="card" id="a3-merist">
+        <div class="kicker">Tecidos vegetais · 3.5</div>
+        <h3>Tecidos vegetais: meristemas</h3>
+        <p class="lead">São os tecidos de <b>crescimento</b>, formados por células jovens que se dividem ativamente (equivalem às “células-tronco” da planta). Os <b>meristemas primários</b> (apicais, nas pontas de raiz e caule) promovem o <b>crescimento em comprimento</b>; os <b>meristemas secundários</b> (câmbio e felogênio) promovem o <b>crescimento em espessura</b> (lenho/casca), responsável pelos anéis das árvores. A partir deles diferenciam-se todos os demais tecidos.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir crescimento <b>primário (comprimento)</b> × <b>secundário (espessura)</b>, e relacionar o câmbio aos anéis de crescimento. A poda de ponta para a planta “engrossar/ramificar” aparece como aplicação.</div>
+        <div class="ex"><b>Exemplo:</b> os anéis de crescimento de um tronco vêm de qual tecido? <span class="resp">Do câmbio (meristema secundário).</span></div>
+      </section>
+
+      <section class="card" id="a3-revest">
+        <div class="kicker">Tecidos vegetais · 3.6</div>
+        <h3>Tecidos vegetais: revestimento e parênquimas</h3>
+        <p class="lead">O <b>revestimento</b> protege: a <b>epiderme</b> (com cutícula cerosa que evita perda de água; nela ficam os <b>estômatos</b>, que controlam trocas gasosas e transpiração) e a <b>periderme</b> (a “casca” das plantas lenhosas, com súber). Os <b>parênquimas</b> são os tecidos de preenchimento e de função: o <b>clorofiliano</b> (com cloroplastos, faz <b>fotossíntese</b>) e os de <b>reserva</b> (armazenam amido, água — como na batata e em cactos).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>estômatos</b> (abertura/fechamento, células-guarda, relação com transpiração e CO₂) são muito cobrados, inclusive em gráficos. O parênquima clorofiliano como sede da fotossíntese conecta com a Área 2.</div>
+        <div class="ex"><b>Exemplo:</b> em dia muito quente e seco, o estômato tende a... <span class="resp">Fechar, para reduzir a perda de água (mas isso também limita a entrada de CO₂).</span></div>
+      </section>
+
+      <section class="card" id="a3-cond">
+        <div class="kicker">Tecidos vegetais · 3.7</div>
+        <h3>Tecidos vegetais: sustentação e condução</h3>
+        <p class="lead">A <b>sustentação</b> vem do <b>colênquima</b> (células vivas, flexível — sustenta partes jovens) e do <b>esclerênquima</b> (células mortas com parede espessa e rígida — sustentação definitiva). A <b>condução</b> (sistema vascular das plantas) tem o <b>xilema (lenho)</b>, que transporta <b>água e sais</b> da raiz às folhas (seiva bruta, sentido ascendente), e o <b>floema (líber)</b>, que transporta <b>seiva elaborada</b> (açúcares da fotossíntese) das folhas para o resto da planta.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a dupla <b>xilema (água, sobe) × floema (açúcar, distribui)</b> é certeira. Experimentos de anelamento (retirar o floema em anel) e de planta em corante mostram o transporte e caem com frequência.</div>
+        <div class="ex"><b>Exemplo:</b> qual tecido leva a glicose das folhas para a raiz? <span class="resp">O floema (seiva elaborada).</span></div>
+        <div class="warn"><b>Pegadinha:</b> xilema conduz <b>seiva bruta</b> (água+sais, da raiz para cima); floema conduz <b>seiva elaborada</b> (açúcares, das folhas para todo lado). Não inverta.</div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 4 ===================== -->
+      <div class="area a4">
+      <div class="chapter" id="a4">
+        <div class="num">Área 4</div>
+        <h2>Reprodução e Desenvolvimento dos Seres Vivos</h2>
+        <p>Como a vida se perpetua e como, de uma única célula-ovo, surge um organismo completo. Cai na comparação reprodução assexuada × sexuada (variabilidade), na gametogênese e na sequência do desenvolvimento embrionário e formação de tecidos e órgãos.</p>
+        <div class="mini">
+          <a href="#a4-assex">Assexuada × sexuada</a>
+          <a href="#a4-tipos">Tipos de reprodução</a>
+          <a href="#a4-gameto">Gametogênese</a>
+          <a href="#a4-embri">Desenvolvimento embrionário</a>
+          <a href="#a4-folhetos">Folhetos e formação de órgãos</a>
+        </div>
+      </div>
+
+      <section class="card" id="a4-assex">
+        <div class="kicker">Reprodução · 4.1</div>
+        <h3>Reprodução assexuada × sexuada</h3>
+        <p class="lead">Na <b>reprodução assexuada</b> um único indivíduo origina descendentes <b>geneticamente idênticos</b> a ele (clones), por mitose — é rápida e econômica, mas não gera variabilidade. Na <b>reprodução sexuada</b> há <b>fecundação</b> (união de dois gametas, em geral de pais diferentes), produzindo descendentes <b>geneticamente variados</b>, graças à meiose (crossing-over, segregação independente) e à combinação dos gametas. A variabilidade é a “matéria-prima” da evolução.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a grande chave é <b>variabilidade</b>: assexuada = clones (vantagem em ambiente estável), sexuada = diversidade (vantagem em ambiente que muda, e contra parasitas). Relaciona-se com meiose (Área 2) e Evolução (Área 8).</div>
+        <div class="ex"><b>Exemplo:</b> por que a reprodução sexuada é vantajosa para a evolução? <span class="resp">Gera variabilidade genética, sobre a qual a seleção natural atua.</span></div>
+      </section>
+
+      <section class="card" id="a4-tipos">
+        <div class="kicker">Reprodução · 4.2</div>
+        <h3>Tipos de reprodução</h3>
+        <p class="lead">Formas <b>assexuadas</b>: <b>bipartição/cissiparidade</b> (a célula/organismo se divide em dois — bactérias, amebas), <b>brotamento</b> (um broto cresce e se destaca — leveduras, hidras), <b>fragmentação/regeneração</b> (cada pedaço forma novo indivíduo — estrela-do-mar, planárias) e a <b>reprodução vegetativa</b> em plantas (estolões, tubérculos, estaquia — base da clonagem agrícola). Na <b>sexuada</b>, classifica-se quanto à fecundação (interna/externa) e ao desenvolvimento: <b>ovíparos</b> (ovo fora do corpo), <b>vivíparos</b> (filhote desenvolve dentro da mãe) e <b>ovovivíparos</b> (ovo se desenvolve dentro da mãe sem placenta).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o tipo a partir de uma descrição (planária cortada → fragmentação; muda de plantas → reprodução vegetativa) e classificar animais em ovíparo/vivíparo/ovovivíparo. A reprodução vegetativa liga-se à clonagem (Área 7).</div>
+        <div class="ex"><b>Exemplo:</b> uma estrela-do-mar partida origina novos indivíduos. Que reprodução é essa? <span class="resp">Assexuada por fragmentação (com regeneração).</span></div>
+      </section>
+
+      <section class="card" id="a4-gameto">
+        <div class="kicker">Reprodução · 4.3</div>
+        <h3>Gametogênese</h3>
+        <p class="lead">É a produção dos <b>gametas</b> por meiose. Na <b>espermatogênese</b> (testículos), cada célula precursora gera <b>quatro espermatozoides</b> funcionais, pequenos e móveis. Na <b>ovogênese</b> (ovários), a divisão é desigual e gera <b>um único óvulo</b> grande (rico em reservas) e corpúsculos polares que degeneram. Os gametas são <b>haploides (n)</b>; a fecundação restaura a <b>diploidia (2n)</b> no zigoto.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> contrastar espermatogênese (4 gametas iguais) × ovogênese (1 gameta + corpúsculos polares), e reforçar que gameta é <b>n</b> e zigoto é <b>2n</b>. A redução do número cromossômico na meiose é o ponto-chave (senão a cada geração dobraria).</div>
+        <div class="ex"><b>Exemplo:</b> por que os gametas precisam ser haploides? <span class="resp">Para que a fecundação (n + n) restaure o número 2n da espécie, sem dobrá-lo a cada geração.</span></div>
+      </section>
+
+      <section class="card" id="a4-embri">
+        <div class="kicker">Desenvolvimento · 4.4</div>
+        <h3>Desenvolvimento embrionário</h3>
+        <p class="lead">Após a fecundação, o <b>zigoto</b> passa por etapas: <b>segmentação/clivagem</b> (mitoses sucessivas sem crescimento → <b>mórula</b>, uma “amora” de células); <b>blástula</b> (esfera oca com cavidade, a blastocele); <b>gástrula</b> (células migram, formam-se os <b>folhetos germinativos</b> e o tubo digestivo primitivo — o arquêntero); e <b>nêurula</b> (formação do tubo neural, início do sistema nervoso). É a fase em que o corpo começa a “tomar forma”.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> ordenar a sequência <b>zigoto → mórula → blástula → gástrula → nêurula</b> e identificar o evento de cada fase (gastrulação = surgem os folhetos). Imagens ou esquemas para nomear a etapa são comuns.</div>
+        <div class="ex"><b>Exemplo:</b> em qual fase surgem os folhetos germinativos? <span class="resp">Na gastrulação (gástrula).</span></div>
+      </section>
+
+      <section class="card" id="a4-folhetos">
+        <div class="kicker">Desenvolvimento · 4.5</div>
+        <h3>Folhetos germinativos e formação de tecidos e órgãos</h3>
+        <p class="lead">Os <b>folhetos germinativos</b> são camadas embrionárias que originam todos os tecidos e órgãos (organogênese). O <b>ectoderma</b> (externo) forma epiderme e <b>sistema nervoso</b>; o <b>mesoderma</b> (médio) forma músculos, ossos, sangue, sistemas circulatório, excretor e reprodutor; o <b>endoderma</b> (interno) reveste o tubo digestório e origina fígado, pâncreas e pulmões. Animais com os três folhetos são <b>triblásticos</b>; com dois (ecto e endoderma), <b>diblásticos</b> (cnidários).</p>
+        <table class="tab"><thead><tr><th>Folheto</th><th>Origina (exemplos)</th></tr></thead><tbody>
+          <tr><th>Ectoderma</th><td>epiderme, sistema nervoso</td></tr>
+          <tr><th>Mesoderma</th><td>músculos, ossos, sangue, rins, gônadas</td></tr>
+          <tr><th>Endoderma</th><td>revestimento do tubo digestivo, fígado, pâncreas, pulmões</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> associar órgão ao folheto de origem (sistema nervoso → ectoderma é a mais cobrada) e classificar animais em di/triblásticos. Conecta com a classificação dos reinos (Área 5).</div>
+        <div class="ex"><b>Exemplo:</b> o sistema nervoso deriva de qual folheto? <span class="resp">Do ectoderma.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 5 ===================== -->
+      <div class="area a5">
+      <div class="chapter" id="a5">
+        <div class="num">Área 5</div>
+        <h2>Os Seres Vivos (Reinos e Classificação)</h2>
+        <p>A diversidade da vida organizada: como classificar (sistemática, nomenclatura, filogenia) e as características, morfologia e fisiologia de cada grande grupo — vírus, monera, protista, fungi, plantae e animalia — além das relações ecológicas e com o ser humano (doenças, alimentos).</p>
+        <div class="mini">
+          <a href="#a5-class">Bases da classificação</a>
+          <a href="#a5-virus">Vírus</a>
+          <a href="#a5-monera">Reino Monera</a>
+          <a href="#a5-protista">Reino Protista</a>
+          <a href="#a5-fungi">Reino Fungi</a>
+          <a href="#a5-plantae">Reino Plantae</a>
+          <a href="#a5-animalia">Reino Animalia</a>
+        </div>
+      </div>
+
+      <section class="card" id="a5-class">
+        <div class="kicker">Sistemática · 5.1</div>
+        <h3>Bases biológicas da classificação</h3>
+        <p class="lead">A <b>sistemática</b> agrupa os seres por <b>parentesco evolutivo</b> (filogenia), não só por semelhança. A hierarquia (do mais amplo ao mais específico) é: <b>Domínio → Reino → Filo → Classe → Ordem → Família → Gênero → Espécie</b>. A <b>nomenclatura binomial</b> de Lineu nomeia cada espécie com dois nomes em latim, <b>gênero</b> (maiúscula) + <b>epíteto específico</b> (minúscula), em itálico/sublinhado: <i>Homo sapiens</i>. <b>Espécie</b> é o conjunto de seres capazes de cruzar e gerar descendência fértil.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> regras da nomenclatura binomial (o erro de grafia é cobrado), ordenar as categorias taxonômicas e interpretar <b>árvores filogenéticas/cladogramas</b> (ancestral comum, grupos-irmãos). O conceito biológico de espécie (descendência fértil) é clássico — daí o burro/mula ser estéril.</div>
+        <div class="ex"><b>Exemplo:</b> por que cavalo e jumento são espécies diferentes mesmo cruzando? <span class="resp">A mula (descendente) é estéril — não há descendência fértil.</span></div>
+      </section>
+
+      <section class="card" id="a5-virus">
+        <div class="kicker">Grupos · 5.2</div>
+        <h3>Vírus</h3>
+        <p class="lead">São <b>acelulares</b>: apenas <b>material genético</b> (DNA ou RNA) envolto por uma <b>cápsula proteica</b> (capsídeo). São <b>parasitas intracelulares obrigatórios</b> — só se reproduzem dentro de uma célula hospedeira, usando a maquinaria dela. Por isso não têm metabolismo próprio e ficam “na fronteira” da vida. Causam doenças como gripe, dengue, COVID-19, AIDS, sarampo, raiva e HPV. Combatem-se com <b>vacinas</b> (prevenção); <b>antibióticos não funcionam</b> contra vírus.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reforçar que vírus <b>não é célula</b>, é parasita obrigatório, e que <b>antibiótico não age em vírus</b> (só em bactérias) — erro comum explorado. Os <b>retrovírus</b> (HIV), que usam <b>transcriptase reversa</b> (RNA → DNA), são muito cobrados.</div>
+        <div class="ex"><b>Exemplo:</b> por que antibiótico não cura uma gripe? <span class="resp">Gripe é viral; antibióticos só atuam sobre bactérias.</span></div>
+      </section>
+
+      <section class="card" id="a5-monera">
+        <div class="kicker">Grupos · 5.3</div>
+        <h3>Reino Monera (bactérias)</h3>
+        <p class="lead">Reúne os <b>procariontes</b> (bactérias e cianobactérias): unicelulares, <b>sem núcleo</b> nem organelas membranosas, DNA circular livre. São muito versáteis: há autótrofas (fotossíntese, quimiossíntese) e heterótrofas; aeróbias e anaeróbias. Reproduzem-se por <b>bipartição</b> e trocam genes por mecanismos como <b>conjugação</b> (importante na resistência a antibióticos). Papéis: <b>decompositoras</b>, fixadoras de nitrogênio, flora intestinal, produção de alimentos (iogurte) — e causadoras de doenças (tuberculose, tétano, cólera).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a marca é <b>ausência de núcleo</b> (procarionte). Caem doenças bacterianas, o papel ecológico (decomposição, ciclo do nitrogênio) e a <b>resistência a antibióticos</b> (seleção natural + troca de genes) — tema atualíssimo.</div>
+        <div class="ex"><b>Exemplo:</b> o que define uma bactéria como procarionte? <span class="resp">Não ter núcleo organizado (nem organelas membranosas).</span></div>
+      </section>
+
+      <section class="card" id="a5-protista">
+        <div class="kicker">Grupos · 5.4</div>
+        <h3>Reino Protista (protozoários e algas)</h3>
+        <p class="lead">Grupo <b>diverso</b> de <b>eucariontes</b> simples, em geral unicelulares (alguns pluricelulares, como algas macroscópicas). Inclui os <b>protozoários</b> (heterótrofos: amebas, paramécios, e parasitas como o causador da malária, doença de Chagas, giardíase) e as <b>algas</b> (autótrofas, base das cadeias aquáticas e grandes produtoras de O₂). É considerado um reino “artificial”, agrupando o que não se encaixa nos demais.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> protozoários como agentes de <b>doenças tropicais</b> (malária–<i>Plasmodium</i>, transmitida pelo mosquito <i>Anopheles</i>; Chagas–<i>Trypanosoma</i>, pelo barbeiro) e seus ciclos/vetores são muito cobrados. As algas como produtoras e o fitoplâncton aparecem em Ecologia.</div>
+        <div class="ex"><b>Exemplo:</b> qual o agente e o vetor da malária? <span class="resp">Agente: <i>Plasmodium</i> (protozoário); vetor: mosquito <i>Anopheles</i>.</span></div>
+      </section>
+
+      <section class="card" id="a5-fungi">
+        <div class="kicker">Grupos · 5.5</div>
+        <h3>Reino Fungi (fungos)</h3>
+        <p class="lead">São <b>eucariontes heterótrofos</b> por <b>absorção</b> (digerem o alimento fora do corpo e absorvem), com parede de <b>quitina</b> e reserva de <b>glicogênio</b> (lembram os animais nisso). Incluem bolores, cogumelos e <b>leveduras</b>. Ecologicamente são grandes <b>decompositores</b> (reciclam matéria) e formam associações (<b>liquens</b> = fungo + alga; <b>micorrizas</b> = fungo + raiz). Usos: pães, bebidas e antibióticos (penicilina); problemas: micoses e mofo em alimentos.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a nutrição <b>heterótrofa por absorção</b> e o papel <b>decompositor</b> são o foco; a parede de quitina e o glicogênio (semelhança com animais) caem em comparações. Liquens como <b>bioindicadores</b> de poluição e a penicilina aparecem com frequência.</div>
+        <div class="ex"><b>Exemplo:</b> por que os fungos são essenciais ao ecossistema? <span class="resp">São decompositores: reciclam a matéria orgânica, devolvendo nutrientes ao ambiente.</span></div>
+      </section>
+
+      <section class="card" id="a5-plantae">
+        <div class="kicker">Grupos · 5.6</div>
+        <h3>Reino Plantae (vegetais)</h3>
+        <p class="lead">Eucariontes <b>autótrofos fotossintetizantes</b>, pluricelulares, com parede de celulose. Dividem-se em quatro grupos crescentes em complexidade: <b>briófitas</b> (musgos — sem vasos, dependem de água, pequenas), <b>pteridófitas</b> (samambaias — já têm vasos, mas sem sementes), <b>gimnospermas</b> (pinheiros — sementes “nuas”, sem fruto) e <b>angiospermas</b> (com <b>flor e fruto</b> — o grupo dominante). As novidades evolutivas — <b>vasos condutores</b>, <b>semente</b>, <b>flor/fruto</b> — foram “libertando” a planta da água.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> ordenar a sequência evolutiva e associar a <b>novidade</b> de cada grupo (vasos nas pteridófitas, semente nas gimnospermas, flor/fruto nas angiospermas). A dependência de água para reprodução em briófitas/pteridófitas é cobrada, assim como o papel do fruto na dispersão.</div>
+        <div class="ex"><b>Exemplo:</b> qual grupo vegetal foi o primeiro a ter vasos condutores? <span class="resp">As pteridófitas (samambaias).</span></div>
+      </section>
+
+      <section class="card" id="a5-animalia">
+        <div class="kicker">Grupos · 5.7</div>
+        <h3>Reino Animalia (animais)</h3>
+        <p class="lead">Eucariontes <b>heterótrofos</b>, pluricelulares, em geral com locomoção. Os <b>invertebrados</b> abrangem poríferos (esponjas), cnidários (águas-vivas), platelmintos (vermes chatos), nematódeos (lombrigas), moluscos, anelídeos (minhocas), <b>artrópodes</b> (insetos, aracnídeos, crustáceos — o grupo mais numeroso) e equinodermos. Os <b>vertebrados</b> (filo dos cordados) são peixes, anfíbios, répteis, aves e mamíferos. As tendências evolutivas incluem simetria, número de folhetos, celoma e tipo de sistema (digestório, circulatório, respiratório).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> caracterizar cada filo por novidades (cnidário = cnidócitos; artrópode = exoesqueleto de quitina + patas articuladas; cordado = notocorda), reconhecer <b>verminoses</b> (esquistossomose, ascaridíase, teníase) e a conquista do ambiente terrestre pelos vertebrados (ovo amniótico nos répteis/aves). Comparar respiração/circulação entre as classes é comum.</div>
+        <div class="ex"><b>Exemplo:</b> qual a principal característica que define os artrópodes? <span class="resp">Apêndices/patas articuladas e exoesqueleto de quitina.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 6 ===================== -->
+      <div class="area a6">
+      <div class="chapter" id="a6">
+        <div class="num">Área 6</div>
+        <h2>Genética</h2>
+        <p>Como as características são transmitidas dos pais aos filhos. É a área que mais exige raciocínio: usa probabilidade, exige montar cruzamentos e interpretar heredogramas. Cai muito sozinha e também ligada à Evolução e à Biotecnologia.</p>
+        <div class="mini">
+          <a href="#a6-hist">Histórico e terminologia</a>
+          <a href="#a6-prob">Probabilidade na genética</a>
+          <a href="#a6-mendel1">1ª Lei de Mendel</a>
+          <a href="#a6-domin">Dominância e codominância</a>
+          <a href="#a6-alelos">Alelos múltiplos (ABO)</a>
+          <a href="#a6-letais">Alelos letais</a>
+          <a href="#a6-penetr">Penetrância, expressividade, pleiotropia</a>
+          <a href="#a6-mendel2">2ª Lei de Mendel</a>
+          <a href="#a6-interacao">Interações gênicas</a>
+          <a href="#a6-poli">Herança poligênica</a>
+          <a href="#a6-sexo">Herança e sexo</a>
+          <a href="#a6-linkage">Ligação gênica e mapeamento</a>
+          <a href="#a6-cromo">Alterações cromossômicas</a>
+        </div>
+      </div>
+
+      <section class="card" id="a6-hist">
+        <div class="kicker">Genética · 6.1</div>
+        <h3>Histórico e terminologia básica</h3>
+        <p class="lead">A Genética nasce com <b>Gregor Mendel</b> (séc. XIX), que cruzou ervilhas e descobriu as leis da herança antes mesmo de se conhecer o DNA. Termos essenciais: <b>gene</b> (trecho de DNA com a informação de uma característica); <b>alelos</b> (versões de um gene, ex.: A e a); <b>genótipo</b> (a constituição genética, ex.: Aa) × <b>fenótipo</b> (a característica observável, resultado do genótipo + ambiente); <b>homozigoto</b> (alelos iguais, AA ou aa) × <b>heterozigoto</b> (alelos diferentes, Aa); <b>dominante</b> (alelo que se manifesta, A) × <b>recessivo</b> (só se manifesta em dose dupla, aa).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> dominar o vocabulário é pré-requisito para tudo. A distinção <b>genótipo × fenótipo</b> e <b>homo × heterozigoto</b> é cobrada diretamente e é base para montar os cruzamentos. Lembre: <b>fenótipo = genótipo + ambiente</b>.</div>
+        <div class="ex"><b>Exemplo:</b> um indivíduo Aa é homo ou heterozigoto? Qual fenótipo (A domina a)? <span class="resp">Heterozigoto; fenótipo dominante.</span></div>
+      </section>
+
+      <section class="card" id="a6-prob">
+        <div class="kicker">Genética · 6.2</div>
+        <h3>Probabilidade na genética</h3>
+        <p class="lead">A herança é regida pelo acaso, então a Genética usa probabilidade. Duas regras: o <b>“E”</b> (eventos que ocorrem juntos) → <b>multiplica</b> as probabilidades; o <b>“OU”</b> (eventos alternativos) → <b>soma</b>. Cada gameta carrega um alelo (regra do produto entre os pais), e eventos independentes (como o sexo de filhos sucessivos) não “se compensam”.</p>
+        <div class="formula-box">P(A <b>e</b> B) = P(A) × P(B) &nbsp;&nbsp;|&nbsp;&nbsp; P(A <b>ou</b> B) = P(A) + P(B)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “qual a probabilidade de o casal ter um menino <b>e</b> daltônico?” (multiplica) ou “de nascer AA <b>ou</b> aa?” (soma). Calcular a chance de dois filhos terem certo fenótipo (produto) é clássico. A independência entre nascimentos é pegadinha frequente.</div>
+        <div class="ex"><b>Exemplo:</b> casal Aa × Aa. Probabilidade de filho <b>aa</b>? <span class="resp">1/2 × 1/2 = 1/4.</span></div>
+      </section>
+
+      <section class="card" id="a6-mendel1">
+        <div class="kicker">Genética · 6.3</div>
+        <h3>1ª Lei de Mendel (segregação dos fatores)</h3>
+        <p class="lead">Diz que cada característica é determinada por um <b>par de alelos</b> que se <b>separam (segregam)</b> na formação dos gametas — cada gameta recebe <b>apenas um</b> alelo do par. No cruzamento de heterozigotos <b>Aa × Aa</b>, a prole sai na proporção genotípica <b>1 AA : 2 Aa : 1 aa</b> e fenotípica <b>3 dominantes : 1 recessivo</b>. Usa-se o <b>quadro de Punnett</b> para visualizar.</p>
+        <div class="formula-box">Aa × Aa → 1 AA : 2 Aa : 1 aa &nbsp;(fenótipo 3:1)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> é o cruzamento mais cobrado. Pedem proporções da prole, o genótipo dos pais a partir dos filhos (ex.: pais normais com filho recessivo → ambos Aa), e o <b>cruzamento-teste</b> (cruzar com recessivo para descobrir se o dominante é AA ou Aa). Heredogramas baseiam-se nesta lei.</div>
+        <div class="ex"><b>Exemplo:</b> dois pais de fenótipo dominante têm um filho recessivo (aa). Genótipo dos pais? <span class="resp">Ambos Aa (heterozigotos).</span></div>
+      </section>
+
+      <section class="card" id="a6-domin">
+        <div class="kicker">Genética · 6.4</div>
+        <h3>Dominância completa, incompleta e codominância</h3>
+        <p class="lead">Na <b>dominância completa</b>, o heterozigoto (Aa) tem o mesmo fenótipo do homozigoto dominante (AA). Mas há exceções: na <b>dominância incompleta</b> o heterozigoto mostra um fenótipo <b>intermediário</b> (ex.: planta de flor vermelha × branca → heterozigoto <b>rosa</b>); na <b>codominância</b> os dois alelos se <b>manifestam ao mesmo tempo</b>, sem mistura (ex.: gado malhado vermelho-e-branco; o tipo sanguíneo <b>AB</b>, em que A e B aparecem juntos).</p>
+        <div class="formula-box">Incompleta: vermelha × branca → <b>rosa</b> (proporção 1:2:1 também no fenótipo)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir <b>intermediário</b> (incompleta) de <b>os dois juntos</b> (codominância). Nesses casos a proporção fenotípica de Aa × Aa vira <b>1:2:1</b> (não 3:1), porque o heterozigoto é distinguível — detalhe muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> cruzando duas flores rosas (dominância incompleta), qual a proporção da prole? <span class="resp">1 vermelha : 2 rosas : 1 branca.</span></div>
+      </section>
+
+      <section class="card" id="a6-alelos">
+        <div class="kicker">Genética · 6.5</div>
+        <h3>Alelos múltiplos (polialelia) e o sistema ABO</h3>
+        <p class="lead">Ocorre quando existem <b>mais de dois alelos</b> para o mesmo gene na população (embora cada indivíduo só tenha dois). O caso clássico é o <b>sistema sanguíneo ABO</b>, com três alelos: <b>I^A</b> e <b>I^B</b> (codominantes entre si) e <b>i</b> (recessivo). Daí os tipos: A (I^A I^A ou I^A i), B (I^B I^B ou I^B i), AB (I^A I^B) e O (ii). Outro exemplo é a cor da pelagem em coelhos.</p>
+        <table class="tab"><thead><tr><th>Tipo</th><th>Genótipos</th></tr></thead><tbody>
+          <tr><th>A</th><td>I<sup>A</sup>I<sup>A</sup> ou I<sup>A</sup>i</td></tr>
+          <tr><th>B</th><td>I<sup>B</sup>I<sup>B</sup> ou I<sup>B</sup>i</td></tr>
+          <tr><th>AB</th><td>I<sup>A</sup>I<sup>B</sup></td></tr>
+          <tr><th>O</th><td>ii</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar tipos sanguíneos possíveis dos filhos, resolver casos de <b>paternidade</b> e relacionar com <b>transfusão</b> (O = doador universal; AB = receptor universal) e com o fator <b>Rh</b> (eritroblastose fetal quando mãe Rh− e bebê Rh+). É um dos temas mais frequentes de Genética.</div>
+        <div class="ex"><b>Exemplo:</b> pai O (ii) e mãe AB (I^A I^B) podem ter filho tipo O? <span class="resp">Não — os filhos serão A (I^A i) ou B (I^B i).</span></div>
+      </section>
+
+      <section class="card" id="a6-letais">
+        <div class="kicker">Genética · 6.6</div>
+        <h3>Alelos letais</h3>
+        <p class="lead">São alelos que, em certa dose, <b>causam a morte</b> do indivíduo, alterando as proporções esperadas. No caso clássico (camundongos amarelos), o alelo dominante para a cor amarela é <b>letal em homozigose</b>: os homozigotos morrem antes de nascer. Por isso, cruzando dois amarelos (heterozigotos), em vez de 3:1 obtém-se <b>2 amarelos : 1 normal</b> entre os vivos (a fração homozigota letal “some”).</p>
+        <div class="formula-box">Amarelo × amarelo → 2 amarelos (Aa) : 1 normal (aa) &nbsp;[AA morre]</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a “quebra” da proporção mendeliana (3:1 vira 2:1) é o sinal de alelo letal. Pedem explicar por que a proporção fugiu do esperado e calcular as proporções entre os <b>sobreviventes</b>.</div>
+        <div class="ex"><b>Exemplo:</b> por que o cruzamento de camundongos amarelos nunca dá amarelos puros? <span class="resp">O genótipo homozigoto (AA) é letal; só sobrevivem os heterozigotos Aa.</span></div>
+      </section>
+
+      <section class="card" id="a6-penetr">
+        <div class="kicker">Genética · 6.7</div>
+        <h3>Penetrância, expressividade, norma de reação e pleiotropia</h3>
+        <p class="lead">Conceitos que mostram que a relação gene→fenótipo nem sempre é direta. <b>Penetrância</b>: a porcentagem de indivíduos com o gene que de fato manifestam o fenótipo (penetrância incompleta = nem todos manifestam). <b>Expressividade</b>: o quanto o fenótipo se manifesta (forte ou fraco) entre os que o expressam. <b>Norma de reação</b>: o conjunto de fenótipos que um mesmo genótipo pode gerar conforme o <b>ambiente</b> (ex.: hortênsias mudam de cor com o pH do solo). <b>Pleiotropia</b>: um <b>único gene</b> afeta <b>várias</b> características (ex.: anemia falciforme).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar <b>pleiotropia</b> (1 gene → vários efeitos) de interação gênica (vários genes → 1 efeito) — par sempre confundido. A norma de reação reforça que o ambiente influi no fenótipo (gêmeos idênticos com pesos diferentes).</div>
+        <div class="ex"><b>Exemplo:</b> a anemia falciforme causa dores, anemia e problemas em vários órgãos a partir de um só gene. Que fenômeno é esse? <span class="resp">Pleiotropia.</span></div>
+      </section>
+
+      <section class="card" id="a6-mendel2">
+        <div class="kicker">Genética · 6.8</div>
+        <h3>2ª Lei de Mendel (segregação independente)</h3>
+        <p class="lead">Quando se acompanham <b>dois ou mais genes</b> ao mesmo tempo, eles se distribuem nos gametas de forma <b>independente</b> (desde que estejam em cromossomos diferentes). No cruzamento de dois di-híbridos <b>AaBb × AaBb</b>, a prole sai na clássica proporção fenotípica <b>9 : 3 : 3 : 1</b>. Para achar gametas e proporções, usa-se a regra do produto entre os genes.</p>
+        <div class="formula-box">AaBb × AaBb → 9 (A_B_) : 3 (A_bb) : 3 (aaB_) : 1 (aabb)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular proporções de di/tri-híbridos e o nº de tipos de gametas (2ⁿ, com n = nº de genes em heterozigose: AaBb → 2² = 4 gametas). A proporção <b>9:3:3:1</b> é uma das mais cobradas — e sua “quebra” indica interação gênica ou ligação.</div>
+        <div class="ex"><b>Exemplo:</b> quantos tipos de gametas produz um indivíduo AaBbCc? <span class="resp">2³ = 8 tipos.</span></div>
+      </section>
+
+      <section class="card" id="a6-interacao">
+        <div class="kicker">Genética · 6.9</div>
+        <h3>Interações gênicas</h3>
+        <p class="lead">Acontece quando <b>dois ou mais genes diferentes</b> atuam juntos para determinar <b>uma única</b> característica. Um caso é a <b>epistasia</b>, em que um gene <b>inibe/mascara</b> a ação de outro (o gene epistático sobre o hipostático) — ex.: a cor da pelagem em vários animais e a plumagem das galinhas. As proporções 9:3:3:1 aparecem <b>modificadas</b> (ex.: 9:3:4, 12:3:1, 9:7) conforme o tipo de interação.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer a interação pela <b>proporção alterada</b> derivada do 9:3:3:1, e identificar a <b>epistasia</b> (um gene encobre o outro). Cuidado para não confundir com pleiotropia (que é o oposto: um gene, vários efeitos).</div>
+        <div class="ex"><b>Exemplo:</b> dois genes determinam uma só característica e a proporção da F2 é 9:3:4. O que está ocorrendo? <span class="resp">Interação gênica (com epistasia).</span></div>
+      </section>
+
+      <section class="card" id="a6-poli">
+        <div class="kicker">Genética · 6.10</div>
+        <h3>Herança poligênica (quantitativa)</h3>
+        <p class="lead">Característica determinada por <b>vários genes</b> de efeito <b>aditivo</b> (cada alelo “contribui um pouco”), gerando variação <b>contínua/gradual</b> em vez de classes bem separadas. Exemplos: <b>cor da pele</b>, <b>altura</b> e cor dos olhos na espécie humana. O resultado é uma distribuição em forma de <b>sino</b> (curva normal), com poucos indivíduos nos extremos e muitos no meio, fortemente influenciada também pelo ambiente.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar a <b>variação contínua</b> (muitos fenótipos intermediários) como marca da herança poligênica, em contraste com a herança mendeliana simples (classes distintas). Gráficos em curva normal e o cálculo do nº de fenótipos (2n+1, n = pares de genes) aparecem.</div>
+        <div class="ex"><b>Exemplo:</b> por que a altura humana varia de forma contínua, e não em “alto/baixo”? <span class="resp">É poligênica (vários genes aditivos) + influência ambiental.</span></div>
+      </section>
+
+      <section class="card" id="a6-sexo">
+        <div class="kicker">Genética · 6.11</div>
+        <h3>Herança e sexo</h3>
+        <p class="lead">O sexo é determinado por cromossomos <b>sexuais</b>: na espécie humana, <b>XX</b> (feminino) e <b>XY</b> (masculino) — o pai define o sexo do filho (dá o X ou o Y). A <b>herança ligada ao sexo</b> envolve genes no cromossomo <b>X</b> (que não têm correspondente no Y), como o <b>daltonismo</b> e a <b>hemofilia</b> (recessivos): por isso são <b>mais comuns em homens</b> (basta um alelo no único X). Há ainda herança <b>restrita ao sexo</b> (genes no Y) e <b>influenciada pelo sexo</b> (ex.: calvície).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> daltonismo e hemofilia em <b>heredogramas</b> são clássicos. Saber que a mãe <b>portadora</b> (X^d X) passa o alelo a metade dos filhos homens (que serão afetados) e que o pai afetado passa o X às <b>filhas</b> (portadoras). Explicar por que afeta mais homens é quase certo.</div>
+        <div class="ex"><b>Exemplo:</b> por que o daltonismo é mais comum em homens? <span class="resp">O gene é recessivo e está no X; o homem (XY) tem só um X, então um único alelo já o manifesta.</span></div>
+      </section>
+
+      <section class="card" id="a6-linkage">
+        <div class="kicker">Genética · 6.12</div>
+        <h3>Ligação gênica (linkage) e mapeamento cromossômico</h3>
+        <p class="lead">Quando dois genes estão no <b>mesmo cromossomo</b>, tendem a ser herdados <b>juntos</b> (ligação/linkage), “furando” a segregação independente. Mas o <b>crossing-over</b> (permutação na meiose) pode separá-los, gerando <b>recombinantes</b>. Quanto <b>mais distantes</b> os genes, maior a chance de crossing entre eles, logo <b>maior a taxa de recombinação</b>. Essa frequência (medida em <b>centimorgan</b>, cM = % de recombinantes) permite o <b>mapeamento</b>: estimar a distância entre os genes no cromossomo.</p>
+        <div class="formula-box">distância (cM) = % de gametas recombinantes</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar genes ligados pela <b>fuga do 9:3:3:1</b> (excesso de fenótipos parentais), calcular a <b>taxa de recombinação</b> e montar/ordenar o <b>mapa</b> dos genes por distância. O crossing-over como causa dos recombinantes é o conceito central.</div>
+        <div class="ex"><b>Exemplo:</b> dois genes recombinam em 12% dos gametas. Qual a distância entre eles? <span class="resp">12 cM (12 unidades de mapa).</span></div>
+      </section>
+
+      <section class="card" id="a6-cromo">
+        <div class="kicker">Genética · 6.13</div>
+        <h3>Alterações cromossômicas (numéricas e estruturais)</h3>
+        <p class="lead">São mutações que afetam cromossomos inteiros. As <b>numéricas</b> mudam a quantidade: <b>aneuploidias</b> (falta ou sobra de um cromossomo, por <b>não-disjunção</b> na meiose) — ex.: <b>Síndrome de Down</b> (trissomia do 21), Turner (X0) e Klinefelter (XXY); e <b>euploidias</b> (jogos inteiros a mais, como a poliploidia comum em plantas). As <b>estruturais</b> mudam a forma/conteúdo do cromossomo: <b>deleção</b> (perde pedaço), <b>duplicação</b>, <b>inversão</b> e <b>translocação</b> (pedaço vai para outro cromossomo).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar síndrome à alteração (<b>Down = trissomia do 21</b> é a campeã; Turner = X0; Klinefelter = XXY), entender a <b>não-disjunção</b> como causa e ler <b>cariótipos</b>. A poliploidia na agricultura (frutas maiores, sem sementes) aparece como aplicação.</div>
+        <div class="ex"><b>Exemplo:</b> qual a alteração cromossômica da Síndrome de Down? <span class="resp">Trissomia do cromossomo 21 (47 cromossomos), por não-disjunção.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 7 ===================== -->
+      <div class="area a7">
+      <div class="chapter" id="a7">
+        <div class="num">Área 7</div>
+        <h2>Biotecnologia</h2>
+        <p>A aplicação prática da genética molecular: manipular o DNA para produzir remédios, alimentos e terapias. Cai muito no ENEM em textos atuais, cobrando o entendimento da técnica e seus impactos éticos, sociais e ambientais.</p>
+        <div class="mini">
+          <a href="#a7-molec">Genética molecular aplicada</a>
+          <a href="#a7-recomb">DNA recombinante</a>
+          <a href="#a7-transg">Transgênicos</a>
+          <a href="#a7-terapia">Terapia gênica</a>
+          <a href="#a7-clone">Clonagem</a>
+          <a href="#a7-tronco">Células-tronco</a>
+          <a href="#a7-insumos">Insumos biológicos</a>
+        </div>
+      </div>
+
+      <section class="card" id="a7-molec">
+        <div class="kicker">Biotecnologia · 7.1</div>
+        <h3>A genética molecular e suas aplicações</h3>
+        <p class="lead">Conhecer a estrutura e o funcionamento do DNA permitiu “ler”, copiar e editar a informação genética. Ferramentas-chave: <b>PCR</b> (amplifica/multiplica trechos de DNA a partir de pouquíssimo material), <b>sequenciamento</b> (lê a ordem das bases) e <b>enzimas de restrição</b> (“tesouras” que cortam o DNA em pontos específicos). Aplicações: diagnóstico de doenças, <b>testes de paternidade</b> e perícia (<b>DNA forense</b>), melhoramento genético e produção de fármacos.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> entender o papel da <b>PCR</b> (multiplicar DNA — usada também em testes de COVID) e das <b>enzimas de restrição</b> (cortar o DNA), e interpretar perfis de DNA em testes de paternidade/forense (comparação de bandas). Conecta com a Área 2 (DNA).</div>
+        <div class="ex"><b>Exemplo:</b> para que serve a PCR num teste de DNA? <span class="resp">Multiplicar (amplificar) o pouco DNA da amostra até haver quantidade suficiente para análise.</span></div>
+      </section>
+
+      <section class="card" id="a7-recomb">
+        <div class="kicker">Biotecnologia · 7.2</div>
+        <h3>Tecnologia do DNA recombinante</h3>
+        <p class="lead">É a técnica de <b>juntar DNA de fontes diferentes</b> numa mesma molécula. Usa-se uma <b>enzima de restrição</b> para cortar o gene de interesse e cortar um <b>vetor</b> (geralmente um <b>plasmídeo</b> bacteriano); a <b>DNA-ligase</b> “cola” o gene no plasmídeo; este é inserido numa bactéria, que passa a <b>produzir a proteína</b> codificada pelo gene ao se multiplicar. É a base para fabricar proteínas humanas em micro-organismos.</p>
+        <div class="formula-box">gene + plasmídeo (cortados pela mesma enzima) → DNA-ligase → bactéria produtora</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer a sequência da técnica e o papel de cada “ferramenta” (enzima de restrição corta; ligase cola; plasmídeo carrega; bactéria produz). O exemplo da <b>insulina humana</b> produzida por bactérias é o mais cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> como se produz insulina humana em larga escala hoje? <span class="resp">Inserindo o gene humano da insulina em bactérias (DNA recombinante), que a produzem.</span></div>
+      </section>
+
+      <section class="card" id="a7-transg">
+        <div class="kicker">Biotecnologia · 7.3</div>
+        <h3>Transgênicos (organismos geneticamente modificados)</h3>
+        <p class="lead">São organismos que receberam um <b>gene de outra espécie</b> para adquirir uma nova característica. Exemplos: soja e milho resistentes a herbicidas ou a insetos, e o “arroz dourado” enriquecido com vitamina A. <b>Vantagens</b>: maior produtividade, menos perdas, valor nutricional. <b>Polêmicas</b>: possíveis impactos ambientais (efeito sobre outros organismos, fluxo de genes), questões de saúde (debatidas) e concentração econômica em sementes patenteadas. No Brasil, devem trazer o símbolo “T” no rótulo.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> definir transgênico (gene de <b>outra espécie</b>, o que o diferencia do melhoramento clássico) e <b>argumentar prós e contras</b> de forma equilibrada — formato típico de ENEM. Distinguir transgênico de clone e de híbrido é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o que distingue um transgênico de uma planta de melhoramento tradicional? <span class="resp">O transgênico recebe gene de outra espécie por engenharia genética, não por cruzamento.</span></div>
+      </section>
+
+      <section class="card" id="a7-terapia">
+        <div class="kicker">Biotecnologia · 7.4</div>
+        <h3>Terapia gênica</h3>
+        <p class="lead">É o tratamento de doenças <b>corrigindo o gene defeituoso</b> — inserindo uma cópia funcional do gene nas células do paciente (geralmente usando <b>vírus modificados</b> como vetores). Visa principalmente doenças genéticas (ex.: algumas imunodeficiências, certos tipos de cegueira hereditária). Na <b>terapia em células somáticas</b> a alteração não passa aos filhos; já a edição em <b>células germinativas/embriões</b> seria hereditária e é eticamente muito controversa.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> entender a lógica (substituir/corrigir o gene) e a distinção <b>somática × germinativa</b> (esta levanta debate ético por ser hereditária). Frequentemente aparece junto da técnica <b>CRISPR</b> de edição genética em textos atuais.</div>
+        <div class="ex"><b>Exemplo:</b> por que editar genes de embriões é mais polêmico que tratar células do corpo? <span class="resp">A alteração seria transmitida aos descendentes (hereditária).</span></div>
+      </section>
+
+      <section class="card" id="a7-clone">
+        <div class="kicker">Biotecnologia · 7.5</div>
+        <h3>Clonagem gênica e de organismos</h3>
+        <p class="lead">Clonar é produzir cópias <b>geneticamente idênticas</b>. A <b>clonagem gênica</b> copia um gene (multiplicação em bactérias/PCR). A <b>clonagem de organismos</b> gera um indivíduo idêntico a outro: pela técnica de <b>transferência nuclear</b> (núcleo de uma célula somática do adulto é colocado num óvulo sem núcleo), como na ovelha <b>Dolly</b> (1996). A <b>clonagem reprodutiva</b> gera um novo indivíduo; a <b>terapêutica</b> visa obter células/tecidos para tratamento.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o caso <b>Dolly</b> e a <b>transferência de núcleo</b> são clássicos; cobram entender que o clone é idêntico ao doador do <b>núcleo</b> (não ao óvulo) e distinguir clonagem <b>reprodutiva × terapêutica</b>. Gêmeos univitelinos como “clones naturais” aparecem.</div>
+        <div class="ex"><b>Exemplo:</b> a ovelha Dolly era idêntica a qual “mãe”? <span class="resp">À ovelha doadora do <b>núcleo</b> (a célula somática), não à doadora do óvulo.</span></div>
+      </section>
+
+      <section class="card" id="a7-tronco">
+        <div class="kicker">Biotecnologia · 7.6</div>
+        <h3>Células-tronco</h3>
+        <p class="lead">São células <b>não especializadas</b> capazes de se <b>multiplicar</b> e se <b>diferenciar</b> em vários tipos celulares. As <b>embrionárias</b> são <b>pluripotentes</b> (podem virar quase qualquer tecido, mas seu uso é eticamente debatido); as <b>adultas</b> (ex.: da medula óssea) são <b>multipotentes</b> (geram alguns tipos). Há ainda as <b>iPS</b> (células adultas “reprogramadas” a um estado pluripotente). Prometem tratar lesões e doenças degenerativas (medicina regenerativa).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar <b>pluripotente (embrionária)</b> de <b>multipotente (adulta)</b> e discutir a <b>questão ética</b> do uso de embriões. O transplante de medula óssea como aplicação consolidada de células-tronco é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> por que as células-tronco embrionárias têm maior potencial terapêutico? <span class="resp">São pluripotentes: podem originar praticamente qualquer tipo de tecido.</span></div>
+      </section>
+
+      <section class="card" id="a7-insumos">
+        <div class="kicker">Biotecnologia · 7.7</div>
+        <h3>Produção de insumos biológicos (alimentação e saúde)</h3>
+        <p class="lead">A biotecnologia produz insumos essenciais usando organismos vivos: <b>medicamentos</b> (insulina, hormônio de crescimento, fatores de coagulação), <b>vacinas</b> (inclusive as de DNA/RNA), <b>antibióticos</b> (de fungos e bactérias) e <b>alimentos</b> (pão, queijo, iogurte, bebidas — por fermentação — e enzimas industriais). Une processos antigos (fermentação) a técnicas modernas (DNA recombinante).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar o produto ao organismo/processo (insulina → bactéria recombinante; iogurte → bactérias lácticas; pão/cerveja → leveduras; penicilina → fungo). Liga fermentação (Área 2) e micro-organismos (Área 5) à aplicação prática.</div>
+        <div class="ex"><b>Exemplo:</b> que micro-organismo e processo produzem o iogurte? <span class="resp">Bactérias lácticas, por fermentação láctica.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 8 ===================== -->
+      <div class="area a8">
+      <div class="chapter" id="a8">
+        <div class="num">Área 8</div>
+        <h2>Origem da Vida e Evolução</h2>
+        <p>De onde a vida veio e como ela se transforma. Cai comparando teorias (Lamarck × Darwin), interpretando evidências e processos evolutivos, aplicando Hardy-Weinberg e relacionando a evolução com a genética e a classificação. Tema central e transversal da Biologia.</p>
+        <div class="mini">
+          <a href="#a8-origem">Origem da vida</a>
+          <a href="#a8-celula">Origem da célula (endossimbiose)</a>
+          <a href="#a8-lamarck">Lamarckismo</a>
+          <a href="#a8-darwin">Darwinismo</a>
+          <a href="#a8-sintetica">Teoria sintética (neodarwinismo)</a>
+          <a href="#a8-hw">Bases genéticas (Hardy-Weinberg)</a>
+          <a href="#a8-processos">Processos evolutivos</a>
+          <a href="#a8-especi">Especiação e evidências</a>
+          <a href="#a8-humana">Evolução humana</a>
+        </div>
+      </div>
+
+      <section class="card" id="a8-origem">
+        <div class="kicker">Origem da vida · 8.1</div>
+        <h3>Teorias sobre a origem da vida</h3>
+        <p class="lead">A <b>abiogênese</b> (geração espontânea) — a ideia de que a vida surgiria da matéria bruta — foi refutada por <b>Redi</b> e, definitivamente, por <b>Pasteur</b> (frascos “pescoço de cisne”), que provou a <b>biogênese</b> (todo ser vivo vem de outro ser vivo). Para a origem da <b>primeira</b> vida, a hipótese de <b>Oparin e Haldane</b> propõe a evolução química: na Terra primitiva, gases simples teriam formado moléculas orgânicas (os <b>coacervados</b>), testada pelo experimento de <b>Miller-Urey</b> (que produziu aminoácidos a partir de gases + descargas elétricas). Há ainda a hipótese da <b>panspermia</b> (vida/precursores teriam vindo do espaço).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> não confundir a <b>refutação da geração espontânea</b> (biogênese) com a <b>origem da primeira vida</b> (evolução química de Oparin) — são questões diferentes. Os experimentos de Redi, Pasteur e Miller, e o que cada um demonstra, são muito cobrados.</div>
+        <div class="ex"><b>Exemplo:</b> o experimento de Pasteur provou o quê? <span class="resp">Que não há geração espontânea: a vida só vem de vida preexistente (biogênese).</span></div>
+      </section>
+
+      <section class="card" id="a8-celula">
+        <div class="kicker">Origem da vida · 8.2</div>
+        <h3>Origem das células e de estruturas celulares</h3>
+        <p class="lead">As primeiras células teriam sido <b>procariontes</b> anaeróbias. A <b>fotossíntese</b> das cianobactérias liberou O₂, transformando a atmosfera. A <b>teoria endossimbiótica</b> (Lynn Margulis) explica a origem das <b>mitocôndrias</b> e <b>cloroplastos</b>: seriam procariontes que passaram a viver <b>dentro</b> de outra célula, em mutualismo. Evidências: essas organelas têm <b>DNA próprio</b>, ribossomos próprios e dupla membrana, e se dividem por conta própria.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>endossimbiose</b> e suas <b>evidências</b> (DNA e ribossomos próprios das mitocôndrias/cloroplastos) são clássicas. A ideia de que o O₂ atmosférico é fruto da fotossíntese (e mudou a vida na Terra) também cai.</div>
+        <div class="ex"><b>Exemplo:</b> que evidência sustenta a origem bacteriana das mitocôndrias? <span class="resp">Elas têm DNA e ribossomos próprios e dupla membrana.</span></div>
+      </section>
+
+      <section class="card" id="a8-lamarck">
+        <div class="kicker">Evolução · 8.3</div>
+        <h3>Lamarckismo</h3>
+        <p class="lead">Primeira teoria evolutiva estruturada (Lamarck). Baseia-se em duas ideias: a <b>lei do uso e desuso</b> (órgãos usados se desenvolvem; os não usados atrofiam) e a <b>herança dos caracteres adquiridos</b> (o que o indivíduo adquire em vida seria passado aos filhos). O exemplo clássico: as girafas teriam pescoço longo por “esticá-lo” para alcançar folhas. Hoje a <b>herança dos caracteres adquiridos está refutada</b>, mas Lamarck acertou ao defender que as espécies <b>se transformam</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> contrapor Lamarck × Darwin é quase garantido. A pegadinha é a <b>herança dos caracteres adquiridos</b> (errada) — características adquiridas no corpo (somáticas) não passam aos descendentes.</div>
+        <div class="ex"><b>Exemplo:</b> segundo Lamarck, por que a girafa tem pescoço longo? <span class="resp">Pelo uso contínuo (esticar para comer) e herança desse caráter adquirido — explicação hoje refutada.</span></div>
+      </section>
+
+      <section class="card" id="a8-darwin">
+        <div class="kicker">Evolução · 8.4</div>
+        <h3>Darwinismo (seleção natural)</h3>
+        <p class="lead">Darwin propôs a evolução por <b>seleção natural</b>: dentro de uma população há <b>variabilidade</b>; nasce mais prole do que o ambiente comporta (luta pela existência); os indivíduos com características <b>vantajosas</b> sobrevivem e se reproduzem mais (“sobrevivência do mais apto”), passando essas características adiante. Ao longo das gerações, a população muda. Para Darwin, a variação já <b>existe</b> e o ambiente <b>seleciona</b> — ele não “cria” a adaptação (diferença central para Lamarck).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> aplicar a seleção natural a casos reais (mariposas industriais, <b>resistência de bactérias a antibióticos</b> e de insetos a inseticidas) e contrastar com Lamarck: a variação é <b>prévia e ao acaso</b>; o ambiente apenas <b>seleciona</b>. “O antibiótico não cria a resistência, seleciona os já resistentes” é frase típica.</div>
+        <div class="ex"><b>Exemplo:</b> pela visão de Darwin, como a girafa ficou com pescoço longo? <span class="resp">Já havia girafas de pescoços variados; as de pescoço mais longo se alimentavam e reproduziam mais — o ambiente as selecionou.</span></div>
+      </section>
+
+      <section class="card" id="a8-sintetica">
+        <div class="kicker">Evolução · 8.5</div>
+        <h3>Teoria sintética da evolução (neodarwinismo)</h3>
+        <p class="lead">Une a seleção natural de Darwin com a <b>genética</b> (que Darwin não conhecia). Esclarece a <b>origem da variabilidade</b>: <b>mutação</b> e <b>recombinação gênica</b> (meiose + fecundação) criam a variação; depois a <b>seleção natural</b>, a <b>deriva genética</b> e o <b>fluxo gênico</b> atuam sobre ela. A evolução passa a ser entendida como a <b>mudança nas frequências dos alelos</b> de uma população ao longo do tempo.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> saber que a <b>mutação e a recombinação geram</b> a variabilidade (matéria-prima) e a <b>seleção natural orienta</b>. Definir evolução como mudança na <b>frequência de alelos</b> conecta diretamente com Hardy-Weinberg.</div>
+        <div class="ex"><b>Exemplo:</b> qual a fonte primária de toda a variabilidade genética? <span class="resp">A mutação (e, recombinando o que existe, a meiose/recombinação).</span></div>
+      </section>
+
+      <section class="card" id="a8-hw">
+        <div class="kicker">Evolução · 8.6</div>
+        <h3>Bases genéticas: o equilíbrio de Hardy-Weinberg</h3>
+        <p class="lead">É o modelo que descreve uma população <b>que não evolui</b> (sem mutação, sem seleção, sem migração, sem deriva, com cruzamentos ao acaso e população grande). Nessas condições, as frequências dos alelos (<b>p</b> e <b>q</b>) e dos genótipos permanecem constantes. Serve de <b>referência</b>: se a população foge do equilíbrio, é sinal de que algum fator evolutivo está agindo.</p>
+        <div class="formula-box">\( p + q = 1 \qquad p^2 + 2pq + q^2 = 1 \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular frequências alélicas/genotípicas (ex.: dada a frequência de recessivos <b>q²</b>, achar <b>q</b>, depois <b>p</b> e a de heterozigotos <b>2pq</b>). É um dos cálculos mais cobrados de Evolução. Reconhecer que o desvio do equilíbrio indica evolução é o conceito-chave.</div>
+        <div class="ex"><b>Exemplo:</b> 16% da população é recessiva (q² = 0,16). Frequência do alelo recessivo? <span class="resp">q = 0,4 (logo p = 0,6).</span></div>
+      </section>
+
+      <section class="card" id="a8-processos">
+        <div class="kicker">Evolução · 8.7</div>
+        <h3>Processos evolutivos</h3>
+        <p class="lead">São os fatores que alteram as frequências alélicas: <b>mutação</b> (cria novos alelos — fonte da variação); <b>seleção natural</b> (favorece os mais adaptados, direcional); <b>deriva genética</b> (variação <b>ao acaso</b>, forte em populações pequenas — inclui o <b>efeito gargalo</b> e o <b>efeito fundador</b>); <b>migração/fluxo gênico</b> (entrada e saída de alelos entre populações); e a <b>recombinação</b> (rearranja a variação existente). Só a seleção produz <b>adaptação</b>; os demais agem sem “direção”.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o fator em ação num exemplo (catástrofe que reduz a população → deriva/gargalo; poucos colonizadores numa ilha → efeito fundador; ambiente que muda → seleção). Distinguir <b>seleção (com direção/adaptação)</b> de <b>deriva (acaso)</b> é o ponto mais cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> uma ilha é colonizada por poucos indivíduos, e sua descendência tem frequências alélicas atípicas. Que fenômeno é esse? <span class="resp">Efeito fundador (um tipo de deriva genética).</span></div>
+      </section>
+
+      <section class="card" id="a8-especi">
+        <div class="kicker">Evolução · 8.8</div>
+        <h3>Especiação, evidências e tempo geológico</h3>
+        <p class="lead">A <b>especiação</b> é a formação de novas espécies, geralmente quando populações ficam <b>isoladas</b> (ex.: <b>isolamento geográfico</b>) e acumulam diferenças até não cruzarem mais (isolamento reprodutivo). As <b>evidências</b> da evolução incluem: <b>fósseis</b> (registro no tempo geológico), <b>órgãos homólogos</b> (mesma origem, funções diferentes — braço humano e nadadeira: divergência) × <b>análogos</b> (mesma função, origens diferentes — asa de inseto e de ave: convergência), <b>estruturas vestigiais</b>, semelhanças <b>embrionárias</b> e <b>moleculares</b> (DNA/proteínas). A vida se diversificou ao longo das eras geológicas, marcadas por grandes <b>extinções</b> e radiações.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar <b>homólogos (divergência, ancestral comum)</b> de <b>análogos (convergência)</b> — par clássico. Interpretar cladogramas, identificar o tipo de isolamento e ler evidências fósseis/moleculares são muito frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> a asa de morcego e o braço humano são homólogos ou análogos? <span class="resp">Homólogos (mesma origem embrionária, funções diferentes → evolução divergente).</span></div>
+      </section>
+
+      <section class="card" id="a8-humana">
+        <div class="kicker">Evolução · 8.9</div>
+        <h3>Evolução humana</h3>
+        <p class="lead">A espécie humana (<i>Homo sapiens</i>) pertence aos primatas e compartilha <b>ancestral comum</b> com os grandes símios (não “veio do macaco atual”). A linhagem humana surgiu na <b>África</b> e passou por várias espécies (australopitecíneos como “Lucy”, depois <i>Homo habilis</i>, <i>Homo erectus</i>, <i>Homo neanderthalensis</i> e <i>Homo sapiens</i>). Marcos evolutivos: <b>bipedismo</b>, aumento do <b>encéfalo</b>, uso de <b>ferramentas</b>, controle do fogo e linguagem.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> derrubar a ideia errada de que “o homem veio do macaco” (na verdade há um <b>ancestral comum</b>), e reconhecer a <b>origem africana</b> e as principais tendências (bipedismo, encéfalo maior). Aparece em textos que cobram leitura crítica de evidências.</div>
+        <div class="ex"><b>Exemplo:</b> “O homem descende do chimpanzé.” Onde está o erro? <span class="resp">Não descende dos símios atuais; ambos compartilham um ancestral comum extinto.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 9 ===================== -->
+      <div class="area a9">
+      <div class="chapter" id="a9">
+        <div class="num">Área 9</div>
+        <h2>Ecologia</h2>
+        <p>As relações entre os seres vivos e o ambiente. É a área mais presente no ENEM, sempre ligada a temas atuais: poluição, ciclos, desmatamento, energia. Cai em cadeias alimentares, ciclos biogeoquímicos, relações ecológicas e impactos humanos.</p>
+        <div class="mini">
+          <a href="#a9-conceitos">Conceitos básicos</a>
+          <a href="#a9-cadeias">Cadeias e teias alimentares</a>
+          <a href="#a9-energia">Fluxo de energia e pirâmides</a>
+          <a href="#a9-ciclos">Ciclos biogeoquímicos</a>
+          <a href="#a9-relacoes">Relações ecológicas</a>
+          <a href="#a9-pop">Dinâmica de populações</a>
+          <a href="#a9-sucessao">Sucessão ecológica</a>
+          <a href="#a9-biomas">Biomas</a>
+          <a href="#a9-impactos">Desequilíbrios e ação humana</a>
+        </div>
+      </div>
+
+      <section class="card" id="a9-conceitos">
+        <div class="kicker">Ecologia · 9.1</div>
+        <h3>Conceitos básicos e organização</h3>
+        <p class="lead">Os níveis de organização ecológica: <b>população</b> (indivíduos da mesma espécie numa área) → <b>comunidade/biocenose</b> (todas as populações de uma área) → <b>ecossistema</b> (comunidade + ambiente físico, biótico + abiótico) → <b>biosfera</b> (conjunto de todos os ecossistemas). Dois conceitos sutis: <b>habitat</b> é o “endereço” (onde a espécie vive) e <b>nicho ecológico</b> é a “profissão” (o papel que ela cumpre: o que come, com quem se relaciona, como atua).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a distinção <b>habitat (lugar) × nicho (função)</b> é cobrada quase sempre. Diferenciar fatores <b>bióticos</b> (seres vivos) de <b>abióticos</b> (luz, água, temperatura, solo) também é básico e frequente.</div>
+        <div class="ex"><b>Exemplo:</b> “onde a minhoca vive” é habitat ou nicho? <span class="resp">Habitat. O que ela faz no solo (aera, decompõe) é o nicho.</span></div>
+      </section>
+
+      <section class="card" id="a9-cadeias">
+        <div class="kicker">Ecologia · 9.2</div>
+        <h3>Cadeias e teias alimentares</h3>
+        <p class="lead">Descrevem “quem come quem”. Os <b>níveis tróficos</b>: <b>produtores</b> (autótrofos — plantas, algas: base de tudo), <b>consumidores</b> (herbívoros = 1ª ordem; carnívoros = 2ª, 3ª ordem…) e <b>decompositores</b> (fungos e bactérias, que reciclam a matéria). A seta da cadeia aponta no <b>sentido do fluxo de energia</b> (de quem é comido para quem come). A <b>teia alimentar</b> é o conjunto de cadeias interligadas, mais realista.</p>
+        <div class="formula-box">capim → gafanhoto → sapo → cobra → gavião &nbsp;(produtor → consumidores)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar o nível trófico de um organismo, prever o efeito da <b>remoção</b> de uma espécie na teia (cascata), e interpretar a seta como <b>fluxo de energia</b>. O papel dos decompositores na reciclagem é muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> numa cadeia capim→gafanhoto→sapo, o sapo é consumidor de que ordem? <span class="resp">Consumidor de 2ª ordem (carnívoro que come o herbívoro).</span></div>
+      </section>
+
+      <section class="card" id="a9-energia">
+        <div class="kicker">Ecologia · 9.3</div>
+        <h3>Fluxo de energia, matéria e pirâmides ecológicas</h3>
+        <p class="lead">Diferença essencial: a <b>energia flui</b> em sentido <b>único</b> (entra como luz, é capturada pelos produtores e se <b>dissipa como calor</b> a cada nível — não é reciclada); já a <b>matéria circula</b> (é reaproveitada nos ciclos biogeoquímicos). A cada nível trófico, só cerca de <b>10%</b> da energia passa adiante (o resto vira calor/respiração), por isso as cadeias são curtas. As <b>pirâmides</b> representam isso: a de <b>energia</b> é sempre maior na base; as de número e biomassa em geral também, mas podem se inverter.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a frase “<b>energia flui, matéria cicla</b>” é o coração do tema. Cobram a regra dos ~10% (por que há poucos níveis e poucos grandes predadores) e a interpretação de pirâmides, inclusive as invertidas. Liga com fotossíntese (Área 2).</div>
+        <div class="ex"><b>Exemplo:</b> por que cadeias alimentares raramente passam de 4-5 níveis? <span class="resp">A cada nível só ~10% da energia é transferida; logo sobra pouca para sustentar mais níveis.</span></div>
+      </section>
+
+      <section class="card" id="a9-ciclos">
+        <div class="kicker">Ecologia · 9.4</div>
+        <h3>Ciclos biogeoquímicos</h3>
+        <p class="lead">São os caminhos pelos quais a <b>matéria</b> circula entre os seres vivos e o ambiente. <b>Água</b>: evaporação, condensação, precipitação. <b>Carbono</b>: fixado na <b>fotossíntese</b> e devolvido pela <b>respiração</b>, decomposição e <b>queima de combustíveis fósseis</b> (ligação com o efeito estufa). <b>Nitrogênio</b>: o N₂ do ar é “fixado” por <b>bactérias</b> (fixadoras, nitrificantes) e incorporado às proteínas — etapa que depende de micro-organismos. <b>Oxigênio</b>: ligado ao do carbono, via fotossíntese/respiração.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>ciclo do carbono</b> conecta-se ao <b>aquecimento global</b> (queima de fósseis libera CO₂) — tema quente do ENEM. No <b>nitrogênio</b>, o papel das <b>bactérias fixadoras</b> (e das leguminosas) é o ponto mais cobrado. Identificar o processo que liga/retira o elemento da atmosfera é típico.</div>
+        <div class="ex"><b>Exemplo:</b> qual processo retira CO₂ da atmosfera, e qual o devolve? <span class="resp">Retira: fotossíntese. Devolve: respiração, decomposição e queima de combustíveis.</span></div>
+      </section>
+
+      <section class="card" id="a9-relacoes">
+        <div class="kicker">Ecologia · 9.5</div>
+        <h3>Relações ecológicas</h3>
+        <p class="lead">Interações entre seres vivos, <b>intraespecíficas</b> (mesma espécie) ou <b>interespecíficas</b> (espécies diferentes), classificadas em <b>harmônicas</b> (sem prejuízo) e <b>desarmônicas</b> (há prejuízo). Exemplos harmônicos: <b>mutualismo/protocooperação</b> (ambos ganham — liquens, abelha-flor), <b>comensalismo</b> (um ganha, o outro indiferente), <b>colônias</b> e <b>sociedades</b>. Desarmônicos: <b>predação</b>, <b>competição</b>, <b>parasitismo</b> (parasita prejudica o hospedeiro) e <b>amensalismo</b>.</p>
+        <table class="tab"><thead><tr><th>Relação</th><th>Espécie A</th><th>Espécie B</th></tr></thead><tbody>
+          <tr><th>Mutualismo</th><td>+</td><td>+</td></tr>
+          <tr><th>Comensalismo</th><td>+</td><td>0</td></tr>
+          <tr><th>Predação/Parasitismo</th><td>+</td><td>−</td></tr>
+          <tr><th>Competição</th><td>−</td><td>−</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar a relação a partir de um exemplo (cupim e protozoário no intestino → mutualismo; rêmora e tubarão → comensalismo; leão e zebra → predação). Distinguir <b>mutualismo (obrigatório)</b> de <b>protocooperação (facultativa)</b> e a competição como força evolutiva.</div>
+        <div class="ex"><b>Exemplo:</b> a relação entre o cupim e os protozoários que digerem celulose no seu intestino é... <span class="resp">Mutualismo (ambos dependem e se beneficiam).</span></div>
+      </section>
+
+      <section class="card" id="a9-pop">
+        <div class="kicker">Ecologia · 9.6</div>
+        <h3>Dinâmica das populações</h3>
+        <p class="lead">Estuda como o <b>tamanho de uma população</b> varia no tempo. Cresce com <b>natalidade</b> e <b>imigração</b>; diminui com <b>mortalidade</b> e <b>emigração</b>. O crescimento tende a uma curva em <b>“J”</b> (exponencial, ideal/sem limites) que, com os <b>fatores limitantes</b> (alimento, espaço, predadores), vira uma curva em <b>“S” (sigmoide)</b>, estabilizando na <b>capacidade de suporte (K)</b> do ambiente — o máximo que ele comporta.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar as curvas <b>J × S</b> e o conceito de <b>capacidade de suporte (K)</b>, e identificar os <b>fatores limitantes</b> que freiam o crescimento. Aparece em gráficos e em contextos como populações humanas, pragas e espécies invasoras.</div>
+        <div class="ex"><b>Exemplo:</b> o que estabiliza uma população na curva em “S”? <span class="resp">A capacidade de suporte (K), imposta pelos fatores limitantes do ambiente.</span></div>
+      </section>
+
+      <section class="card" id="a9-sucessao">
+        <div class="kicker">Ecologia · 9.7</div>
+        <h3>Sucessão ecológica</h3>
+        <p class="lead">É a mudança gradual das comunidades de um local ao longo do tempo, até chegar a um estágio estável. Na <b>sucessão primária</b>, a vida coloniza um local <b>sem solo prévio</b> (rocha nua, lava), começando pelas <b>espécies pioneiras</b> (liquens, musgos). Na <b>secundária</b>, a comunidade se reconstitui após uma perturbação (queimada, desmatamento) onde <b>já há solo</b> — por isso é mais rápida. O estágio final, maduro e estável, é a <b>comunidade clímax</b>, com maior biodiversidade.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar primária × secundária (existência ou não de solo/comunidade prévia), reconhecer as <b>pioneiras</b> (liquens) e a tendência de aumento de <b>biodiversidade e biomassa</b> rumo ao clímax. Casos de regeneração de áreas degradadas são comuns.</div>
+        <div class="ex"><b>Exemplo:</b> a colonização de uma rocha nua por liquens inicia que tipo de sucessão? <span class="resp">Sucessão primária (não havia solo nem comunidade anterior).</span></div>
+      </section>
+
+      <section class="card" id="a9-biomas">
+        <div class="kicker">Ecologia · 9.8</div>
+        <h3>Biomas do mundo e do Brasil</h3>
+        <p class="lead">Biomas são grandes regiões com clima, vegetação e fauna típicos. No mundo: <b>tundra</b>, <b>taiga</b>, <b>florestas temperadas</b>, <b>florestas tropicais</b>, <b>savanas</b>, <b>desertos</b> e <b>campos/pradarias</b>. No Brasil, seis biomas: <b>Amazônia</b> (floresta tropical, megabiodiversidade), <b>Cerrado</b> (savana, “berço das águas”), <b>Mata Atlântica</b> (muito devastada, alta biodiversidade), <b>Caatinga</b> (semiárido, exclusivamente brasileiro), <b>Pampa</b> (campos do Sul) e <b>Pantanal</b> (planície alagável).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o bioma por clima/vegetação/fauna e associá-lo às <b>adaptações</b> dos seres vivos (ex.: plantas da Caatinga com folhas reduzidas/espinhos contra a seca; do Cerrado com raízes profundas e casca grossa contra o fogo). Questões sobre ameaças a cada bioma são frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> qual bioma brasileiro é exclusivo do país e típico do semiárido? <span class="resp">A Caatinga.</span></div>
+      </section>
+
+      <section class="card" id="a9-impactos">
+        <div class="kicker">Ecologia · 9.9</div>
+        <h3>Desequilíbrios e ação humana nos ecossistemas</h3>
+        <p class="lead">Impactos humanos cobrados com frequência: <b>efeito estufa intensificado / aquecimento global</b> (CO₂ e metano da queima de fósseis e do desmatamento), <b>destruição da camada de ozônio</b> (CFCs — distinta do efeito estufa!), <b>chuva ácida</b> (óxidos de enxofre/nitrogênio), <b>eutrofização</b> (excesso de nutrientes → proliferação de algas → morte de peixes), <b>poluição</b> (incluindo <b>bioacumulação/magnificação trófica</b> de metais e agrotóxicos ao longo da cadeia), <b>desmatamento</b> e <b>perda de biodiversidade</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> é o tema mais presente no ENEM. Não confundir <b>efeito estufa (CO₂, aquecimento)</b> com <b>buraco de ozônio (CFC, radiação UV)</b> — pegadinha clássica. A <b>magnificação trófica</b> (poluente se concentra mais no topo da cadeia) e a <b>eutrofização</b> são muito cobradas.</div>
+        <div class="ex"><b>Exemplo:</b> por que um predador de topo acumula mais mercúrio que um peixe pequeno? <span class="resp">Magnificação trófica: o poluente se concentra ao subir os níveis da cadeia.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 10 ===================== -->
+      <div class="area a10">
+      <div class="chapter" id="a10">
+        <div class="num">Área 10</div>
+        <h2>Anatomia, Fisiologia e Saúde Humana</h2>
+        <p>Como o corpo humano funciona, sistema por sistema, e as doenças associadas. Cai relacionando estrutura e função, integrando sistemas (ex.: respiratório + circulatório) e em temas de saúde pública: doenças, prevenção e efeitos de drogas.</p>
+        <div class="mini">
+          <a href="#a10-dig">Sistema digestório</a>
+          <a href="#a10-resp">Sistema respiratório</a>
+          <a href="#a10-circ">Sistema circulatório</a>
+          <a href="#a10-urin">Sistema urinário</a>
+          <a href="#a10-nerv">Sistema nervoso</a>
+          <a href="#a10-sens">Sistema sensorial</a>
+          <a href="#a10-endo">Sistema endócrino</a>
+          <a href="#a10-imun">Sistema imunológico</a>
+          <a href="#a10-genit">Sistema genital</a>
+          <a href="#a10-doencas">Enfermidades</a>
+          <a href="#a10-drogas">Drogas</a>
+        </div>
+      </div>
+
+      <section class="card" id="a10-dig">
+        <div class="kicker">Fisiologia · 10.1</div>
+        <h3>Sistema digestório</h3>
+        <p class="lead">Quebra o alimento em moléculas absorvíveis. O caminho: <b>boca</b> (mastigação + amilase salivar inicia o amido) → <b>esôfago</b> (peristaltismo) → <b>estômago</b> (suco gástrico ácido + <b>pepsina</b> digere proteínas) → <b>intestino delgado</b> (principal local da <b>digestão</b> e da <b>absorção</b>, com enzimas do pâncreas e a <b>bile</b> do fígado, que emulsiona gorduras) → <b>intestino grosso</b> (absorve água, abriga a flora bacteriana) → eliminação. É uma digestão <b>extracelular</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar enzima/órgão ao nutriente (amilase–amido; pepsina–proteína no estômago ácido; bile–emulsão de gorduras) e identificar o <b>intestino delgado</b> como sede da absorção. O papel do pH (pepsina em meio ácido) liga com enzimas (Área 2).</div>
+        <div class="ex"><b>Exemplo:</b> qual a função da bile, e ela contém enzimas? <span class="resp">Emulsiona (fragmenta) gorduras; não tem enzimas, apenas facilita a ação delas.</span></div>
+      </section>
+
+      <section class="card" id="a10-resp">
+        <div class="kicker">Fisiologia · 10.2</div>
+        <h3>Sistema respiratório</h3>
+        <p class="lead">Faz as <b>trocas gasosas</b> (capta O₂, elimina CO₂). O ar percorre: <b>fossas nasais → faringe → laringe → traqueia → brônquios → bronquíolos → alvéolos</b>. Nos <b>alvéolos</b> (envoltos por capilares) ocorre a <b>hematose</b>: o O₂ passa para o sangue e o CO₂ sai, por difusão. A respiração é controlada pelo <b>bulbo</b>, que responde principalmente ao nível de <b>CO₂</b> no sangue. O <b>diafragma</b> comanda a inspiração/expiração.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>hematose</b> nos alvéolos e a integração <b>respiratório + circulatório</b> (o sangue leva os gases) são o foco. Cobram que o estímulo para respirar vem do <b>CO₂</b> (não da falta de O₂) e o transporte de O₂ pela <b>hemoglobina</b>.</div>
+        <div class="ex"><b>Exemplo:</b> onde e como ocorre a troca de gases com o sangue? <span class="resp">Nos alvéolos pulmonares, por difusão (hematose).</span></div>
+      </section>
+
+      <section class="card" id="a10-circ">
+        <div class="kicker">Fisiologia · 10.3</div>
+        <h3>Sistema circulatório</h3>
+        <p class="lead">Transporta sangue (gases, nutrientes, hormônios, defesa). O <b>coração</b> tem 4 câmaras (2 átrios, 2 ventrículos). Há <b>dupla circulação</b>: a <b>pequena</b> (coração → pulmões → coração, oxigena o sangue) e a <b>grande</b> (coração → corpo → coração). <b>Artérias</b> levam sangue para <b>longe</b> do coração; <b>veias</b> o trazem de <b>volta</b>; <b>capilares</b> fazem as trocas com os tecidos. O sangue tem <b>hemácias</b> (O₂), <b>leucócitos</b> (defesa) e <b>plaquetas</b> (coagulação).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a definição de artéria/veia pelo <b>sentido</b> (e não pelo gás — a artéria pulmonar leva sangue venoso!) é a pegadinha clássica. Cobram o trajeto da dupla circulação e a função de cada elemento do sangue.</div>
+        <div class="ex"><b>Exemplo:</b> a artéria pulmonar leva sangue rico ou pobre em O₂? <span class="resp">Pobre (venoso) — artéria define-se por sair do coração, não pelo gás.</span></div>
+        <div class="warn"><b>Pegadinha:</b> artéria ≠ “sangue oxigenado”. Artéria = sai do coração; veia = chega ao coração. Nas pulmonares, isso se inverte em relação ao gás.</div>
+      </section>
+
+      <section class="card" id="a10-urin">
+        <div class="kicker">Fisiologia · 10.4</div>
+        <h3>Sistema urinário (excretor)</h3>
+        <p class="lead">Filtra o sangue, elimina resíduos (principalmente <b>ureia</b>) e regula a água e os sais (<b>homeostase</b>). Os <b>rins</b> são formados por milhões de <b>néfrons</b>, onde ocorre: <b>filtração</b> (no glomérulo), <b>reabsorção</b> (recupera água, glicose e sais úteis) e <b>secreção</b>. A urina segue pelos <b>ureteres</b> → <b>bexiga</b> → <b>uretra</b>. O hormônio <b>ADH</b> controla a reabsorção de água (regula a concentração da urina).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> as três etapas no <b>néfron</b> (filtração–reabsorção–secreção) e o papel do <b>ADH</b> na economia de água. A presença de glicose/proteína na urina como sinal de problema (diabetes, lesão renal) aparece em interpretação de exames.</div>
+        <div class="ex"><b>Exemplo:</b> por que pessoa desidratada produz urina mais concentrada? <span class="resp">Mais ADH → mais reabsorção de água nos rins → urina concentrada.</span></div>
+      </section>
+
+      <section class="card" id="a10-nerv">
+        <div class="kicker">Fisiologia · 10.5</div>
+        <h3>Sistema nervoso</h3>
+        <p class="lead">Comanda e integra o corpo por impulsos elétricos rápidos. Divide-se em <b>central</b> (encéfalo + medula espinhal) e <b>periférico</b> (nervos). O <b>encéfalo</b> tem o <b>cérebro</b> (pensamento, sentidos, movimentos voluntários), o <b>cerebelo</b> (equilíbrio, coordenação) e o <b>tronco/bulbo</b> (funções vitais: batimento, respiração). O sistema <b>autônomo</b> controla o involuntário em dois ramos antagônicos: <b>simpático</b> (reação de “luta ou fuga”, acelera) e <b>parassimpático</b> (repouso, desacelera). O <b>arco reflexo</b> dá respostas rápidas pela medula, sem passar pelo cérebro.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar a função à região (cerebelo–equilíbrio; bulbo–funções vitais), o antagonismo <b>simpático × parassimpático</b> (efeitos opostos sobre coração, pupila, digestão) e o <b>ato reflexo</b> (resposta involuntária pela medula). Conecta com o tecido nervoso (Área 3).</div>
+        <div class="ex"><b>Exemplo:</b> ao levar um susto, o coração dispara. Qual ramo agiu? <span class="resp">O sistema simpático (resposta de luta ou fuga).</span></div>
+      </section>
+
+      <section class="card" id="a10-sens">
+        <div class="kicker">Fisiologia · 10.6</div>
+        <h3>Sistema sensorial</h3>
+        <p class="lead">Capta estímulos do ambiente por <b>receptores</b> especializados e os envia ao sistema nervoso. <b>Visão</b>: a luz é focada pelo cristalino na <b>retina</b> (cones — cores; bastonetes — luz/penumbra). <b>Audição</b>: o som vibra o tímpano e é convertido em impulso na <b>cóclea</b> (ouvido interno, que também guarda o <b>equilíbrio</b>). Há ainda <b>olfato</b> e <b>paladar</b> (quimiorreceptores) e o <b>tato</b> (receptores na pele para pressão, temperatura, dor).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os defeitos da <b>visão</b> (miopia — imagem antes da retina; hipermetropia — depois; e a correção por lentes) são os mais cobrados, com cones/bastonetes. A cóclea (audição) e o vestíbulo (equilíbrio) aparecem em associação estrutura-função.</div>
+        <div class="ex"><b>Exemplo:</b> na miopia a imagem se forma onde, e qual lente corrige? <span class="resp">Antes da retina; corrige-se com lente divergente (côncava).</span></div>
+      </section>
+
+      <section class="card" id="a10-endo">
+        <div class="kicker">Fisiologia · 10.7</div>
+        <h3>Sistema endócrino</h3>
+        <p class="lead">Controla o corpo de forma <b>química e lenta</b>, por <b>hormônios</b> lançados no sangue pelas <b>glândulas endócrinas</b>. Principais: <b>hipófise</b> (a “glândula-mestra”, comanda as demais), <b>tireoide</b> (tiroxina — regula o metabolismo; precisa de iodo), <b>pâncreas</b> (<b>insulina</b> baixa a glicemia; <b>glucagon</b> a eleva), <b>adrenais</b> (adrenalina, cortisol) e <b>gônadas</b> (testosterona, estrógeno, progesterona). Muitos hormônios funcionam por <b>feedback negativo</b> (o excesso freia a própria produção).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a dupla <b>insulina × glucagon</b> e a <b>diabetes</b> (falta/ineficácia da insulina → glicose alta) são campeãs. Comparar o controle <b>nervoso (rápido) × endócrino (lento)</b> e entender o <b>feedback negativo</b> (ex.: regulação da tireoide) é frequente.</div>
+        <div class="ex"><b>Exemplo:</b> qual hormônio reduz a glicose no sangue, e que doença surge na sua falta? <span class="resp">A insulina; sua falta/ineficácia causa o diabetes.</span></div>
+      </section>
+
+      <section class="card" id="a10-imun">
+        <div class="kicker">Fisiologia · 10.8</div>
+        <h3>Sistema imunológico</h3>
+        <p class="lead">Defende o corpo contra agentes invasores. Tem barreiras <b>inespecíficas</b> (pele, mucosas, fagócitos, inflamação) e a resposta <b>específica</b>: os <b>linfócitos</b> reconhecem <b>antígenos</b> e os <b>linfócitos B</b> produzem <b>anticorpos</b>. A <b>memória imunológica</b> garante resposta rápida num segundo contato — princípio das <b>vacinas</b>. Distinção-chave: a <b>imunização ativa</b> (vacina: introduz antígeno, o corpo produz anticorpos e memória — duradoura) × <b>passiva</b> (soro: recebe anticorpos prontos — imediata, mas temporária).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a diferença <b>vacina (ativa, preventiva, com memória) × soro (passiva, curativa, imediata)</b> é uma das mais cobradas de Biologia. Conceitos de antígeno × anticorpo e o porquê das doses de reforço aparecem com frequência.</div>
+        <div class="ex"><b>Exemplo:</b> alguém foi picado por cobra. Recebe vacina ou soro? <span class="resp">Soro (imunização passiva): anticorpos prontos para ação imediata.</span></div>
+      </section>
+
+      <section class="card" id="a10-genit">
+        <div class="kicker">Fisiologia · 10.9</div>
+        <h3>Sistema genital (reprodutor)</h3>
+        <p class="lead">Garante a reprodução. No <b>masculino</b>, os <b>testículos</b> produzem espermatozoides e <b>testosterona</b>. No <b>feminino</b>, os <b>ovários</b> produzem óvulos e os hormônios <b>estrógeno</b> e <b>progesterona</b>, que regulam o <b>ciclo menstrual</b> (incluindo a <b>ovulação</b>, por volta do meio do ciclo, e o preparo do útero). A fecundação ocorre nas <b>tubas uterinas</b>, e o embrião se implanta no <b>útero</b>. Métodos contraceptivos atuam impedindo ovulação, fecundação ou implantação; <b>preservativos</b> também previnem ISTs.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>ciclo menstrual</b> (hormônios, ovulação, período fértil) em gráficos, os hormônios de cada gônada e a lógica dos contraceptivos (a pílula inibe a ovulação) são muito cobrados. Conecta com gametogênese (Área 4) e endócrino (10.7).</div>
+        <div class="ex"><b>Exemplo:</b> como a pílula anticoncepcional combinada evita a gravidez? <span class="resp">Seus hormônios inibem a ovulação (não há óvulo liberado para ser fecundado).</span></div>
+      </section>
+
+      <section class="card" id="a10-doencas">
+        <div class="kicker">Saúde · 10.10</div>
+        <h3>Enfermidades: causas, sintomas, profilaxia e tratamento</h3>
+        <p class="lead">As doenças classificam-se pela causa: <b>virais</b> (gripe, dengue, COVID-19, AIDS — tratadas com antivirais/suporte, prevenidas por vacinas e controle de vetores), <b>bacterianas</b> (tuberculose, tétano, cólera — tratadas com <b>antibióticos</b>), <b>por protozoários</b> (malária, Chagas), <b>verminoses</b> (esquistossomose, ascaridíase — ligadas a saneamento) e as <b>não transmissíveis</b> (diabetes, hipertensão, câncer). <b>Profilaxia</b> = prevenção: vacinação, saneamento básico, controle de vetores (ex.: combate ao <i>Aedes aegypti</i>), higiene e hábitos saudáveis.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar doença → agente → <b>vetor/transmissão</b> → profilaxia (dengue/zika → <i>Aedes</i>, eliminar água parada; esquistossomose → caramujo + água contaminada, saneamento). A regra “<b>antibiótico só para bactéria</b>” reaparece sempre.</div>
+        <div class="ex"><b>Exemplo:</b> qual a melhor profilaxia contra a dengue? <span class="resp">Combater o vetor <i>Aedes aegypti</i>, eliminando criadouros (água parada).</span></div>
+      </section>
+
+      <section class="card" id="a10-drogas">
+        <div class="kicker">Saúde · 10.11</div>
+        <h3>Drogas: principais tipos e seus efeitos</h3>
+        <p class="lead">Drogas psicoativas atuam no sistema nervoso e classificam-se pelo efeito: <b>depressoras</b> (reduzem a atividade do SNC — <b>álcool</b>, calmantes, opioides: causam lentidão, sonolência), <b>estimulantes</b> (aceleram o SNC — <b>cafeína</b>, <b>nicotina</b>, cocaína, anfetaminas: aumentam alerta e batimentos) e <b>perturbadoras/alucinógenas</b> (distorcem a percepção — maconha, LSD). O uso pode levar à <b>tolerância</b> (precisar de mais), à <b>dependência</b> (química e psicológica) e a danos a órgãos (fígado, pulmões, cérebro).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar a droga pelo efeito no SNC (álcool = depressor — pegadinha, pois “anima” socialmente; nicotina/cafeína = estimulantes) e relacionar com danos à saúde. O tabagismo ligado a câncer de pulmão e o álcool ao fígado são exemplos recorrentes.</div>
+        <div class="ex"><b>Exemplo:</b> o álcool é estimulante ou depressor do sistema nervoso? <span class="resp">Depressor — embora pareça estimular, ele reduz a atividade do SNC.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Biologia · organizado por áreas do programa do vestibular. Conferir sempre os processos e exceções antes de generalizar.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

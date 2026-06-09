@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Matemática — Conceitos</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      macros: {
+        sen:    ['\\operatorname{sen}'],
+        tg:     ['\\operatorname{tg}'],
+        cotg:   ['\\operatorname{cotg}'],
+        sec:    ['\\operatorname{sec}'],
+        cossec: ['\\operatorname{cossec}'],
+        cis:    ['\\operatorname{cis}']
+      }
+    },
+    svg: { fontCache: 'global' },
+    startup: { ready(){ MathJax.startup.defaultReady(); MathJax.startup.promise.then(()=>document.body.classList.add('mjx-ready')); } }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e4e8ee; --line-strong:#cdd3dd;
+    --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9;
+    --paper:#ffffff; --bg:#eef1f5;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f5f7fa; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbfcfe; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#1f4e79,#2e6da4); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:70ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#f7f9fc; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE CAPÍTULO (ÁREA) ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:25px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:78ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid #dbe6f2; border-radius:10px;
+    padding:15px; text-align:center; font-size:18px; margin:14px 0; overflow-x:auto; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.6px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR ÁREA ===== */
+  .a1{ --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9; }
+  .a2{ --accent:#0e7490; --accent-2:#0891b2; --accent-soft:#ecfeff; }
+  .a3{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }
+  .a4{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; }
+  .a5{ --accent:#6d28d9; --accent-2:#7c3aed; --accent-soft:#f5f3ff; }
+  .a6{ --accent:#be123c; --accent-2:#e11d48; --accent-soft:#fff1f2; }
+  .a7{ --accent:#4338ca; --accent-2:#4f46e5; --accent-soft:#eef2ff; }
+  .a8{ --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#f0fdfa; }
+  .a9{ --accent:#a16207; --accent-2:#ca8a04; --accent-soft:#fefce8; }
+  .a10{ --accent:#9333ea; --accent-2:#a855f7; --accent-soft:#faf5ff; }
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Matemática - Conceitos</div>
+      <div class="sub">Conceitos do programa do vestibular, explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+        <div class="grp">As 10 áreas</div>
+        <ol>
+          <li><a href="#a1"><b>1</b> Conjuntos Numéricos</a></li>
+          <li><a href="#a2"><b>2</b> Funções</a></li>
+          <li><a href="#a3"><b>3</b> Sequências e Progressões</a></li>
+          <li><a href="#a4"><b>4</b> Análise Combinatória, Probabilidade e Estatística</a></li>
+          <li><a href="#a5"><b>5</b> Matrizes, Determinantes e Sistemas</a></li>
+          <li><a href="#a6"><b>6</b> Trigonometria</a></li>
+          <li><a href="#a7"><b>7</b> Polinômios e Equações Algébricas</a></li>
+          <li><a href="#a8"><b>8</b> Geometria Plana</a></li>
+          <li><a href="#a9"><b>9</b> Geometria Espacial</a></li>
+          <li><a href="#a10"><b>10</b> Geometria Analítica e Cônicas</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de Matemática — Conceitos Explicados</h1>
+        <p>Um passeio por todo o programa de matemática do vestibular. Cada tópico responde a três perguntas: <b>o que é</b>, <b>onde cai na prova / como se usa</b> e <b>um exemplo curto</b> — para você reconhecer o assunto no enunciado e entender exatamente do que se está falando.</p>
+        <div class="chips">
+          <span>Conjuntos numéricos</span><span>Funções</span><span>Progressões</span>
+          <span>Combinatória</span><span>Matrizes</span><span>Trigonometria</span>
+          <span>Polinômios</span><span>Geometria plana</span><span>Geometria espacial</span><span>Geometria analítica</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que é”), veja <b>onde aquilo aparece na prova e como se usa</b>, e confira o <b>exemplo</b> para fixar. Use o índice ao lado para saltar entre as 10 áreas; dentro de cada área há atalhos para os tópicos. As fórmulas são renderizadas automaticamente.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Onde cai / como se usa</span>
+          <span><i style="background:#94a3b8"></i> Exemplo resolvido</span>
+          <span><i style="background:#e0a93c"></i> Cuidado de prova</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== ÁREA 1 ===================== -->
+      <div class="area a1">
+      <div class="chapter" id="a1">
+        <div class="num">Área 1</div>
+        <h2>Conjuntos Numéricos</h2>
+        <p>É a base de tudo: saber com que tipo de número você está lidando (natural, inteiro, racional, real, complexo) e dominar as operações de cada um. Cai sozinho (classificar números, MMC/MDC, porcentagem, juros) e entra disfarçado em quase toda questão de outras áreas.</p>
+        <div class="mini">
+          <a href="#a1-conj">Os conjuntos N, Z, Q, R, C</a>
+          <a href="#a1-divis">Divisibilidade</a>
+          <a href="#a1-primos">Fatores primos</a>
+          <a href="#a1-mmcmdc">MMC e MDC</a>
+          <a href="#a1-frac">Frações</a>
+          <a href="#a1-dec">Decimais e notação científica</a>
+          <a href="#a1-razao">Razão e proporção</a>
+          <a href="#a1-r3">Regra de três</a>
+          <a href="#a1-porc">Porcentagem</a>
+          <a href="#a1-juros">Juros</a>
+          <a href="#a1-reais">Reais e expressões</a>
+          <a href="#a1-ordem">Ordem, módulo e desigualdades</a>
+          <a href="#a1-interv">Intervalos</a>
+          <a href="#a1-cplx1">Complexos: forma algébrica</a>
+          <a href="#a1-cplx2">Complexos: módulo e conjugado</a>
+          <a href="#a1-cplx3">Complexos: forma trigonométrica</a>
+        </div>
+      </div>
+
+      <section class="card" id="a1-conj">
+        <div class="kicker">Conjuntos Numéricos · 1.1</div>
+        <h3>Os conjuntos N, Z, Q, R e C</h3>
+        <p class="lead">Os números foram sendo “ampliados” conforme surgiu a necessidade. Os <b>naturais</b> \(\mathbb{N}=\{0,1,2,3,\dots\}\) servem para contar. Os <b>inteiros</b> \(\mathbb{Z}\) acrescentam os negativos. Os <b>racionais</b> \(\mathbb{Q}\) são todos os que podem virar uma fração \(\frac{a}{b}\) (incluem decimais finitos e dízimas periódicas). Os <b>irracionais</b> \(\mathbb{I}\) têm decimais infinitos e não periódicos (\(\sqrt2,\ \pi\)). Juntando racionais e irracionais formam-se os <b>reais</b> \(\mathbb{R}\). Quando se admite a raiz de número negativo, chega-se aos <b>complexos</b> \(\mathbb{C}\).</p>
+        <div class="formula-box">\( \mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\subset\mathbb{C} \qquad \mathbb{Q}\cup\mathbb{I}=\mathbb{R},\quad \mathbb{Q}\cap\mathbb{I}=\varnothing \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> questões de verdadeiro/falso (“todo inteiro é racional?”, “\(\sqrt9\) é irracional?”), pertinência (\(\in,\notin\)) e relações entre conjuntos (\(\subset,\cup,\cap\)). Saber a “escada” \(\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\) resolve a maioria.</p></div>
+        <div class="ex"><b>Exemplo:</b> classifique \(-5,\ 0{,}75,\ 0{,}333\ldots,\ \sqrt2,\ \sqrt9\). <span class="resp">\(-5\in\mathbb{Z}\); \(0{,}75\) e \(0{,}333\ldots\in\mathbb{Q}\); \(\sqrt2\in\mathbb{I}\); \(\sqrt9=3\in\mathbb{N}\).</span></div>
+      </section>
+
+      <section class="card" id="a1-divis">
+        <div class="kicker">Conjuntos Numéricos · 1.2</div>
+        <h3>Divisibilidade e seus critérios</h3>
+        <p class="lead">Dizer que “\(a\) é <b>divisível</b> por \(b\)” significa que a divisão é exata (resto zero), ou seja, existe inteiro \(k\) com \(a=b\cdot k\). Os <b>critérios de divisibilidade</b> são atalhos para descobrir isso sem dividir.</p>
+        <table class="tab"><thead><tr><th>Divisível por</th><th>Critério</th></tr></thead><tbody>
+          <tr><th>2</th><td>termina em 0, 2, 4, 6 ou 8 (par)</td></tr>
+          <tr><th>3</th><td>a soma dos algarismos é divisível por 3</td></tr>
+          <tr><th>4</th><td>os dois últimos algarismos formam número divisível por 4</td></tr>
+          <tr><th>5</th><td>termina em 0 ou 5</td></tr>
+          <tr><th>6</th><td>é divisível por 2 e por 3 ao mesmo tempo</td></tr>
+          <tr><th>9</th><td>a soma dos algarismos é divisível por 9</td></tr>
+          <tr><th>10</th><td>termina em 0</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Onde cai / como se usa:</b> simplificar frações, achar MMC/MDC, problemas de “quantos múltiplos de…”, e questões de lógica (“o número \(N=\overline{2a4}\) é divisível por 3, quanto vale \(a\)?”).</div>
+        <div class="ex"><b>Exemplo:</b> 342 é divisível por 3? Soma \(3+4+2=9\), divisível por 3. <span class="resp">Sim, 342 é divisível por 3 (e por 9).</span></div>
+      </section>
+
+      <section class="card" id="a1-primos">
+        <div class="kicker">Conjuntos Numéricos · 1.3</div>
+        <h3>Números primos e decomposição em fatores primos</h3>
+        <p class="lead">Um número <b>primo</b> tem exatamente dois divisores: 1 e ele mesmo (2, 3, 5, 7, 11, …). Todo número natural maior que 1 pode ser escrito de forma <b>única</b> como produto de primos — é a <b>fatoração</b> (Teorema Fundamental da Aritmética). Na prática, divide-se sucessivamente pelos menores primos.</p>
+        <div class="formula-box">\( 360 = 2^3\cdot 3^2\cdot 5 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> é a ferramenta para calcular MMC e MDC, contar divisores de um número e simplificar raízes (\(\sqrt{360}=\sqrt{2^3\cdot3^2\cdot5}=6\sqrt{10}\)). O número de divisores sai somando 1 a cada expoente e multiplicando: \(360\) tem \((3{+}1)(2{+}1)(1{+}1)=24\) divisores.</div>
+        <div class="ex"><b>Exemplo:</b> fatore 84. \(84=2\cdot42=2\cdot2\cdot21=2^2\cdot3\cdot7\). <span class="resp">\(84=2^2\cdot3\cdot7\).</span></div>
+      </section>
+
+      <section class="card" id="a1-mmcmdc">
+        <div class="kicker">Conjuntos Numéricos · 1.4</div>
+        <h3>MMC e MDC</h3>
+        <p class="lead">O <b>MDC</b> (máximo divisor comum) é o maior número que divide dois ou mais inteiros ao mesmo tempo; o <b>MMC</b> (mínimo múltiplo comum) é o menor número que é múltiplo de todos eles. Pela fatoração: no <b>MDC</b> pegam-se os fatores <b>comuns</b> com o <b>menor</b> expoente; no <b>MMC</b>, <b>todos</b> os fatores com o <b>maior</b> expoente.</p>
+        <div class="formula-box">\( \mathrm{MDC}(a,b)\cdot \mathrm{MMC}(a,b)=a\cdot b \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> o <b>MMC</b> resolve problemas de “fatos que se repetem juntos” (sinaleiros que piscam, voltas em pista, datas que coincidem) e soma de frações; o <b>MDC</b> aparece em “maior pedaço/grupo igual possível” (cortar barras, dividir em equipes).</div>
+        <div class="ex"><b>Exemplo:</b> dois faróis piscam a cada 12 s e 18 s. Quando piscam juntos de novo? \(12=2^2\cdot3,\ 18=2\cdot3^2\Rightarrow \mathrm{MMC}=2^2\cdot3^2=36\). <span class="resp">A cada 36 segundos.</span></div>
+      </section>
+
+      <section class="card" id="a1-frac">
+        <div class="kicker">Conjuntos Numéricos · 1.5</div>
+        <h3>Operações com frações</h3>
+        <p class="lead">Fração é uma divisão. Para <b>somar/subtrair</b> é preciso o mesmo denominador (use o MMC); para <b>multiplicar</b>, multiplica-se numerador com numerador e denominador com denominador; para <b>dividir</b>, repete-se a primeira e multiplica-se pelo <b>inverso</b> da segunda.</p>
+        <div class="formula-box">\( \frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}\qquad \frac{a}{b}\cdot\frac{c}{d}=\frac{ac}{bd}\qquad \frac{a}{b}\div\frac{c}{d}=\frac{a}{b}\cdot\frac{d}{c} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> aparece em quase tudo — proporções, probabilidade, médias, funções. Saber simplificar e operar frações com agilidade evita erros bobos no resto da prova.</div>
+        <div class="ex"><b>Exemplo:</b> \(\frac{2}{3}+\frac{1}{4}=\frac{8}{12}+\frac{3}{12}=\frac{11}{12}\). <span class="resp">\(\frac{11}{12}\).</span></div>
+      </section>
+
+      <section class="card" id="a1-dec">
+        <div class="kicker">Conjuntos Numéricos · 1.6</div>
+        <h3>Representação decimal e notação científica</h3>
+        <p class="lead">Todo racional vira decimal <b>finito</b> (\(\frac34=0{,}75\)) ou <b>dízima periódica</b> (\(\frac13=0{,}333\ldots\)); o caminho de volta, da dízima para a fração, dá a <b>fração geratriz</b>. A <b>notação científica</b> escreve qualquer número como \(a\cdot 10^{n}\), com \(1\le a<10\), para lidar com valores muito grandes ou muito pequenos.</p>
+        <div class="formula-box">\( 0{,}\overline{3}=\frac{3}{9}=\frac13 \qquad 0{,}00042 = 4{,}2\cdot 10^{-4} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> notação científica é onipresente em Física e Química (massa, distância, carga); a geratriz cai em “escreva a dízima como fração”. Cuidado ao multiplicar potências de 10: somam-se os expoentes.</div>
+        <div class="ex"><b>Exemplo:</b> \((3\cdot10^{5})\cdot(2\cdot10^{-2})=6\cdot10^{3}\). <span class="resp">\(6\,000\).</span></div>
+      </section>
+
+      <section class="card" id="a1-razao">
+        <div class="kicker">Conjuntos Numéricos · 1.7</div>
+        <h3>Razão e proporção</h3>
+        <p class="lead">Uma <b>razão</b> é a comparação de duas grandezas por divisão (\(\frac{a}{b}\)); uma <b>proporção</b> é a igualdade de duas razões. A propriedade-chave é o <b>produto dos meios igual ao produto dos extremos</b> (“multiplicação em cruz”).</p>
+        <div class="formula-box">\( \frac{a}{b}=\frac{c}{d}\iff a\cdot d=b\cdot c \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> base de regra de três, escalas de mapa, velocidade média, densidade, semelhança de triângulos e divisão em partes proporcionais. Sempre que o problema diz “está para … assim como”, é proporção.</div>
+        <div class="ex"><b>Exemplo:</b> \(\frac{3}{x}=\frac{9}{12}\Rightarrow 9x=36\Rightarrow x=4\). <span class="resp">\(x=4\).</span></div>
+      </section>
+
+      <section class="card" id="a1-r3">
+        <div class="kicker">Conjuntos Numéricos · 1.8</div>
+        <h3>Regra de três simples e composta</h3>
+        <p class="lead">É o método para achar um valor desconhecido em grandezas proporcionais. Na <b>simples</b> há duas grandezas; na <b>composta</b>, três ou mais. O passo decisivo é identificar se as grandezas são <b>diretamente</b> proporcionais (uma cresce, a outra cresce) ou <b>inversamente</b> (uma cresce, a outra diminui) — no caso inverso, inverte-se a fração correspondente.</p>
+        <div class="uso"><b>Onde cai / como se usa:</b> velocidade × tempo (inversa), trabalhadores × dias × obra (composta), receitas, consumo, vazão. Monte uma tabela, marque cada coluna com seta e ajuste as inversas antes de multiplicar em cruz.</div>
+        <div class="ex"><b>Exemplo:</b> 4 operários fazem um muro em 9 dias. Em quantos dias 6 operários fazem (mesma obra)? Mais operários, menos dias → inversa: \(4\cdot9=6\cdot x\Rightarrow x=6\). <span class="resp">6 dias.</span></div>
+      </section>
+
+      <section class="card" id="a1-porc">
+        <div class="kicker">Conjuntos Numéricos · 1.9</div>
+        <h3>Porcentagem</h3>
+        <p class="lead">Porcentagem é uma fração de denominador 100: \(p\%=\frac{p}{100}\). “Calcular \(p\%\) de \(V\)” é multiplicar \(V\) por \(\frac{p}{100}\). <b>Aumentos e descontos</b> são feitos com o <b>fator multiplicativo</b>: subir 20% é multiplicar por \(1{,}20\); cair 20% é multiplicar por \(0{,}80\).</p>
+        <div class="formula-box">\( \text{aumento de } p\%:\ \times\Big(1+\tfrac{p}{100}\Big)\qquad \text{desconto de } p\%:\ \times\Big(1-\tfrac{p}{100}\Big) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> descontos, lucro, impostos, variações de preço e os famosos “aumentos sucessivos”, que se <b>multiplicam</b> (não se somam!). Subir 10% e depois mais 10% dá \(1{,}1\cdot1{,}1=1{,}21\), ou seja, 21% — e não 20%.</div>
+        <div class="ex"><b>Exemplo:</b> um produto de R$ 200 sobe 15%. \(200\cdot1{,}15=230\). <span class="resp">R$ 230,00.</span></div>
+      </section>
+
+      <section class="card" id="a1-juros">
+        <div class="kicker">Conjuntos Numéricos · 1.10</div>
+        <h3>Juros simples e compostos</h3>
+        <p class="lead">No <b>juro simples</b> a correção incide sempre sobre o valor inicial (crescimento linear). No <b>juro composto</b> incide sobre o montante acumulado — “juro sobre juro” — gerando crescimento <b>exponencial</b>, que é o que bancos e cartões usam.</p>
+        <div class="formula-box">\( \text{Simples: } M=C(1+i\,t)\qquad \text{Composto: } M=C(1+i)^{t} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> empréstimos, investimentos, inflação, parcelamentos. Conecta-se à função exponencial e às PG. Atenção: a taxa \(i\) deve estar na mesma unidade de tempo de \(t\) (mês com mês, ano com ano).</div>
+        <div class="ex"><b>Exemplo:</b> R$ 1000 a 10% ao mês, juro composto, 2 meses: \(1000\cdot(1{,}1)^2=1210\). <span class="resp">R$ 1.210,00.</span></div>
+      </section>
+
+      <section class="card" id="a1-reais">
+        <div class="kicker">Conjuntos Numéricos · 1.11</div>
+        <h3>Reais: operações, propriedades e simplificação de expressões</h3>
+        <p class="lead">Nos reais valem as propriedades <b>comutativa</b>, <b>associativa</b> e <b>distributiva</b>, mais as regras de <b>potências</b> e <b>radicais</b>. Simplificar uma expressão numérica/algébrica é aplicá-las na ordem certa: primeiro parênteses, depois potências/raízes, depois multiplicação/divisão e por fim soma/subtração.</p>
+        <div class="formula-box">\( a^m\cdot a^n=a^{m+n}\quad (a^m)^n=a^{mn}\quad a^{-n}=\frac1{a^n}\quad \sqrt[n]{a^m}=a^{m/n} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> base de toda a Álgebra — fatorar, reduzir frações algébricas, racionalizar denominadores, usar produtos notáveis \((a\pm b)^2,\ a^2-b^2\). Erros de sinal e de ordem das operações aqui derrubam questões inteiras.</div>
+        <div class="ex"><b>Exemplo:</b> \(\frac{x^2-9}{x-3}=\frac{(x-3)(x+3)}{x-3}=x+3\) (para \(x\neq3\)). <span class="resp">\(x+3\).</span></div>
+      </section>
+
+      <section class="card" id="a1-ordem">
+        <div class="kicker">Conjuntos Numéricos · 1.12</div>
+        <h3>Relação de ordem, valor absoluto e desigualdades</h3>
+        <p class="lead">A <b>relação de ordem</b> é o “maior/menor” na reta real. O <b>valor absoluto</b> \(|x|\) é a distância de \(x\) até zero, sempre \(\ge 0\). Uma <b>desigualdade</b> (inequação) tem como solução um conjunto de valores. Regra de ouro: ao multiplicar/dividir uma desigualdade por número <b>negativo</b>, o sinal se inverte.</p>
+        <div class="formula-box">\( |x|=\begin{cases}x,&x\ge0\\-x,&x<0\end{cases}\qquad |x|<a\iff -a<x<a \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> domínio de funções, módulo, distâncias, margens de erro (“difere de 5 por menos de 0,1” vira \(|x-5|<0{,}1\)). É pré-requisito para inequações do 1º e 2º graus.</div>
+        <div class="ex"><b>Exemplo:</b> \(-2x+1<7\Rightarrow -2x<6\Rightarrow x>-3\) (sinal inverteu). <span class="resp">\(x>-3\).</span></div>
+      </section>
+
+      <section class="card" id="a1-interv">
+        <div class="kicker">Conjuntos Numéricos · 1.13</div>
+        <h3>Intervalos</h3>
+        <p class="lead">Intervalo é um “pedaço” contínuo da reta real. Colchete <b>fechado</b> \([\,]\) inclui o extremo; parêntese <b>aberto</b> \((\,)\) exclui. O infinito é sempre aberto. Pode-se escrever também com desigualdades ou como conjunto.</p>
+        <div class="formula-box">\( [2,5)=\{x\in\mathbb{R}\mid 2\le x<5\} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> escrever o <b>domínio</b> e a <b>imagem</b> de funções e o <b>conjunto solução</b> de inequações; operações de <b>união</b> e <b>interseção</b> de intervalos aparecem ao juntar condições.</div>
+        <div class="ex"><b>Exemplo:</b> a solução de \(x>-3\) e \(x\le4\) é o intervalo \((-3,4]\). <span class="resp">\((-3,\,4]\).</span></div>
+      </section>
+
+      <section class="card" id="a1-cplx1">
+        <div class="kicker">Conjuntos Numéricos · 1.14</div>
+        <h3>Números complexos: unidade imaginária e forma algébrica</h3>
+        <p class="lead">Criou-se a <b>unidade imaginária</b> \(i\), com \(i^2=-1\), para resolver raízes de negativos. Um complexo na <b>forma algébrica</b> é \(z=a+bi\), com <b>parte real</b> \(a\) e <b>parte imaginária</b> \(b\). Soma/subtração juntam partes semelhantes; na multiplicação usa-se \(i^2=-1\).</p>
+        <div class="formula-box">\( z=a+bi,\quad i^2=-1\qquad i^1=i,\ i^2=-1,\ i^3=-i,\ i^4=1\ (\text{ciclo de 4}) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> resolver equações sem raiz real (\(x^2+1=0\Rightarrow x=\pm i\)), calcular potências de \(i\) (basta o resto da divisão do expoente por 4) e operar \(a+bi\). É a porta de entrada para as outras formas.</div>
+        <div class="ex"><b>Exemplo:</b> \((2+3i)+(1-5i)=3-2i\); \(\ i^{23}=i^{4\cdot5+3}=i^3=-i\). <span class="resp">\(3-2i\) e \(-i\).</span></div>
+      </section>
+
+      <section class="card" id="a1-cplx2">
+        <div class="kicker">Conjuntos Numéricos · 1.15</div>
+        <h3>Complexos: plano de Argand-Gauss, conjugado e módulo</h3>
+        <p class="lead">Todo complexo \(z=a+bi\) vira um <b>ponto</b> (ou vetor) no plano: eixo horizontal = parte real, vertical = parte imaginária. O <b>conjugado</b> \(\bar z=a-bi\) é o reflexo no eixo real. O <b>módulo</b> \(|z|\) é a distância à origem.</p>
+        <div class="formula-box">\( \bar z=a-bi\qquad |z|=\sqrt{a^2+b^2}\qquad z\cdot\bar z=|z|^2=a^2+b^2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> o conjugado serve para <b>dividir</b> complexos (multiplica-se numerador e denominador pelo conjugado do denominador) e o módulo dá o “tamanho”. A representação geométrica liga complexos à trigonometria e à geometria analítica.</div>
+        <div class="ex"><b>Exemplo:</b> \(|3+4i|=\sqrt{9+16}=5\); \(\dfrac{1}{2+i}=\dfrac{2-i}{(2+i)(2-i)}=\dfrac{2-i}{5}\). <span class="resp">módulo 5.</span></div>
+      </section>
+
+      <section class="card" id="a1-cplx3">
+        <div class="kicker">Conjuntos Numéricos · 1.16</div>
+        <h3>Complexos: forma trigonométrica e operações</h3>
+        <p class="lead">Como \(z\) é um ponto no plano, ele também é descrito pelo <b>módulo</b> \(r=|z|\) e pelo <b>argumento</b> \(\theta\) (ângulo com o eixo real): é a <b>forma trigonométrica</b> (ou polar). Ela facilita muito multiplicar, dividir e potenciar, pelo <b>Teorema de De Moivre</b>.</p>
+        <div class="formula-box">\( z=r(\cos\theta+i\,\sen\theta)\qquad z^n=r^n\big(\cos(n\theta)+i\,\sen(n\theta)\big) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> para potências e raízes de complexos (De Moivre) e para multiplicar/dividir (multiplicam-se os módulos e somam-se os argumentos). Aparece ligando os conjuntos numéricos à trigonometria.</div>
+        <div class="ex"><b>Exemplo:</b> \(z=2(\cos30^\circ+i\,\sen30^\circ)\Rightarrow z^3=8(\cos90^\circ+i\,\sen90^\circ)=8i\). <span class="resp">\(z^3=8i\).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 2 ===================== -->
+      <div class="area a2">
+      <div class="chapter" id="a2">
+        <div class="num">Área 2</div>
+        <h2>Funções</h2>
+        <p>O coração do ensino médio. Uma função é uma “máquina” que associa a cada entrada \(x\) uma única saída \(f(x)\). Aqui você aprende a ler gráficos, reconhecer cada tipo (afim, quadrática, exponencial, logarítmica…) e resolver equações e inequações — assuntos que reaparecem em Física, economia e estatística.</p>
+        <div class="mini">
+          <a href="#a2-def">Definição, domínio e imagem</a>
+          <a href="#a2-graf">Gráficos</a>
+          <a href="#a2-parimpar">Par e ímpar</a>
+          <a href="#a2-cresc">Crescente e decrescente</a>
+          <a href="#a2-partes">Por partes</a>
+          <a href="#a2-comp">Composição</a>
+          <a href="#a2-inv">Inversa</a>
+          <a href="#a2-afim">Função afim (1º grau)</a>
+          <a href="#a2-quad">Função quadrática (2º grau)</a>
+          <a href="#a2-sinal">Inequações / estudo do sinal</a>
+          <a href="#a2-rac">Função racional</a>
+          <a href="#a2-mod">Função modular</a>
+          <a href="#a2-exp">Função exponencial</a>
+          <a href="#a2-log">Função logarítmica</a>
+          <a href="#a2-explog">Equações exp. e log.</a>
+        </div>
+      </div>
+
+      <section class="card" id="a2-def">
+        <div class="kicker">Funções · 2.1</div>
+        <h3>Definição, notação, domínio, contradomínio e imagem</h3>
+        <p class="lead">Uma <b>função</b> de \(A\) em \(B\) liga cada elemento de \(A\) a <b>um único</b> elemento de \(B\). O <b>domínio</b> é o conjunto das entradas permitidas; o <b>contradomínio</b> é o conjunto de chegada \(B\); a <b>imagem</b> é o conjunto das saídas que realmente ocorrem (parte do contradomínio). Notação: \(f:A\to B,\ x\mapsto f(x)\).</p>
+        <div class="formula-box">\( f:A\to B \qquad \text{Im}(f)\subseteq B \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar o <b>domínio</b> é o primeiro reflexo em muitas questões: denominador \(\neq 0\), radicando \(\ge 0\) (raiz par), logaritmando \(>0\). Distinguir contradomínio de imagem cai em provas mais teóricas.</div>
+        <div class="ex"><b>Exemplo:</b> domínio de \(f(x)=\sqrt{x-2}\): precisa de \(x-2\ge0\). <span class="resp">\(D=[2,+\infty)\).</span></div>
+      </section>
+
+      <section class="card" id="a2-graf">
+        <div class="kicker">Funções · 2.2</div>
+        <h3>Gráficos de funções</h3>
+        <p class="lead">O gráfico é o conjunto dos pontos \((x,f(x))\) no plano. Ler um gráfico é traduzir desenho em informação: <b>raízes</b> (onde corta o eixo \(x\)), <b>valor inicial</b> (corte no eixo \(y\)), crescimento, máximos e mínimos. O <b>teste da reta vertical</b> confirma se um desenho é função: qualquer vertical pode cruzar o gráfico no máximo uma vez.</p>
+        <div class="uso"><b>Onde cai / como se usa:</b> questões “leia o gráfico e responda”, associar fórmula a curva, e interpretar situações reais (distância × tempo, custo × quantidade). Saber o <b>formato típico</b> de cada função (reta, parábola, curva exponencial…) economiza muito tempo.</div>
+        <div class="ex"><b>Exemplo:</b> se o gráfico corta o eixo \(y\) em 3 e o eixo \(x\) em \(-1{,}5\), e é uma reta, então \(f(x)=2x+3\). <span class="resp">Raiz \(x=-1{,}5\); \(f(0)=3\).</span></div>
+      </section>
+
+      <section class="card" id="a2-parimpar">
+        <div class="kicker">Funções · 2.3</div>
+        <h3>Função par e função ímpar</h3>
+        <p class="lead">Trata da <b>simetria</b> do gráfico. <b>Par:</b> \(f(-x)=f(x)\) — gráfico simétrico em relação ao <b>eixo \(y\)</b> (ex.: \(x^2,\ \cos x\)). <b>Ímpar:</b> \(f(-x)=-f(x)\) — gráfico simétrico em relação à <b>origem</b> (ex.: \(x^3,\ \sen x\)). A maioria das funções não é nem uma coisa nem outra.</p>
+        <div class="formula-box">\( \text{par: } f(-x)=f(x)\qquad \text{ímpar: } f(-x)=-f(x) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> reconhecer simetria para esboçar gráficos mais rápido e em questões teóricas. Basta substituir \(x\) por \(-x\) e comparar.</div>
+        <div class="ex"><b>Exemplo:</b> \(f(x)=x^2-1\): \(f(-x)=(-x)^2-1=x^2-1=f(x)\). <span class="resp">É par.</span></div>
+      </section>
+
+      <section class="card" id="a2-cresc">
+        <div class="kicker">Funções · 2.4</div>
+        <h3>Funções crescentes e decrescentes</h3>
+        <p class="lead">Uma função é <b>crescente</b> num intervalo se, ao aumentar \(x\), o valor \(f(x)\) também aumenta; é <b>decrescente</b> se \(f(x)\) diminui. Uma mesma função pode crescer num trecho e decrescer em outro (a parábola é o exemplo clássico).</p>
+        <div class="formula-box">\( \text{cresc.: } x_1<x_2\Rightarrow f(x_1)<f(x_2) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> análise de gráficos, sinal do coeficiente \(a\) (na afim e na exponencial), e intervalos de crescimento na parábola (antes/depois do vértice). Aparece em problemas de máximo/mínimo.</div>
+        <div class="ex"><b>Exemplo:</b> \(f(x)=2^x\) é crescente; \(g(x)=\left(\tfrac12\right)^x\) é decrescente. <span class="resp">Base \(>1\): cresce; base entre 0 e 1: decresce.</span></div>
+      </section>
+
+      <section class="card" id="a2-partes">
+        <div class="kicker">Funções · 2.5</div>
+        <h3>Função definida por mais de uma sentença</h3>
+        <p class="lead">É a função “por partes”: usa uma fórmula diferente em cada intervalo do domínio. Para calcular \(f(x)\), primeiro veja em qual faixa o \(x\) cai e só então use a sentença correta.</p>
+        <div class="formula-box">\( f(x)=\begin{cases} 2x+1,& x<0\\ x^2,& x\ge 0\end{cases} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> tarifas (faixas de consumo de água/luz), impostos por faixa, frete, e a própria função modular. O gráfico junta pedaços de curvas diferentes.</div>
+        <div class="ex"><b>Exemplo:</b> na função acima, \(f(-2)=2(-2)+1=-3\) e \(f(3)=3^2=9\). <span class="resp">\(f(-2)=-3,\ f(3)=9\).</span></div>
+      </section>
+
+      <section class="card" id="a2-comp">
+        <div class="kicker">Funções · 2.6</div>
+        <h3>Composição de funções</h3>
+        <p class="lead">Compor é “encaixar” uma função dentro da outra: a saída de uma vira a entrada da seguinte. \((f\circ g)(x)=f(g(x))\) — primeiro aplica \(g\), depois \(f\). A ordem importa: em geral \(f\circ g\neq g\circ f\).</p>
+        <div class="formula-box">\( (f\circ g)(x)=f\big(g(x)\big) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> processos em etapas (converter moeda e depois aplicar taxa), e questões que dão \(f\) e \(g\) e pedem \(f(g(x))\) ou resolvem \(f(g(x))=k\). Cuidado com a ordem.</div>
+        <div class="ex"><b>Exemplo:</b> \(f(x)=x+1,\ g(x)=x^2\Rightarrow (f\circ g)(x)=x^2+1\) e \((g\circ f)(x)=(x+1)^2\). <span class="resp">São diferentes.</span></div>
+      </section>
+
+      <section class="card" id="a2-inv">
+        <div class="kicker">Funções · 2.7</div>
+        <h3>Função inversa</h3>
+        <p class="lead">A <b>inversa</b> \(f^{-1}\) “desfaz” o que \(f\) fez: se \(f\) leva \(x\) em \(y\), \(f^{-1}\) leva \(y\) de volta em \(x\). Só existe se a função for <b>bijetora</b>. Para achar: troque \(x\) por \(y\) e isole \(y\). O gráfico de \(f^{-1}\) é o reflexo do de \(f\) na reta \(y=x\).</p>
+        <div class="formula-box">\( f\big(f^{-1}(x)\big)=x \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> log é a inversa da exponencial; arco-funções invertem seno/cosseno. Cai “ache a lei da inversa” e “a inversa existe?”. Não confundir \(f^{-1}(x)\) com \(\frac{1}{f(x)}\).</div>
+        <div class="ex"><b>Exemplo:</b> \(f(x)=2x+6\Rightarrow y=2x+6\Rightarrow x=\frac{y-6}{2}\Rightarrow f^{-1}(x)=\frac{x-6}{2}\). <span class="resp">\(f^{-1}(x)=\frac{x-6}{2}\).</span></div>
+      </section>
+
+      <section class="card" id="a2-afim">
+        <div class="kicker">Funções · 2.8</div>
+        <h3>Função afim (1º grau)</h3>
+        <p class="lead">É \(f(x)=ax+b\), com gráfico em <b>reta</b>. O <b>coeficiente angular</b> \(a\) dá a inclinação (e o crescimento: \(a>0\) sobe, \(a<0\) desce); o <b>coeficiente linear</b> \(b\) é onde a reta corta o eixo \(y\). A <b>raiz</b> (onde \(f(x)=0\)) é \(x=-\frac{b}{a}\).</p>
+        <div class="formula-box">\( f(x)=ax+b\qquad a=\frac{\Delta y}{\Delta x}=\frac{y_2-y_1}{x_2-x_1} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> taxa constante de variação — preço com taxa fixa, movimento uniforme, conversões. Equações do 1º grau (\(ax+b=0\)) e inequações do 1º grau (\(ax+b>0\)) caem direto; a resolução gráfica é “onde a reta está acima/abaixo do eixo”.</div>
+        <div class="ex"><b>Exemplo:</b> um táxi cobra R$ 5 fixos + R$ 2/km: \(f(x)=2x+5\). Para 10 km: \(f(10)=25\). <span class="resp">R$ 25,00.</span></div>
+      </section>
+
+      <section class="card" id="a2-quad">
+        <div class="kicker">Funções · 2.9</div>
+        <h3>Função quadrática (2º grau)</h3>
+        <p class="lead">É \(f(x)=ax^2+bx+c\) (\(a\neq0\)), com gráfico em <b>parábola</b>. Se \(a>0\) a concavidade é para cima (tem ponto de <b>mínimo</b>); se \(a<0\), para baixo (<b>máximo</b>). As <b>raízes</b> saem de Bháskara e o <b>vértice</b> dá o valor extremo.</p>
+        <div class="formula-box">\( x=\frac{-b\pm\sqrt{\Delta}}{2a},\ \ \Delta=b^2-4ac \qquad x_v=\frac{-b}{2a},\ \ y_v=\frac{-\Delta}{4a} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> problemas de <b>máximo e mínimo</b> (lucro máximo, altura máxima de um projétil, área máxima), número de raízes pelo sinal de \(\Delta\) (\(\Delta>0\): duas; \(\Delta=0\): uma; \(\Delta<0\): nenhuma real). É das funções mais cobradas.</div>
+        <div class="ex"><b>Exemplo:</b> altura \(h(t)=-5t^2+20t\). Altura máxima no vértice: \(t_v=\frac{-20}{2(-5)}=2\), \(h(2)=20\). <span class="resp">20 m em \(t=2\) s.</span></div>
+      </section>
+
+      <section class="card" id="a2-sinal">
+        <div class="kicker">Funções · 2.10</div>
+        <h3>Inequações e estudo do sinal</h3>
+        <p class="lead">Resolver uma <b>inequação</b> é achar os \(x\) que tornam a expressão positiva ou negativa. O método é o <b>estudo do sinal</b>: encontre as raízes, marque-as na reta e descubra em cada intervalo se a função é \(+\) ou \(-\). Para produtos/quocientes, combina-se o sinal de cada fator (quadro de sinais).</p>
+        <div class="uso"><b>Onde cai / como se usa:</b> inequações do 1º grau (sinal da reta), do 2º grau (sinal da parábola em relação às raízes), e inequações-produto/quociente. Lembre: no quociente, o denominador nunca pode ser zero.</div>
+        <div class="ex"><b>Exemplo:</b> \(x^2-5x+6>0\) tem raízes 2 e 3; parábola com \(a>0\) é positiva fora das raízes. <span class="resp">\(x<2\) ou \(x>3\).</span></div>
+      </section>
+
+      <section class="card" id="a2-rac">
+        <div class="kicker">Funções · 2.11</div>
+        <h3>Função racional</h3>
+        <p class="lead">É um <b>quociente de polinômios</b>, \(f(x)=\frac{p(x)}{q(x)}\). O detalhe central é o <b>domínio</b>: exclui-se todo \(x\) que zera o denominador. Perto desses valores a função “dispara” para \(\pm\infty\) (assíntotas verticais).</p>
+        <div class="formula-box">\( f(x)=\frac{p(x)}{q(x)},\quad q(x)\neq0 \qquad \text{ex.: } f(x)=\frac{1}{x} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar domínio, simplificar frações algébricas, e modelar relações de <b>proporção inversa</b> (a hipérbole \(y=\frac{k}{x}\): grandezas que, multiplicadas, dão constante). Inequações com fração exigem estudo de sinal.</div>
+        <div class="ex"><b>Exemplo:</b> domínio de \(f(x)=\frac{x+1}{x-3}\): exige \(x-3\neq0\). <span class="resp">\(D=\mathbb{R}-\{3\}\).</span></div>
+      </section>
+
+      <section class="card" id="a2-mod">
+        <div class="kicker">Funções · 2.12</div>
+        <h3>Função modular</h3>
+        <p class="lead">Envolve o valor absoluto: \(f(x)=|x|\) devolve sempre a versão não negativa de \(x\). O gráfico de \(|x|\) é um “V” com bico na origem. Resolver equações/inequações modulares costuma se dividir em casos (o que está dentro do módulo é \(\ge0\) ou \(<0\)).</p>
+        <div class="formula-box">\( |x|=a\ (a\ge0)\iff x=a \text{ ou } x=-a \qquad |x|\le a\iff -a\le x\le a \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> distâncias, tolerâncias e desvios (“errar por no máximo…”). O “V” pode ser transladado: \(|x-3|\) tem bico em \(x=3\). Cuidado: \(|x|=-2\) não tem solução.</div>
+        <div class="ex"><b>Exemplo:</b> \(|x-1|=4\Rightarrow x-1=4\) ou \(x-1=-4\). <span class="resp">\(x=5\) ou \(x=-3\).</span></div>
+      </section>
+
+      <section class="card" id="a2-exp">
+        <div class="kicker">Funções · 2.13</div>
+        <h3>Função exponencial</h3>
+        <p class="lead">É \(f(x)=a^x\) com base \(a>0,\ a\neq1\). A variável está no <b>expoente</b>, então a função cresce (se \(a>1\)) ou decresce (se \(0<a<1\)) muito rápido. Passa sempre por \((0,1)\) e nunca toca o eixo \(x\) (imagem só positiva).</p>
+        <div class="formula-box">\( f(x)=a^x\ (a>0,\,a\neq1)\qquad a^x\cdot a^y=a^{x+y},\ (a^x)^y=a^{xy} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> crescimento populacional, juros compostos, decaimento radioativo, meia-vida. Modela tudo que <b>multiplica por um fator fixo</b> a cada período. Liga-se a PG (termos de uma PG seguem uma exponencial).</div>
+        <div class="ex"><b>Exemplo:</b> uma cultura dobra a cada hora a partir de 100: \(N(t)=100\cdot2^{t}\). Em 3 h: \(N(3)=800\). <span class="resp">800.</span></div>
+      </section>
+
+      <section class="card" id="a2-log">
+        <div class="kicker">Funções · 2.14</div>
+        <h3>Função logarítmica</h3>
+        <p class="lead">É a <b>inversa</b> da exponencial: \(\log_a x\) responde “a que expoente elevo a base \(a\) para obter \(x\)?”. Só existe para \(x>0\). Suas <b>propriedades</b> transformam produto em soma, quociente em diferença e potência em multiplicação — por isso “desmontam” expoentes em equações.</p>
+        <div class="formula-box">\( \log_a x = y \iff a^y=x \qquad \log(xy)=\log x+\log y,\ \ \log x^n=n\log x \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> escalas logarítmicas (pH, Richter, decibéis), e — principalmente — para <b>isolar a variável do expoente</b> em juros e crescimento (“em quantos anos dobra?”). A mudança de base \(\log_a x=\frac{\log x}{\log a}\) ajuda na calculadora.</div>
+        <div class="ex"><b>Exemplo:</b> \(\log_2 32 = 5\), pois \(2^5=32\). <span class="resp">5.</span></div>
+      </section>
+
+      <section class="card" id="a2-explog">
+        <div class="kicker">Funções · 2.15</div>
+        <h3>Equações e inequações exponenciais e logarítmicas</h3>
+        <p class="lead">Em <b>equações exponenciais</b>, a estratégia é deixar a <b>mesma base</b> dos dois lados e igualar os expoentes; quando não dá, aplica-se logaritmo. Em <b>equações logarítmicas</b>, usa-se a definição e as propriedades, sempre conferindo a <b>condição de existência</b> (logaritmando \(>0\)). Nas <b>inequações</b>, atenção à base: se \(0<a<1\), o sentido da desigualdade se inverte.</p>
+        <div class="formula-box">\( a^{f(x)}=a^{g(x)}\iff f(x)=g(x)\qquad \log_a f(x)=\log_a g(x)\iff f(x)=g(x)>0 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar tempo em juros/decaimento, resolver \(2^x=...\), validar soluções de log (descartar as que violam o domínio). A inversão do sinal com base entre 0 e 1 é pegadinha clássica.</div>
+        <div class="ex"><b>Exemplo:</b> \(2^{x+1}=16=2^4\Rightarrow x+1=4\). <span class="resp">\(x=3\).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 3 ===================== -->
+      <div class="area a3">
+      <div class="chapter" id="a3">
+        <div class="num">Área 3</div>
+        <h2>Sequências e Progressões</h2>
+        <p>Sequências são listas ordenadas de números que seguem um padrão. As <b>progressões</b> são as sequências mais regulares: a aritmética soma sempre o mesmo valor; a geométrica multiplica sempre pelo mesmo fator. Conectam-se a funções afim/exponencial e a juros.</p>
+        <div class="mini">
+          <a href="#a3-seq">Sequências (termo geral e recorrência)</a>
+          <a href="#a3-pa">PA: termo geral</a>
+          <a href="#a3-pasoma">PA: soma e interpolação</a>
+          <a href="#a3-pg">PG: termo geral</a>
+          <a href="#a3-pgsoma">PG: soma e interpolação</a>
+        </div>
+      </div>
+
+      <section class="card" id="a3-seq">
+        <div class="kicker">Sequências e Progressões · 3.1</div>
+        <h3>Sequências numéricas: termo geral e recorrência</h3>
+        <p class="lead">Uma <b>sequência</b> associa a cada posição \(n\) um número \(a_n\). Pode ser descrita por uma <b>fórmula do termo geral</b> (\(a_n\) em função de \(n\), permite achar qualquer termo direto) ou por <b>recorrência</b> (cada termo depende do anterior, como \(a_{n}=a_{n-1}+3\)).</p>
+        <div class="formula-box">\( \text{Termo geral: } a_n=2n+1 \qquad \text{Recorrência: } a_1=3,\ a_{n}=a_{n-1}+2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> descobrir o próximo termo, achar o \(n\)-ésimo termo, e identificar o padrão. O gráfico de uma sequência é um conjunto de <b>pontos isolados</b> (domínio são os naturais). A famosa sequência de Fibonacci é definida por recorrência.</div>
+        <div class="ex"><b>Exemplo:</b> em \(a_n=2n+1\), o 5º termo é \(a_5=2\cdot5+1=11\). <span class="resp">\(a_5=11\).</span></div>
+      </section>
+
+      <section class="card" id="a3-pa">
+        <div class="kicker">Sequências e Progressões · 3.2</div>
+        <h3>Progressão Aritmética (PA): termo geral</h3>
+        <p class="lead">Na <b>PA</b>, cada termo é o anterior mais uma constante, a <b>razão</b> \(r\). Se \(r>0\) é crescente; \(r<0\) decrescente; \(r=0\) constante. A fórmula do termo geral permite “pular” direto para qualquer posição.</p>
+        <div class="formula-box">\( a_n=a_1+(n-1)\,r \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> tudo que cresce em ritmo <b>constante</b> — parcelas fixas, lugares numerados, depreciação linear, juros simples. Como \(a_n\) é do 1º grau em \(n\), a PA é a “versão discreta” da função afim.</div>
+        <div class="ex"><b>Exemplo:</b> PA \(2,5,8,\dots\) (\(a_1=2,\ r=3\)). O 10º termo: \(a_{10}=2+9\cdot3=29\). <span class="resp">\(a_{10}=29\).</span></div>
+      </section>
+
+      <section class="card" id="a3-pasoma">
+        <div class="kicker">Sequências e Progressões · 3.3</div>
+        <h3>PA: soma dos termos e interpolação</h3>
+        <p class="lead">A <b>soma</b> dos \(n\) primeiros termos de uma PA é a média do primeiro com o último, vezes a quantidade de termos (ideia de Gauss). <b>Interpolar</b> é inserir uma quantidade dada de meios aritméticos entre dois números, formando uma PA — basta achar a razão.</p>
+        <div class="formula-box">\( S_n=\frac{(a_1+a_n)\,n}{2} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> somar termos (1 a 100, números pares, fileiras de um teatro em que cada fila tem alguns assentos a mais). Interpolação cai como “insira \(k\) meios aritméticos entre \(a\) e \(b\)”.</div>
+        <div class="ex"><b>Exemplo:</b> soma de 1 a 100: \(S_{100}=\frac{(1+100)\cdot100}{2}=5050\). <span class="resp">5050.</span></div>
+      </section>
+
+      <section class="card" id="a3-pg">
+        <div class="kicker">Sequências e Progressões · 3.4</div>
+        <h3>Progressão Geométrica (PG): termo geral</h3>
+        <p class="lead">Na <b>PG</b>, cada termo é o anterior <b>multiplicado</b> por uma constante, a <b>razão</b> \(q\). Se \(q>1\) cresce rápido; se \(0<q<1\) decresce tendendo a zero; se \(q<0\) os sinais se alternam.</p>
+        <div class="formula-box">\( a_n=a_1\cdot q^{\,n-1} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> crescimento/decrescimento por fator fixo — juros compostos, dobrar/reduzir pela metade, meia-vida, reprodução. É a “versão discreta” da função exponencial.</div>
+        <div class="ex"><b>Exemplo:</b> PG \(3,6,12,\dots\) (\(a_1=3,\ q=2\)). O 6º termo: \(a_6=3\cdot2^{5}=96\). <span class="resp">\(a_6=96\).</span></div>
+      </section>
+
+      <section class="card" id="a3-pgsoma">
+        <div class="kicker">Sequências e Progressões · 3.5</div>
+        <h3>PG: soma dos termos e interpolação</h3>
+        <p class="lead">Existe fórmula para a <b>soma finita</b> de uma PG e, quando \(|q|<1\), a soma <b>infinita</b> converge para um valor (os termos ficam pequenos demais para alterar o total). Interpolar geométricos entre dois números é achar a razão que forma a PG.</p>
+        <div class="formula-box">\( S_n=a_1\frac{q^{n}-1}{q-1}\qquad S_\infty=\frac{a_1}{1-q}\ \ (|q|<1) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> soma de várias parcelas que crescem por fator fixo; a <b>soma infinita</b> aparece em dízimas periódicas (que são PGs infinitas) e em problemas de “distância total percorrida por uma bola que quica”.</div>
+        <div class="ex"><b>Exemplo:</b> \(S_\infty\) de \(1+\tfrac12+\tfrac14+\cdots=\frac{1}{1-\frac12}=2\). <span class="resp">2.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 4 ===================== -->
+      <div class="area a4">
+      <div class="chapter" id="a4">
+        <div class="num">Área 4</div>
+        <h2>Análise Combinatória, Probabilidade e Estatística</h2>
+        <p>Contar de quantos jeitos algo pode acontecer (combinatória), medir a chance de eventos (probabilidade) e resumir dados em números e gráficos (estatística). Trio muito presente no ENEM e em provas modernas.</p>
+        <div class="mini">
+          <a href="#a4-pfc">Princípio da contagem</a>
+          <a href="#a4-perm">Permutações</a>
+          <a href="#a4-arr">Arranjos</a>
+          <a href="#a4-comb">Combinações</a>
+          <a href="#a4-binomio">Binômio de Newton</a>
+          <a href="#a4-prob">Probabilidade</a>
+          <a href="#a4-probcond">Condicional e independência</a>
+          <a href="#a4-freq">Frequências e gráficos</a>
+          <a href="#a4-central">Média, mediana e moda</a>
+          <a href="#a4-disp">Dispersão</a>
+        </div>
+      </div>
+
+      <section class="card" id="a4-pfc">
+        <div class="kicker">Combinatória · 4.1</div>
+        <h3>Princípio fundamental da contagem</h3>
+        <p class="lead">É a regra que sustenta toda a combinatória: se uma decisão tem \(m\) opções e a seguinte tem \(n\) opções (independentes), o total de possibilidades é o <b>produto</b> \(m\cdot n\). Vale para quantas etapas houver — basta multiplicar.</p>
+        <div class="formula-box">\( N = n_1\cdot n_2\cdot n_3\cdots \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> placas, senhas, cardápios, roupas combinadas, número de caminhos. É o ponto de partida — só depois você decide se é arranjo, combinação ou permutação. “E” geralmente vira multiplicação; “ou” (casos separados) vira soma.</div>
+        <div class="ex"><b>Exemplo:</b> 3 camisas e 4 calças formam quantos conjuntos? \(3\cdot4=12\). <span class="resp">12 conjuntos.</span></div>
+      </section>
+
+      <section class="card" id="a4-perm">
+        <div class="kicker">Combinatória · 4.2</div>
+        <h3>Permutações (simples e com repetição)</h3>
+        <p class="lead"><b>Permutar</b> é ordenar <b>todos</b> os elementos de um conjunto — só muda a ordem. São \(P_n=n!\) maneiras. Quando há elementos <b>repetidos</b>, divide-se pelos fatoriais das repetições para não contar arranjos idênticos.</p>
+        <div class="formula-box">\( P_n=n!\qquad P_n^{a,b,\dots}=\frac{n!}{a!\,b!\cdots} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> filas, pódios com todos os participantes, anagramas de uma palavra (com letras repetidas usa a fórmula com repetição). Permutação <b>circular</b> de \(n\) elementos é \((n-1)!\).</div>
+        <div class="ex"><b>Exemplo:</b> anagramas de ARARA (5 letras: 3 A, 2 R): \(\frac{5!}{3!\,2!}=10\). <span class="resp">10 anagramas.</span></div>
+      </section>
+
+      <section class="card" id="a4-arr">
+        <div class="kicker">Combinatória · 4.3</div>
+        <h3>Arranjos simples</h3>
+        <p class="lead">Arranjo é escolher \(p\) elementos entre \(n\), <b>importando a ordem</b>. Trocar a ordem gera um arranjo diferente. É o caso de “posições distintas” (1º, 2º, 3º lugar; cargos diferentes).</p>
+        <div class="formula-box">\( A_{n,p}=\frac{n!}{(n-p)!} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> pódios (ouro/prata/bronze), formação de senhas sem repetir dígito, eleição de presidente e vice. A pergunta-chave: <b>a ordem muda o resultado?</b> Se sim, é arranjo.</div>
+        <div class="ex"><b>Exemplo:</b> pódio (1º,2º,3º) com 5 atletas: \(A_{5,3}=\frac{5!}{2!}=60\). <span class="resp">60 pódios.</span></div>
+      </section>
+
+      <section class="card" id="a4-comb">
+        <div class="kicker">Combinatória · 4.4</div>
+        <h3>Combinações simples</h3>
+        <p class="lead">Combinação é escolher \(p\) entre \(n\) <b>sem importar a ordem</b> — apenas “quem foi escolhido”. É o caso de grupos, equipes, comissões. Por ignorar a ordem, divide-se o arranjo por \(p!\).</p>
+        <div class="formula-box">\( C_{n,p}=\binom{n}{p}=\frac{n!}{p!\,(n-p)!} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> formar comissões, escolher jogadores de um time, sorteios da loteria, apertos de mão, diagonais de polígono. A pergunta-chave: <b>a ordem importa?</b> Se <b>não</b>, é combinação.</div>
+        <div class="ex"><b>Exemplo:</b> comissão de 3 entre 5 pessoas: \(C_{5,3}=\frac{5!}{3!\,2!}=10\). <span class="resp">10 comissões.</span></div>
+      </section>
+
+      <section class="card" id="a4-binomio">
+        <div class="kicker">Combinatória · 4.5</div>
+        <h3>Binômio de Newton</h3>
+        <p class="lead">É a fórmula para desenvolver \((a+b)^n\) sem multiplicar tudo na mão. Os coeficientes são as combinações \(\binom{n}{p}\) (os números do <b>Triângulo de Pascal</b>). O <b>termo geral</b> dá qualquer parcela direto, sem expandir o resto.</p>
+        <div class="formula-box">\( (a+b)^n=\sum_{p=0}^{n}\binom{n}{p}a^{\,n-p}b^{\,p}\qquad T_{p+1}=\binom{n}{p}a^{\,n-p}b^{\,p} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar “o termo em \(x^k\)”, “o termo independente de \(x\)” ou “o coeficiente de…”, sem desenvolver tudo — usa-se só o termo geral. A soma de todos os coeficientes de \((a+b)^n\) é \(2^n\).</div>
+        <div class="ex"><b>Exemplo:</b> em \((x+2)^4\), o termo com \(x^2\) é \(\binom{4}{2}x^2\cdot2^2=6\cdot4\,x^2=24x^2\). <span class="resp">\(24x^2\).</span></div>
+      </section>
+
+      <section class="card" id="a4-prob">
+        <div class="kicker">Probabilidade · 4.6</div>
+        <h3>Probabilidade: espaço amostral e casos equiprováveis</h3>
+        <p class="lead">O <b>espaço amostral</b> é o conjunto de todos os resultados possíveis; um <b>evento</b> é um subconjunto deles. Quando todos os resultados são <b>igualmente prováveis</b>, a probabilidade é casos favoráveis sobre casos possíveis. O valor fica sempre entre 0 e 1.</p>
+        <div class="formula-box">\( P(E)=\frac{\#\,\text{casos favoráveis}}{\#\,\text{casos possíveis}}\qquad 0\le P(E)\le1 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> dados, moedas, cartas, sorteios. A contagem dos casos usa combinatória. Eventos complementares: \(P(\text{não } E)=1-P(E)\). União: \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\).</div>
+        <div class="ex"><b>Exemplo:</b> num dado, sair número par: 3 favoráveis (2,4,6) em 6. \(P=\frac{3}{6}=\frac12\). <span class="resp">50%.</span></div>
+      </section>
+
+      <section class="card" id="a4-probcond">
+        <div class="kicker">Probabilidade · 4.7</div>
+        <h3>Probabilidade condicional e eventos independentes</h3>
+        <p class="lead">A <b>probabilidade condicional</b> \(P(A\mid B)\) é a chance de \(A\) <b>sabendo que \(B\) ocorreu</b> — o espaço amostral “encolhe” para dentro de \(B\). Dois eventos são <b>independentes</b> quando um não afeta o outro; aí a probabilidade conjunta é o produto.</p>
+        <div class="formula-box">\( P(A\mid B)=\frac{P(A\cap B)}{P(B)}\qquad \text{indep.: } P(A\cap B)=P(A)\cdot P(B) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> “sorteios sem reposição” (a 2ª retirada depende da 1ª → condicional) versus “com reposição” (independentes). Frases como “dado que”, “sabendo que” sinalizam condicional.</div>
+        <div class="ex"><b>Exemplo:</b> duas moedas, chance de duas caras (independentes): \(\frac12\cdot\frac12=\frac14\). <span class="resp">25%.</span></div>
+      </section>
+
+      <section class="card" id="a4-freq">
+        <div class="kicker">Estatística · 4.8</div>
+        <h3>Distribuição de frequências e representação gráfica</h3>
+        <p class="lead">Estatística começa organizando dados. A <b>frequência absoluta</b> conta quantas vezes cada valor aparece; a <b>relativa</b> é essa contagem em fração/porcentagem do total. Os dados se exibem em <b>tabelas</b> e gráficos: barras/colunas (categorias), histograma (faixas contínuas) e setores/“pizza” (proporções).</p>
+        <div class="uso"><b>Onde cai / como se usa:</b> ler tabelas e gráficos para extrair informação, calcular porcentagens e completar uma distribuição. O ENEM adora dar um gráfico e pedir uma conclusão ou um valor que falta.</div>
+        <div class="ex"><b>Exemplo:</b> em 20 alunos, 5 tiraram nota 10 → frequência relativa \(\frac{5}{20}=25\%\). <span class="resp">25%.</span></div>
+      </section>
+
+      <section class="card" id="a4-central">
+        <div class="kicker">Estatística · 4.9</div>
+        <h3>Medidas de tendência central</h3>
+        <p class="lead">Resumem o “centro” dos dados em um número. A <b>média</b> (aritmética) soma tudo e divide pela quantidade; a <b>mediana</b> é o valor do meio com os dados em ordem; a <b>moda</b> é o que mais se repete. Cada uma conta uma história diferente — a mediana, por exemplo, resiste a valores extremos.</p>
+        <div class="formula-box">\( \bar{x}=\frac{x_1+x_2+\cdots+x_n}{n} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> média de notas (e <b>média ponderada</b>, com pesos), salário “típico” (mediana evita a distorção de poucos salários altos), produto mais vendido (moda). Saber <b>quando cada medida é mais adequada</b> é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> dados 2, 3, 3, 10: média \(=\frac{18}{4}=4{,}5\); mediana \(=\frac{3+3}{2}=3\); moda \(=3\). <span class="resp">média 4,5 · mediana 3 · moda 3.</span></div>
+      </section>
+
+      <section class="card" id="a4-disp">
+        <div class="kicker">Estatística · 4.10</div>
+        <h3>Medidas de dispersão</h3>
+        <p class="lead">Mostram o quanto os dados se <b>espalham</b> em torno da média. A <b>amplitude</b> é a diferença entre o maior e o menor valor. A <b>variância</b> é a média dos quadrados dos desvios; o <b>desvio padrão</b> é a raiz da variância (volta à unidade original). Quanto maiores, mais “bagunçados”/heterogêneos os dados.</p>
+        <div class="formula-box">\( \text{Var}=\frac{\sum (x_i-\bar{x})^2}{n}\qquad \sigma=\sqrt{\text{Var}} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> comparar a <b>regularidade</b> de dois conjuntos com a mesma média (qual time é mais constante? qual processo é mais preciso?). Menor desvio padrão = mais homogêneo.</div>
+        <div class="ex"><b>Exemplo:</b> dois alunos com média 6: notas 6,6,6 (desvio 0, constante) vs 2,6,10 (desvio alto, instável). <span class="resp">Mesma média, dispersões bem diferentes.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 5 ===================== -->
+      <div class="area a5">
+      <div class="chapter" id="a5">
+        <div class="num">Área 5</div>
+        <h2>Matrizes, Determinantes e Sistemas Lineares</h2>
+        <p>Matrizes são tabelas de números que organizam dados e equações. O determinante é um número que “mede” a matriz e diz se um sistema tem solução única. Sistemas lineares modelam várias condições simultâneas — misturas, preços, circuitos.</p>
+        <div class="mini">
+          <a href="#a5-mat">Matrizes: definição e tipos</a>
+          <a href="#a5-matop">Operações com matrizes</a>
+          <a href="#a5-det">Determinantes</a>
+          <a href="#a5-sist">Sistemas: resolução</a>
+          <a href="#a5-sistdisc">Sistemas: discussão e aplicação</a>
+        </div>
+      </div>
+
+      <section class="card" id="a5-mat">
+        <div class="kicker">Matrizes · 5.1</div>
+        <h3>Matrizes: definição e tipos</h3>
+        <p class="lead">Uma <b>matriz</b> é uma tabela retangular de números organizados em <b>linhas</b> e <b>colunas</b>; uma matriz \(m\times n\) tem \(m\) linhas e \(n\) colunas, e cada elemento é \(a_{ij}\) (linha \(i\), coluna \(j\)). Tipos importantes: <b>quadrada</b> (\(m=n\)), <b>identidade</b> \(I\) (1 na diagonal, 0 no resto), <b>nula</b>, <b>transposta</b> \(A^t\) (troca linhas por colunas).</p>
+        <div class="formula-box">\( A=\begin{pmatrix} a_{11} & a_{12}\\ a_{21} & a_{22}\end{pmatrix} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> montar uma matriz a partir de uma <b>lei de formação</b> \(a_{ij}=\dots\), identificar diagonal principal, e representar tabelas (notas, distâncias, pixels de uma imagem). Base para determinantes e sistemas.</div>
+        <div class="ex"><b>Exemplo:</b> matriz \(2\times2\) com \(a_{ij}=i+j\): \(\begin{pmatrix}2&3\\3&4\end{pmatrix}\). <span class="resp">\(a_{11}=2,\ a_{22}=4\).</span></div>
+      </section>
+
+      <section class="card" id="a5-matop">
+        <div class="kicker">Matrizes · 5.2</div>
+        <h3>Operações e propriedades</h3>
+        <p class="lead"><b>Soma</b> e <b>subtração</b> são feitas elemento a elemento (só entre matrizes do mesmo tamanho). Na <b>multiplicação por escalar</b>, multiplica-se cada elemento. A <b>multiplicação de matrizes</b> é “linha por coluna” e só existe se o número de colunas da 1ª for igual ao de linhas da 2ª — e <b>não é comutativa</b> (\(AB\neq BA\) em geral).</p>
+        <div class="formula-box">\( A_{m\times n}\cdot B_{n\times p}=C_{m\times p}\qquad A\cdot A^{-1}=I \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> combinar tabelas (preços × quantidades dando custo total), transformações geométricas (rotações), e a <b>matriz inversa</b> \(A^{-1}\) para resolver sistemas. Atenção à ordem na multiplicação.</div>
+        <div class="ex"><b>Exemplo:</b> \(\begin{pmatrix}1&2\end{pmatrix}\cdot\begin{pmatrix}3\\4\end{pmatrix}=1\cdot3+2\cdot4=11\). <span class="resp">11.</span></div>
+      </section>
+
+      <section class="card" id="a5-det">
+        <div class="kicker">Determinantes · 5.3</div>
+        <h3>Determinantes: definição, cálculo e propriedades</h3>
+        <p class="lead">O <b>determinante</b> é um número associado a uma matriz <b>quadrada</b>. Para \(2\times2\) é o produto da diagonal principal menos o da secundária; para \(3\times3\) usa-se a <b>Regra de Sarrus</b>. Propriedade-chave: se \(\det=0\), a matriz é “singular” (linhas/colunas dependentes).</p>
+        <div class="formula-box">\( \det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> decidir se um sistema tem solução única (\(\det\neq0\)), calcular <b>área</b> de triângulo por coordenadas, testar <b>colinearidade</b> (det \(=0\)), e achar a inversa. Propriedades (fila de zeros → det 0; trocar duas filas troca o sinal) abreviam contas.</div>
+        <div class="ex"><b>Exemplo:</b> \(\det\begin{pmatrix}2&1\\3&4\end{pmatrix}=2\cdot4-1\cdot3=5\). <span class="resp">5.</span></div>
+      </section>
+
+      <section class="card" id="a5-sist">
+        <div class="kicker">Sistemas Lineares · 5.4</div>
+        <h3>Sistemas lineares: resolução</h3>
+        <p class="lead">Um <b>sistema linear</b> é um conjunto de equações do 1º grau com as mesmas incógnitas; resolver é achar os valores que satisfazem todas ao mesmo tempo. Métodos: <b>substituição</b>/<b>adição</b> (poucas equações), <b>escalonamento</b> (eliminação de Gauss) e <b>Regra de Cramer</b> (com determinantes).</p>
+        <div class="formula-box">\( x_i=\frac{\det A_i}{\det A}\quad(\text{Cramer, se } \det A\neq0) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> problemas com duas/três incógnitas (idades, preços de itens, misturas, “quantos de cada”). Geometricamente, um sistema \(2\times2\) é a <b>interseção de retas</b>; \(3\times3\), de planos.</div>
+        <div class="ex"><b>Exemplo:</b> \(\begin{cases}x+y=10\\x-y=2\end{cases}\) somando: \(2x=12\Rightarrow x=6,\ y=4\). <span class="resp">\(x=6,\ y=4\).</span></div>
+      </section>
+
+      <section class="card" id="a5-sistdisc">
+        <div class="kicker">Sistemas Lineares · 5.5</div>
+        <h3>Discussão e aplicação de sistemas</h3>
+        <p class="lead"><b>Discutir</b> um sistema é classificar quantas soluções ele tem: <b>SPD</b> (possível e determinado — solução única, \(\det\neq0\)), <b>SPI</b> (possível e indeterminado — infinitas soluções) ou <b>SI</b> (impossível — nenhuma solução). Quando há um parâmetro, descobre-se para quais valores cada caso ocorre.</p>
+        <table class="tab"><thead><tr><th>Tipo</th><th>Soluções</th><th>Sinal</th></tr></thead><tbody>
+          <tr><th>SPD</th><td>uma única</td><td>\(\det A\neq0\)</td></tr>
+          <tr><th>SPI</th><td>infinitas</td><td>\(\det A=0\) (compatível)</td></tr>
+          <tr><th>SI</th><td>nenhuma</td><td>\(\det A=0\) (incompatível)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Onde cai / como se usa:</b> “para que valor de \(k\) o sistema tem solução única / infinitas / nenhuma?”. Geometricamente: retas concorrentes (SPD), coincidentes (SPI) ou paralelas (SI).</div>
+        <div class="ex"><b>Exemplo:</b> um sistema com \(\det A=0\) e equações contraditórias (\(0=3\)) é <b>impossível</b>. <span class="resp">SI — sem solução.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 6 ===================== -->
+      <div class="area a6">
+      <div class="chapter" id="a6">
+        <div class="num">Área 6</div>
+        <h2>Trigonometria</h2>
+        <p>Relaciona ângulos com comprimentos. Começa nos triângulos retângulos (seno, cosseno, tangente), generaliza para triângulos quaisquer (leis dos senos e cossenos) e vira função periódica no ciclo trigonométrico — essencial para ondas, oscilações e fenômenos que se repetem.</p>
+        <div class="mini">
+          <a href="#a6-arcos">Arcos e ângulos (grau e radiano)</a>
+          <a href="#a6-trianguloret">Triângulo retângulo</a>
+          <a href="#a6-leis">Leis dos senos e cossenos</a>
+          <a href="#a6-ciclo">Ciclo e arcos notáveis</a>
+          <a href="#a6-funcoes">Funções trigonométricas</a>
+          <a href="#a6-identidades">Identidades fundamentais</a>
+          <a href="#a6-adicao">Adição e duplicação</a>
+          <a href="#a6-equacoes">Equações trigonométricas</a>
+        </div>
+      </div>
+
+      <section class="card" id="a6-arcos">
+        <div class="kicker">Trigonometria · 6.1</div>
+        <h3>Arcos e ângulos: medidas e conversão</h3>
+        <p class="lead">Ângulos e arcos se medem em <b>graus</b> (a volta tem 360°) ou em <b>radianos</b> (a volta tem \(2\pi\)). O radiano é a medida “natural”, ligada ao comprimento do arco. Converter é uma regra de três com a equivalência \(180^\circ=\pi\) rad.</p>
+        <div class="formula-box">\( 180^\circ=\pi\ \text{rad}\qquad \ell = R\cdot\theta\ (\theta\text{ em radianos}) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> converter graus↔radianos (pré-requisito para as funções), e calcular o <b>comprimento de arco</b> \(\ell=R\theta\). Arcos côngruos (que diferem de voltas inteiras) caem em “reduza à 1ª volta”.</div>
+        <div class="ex"><b>Exemplo:</b> \(90^\circ\) em radianos: \(\frac{90}{180}\pi=\frac{\pi}{2}\). <span class="resp">\(\frac{\pi}{2}\) rad.</span></div>
+      </section>
+
+      <section class="card" id="a6-trianguloret">
+        <div class="kicker">Trigonometria · 6.2</div>
+        <h3>Relações no triângulo retângulo</h3>
+        <p class="lead">Num triângulo retângulo, fixado um ângulo agudo, definem-se: <b>seno</b> = cateto oposto / hipotenusa; <b>cosseno</b> = cateto adjacente / hipotenusa; <b>tangente</b> = oposto / adjacente. O mnemônico clássico é <b>SOH-CAH-TOA</b>.</p>
+        <div class="formula-box">\( \sen\theta=\frac{\text{oposto}}{\text{hip.}}\quad \cos\theta=\frac{\text{adj.}}{\text{hip.}}\quad \tg\theta=\frac{\text{oposto}}{\text{adj.}} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar alturas e distâncias inacessíveis (prédio, rampa, sombra), decompor forças em Física. Combina-se com o <b>Teorema de Pitágoras</b>. Saber os valores de 30°, 45° e 60° é obrigatório.</div>
+        <div class="ex"><b>Exemplo:</b> rampa de 30° e 10 m de comprimento sobe \(10\cdot\sen30^\circ=10\cdot0{,}5=5\) m. <span class="resp">5 m de altura.</span></div>
+      </section>
+
+      <section class="card" id="a6-leis">
+        <div class="kicker">Trigonometria · 6.3</div>
+        <h3>Resolução de triângulos quaisquer: leis dos senos e dos cossenos</h3>
+        <p class="lead">Em triângulos <b>não retângulos</b>, usa-se a <b>Lei dos Senos</b> (lados proporcionais aos senos dos ângulos opostos) ou a <b>Lei dos Cossenos</b> (generaliza Pitágoras, com um termo de correção). A escolha depende dos dados conhecidos.</p>
+        <div class="formula-box">\( \frac{a}{\sen A}=\frac{b}{\sen B}=\frac{c}{\sen C}\qquad a^2=b^2+c^2-2bc\cos A \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> <b>Cossenos</b> quando se conhecem dois lados e o ângulo entre eles (ou os três lados); <b>Senos</b> quando há um lado e seu ângulo oposto. Aparece em navegação, topografia e vetores.</div>
+        <div class="ex"><b>Exemplo:</b> lados 5 e 8 com 60° entre eles: \(a^2=25+64-2\cdot5\cdot8\cdot\frac12=49\Rightarrow a=7\). <span class="resp">terceiro lado 7.</span></div>
+      </section>
+
+      <section class="card" id="a6-ciclo">
+        <div class="kicker">Trigonometria · 6.4</div>
+        <h3>Ciclo trigonométrico e valores nos arcos básicos</h3>
+        <p class="lead">O <b>ciclo trigonométrico</b> é uma circunferência de raio 1: a cada ângulo corresponde um ponto cujas coordenadas são \((\cos\theta,\ \sen\theta)\). Isso estende seno e cosseno para <b>qualquer</b> ângulo e organiza os <b>sinais</b> por quadrante e os <b>valores notáveis</b>.</p>
+        <table class="tab"><thead><tr><th>θ</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr></thead><tbody>
+          <tr><th>sen</th><td>0</td><td>\(\frac12\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac{\sqrt3}{2}\)</td><td>1</td></tr>
+          <tr><th>cos</th><td>1</td><td>\(\frac{\sqrt3}{2}\)</td><td>\(\frac{\sqrt2}{2}\)</td><td>\(\frac12\)</td><td>0</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Onde cai / como se usa:</b> determinar sinais (seno \(+\) acima do eixo, cosseno \(+\) à direita), reduzir ângulos ao 1º quadrante, e ler/montar gráficos. A tabela dos notáveis é a mais usada de toda a trigonometria.</div>
+        <div class="ex"><b>Exemplo:</b> \(\cos180^\circ=-1\) e \(\sen270^\circ=-1\) (lidos no ciclo). <span class="resp">\(-1\) e \(-1\).</span></div>
+      </section>
+
+      <section class="card" id="a6-funcoes">
+        <div class="kicker">Trigonometria · 6.5</div>
+        <h3>Funções trigonométricas circulares</h3>
+        <p class="lead">As funções \(\sen x,\ \cos x,\ \tg x\) são <b>periódicas</b> — repetem o mesmo padrão. Seno e cosseno têm <b>período</b> \(2\pi\) e imagem \([-1,1]\); a tangente tem período \(\pi\). Seno é <b>ímpar</b>, cosseno é <b>par</b>. Coeficientes mudam <b>amplitude</b> e período: em \(a\sen(bx)\), amplitude \(=|a|\), período \(=\frac{2\pi}{|b|}\).</p>
+        <div class="formula-box">\( \cos x:\ \text{par, período }2\pi\qquad \sen x:\ \text{ímpar, período }2\pi\qquad \tg x:\ \text{período }\pi \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> modelar fenômenos cíclicos — marés, horas de luz no ano, corrente alternada, ondas sonoras. Cai “qual o período/amplitude desta função?” e associar fórmula ao gráfico (senoide).</div>
+        <div class="ex"><b>Exemplo:</b> \(f(x)=3\sen(2x)\): amplitude 3, período \(\frac{2\pi}{2}=\pi\). <span class="resp">amplitude 3 · período \(\pi\).</span></div>
+      </section>
+
+      <section class="card" id="a6-identidades">
+        <div class="kicker">Trigonometria · 6.6</div>
+        <h3>Relações fundamentais e identidades</h3>
+        <p class="lead">As identidades ligam as seis razões (seno, cosseno, tangente, cotangente, secante, cossecante). A <b>relação fundamental</b> \(\sen^2x+\cos^2x=1\) é a mais importante; dela saem as demais. Elas permitem trocar uma expressão por outra equivalente.</p>
+        <div class="formula-box">\( \sen^2x+\cos^2x=1\qquad \tg x=\frac{\sen x}{\cos x}\qquad \sec^2x=1+\tg^2x \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> a partir de um valor (ex.: \(\sen x\)) achar os outros, e <b>simplificar/provar</b> identidades. É a “caixa de ferramentas” para resolver equações trigonométricas e integrais (no superior).</div>
+        <div class="ex"><b>Exemplo:</b> se \(\sen x=\frac35\) (1º quad.), \(\cos x=\sqrt{1-\frac{9}{25}}=\frac45\). <span class="resp">\(\cos x=\frac45\).</span></div>
+      </section>
+
+      <section class="card" id="a6-adicao">
+        <div class="kicker">Trigonometria · 6.7</div>
+        <h3>Fórmulas de adição, subtração e duplicação</h3>
+        <p class="lead">Permitem calcular funções de uma <b>soma</b> de arcos a partir dos arcos isolados, e de <b>arcos dobrados</b>. Servem para achar valores de ângulos não notáveis (como 75° = 45° + 30°) e para transformar expressões.</p>
+        <div class="formula-box">\( \sen(a\pm b)=\sen a\cos b\pm\cos a\,\sen b\qquad \cos(a\pm b)=\cos a\cos b\mp\sen a\,\sen b \)<br>\( \sen(2a)=2\sen a\cos a\qquad \cos(2a)=\cos^2a-\sen^2a \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> calcular \(\sen75^\circ,\ \cos15^\circ\) etc., simplificar e resolver equações. As de duplicação aparecem bastante em provas que pedem reescrever \(\sen2x\) ou \(\cos2x\).</div>
+        <div class="ex"><b>Exemplo:</b> \(\sen75^\circ=\sen(45^\circ+30^\circ)=\frac{\sqrt2}{2}\cdot\frac{\sqrt3}{2}+\frac{\sqrt2}{2}\cdot\frac12=\frac{\sqrt6+\sqrt2}{4}\). <span class="resp">\(\frac{\sqrt6+\sqrt2}{4}\).</span></div>
+      </section>
+
+      <section class="card" id="a6-equacoes">
+        <div class="kicker">Trigonometria · 6.8</div>
+        <h3>Equações trigonométricas</h3>
+        <p class="lead">São equações cuja incógnita está dentro de uma função trigonométrica. Resolve-se reduzindo à forma \(\sen x = k\) (ou cos, ou tg) e usando o ciclo para achar <b>todas</b> as soluções — que, por periodicidade, são infinitas (somam-se voltas \(+\,2k\pi\)).</p>
+        <div class="formula-box">\( \sen x = \sen \alpha \iff x=\alpha+2k\pi \ \text{ ou } \ x=\pi-\alpha+2k\pi \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar os ângulos que satisfazem uma condição, geralmente num intervalo dado (\([0,2\pi]\)). Muitas se resolvem trocando por identidades até virar uma equação do 2º grau em \(\sen x\) ou \(\cos x\).</div>
+        <div class="ex"><b>Exemplo:</b> \(\sen x=\frac12\) em \([0,2\pi]\): \(x=\frac{\pi}{6}\) ou \(x=\frac{5\pi}{6}\). <span class="resp">\(\frac{\pi}{6},\ \frac{5\pi}{6}\).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 7 ===================== -->
+      <div class="area a7">
+      <div class="chapter" id="a7">
+        <div class="num">Área 7</div>
+        <h2>Polinômios e Equações Algébricas</h2>
+        <p>Polinômios generalizam as expressões do 1º e 2º graus para qualquer grau. Aqui se estuda como operá-los, fatorá-los e encontrar as raízes de equações de grau maior — base para funções algébricas e para o cálculo.</p>
+        <div class="mini">
+          <a href="#a7-pol">Polinômios: conceito e grau</a>
+          <a href="#a7-polop">Operações e fatoração</a>
+          <a href="#a7-eqalg">Equações: raízes e multiplicidade</a>
+          <a href="#a7-girard">Relações de Girard</a>
+          <a href="#a7-funcalg">Funções polinomiais: gráficos</a>
+        </div>
+      </div>
+
+      <section class="card" id="a7-pol">
+        <div class="kicker">Polinômios · 7.1</div>
+        <h3>Polinômios: conceito, grau, valor numérico e identidade</h3>
+        <p class="lead">Um <b>polinômio</b> é uma soma de termos \(a_n x^n+\dots+a_1x+a_0\). O <b>grau</b> é o maior expoente com coeficiente não nulo. O <b>valor numérico</b> \(P(k)\) é o que se obtém substituindo \(x\) por \(k\). Dois polinômios são <b>idênticos</b> quando têm os mesmos coeficientes (o que permite resolver por “comparação de coeficientes”).</p>
+        <div class="formula-box">\( P(x)=a_n x^n+\cdots+a_1x+a_0 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> calcular \(P(k)\), determinar grau, e achar coeficientes desconhecidos impondo identidade (\(P\equiv Q\)). \(P(0)=a_0\) (termo independente) e \(P(1)=\) soma dos coeficientes — dois atalhos cobrados.</div>
+        <div class="ex"><b>Exemplo:</b> \(P(x)=x^3-2x+1\Rightarrow P(2)=8-4+1=5\). <span class="resp">\(P(2)=5\).</span></div>
+      </section>
+
+      <section class="card" id="a7-polop">
+        <div class="kicker">Polinômios · 7.2</div>
+        <h3>Operações e fatoração</h3>
+        <p class="lead">Soma-se e multiplica-se polinômio como expressão comum (juntando termos semelhantes). Na <b>divisão</b>, vale o <b>Teorema do Resto</b>: o resto de \(P(x)\) por \((x-a)\) é \(P(a)\); se \(P(a)=0\), então \((x-a)\) é fator (Teorema de D'Alembert). <b>Fatorar</b> é escrever o polinômio como produto, frequentemente a partir de suas raízes.</p>
+        <div class="formula-box">\( P(x)=(x-r_1)(x-r_2)\cdots(x-r_n)\cdot a_n \qquad \text{resto de }P(x)\div(x-a)=P(a) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> dividir por <b>Briot-Ruffini</b>, baixar o grau de uma equação depois de achar uma raiz, e simplificar frações algébricas. Produtos notáveis e fatoração resolvem muitas questões rapidamente.</div>
+        <div class="ex"><b>Exemplo:</b> resto de \(P(x)=x^3+1\) por \((x+1)\): \(P(-1)=-1+1=0\). <span class="resp">resto 0 → \((x+1)\) é fator.</span></div>
+      </section>
+
+      <section class="card" id="a7-eqalg">
+        <div class="kicker">Equações Algébricas · 7.3</div>
+        <h3>Equações algébricas: raízes e multiplicidade</h3>
+        <p class="lead">Uma <b>equação algébrica</b> é \(P(x)=0\). Pelo <b>Teorema Fundamental da Álgebra</b>, uma equação de grau \(n\) tem exatamente \(n\) raízes (contando complexas e repetidas). A <b>multiplicidade</b> é quantas vezes uma mesma raiz se repete (raiz dupla, tripla…).</p>
+        <div class="formula-box">\( \text{grau } n \Rightarrow n \text{ raízes em } \mathbb{C} \text{ (com multiplicidade)} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar todas as raízes (reais e complexas), reconhecer raízes repetidas (a curva “tangencia” o eixo numa raiz dupla), e usar que raízes complexas de coeficientes reais vêm <b>aos pares conjugados</b>.</div>
+        <div class="ex"><b>Exemplo:</b> \((x-2)^2(x+1)=0\) tem raízes \(x=2\) (mult. 2) e \(x=-1\). <span class="resp">três raízes: 2, 2, −1.</span></div>
+      </section>
+
+      <section class="card" id="a7-girard">
+        <div class="kicker">Equações Algébricas · 7.4</div>
+        <h3>Relações entre coeficientes e raízes (Girard)</h3>
+        <p class="lead">As <b>relações de Girard</b> ligam a soma e o produto das raízes aos coeficientes, sem precisar resolver a equação. Para o 2º grau \(ax^2+bx+c=0\): soma \(=-\frac{b}{a}\), produto \(=\frac{c}{a}\). Há fórmulas análogas para graus maiores.</p>
+        <div class="formula-box">\( x_1+x_2=-\frac{b}{a}\qquad x_1\cdot x_2=\frac{c}{a} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar soma/produto sem calcular raízes, montar a equação a partir das raízes, e resolver “a soma é tanto, o produto é tanto, ache os números”. Atalho frequente em provas.</div>
+        <div class="ex"><b>Exemplo:</b> em \(x^2-7x+10=0\): soma \(=7\), produto \(=10\) → raízes 2 e 5. <span class="resp">\(x=2\) e \(x=5\).</span></div>
+      </section>
+
+      <section class="card" id="a7-funcalg">
+        <div class="kicker">Funções Algébricas · 7.5</div>
+        <h3>Funções polinomiais: gráficos</h3>
+        <p class="lead">Uma <b>função polinomial</b> tem por lei um polinômio. O grau define o “formato geral”: grau 1 é reta; grau 2, parábola; grau 3, uma curva com até duas “dobras”. As <b>raízes</b> são onde o gráfico cruza o eixo \(x\); o sinal de \(a_n\) e a paridade do grau controlam as pontas da curva.</p>
+        <div class="uso"><b>Onde cai / como se usa:</b> associar grau/raízes ao gráfico, contar quantas vezes cruza o eixo \(x\), e analisar comportamento nos extremos. Numa raiz de multiplicidade par o gráfico toca e volta; em multiplicidade ímpar, atravessa o eixo.</div>
+        <div class="ex"><b>Exemplo:</b> \(f(x)=(x-1)(x+2)\) é parábola com raízes \(1\) e \(-2\), concavidade para cima. <span class="resp">corta o eixo \(x\) em −2 e 1.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 8 ===================== -->
+      <div class="area a8">
+      <div class="chapter" id="a8">
+        <div class="num">Área 8</div>
+        <h2>Geometria Plana</h2>
+        <p>O estudo das figuras no plano: ângulos, triângulos, quadriláteros e círculos, suas propriedades, semelhanças e, sobretudo, perímetros e áreas. É das áreas mais cobradas e aparece misturada com álgebra e trigonometria.</p>
+        <div class="mini">
+          <a href="#a8-intro">Conceitos básicos e ângulos</a>
+          <a href="#a8-poligonos">Polígonos convexos</a>
+          <a href="#a8-tales">Tales e feixe de paralelas</a>
+          <a href="#a8-triangulos">Triângulos: classificação</a>
+          <a href="#a8-congsem">Congruência e semelhança</a>
+          <a href="#a8-metricas">Relações métricas (retângulo)</a>
+          <a href="#a8-quad">Quadriláteros</a>
+          <a href="#a8-circ">Circunferência</a>
+          <a href="#a8-area">Perímetro e área</a>
+        </div>
+      </div>
+
+      <section class="card" id="a8-intro">
+        <div class="kicker">Geometria Plana · 8.1</div>
+        <h3>Conceitos básicos: ponto, reta, plano e ângulos</h3>
+        <p class="lead">Ponto, reta e plano são as noções primitivas. De uma reta saem <b>semirretas</b> e <b>segmentos</b>. Dois ângulos podem ser <b>complementares</b> (somam 90°), <b>suplementares</b> (somam 180°) ou <b>opostos pelo vértice</b> (iguais). Retas se cruzam formando esses pares de ângulos.</p>
+        <div class="formula-box">\( \text{complementares: }\alpha+\beta=90^\circ\qquad \text{suplementares: }\alpha+\beta=180^\circ \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar ângulos em figuras a partir dessas relações; base para tudo que vem depois. Ângulos opostos pelo vértice são iguais — atalho constante.</div>
+        <div class="ex"><b>Exemplo:</b> o complemento de 35° é \(90^\circ-35^\circ=55^\circ\). <span class="resp">55°.</span></div>
+      </section>
+
+      <section class="card" id="a8-poligonos">
+        <div class="kicker">Geometria Plana · 8.2</div>
+        <h3>Polígonos convexos: ângulos e diagonais</h3>
+        <p class="lead">Um <b>polígono convexo</b> de \(n\) lados tem soma dos <b>ângulos internos</b> igual a \((n-2)\cdot180^\circ\) e soma dos <b>externos</b> sempre \(360^\circ\). O número de <b>diagonais</b> também depende só de \(n\). Em polígonos <b>regulares</b> (lados e ângulos iguais), cada interno é a soma dividida por \(n\).</p>
+        <div class="formula-box">\( S_i=(n-2)\cdot180^\circ\qquad d=\frac{n(n-3)}{2} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar ângulo interno de hexágono, contar diagonais, descobrir \(n\) a partir de um ângulo. Ladrilhamentos e estrelas usam essas contas.</div>
+        <div class="ex"><b>Exemplo:</b> ângulo interno do hexágono regular: \(\frac{(6-2)180^\circ}{6}=120^\circ\). <span class="resp">120°.</span></div>
+      </section>
+
+      <section class="card" id="a8-tales">
+        <div class="kicker">Geometria Plana · 8.3</div>
+        <h3>Paralelismo, feixe de paralelas e Teorema de Tales</h3>
+        <p class="lead">O <b>Teorema de Tales</b> diz que um <b>feixe de retas paralelas</b> cortado por duas transversais determina segmentos <b>proporcionais</b>. É a ponte entre paralelismo e proporção, e a base da semelhança de triângulos.</p>
+        <div class="formula-box">\( \frac{AB}{BC}=\frac{A'B'}{B'C'} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar medidas desconhecidas em figuras com paralelas (mapas, terrenos divididos, sombras), e justificar a semelhança. Sempre que houver “retas paralelas cortadas por transversais”, pense em Tales.</div>
+        <div class="ex"><b>Exemplo:</b> paralelas dão \(\frac{4}{6}=\frac{x}{9}\Rightarrow x=6\). <span class="resp">\(x=6\).</span></div>
+      </section>
+
+      <section class="card" id="a8-triangulos">
+        <div class="kicker">Geometria Plana · 8.4</div>
+        <h3>Triângulos: classificação e propriedades</h3>
+        <p class="lead">Triângulos se classificam pelos <b>lados</b> (equilátero, isósceles, escaleno) e pelos <b>ângulos</b> (acutângulo, retângulo, obtusângulo). Propriedades-chave: a soma dos internos é <b>180°</b>, cada lado é menor que a soma dos outros dois (desigualdade triangular) e o ângulo externo é a soma dos dois internos não adjacentes.</p>
+        <div class="formula-box">\( \hat A+\hat B+\hat C=180^\circ \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar ângulos faltantes, decidir se três medidas formam triângulo, e identificar os pontos notáveis (baricentro, incentro, circuncentro). É a figura mais explorada do plano.</div>
+        <div class="ex"><b>Exemplo:</b> um triângulo com ângulos 90° e 50° tem o terceiro \(=180-140=40^\circ\). <span class="resp">40°.</span></div>
+      </section>
+
+      <section class="card" id="a8-congsem">
+        <div class="kicker">Geometria Plana · 8.5</div>
+        <h3>Congruência e semelhança</h3>
+        <p class="lead">Figuras <b>congruentes</b> têm a mesma forma <b>e</b> o mesmo tamanho (casos LLL, LAL, ALA). <b>Semelhantes</b> têm a mesma forma, mas tamanhos proporcionais: ângulos iguais e lados na mesma <b>razão de semelhança</b> \(k\). Áreas variam com \(k^2\) e volumes com \(k^3\).</p>
+        <div class="formula-box">\( \frac{\text{lados}}{\text{lados}}=k\qquad \frac{\text{áreas}}{\text{áreas}}=k^2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar medidas por proporção (sombra/altura, maquetes, mapas), e a relação entre áreas/volumes de figuras semelhantes — pegadinha clássica (dobrar o lado quadruplica a área).</div>
+        <div class="ex"><b>Exemplo:</b> triângulos semelhantes com \(k=3\): se a área do menor é 5, a do maior é \(5\cdot3^2=45\). <span class="resp">45.</span></div>
+      </section>
+
+      <section class="card" id="a8-metricas">
+        <div class="kicker">Geometria Plana · 8.6</div>
+        <h3>Relações métricas no triângulo retângulo</h3>
+        <p class="lead">No triângulo retângulo, a altura sobre a hipotenusa cria relações entre os segmentos. A mais famosa é o <b>Teorema de Pitágoras</b>; junto vêm as relações com as <b>projeções</b> \(m,n\) dos catetos e a altura \(h\).</p>
+        <div class="formula-box">\( a^2=b^2+c^2\qquad b^2=a\,m,\ \ c^2=a\,n,\ \ h^2=m\,n,\ \ a\,h=b\,c \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar lados, altura e projeções; combina-se com trigonometria e geometria analítica (distância entre pontos é Pitágoras). Pitágoras é provavelmente a fórmula mais usada da matemática escolar.</div>
+        <div class="ex"><b>Exemplo:</b> catetos 3 e 4 → hipotenusa \(\sqrt{9+16}=5\). <span class="resp">5.</span></div>
+      </section>
+
+      <section class="card" id="a8-quad">
+        <div class="kicker">Geometria Plana · 8.7</div>
+        <h3>Quadriláteros: classificação e propriedades</h3>
+        <p class="lead">Quadriláteros têm soma dos internos <b>360°</b>. Os <b>paralelogramos</b> (lados opostos paralelos) incluem retângulo, losango e quadrado; o <b>trapézio</b> tem só um par de lados paralelos. Cada um tem propriedades de lados, ângulos e diagonais.</p>
+        <div class="formula-box">\( \text{soma dos internos}=360^\circ \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> reconhecer o tipo pela propriedade (diagonais iguais → retângulo; perpendiculares → losango) e calcular áreas. A área do losango usa as diagonais; a do trapézio, as bases e a altura.</div>
+        <div class="ex"><b>Exemplo:</b> losango de diagonais 6 e 8: área \(=\frac{6\cdot8}{2}=24\). <span class="resp">24.</span></div>
+      </section>
+
+      <section class="card" id="a8-circ">
+        <div class="kicker">Geometria Plana · 8.8</div>
+        <h3>Circunferência: relações métricas e inscrição/circunscrição</h3>
+        <p class="lead">A <b>circunferência</b> é o conjunto de pontos a uma distância fixa (raio) do centro. Elementos: raio, diâmetro, corda, arco. O <b>ângulo central</b> vale o dobro do <b>ângulo inscrito</b> que enxerga o mesmo arco. Polígonos podem ser <b>inscritos</b> (vértices na circunferência) ou <b>circunscritos</b> (lados tangentes).</p>
+        <div class="formula-box">\( C=2\pi r\qquad \text{ângulo inscrito}=\tfrac12\,\text{ângulo central} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> ângulos inscritos (todo ângulo inscrito num semicírculo é reto), comprimento de arco, e relações entre cordas/secantes/tangentes. Inscrição e circunscrição ligam polígono regular e círculo.</div>
+        <div class="ex"><b>Exemplo:</b> um ângulo inscrito que vê um arco de 80° mede \(40^\circ\). <span class="resp">40°.</span></div>
+      </section>
+
+      <section class="card" id="a8-area">
+        <div class="kicker">Geometria Plana · 8.9</div>
+        <h3>Perímetro e área das figuras planas</h3>
+        <p class="lead"><b>Perímetro</b> é a soma dos lados (contorno); <b>área</b> é a medida da superfície. Cada figura tem sua fórmula, mas quase todas derivam do retângulo (base × altura) e do triângulo (metade disso).</p>
+        <table class="tab"><thead><tr><th>Figura</th><th>Área</th></tr></thead><tbody>
+          <tr><th>Retângulo</th><td>\(b\cdot h\)</td></tr>
+          <tr><th>Triângulo</th><td>\(\frac{b\cdot h}{2}\)</td></tr>
+          <tr><th>Círculo</th><td>\(\pi r^2\)</td></tr>
+          <tr><th>Trapézio</th><td>\(\frac{(B+b)h}{2}\)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Onde cai / como se usa:</b> pisos, terrenos, pintura, embalagem — e como base para áreas de superfície na geometria espacial. Cuidado com <b>unidades</b> (m² vs cm²) e com áreas compostas (some/subtraia partes).</div>
+        <div class="ex"><b>Exemplo:</b> triângulo de base 10 e altura 6: área \(=\frac{10\cdot6}{2}=30\). <span class="resp">30.</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 9 ===================== -->
+      <div class="area a9">
+      <div class="chapter" id="a9">
+        <div class="num">Área 9</div>
+        <h2>Geometria Espacial</h2>
+        <p>A geometria em três dimensões: sólidos como prismas, pirâmides, cilindros, cones e esferas. O foco recai em <b>áreas de superfície</b> (quanto material reveste o sólido) e <b>volumes</b> (quanto cabe dentro). Muito presente em problemas práticos de capacidade e embalagem.</p>
+        <div class="mini">
+          <a href="#a9-poliedros">Poliedros e Euler</a>
+          <a href="#a9-prismas">Prismas</a>
+          <a href="#a9-piramides">Pirâmides e troncos</a>
+          <a href="#a9-cilindro">Cilindros</a>
+          <a href="#a9-cone">Cones</a>
+          <a href="#a9-esfera">Esfera</a>
+        </div>
+      </div>
+
+      <section class="card" id="a9-poliedros">
+        <div class="kicker">Geometria Espacial · 9.1</div>
+        <h3>Poliedros e a relação de Euler</h3>
+        <p class="lead">Um <b>poliedro</b> é um sólido limitado por <b>faces</b> planas (polígonos). Os <b>poliedros de Platão</b> (regulares: tetraedro, cubo, octaedro, dodecaedro, icosaedro) têm faces todas iguais. A <b>relação de Euler</b> conecta vértices, arestas e faces de qualquer poliedro convexo.</p>
+        <div class="formula-box">\( V - A + F = 2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> contar vértices, arestas ou faces que faltam, e identificar/validar poliedros. Cai bastante “um poliedro tem tantas faces e tantos vértices, quantas arestas?”.</div>
+        <div class="ex"><b>Exemplo:</b> cubo tem \(V=8,\ F=6\Rightarrow A=V+F-2=12\). <span class="resp">12 arestas.</span></div>
+      </section>
+
+      <section class="card" id="a9-prismas">
+        <div class="kicker">Geometria Espacial · 9.2</div>
+        <h3>Prismas (e paralelepípedos)</h3>
+        <p class="lead">O <b>prisma</b> tem duas bases poligonais iguais e paralelas, ligadas por faces laterais. O <b>volume</b> é sempre área da base × altura. O <b>paralelepípedo</b> (caixa) e o <b>cubo</b> são casos particulares.</p>
+        <div class="formula-box">\( V_{\text{prisma}}=A_{\text{base}}\cdot h\qquad V_{\text{cubo}}=a^3 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> capacidade de caixas, piscinas, tanques retangulares; quantidade de material para revestir (área total = laterais + 2 bases). A <b>diagonal</b> do paralelepípedo usa Pitágoras em 3D.</div>
+        <div class="ex"><b>Exemplo:</b> caixa \(2\times3\times4\): volume \(=2\cdot3\cdot4=24\). <span class="resp">24 unidades de volume.</span></div>
+      </section>
+
+      <section class="card" id="a9-piramides">
+        <div class="kicker">Geometria Espacial · 9.3</div>
+        <h3>Pirâmides e troncos</h3>
+        <p class="lead">A <b>pirâmide</b> tem uma base poligonal e um vértice (ápice). Seu volume é <b>um terço</b> do prisma de mesma base e altura. O <b>tronco</b> é o que sobra ao cortar a pirâmide por um plano paralelo à base.</p>
+        <div class="formula-box">\( V_{\text{pirâmide}}=\frac{1}{3}\,A_{\text{base}}\cdot h \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> volumes de telhados, pirâmides, funis; o fator \(\frac13\) (também válido para o cone) é muito cobrado. A altura é a distância do ápice à base, não a aresta lateral.</div>
+        <div class="ex"><b>Exemplo:</b> pirâmide de base quadrada lado 6 e altura 10: \(V=\frac13\cdot36\cdot10=120\). <span class="resp">120.</span></div>
+      </section>
+
+      <section class="card" id="a9-cilindro">
+        <div class="kicker">Geometria Espacial · 9.4</div>
+        <h3>Cilindros</h3>
+        <p class="lead">O <b>cilindro</b> é como um prisma de base circular: duas bases circulares iguais ligadas por uma superfície lateral. Volume = área da base × altura; a lateral, “desenrolada”, é um retângulo.</p>
+        <div class="formula-box">\( V=\pi r^2 h\qquad A_{\text{lateral}}=2\pi r h\qquad A_{\text{total}}=2\pi r(r+h) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> latas, canos, tanques, rolos; capacidade em litros (1 dm³ = 1 L) e material para fabricar a lata (lateral + 2 tampas). Atenção a raio vs diâmetro no enunciado.</div>
+        <div class="ex"><b>Exemplo:</b> cilindro \(r=5,\ h=10\): \(V=\pi\cdot25\cdot10=250\pi\). <span class="resp">\(250\pi\approx785\).</span></div>
+      </section>
+
+      <section class="card" id="a9-cone">
+        <div class="kicker">Geometria Espacial · 9.5</div>
+        <h3>Cones (e troncos)</h3>
+        <p class="lead">O <b>cone</b> está para o cilindro como a pirâmide está para o prisma: mesmo \(\frac13\). Tem base circular e um vértice. A <b>geratriz</b> \(g\) liga o vértice à borda da base e satisfaz \(g^2=r^2+h^2\) (Pitágoras).</p>
+        <div class="formula-box">\( V=\frac{1}{3}\pi r^2 h\qquad A_{\text{lateral}}=\pi r g\qquad g^2=r^2+h^2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> casquinhas de sorvete, funis, chapéus, pilhas de areia; volume e a área lateral (que usa a geratriz, não a altura). O <b>tronco de cone</b> aparece em copos e baldes.</div>
+        <div class="ex"><b>Exemplo:</b> cone \(r=3,\ h=4\): \(V=\frac13\pi\cdot9\cdot4=12\pi\); geratriz \(g=\sqrt{9+16}=5\). <span class="resp">\(V=12\pi,\ g=5\).</span></div>
+      </section>
+
+      <section class="card" id="a9-esfera">
+        <div class="kicker">Geometria Espacial · 9.6</div>
+        <h3>Esfera e suas partes</h3>
+        <p class="lead">A <b>esfera</b> é o conjunto de pontos do espaço a uma distância fixa (raio) do centro — a “bola”. Tanto o volume quanto a área de superfície dependem só do raio. Partes importantes: calota, fuso e cunha.</p>
+        <div class="formula-box">\( V=\frac{4}{3}\pi r^3\qquad A=4\pi r^2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> bolas, planetas, tanques esféricos, gotas; comparar volumes (dobrar o raio multiplica o volume por 8). Costuma vir combinada com cilindro/cone em sólidos compostos.</div>
+        <div class="ex"><b>Exemplo:</b> esfera \(r=3\): \(V=\frac43\pi\cdot27=36\pi\). <span class="resp">\(36\pi\approx113\).</span></div>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 10 ===================== -->
+      <div class="area a10">
+      <div class="chapter" id="a10">
+        <div class="num">Área 10</div>
+        <h2>Geometria Analítica e Cônicas</h2>
+        <p>A geometria “com coordenadas”: pontos, retas e curvas viram equações no plano cartesiano, e problemas geométricos se resolvem por álgebra. Termina nas cônicas (parábola e elipse), que descrevem trajetórias, antenas e órbitas.</p>
+        <div class="mini">
+          <a href="#a10-pontos">Pontos: distância e ponto médio</a>
+          <a href="#a10-retas">Retas: equações</a>
+          <a href="#a10-retaspos">Retas: paralelismo e distância</a>
+          <a href="#a10-circ">Circunferência</a>
+          <a href="#a10-posrel">Posições relativas</a>
+          <a href="#a10-parabola">Parábola</a>
+          <a href="#a10-elipse">Elipse</a>
+        </div>
+      </div>
+
+      <section class="card" id="a10-pontos">
+        <div class="kicker">Geometria Analítica · 10.1</div>
+        <h3>Pontos: distância, ponto médio e alinhamento</h3>
+        <p class="lead">Cada ponto é um par \((x,y)\). A <b>distância</b> entre dois pontos é Pitágoras aplicado às diferenças de coordenadas; o <b>ponto médio</b> é a média das coordenadas. Três pontos estão <b>alinhados</b> (colineares) quando o determinante formado por eles é zero.</p>
+        <div class="formula-box">\( d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\qquad M=\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right) \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> comprimentos de segmentos, perímetros por coordenadas, centro de um segmento, e teste de colinearidade (det \(=0\)). A área de um triângulo por coordenadas usa o mesmo determinante.</div>
+        <div class="ex"><b>Exemplo:</b> distância de \((1,2)\) a \((4,6)\): \(\sqrt{3^2+4^2}=5\). <span class="resp">5.</span></div>
+      </section>
+
+      <section class="card" id="a10-retas">
+        <div class="kicker">Geometria Analítica · 10.2</div>
+        <h3>Retas: equações geral e reduzida</h3>
+        <p class="lead">A reta tem <b>equação reduzida</b> \(y=mx+n\) (com \(m\) = coeficiente angular = inclinação, \(n\) = onde corta o eixo \(y\)) e <b>equação geral</b> \(ax+by+c=0\). O coeficiente angular também sai de dois pontos.</p>
+        <div class="formula-box">\( y=mx+n\qquad m=\frac{y_2-y_1}{x_2-x_1}\qquad ax+by+c=0 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar a equação de uma reta por dois pontos ou ponto + inclinação, esboçar e ler gráficos, e converter entre as formas. É a base para paralelismo, perpendicularismo e interseções.</div>
+        <div class="ex"><b>Exemplo:</b> reta por \((0,1)\) e \((2,5)\): \(m=\frac{5-1}{2-0}=2\Rightarrow y=2x+1\). <span class="resp">\(y=2x+1\).</span></div>
+      </section>
+
+      <section class="card" id="a10-retaspos">
+        <div class="kicker">Geometria Analítica · 10.3</div>
+        <h3>Retas: paralelismo, perpendicularismo e distância</h3>
+        <p class="lead">Duas retas são <b>paralelas</b> quando têm o <b>mesmo</b> coeficiente angular; <b>perpendiculares</b> quando o produto dos coeficientes é \(-1\) (um é o oposto do inverso do outro). A <b>distância de um ponto a uma reta</b> tem fórmula própria, e a interseção de retas resolve-se por sistema.</p>
+        <div class="formula-box">\( \text{paralelas: } m_1=m_2\quad \text{perpendiculares: } m_1\cdot m_2=-1 \)<br>\( d=\frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> decidir posição de retas, achar reta paralela/perpendicular passando por um ponto, calcular distância (altura de triângulo, margem de segurança) e ponto de encontro de duas retas.</div>
+        <div class="ex"><b>Exemplo:</b> a perpendicular a \(y=2x+1\) tem \(m=-\frac12\). <span class="resp">\(m=-\frac12\).</span></div>
+      </section>
+
+      <section class="card" id="a10-circ">
+        <div class="kicker">Geometria Analítica · 10.4</div>
+        <h3>Circunferência: equações geral e reduzida</h3>
+        <p class="lead">No plano cartesiano, a circunferência de centro \((a,b)\) e raio \(r\) tem <b>equação reduzida</b> \((x-a)^2+(y-b)^2=r^2\) (definição de distância). Desenvolvendo, chega-se à <b>forma geral</b> \(x^2+y^2+Dx+Ey+F=0\).</p>
+        <div class="formula-box">\( (x-a)^2+(y-b)^2=r^2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> achar centro e raio (completando quadrados na forma geral), montar a equação a partir do centro e raio, e estudar posições relativas. Centro e raio são quase sempre o primeiro passo.</div>
+        <div class="ex"><b>Exemplo:</b> \((x-2)^2+(y+1)^2=9\) tem centro \((2,-1)\) e raio 3. <span class="resp">centro \((2,-1)\), \(r=3\).</span></div>
+      </section>
+
+      <section class="card" id="a10-posrel">
+        <div class="kicker">Geometria Analítica · 10.5</div>
+        <h3>Posições relativas entre ponto, reta e circunferência</h3>
+        <p class="lead">Compara-se uma <b>distância</b> com o <b>raio</b>. Um ponto é interno, externo ou está sobre a circunferência conforme sua distância ao centro seja menor, maior ou igual a \(r\). Uma reta é <b>secante</b> (corta em 2 pontos), <b>tangente</b> (1 ponto) ou <b>externa</b> (nenhum), conforme a distância do centro à reta seja \(<r,\ =r\) ou \(>r\).</p>
+        <div class="formula-box">\( d<r:\text{ secante}\quad d=r:\text{ tangente}\quad d>r:\text{ externa} \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> decidir se reta e circunferência se cruzam, achar condição de tangência, e localizar pontos. Resume-se a calcular uma distância e comparar com \(r\).</div>
+        <div class="ex"><b>Exemplo:</b> centro a distância 4 de uma reta, raio 3: \(4>3\). <span class="resp">reta externa (não corta).</span></div>
+      </section>
+
+      <section class="card" id="a10-parabola">
+        <div class="kicker">Cônicas · 10.6</div>
+        <h3>Parábola</h3>
+        <p class="lead">A <b>parábola</b> é o conjunto de pontos <b>equidistantes</b> de um ponto fixo (o <b>foco</b>) e de uma reta fixa (a <b>diretriz</b>). Seus elementos: foco, diretriz, vértice e eixo de simetria. A distância foco–diretriz é o parâmetro \(2p\).</p>
+        <div class="formula-box">\( \text{(vértice na origem, eixo } y\text{): } x^2=4py \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> a propriedade refletora (antenas parabólicas, faróis, espelhos) e a trajetória de projéteis. Liga-se à função quadrática, cujo gráfico já é uma parábola.</div>
+        <div class="ex"><b>Exemplo:</b> a curva \(y=x^2\) é uma parábola de vértice na origem, voltada para cima. <span class="resp">vértice \((0,0)\).</span></div>
+      </section>
+
+      <section class="card" id="a10-elipse">
+        <div class="kicker">Cônicas · 10.7</div>
+        <h3>Elipse</h3>
+        <p class="lead">A <b>elipse</b> é o conjunto de pontos cuja <b>soma</b> das distâncias a dois pontos fixos (os <b>focos</b>) é constante (\(=2a\)). Tem dois eixos (maior \(2a\) e menor \(2b\)) e os focos sobre o eixo maior, com \(a^2=b^2+c^2\). É um “círculo achatado”.</p>
+        <div class="formula-box">\( \frac{x^2}{a^2}+\frac{y^2}{b^2}=1\qquad a^2=b^2+c^2 \)</div>
+        <div class="uso"><b>Onde cai / como se usa:</b> órbitas dos planetas (Kepler), engrenagens e arcos elípticos. Cai identificar eixos, focos e excentricidade, e montar/ler a equação reduzida.</div>
+        <div class="ex"><b>Exemplo:</b> \(\frac{x^2}{25}+\frac{y^2}{9}=1\): \(a=5,\ b=3,\ c=\sqrt{25-9}=4\). <span class="resp">focos em \((\pm4,0)\).</span></div>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Matemática · organizado por áreas do programa do vestibular. Conferir sempre fórmulas e condições de existência antes de aplicar.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

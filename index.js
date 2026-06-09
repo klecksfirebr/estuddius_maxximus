@@ -11,8 +11,12 @@ butInicio.addEventListener('click', () => {
     `<nav>
         <br><br>
         <h1>Site de estudo bagual</h1>
-        <a href=".//tabs/fisica.html">Física</a>
-        <a href=".//tabs/matematica.html">Matemática</a>   
+        <a href=".//tabs/fisicaEquacoes.html">Física-Equações</a>
+        <a href=".//tabs/fisicaConceito.html">Física-Conceitos</a>
+        <a href=".//tabs/matematicaEquacoes.html">Matemática-Equações</a>   
+        <a href=".//tabs/matematicaConceito.html">Matemática-Conceitos</a>   
+        <a href=".//tabs/biologia.html">Biologia</a>
+        <a href=".//tabs/quimica.html">Química</a>
     </nav>
     <main>
         <br><br><br><br>

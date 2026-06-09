@@ -1,3 +1,10 @@
+@font-face {
+  font-family:'FonteUltrakill'; 
+  src: url('./fonts/VCR_OSD_MONO.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +13,7 @@
 body{
     background-color: hsl(0, 0%, 0%);
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
     text-align: center;
     width: 100vw;
 }
@@ -14,6 +21,8 @@ body{
 a{
     font-size: 30px;
     color: #fff;
+    margin-left: 5px;
+    font-family:'FonteUltrakill', sans-serif;
 }
 
 a:hover{
@@ -45,7 +54,6 @@ a:hover{
 }
 
 #butInicio{
-    text-align: center;
     margin-top: 45vh;
     scale: 5;
     padding: 15px;

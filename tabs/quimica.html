@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Guia de Química para o Vestibular — Conteúdos Explicados</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+    svg: { fontCache: 'global' },
+    startup: { ready(){ MathJax.startup.defaultReady(); MathJax.startup.promise.then(()=>document.body.classList.add('mjx-ready')); } }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e4e8ee; --line-strong:#cdd3dd;
+    --accent:#6d28d9; --accent-2:#7c3aed; --accent-soft:#f5f3ff;
+    --paper:#ffffff; --bg:#eef1f5;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f5f7fa; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbfcfe; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#5b21b6,#7c3aed); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:70ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#f7f9fc; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE ÁREA ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:25px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid #dbe6f2; border-radius:10px;
+    padding:15px; text-align:center; font-size:16px; margin:14px 0; overflow-x:auto; }
+  .formula-box sub, .formula-box sup{ font-size:75%; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.6px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR ÁREA ===== */
+  .a1{ --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9; }
+  .a2{ --accent:#0e7490; --accent-2:#0891b2; --accent-soft:#ecfeff; }
+  .a3{ --accent:#be123c; --accent-2:#e11d48; --accent-soft:#fff1f2; }
+  .a4{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; }
+  .a5{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }
+  .a6{ --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#f0fdfa; }
+  .a7{ --accent:#a16207; --accent-2:#ca8a04; --accent-soft:#fefce8; }
+  .a8{ --accent:#9333ea; --accent-2:#a855f7; --accent-soft:#faf5ff; }
+  .a9{ --accent:#be123c; --accent-2:#e11d48; --accent-soft:#fff1f2; }
+  .a10{ --accent:#0e7490; --accent-2:#0891b2; --accent-soft:#ecfeff; }
+  .a11{ --accent:#4338ca; --accent-2:#4f46e5; --accent-soft:#eef2ff; }
+  .a12{ --accent:#047857; --accent-2:#059669; --accent-soft:#ecfdf5; }
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Guia de Química</div>
+      <div class="sub">Conteúdos do programa do vestibular, explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+        <div class="grp">As 12 áreas</div>
+        <ol>
+          <li><a href="#a1"><b>1</b> Fundamentos</a></li>
+          <li><a href="#a2"><b>2</b> Estrutura Atômica</a></li>
+          <li><a href="#a3"><b>3</b> Ligações Químicas</a></li>
+          <li><a href="#a4"><b>4</b> Funções Químicas</a></li>
+          <li><a href="#a5"><b>5</b> Reações Químicas e Energia</a></li>
+          <li><a href="#a6"><b>6</b> Estados Físicos e Gases</a></li>
+          <li><a href="#a7"><b>7</b> Soluções e Coligativas</a></li>
+          <li><a href="#a8"><b>8</b> Termoquímica</a></li>
+          <li><a href="#a9"><b>9</b> Cinética e Equilíbrio</a></li>
+          <li><a href="#a10"><b>10</b> Eletroquímica</a></li>
+          <li><a href="#a11"><b>11</b> Química Orgânica</a></li>
+          <li><a href="#a12"><b>12</b> Química e Meio Ambiente</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de Química — Conteúdos Explicados</h1>
+        <p>Um passeio por todo o programa de Química do vestibular. Cada tópico responde a três perguntas: <b>o que é</b> (com suas aplicações), <b>como cai na prova</b> e <b>um exemplo</b> — para você reconhecer o assunto no enunciado e entender exatamente do que se trata.</p>
+        <div class="chips">
+          <span>Fundamentos</span><span>Átomo</span><span>Ligações</span>
+          <span>Funções</span><span>Estequiometria</span><span>Gases</span>
+          <span>Soluções</span><span>Termoquímica</span><span>Equilíbrio</span><span>Eletroquímica</span><span>Orgânica</span><span>Ambiente</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que é”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. Use o índice ao lado para saltar entre as 12 áreas; dentro de cada área há atalhos para os tópicos. As fórmulas matemáticas são renderizadas automaticamente.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha de prova</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== ÁREA 1 ===================== -->
+      <div class="area a1">
+      <div class="chapter" id="a1">
+        <div class="num">Área 1</div>
+        <h2>Fundamentos</h2>
+        <p>A base de tudo: o que a Química estuda, como medir (algarismos significativos, SI, conversões), o conceito de mol e massa molar, e a organização da matéria (substâncias × misturas, separação). Cai sozinha e está embutida em quase toda questão de cálculo.</p>
+        <div class="mini">
+          <a href="#a1-escopo">Escopo e fenômenos</a>
+          <a href="#a1-medidas">Medidas, exatidão e precisão</a>
+          <a href="#a1-algsig">Algarismos significativos</a>
+          <a href="#a1-si">SI e conversão de unidades</a>
+          <a href="#a1-materia">Matéria e conservação</a>
+          <a href="#a1-calor">Calor e temperatura</a>
+          <a href="#a1-estados">Estados físicos</a>
+          <a href="#a1-misturas">Substâncias e misturas</a>
+          <a href="#a1-separacao">Separação de misturas</a>
+          <a href="#a1-simples">Simples e compostas</a>
+          <a href="#a1-mol">Mol, massa molar e Avogadro</a>
+        </div>
+      </div>
+
+      <section class="card" id="a1-escopo">
+        <div class="kicker">Fundamentos · 1.1</div>
+        <h3>Escopo da Química e fenômenos físicos × químicos</h3>
+        <p class="lead">A <b>Química</b> estuda a <b>matéria</b>, suas <b>transformações</b> e a energia envolvida. A distinção mais básica: um <b>fenômeno físico</b> muda apenas o estado/forma, <b>sem alterar a substância</b> (derreter gelo, amassar papel, dissolver sal); um <b>fenômeno químico</b> (reação) forma <b>novas substâncias</b> (queimar papel, enferrujar, cozinhar). Sinais de reação química: mudança de cor, liberação de gás, formação de precipitado, variação de energia (calor/luz).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar exemplos do cotidiano em físico × químico é clássico. A pegadinha é a <b>mudança de estado</b> (sempre física) e a <b>combustão/oxidação</b> (sempre química). Identificar evidências de reação num enunciado também cai.</div>
+        <div class="ex"><b>Exemplo:</b> a fervura da água é fenômeno físico ou químico? <span class="resp">Físico — continua sendo água (H₂O), apenas muda de estado.</span></div>
+      </section>
+
+      <section class="card" id="a1-medidas">
+        <div class="kicker">Fundamentos · 1.2</div>
+        <h3>Medidas: exatidão e precisão</h3>
+        <p class="lead">Medir é comparar com um padrão, sempre com alguma incerteza. <b>Exatidão</b> é o quanto a medida se aproxima do <b>valor real</b>; <b>precisão</b> é o quanto as medidas <b>concordam entre si</b> (repetibilidade). São independentes: pode-se ser preciso e inexato (tiros agrupados, mas longe do alvo) ou exato em média e pouco preciso (espalhados em torno do alvo).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a analogia do <b>alvo</b> é o formato típico — dão um conjunto de medidas/figuras e pedem para julgar exatidão e precisão. Não confundir os dois é o ponto central.</div>
+        <div class="ex"><b>Exemplo:</b> medidas 9,98 / 9,99 / 10,00 g para algo de 5,00 g: são precisas ou exatas? <span class="resp">Precisas (concordam entre si), mas inexatas (longe do real).</span></div>
+      </section>
+
+      <section class="card" id="a1-algsig">
+        <div class="kicker">Fundamentos · 1.3</div>
+        <h3>Algarismos significativos e operações</h3>
+        <p class="lead">Algarismos significativos são os dígitos <b>confiáveis</b> de uma medida mais o primeiro <b>duvidoso</b>. Zeros à esquerda não contam (0,0042 tem 2); zeros entre dígitos e à direita após a vírgula contam. Nas <b>operações</b>: em <b>multiplicação/divisão</b>, o resultado tem o nº de significativos do dado com <b>menos</b> significativos; em <b>soma/subtração</b>, alinha-se pelo nº de <b>casas decimais</b> do menos preciso.</p>
+        <div class="formula-box">2,5 (2 alg.) × 3,42 (3 alg.) = 8,55 → arredonda para <b>8,6</b> (2 alg.)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> exigem o resultado de uma conta <b>com o número correto de significativos</b> (e o arredondamento certo). É comum em questões de laboratório/medidas e integra Física e Química.</div>
+        <div class="ex"><b>Exemplo:</b> quantos algarismos significativos há em 0,03050? <span class="resp">Quatro (3, 0, 5 e 0 — os zeros à esquerda não contam).</span></div>
+      </section>
+
+      <section class="card" id="a1-si">
+        <div class="kicker">Fundamentos · 1.4</div>
+        <h3>Sistema Internacional (SI) e conversão de unidades</h3>
+        <p class="lead">O <b>SI</b> padroniza as unidades. As <b>básicas</b> mais usadas: metro (m), quilograma (kg), segundo (s), kelvin (K), mol e ampère (A). As <b>derivadas</b> combinam as básicas (volume em m³, mas no dia a dia o <b>litro</b>; densidade em kg/m³ ou g/cm³; energia em joule). Conversões usam <b>prefixos</b> (k = 10³, c = 10⁻², m = 10⁻³, μ = 10⁻⁶) e <b>regra de três</b> com fatores. Úteis: 1 L = 1 dm³ = 1000 cm³ = 1000 mL.</p>
+        <div class="formula-box">1 L = 1 dm³ = 1000 cm³ = 1000 mL &nbsp;|&nbsp; 1 cm³ = 1 mL &nbsp;|&nbsp; densidade = massa ÷ volume</div>
+        <div class="uso"><b>Como cai no vestibular:</b> converter g↔kg, mL↔L, cm³↔m³ no meio de um cálculo (densidade, concentração, estequiometria). O erro de unidade é uma das maiores fontes de questão perdida. Densidade (d = m/V) é a conversão-rainha.</div>
+        <div class="ex"><b>Exemplo:</b> um corpo tem 50 g e 25 cm³. Densidade? <span class="resp">d = 50 ÷ 25 = 2 g/cm³.</span></div>
+      </section>
+
+      <section class="card" id="a1-materia">
+        <div class="kicker">Fundamentos · 1.5</div>
+        <h3>Matéria e conservação de matéria e energia</h3>
+        <p class="lead"><b>Matéria</b> é tudo que tem massa e ocupa espaço; <b>energia</b> é a capacidade de realizar transformações. A <b>Lei da Conservação da Massa</b> (Lavoisier): numa reação, a massa total dos reagentes é igual à dos produtos — “na natureza nada se cria, nada se perde, tudo se transforma”. A energia também se conserva, podendo mudar de forma (química → térmica, luminosa, elétrica).</p>
+        <div class="formula-box">massa dos reagentes = massa dos produtos &nbsp;(Lavoisier)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> aplicar Lavoisier para achar a massa de um reagente/produto que falta (ex.: A + B → C, dadas duas massas, achar a terceira). Em sistema aberto, “a massa some” porque um gás escapou — pegadinha clássica.</div>
+        <div class="ex"><b>Exemplo:</b> 12 g de C reagem com 32 g de O₂. Quanta massa de CO₂ se forma? <span class="resp">44 g (12 + 32, pela conservação da massa).</span></div>
+      </section>
+
+      <section class="card" id="a1-calor">
+        <div class="kicker">Fundamentos · 1.6</div>
+        <h3>Calor e temperatura</h3>
+        <p class="lead">Não são a mesma coisa. <b>Temperatura</b> mede o <b>grau de agitação</b> das partículas (energia cinética média); <b>calor</b> é a <b>energia térmica em trânsito</b> do corpo mais quente para o mais frio, até o equilíbrio térmico. As escalas: Celsius (°C), Fahrenheit (°F) e a absoluta Kelvin (K), em que 0 K é o zero absoluto.</p>
+        <div class="formula-box">T(K) = T(°C) + 273 &nbsp;|&nbsp; calor flui do quente → frio</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a conversão <b>°C ↔ K</b> aparece sempre que entram gases e termoquímica (temperatura tem de estar em kelvin). Distinguir calor (energia) de temperatura (medida da agitação) cai em teoria.</div>
+        <div class="ex"><b>Exemplo:</b> 27 °C equivalem a quantos kelvin? <span class="resp">27 + 273 = 300 K.</span></div>
+      </section>
+
+      <section class="card" id="a1-estados">
+        <div class="kicker">Fundamentos · 1.7</div>
+        <h3>Estados físicos e mudanças de estado</h3>
+        <p class="lead">Os três estados diferem na organização e na energia das partículas: <b>sólido</b> (partículas organizadas, forma e volume fixos), <b>líquido</b> (mais soltas, volume fixo, forma variável) e <b>gasoso</b> (muito agitadas, sem forma nem volume fixos). As mudanças: <b>fusão</b> (sólido→líquido), <b>vaporização</b> (líquido→gás), <b>condensação/liquefação</b> (gás→líquido), <b>solidificação</b> (líquido→sólido) e <b>sublimação</b> (sólido↔gás direto).</p>
+        <div class="formula-box">sólido ⇄ líquido ⇄ gasoso &nbsp;|&nbsp; sublimação: sólido ⇄ gás</div>
+        <div class="uso"><b>Como cai no vestibular:</b> nomear a mudança a partir de um exemplo (naftalina “sumindo” = sublimação; orvalho = condensação) e interpretar <b>gráficos de aquecimento</b> (os “patamares” onde a temperatura fica constante são as mudanças de estado). O patamar como prova de substância pura conecta com 1.8.</div>
+        <div class="ex"><b>Exemplo:</b> o gelo seco (CO₂) passa direto de sólido a gás. Que processo é esse? <span class="resp">Sublimação.</span></div>
+      </section>
+
+      <section class="card" id="a1-misturas">
+        <div class="kicker">Fundamentos · 1.8</div>
+        <h3>Substâncias puras e misturas; sistemas homo e heterogêneos</h3>
+        <p class="lead">Uma <b>substância pura</b> tem composição fixa e propriedades constantes (ferve/funde em temperatura definida). Uma <b>mistura</b> reúne duas ou mais substâncias. Quanto ao aspecto: <b>homogênea</b> (uma só fase, uniforme — ar, água salgada, ligas) e <b>heterogênea</b> (duas ou mais fases — água e óleo, granito). O número de <b>fases</b> ≠ número de <b>componentes</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> contar <b>fases</b> e <b>componentes</b> de um sistema (clássico: água + gelo + sal dissolvido). Saber que toda <b>solução é homogênea</b> e que misturas se separam por métodos físicos (≠ substâncias compostas, que só se separam por reação) é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> água com gelo é mistura ou substância? Quantas fases? <span class="resp">Substância pura (só H₂O) em duas fases (sólida + líquida).</span></div>
+        <div class="warn"><b>Pegadinha:</b> água + gelo NÃO é “mistura” — é a mesma substância (H₂O) em dois estados; logo 1 componente, 2 fases.</div>
+      </section>
+
+      <section class="card" id="a1-separacao">
+        <div class="kicker">Fundamentos · 1.9</div>
+        <h3>Processos de separação de misturas</h3>
+        <p class="lead">Misturas separam-se por métodos <b>físicos</b>, escolhidos conforme o tipo. <b>Heterogêneas</b>: filtração (sólido + líquido), decantação (líquidos imiscíveis ou sólido que assenta), catação, peneiração, separação magnética, flotação. <b>Homogêneas</b>: <b>destilação simples</b> (sólido dissolvido em líquido — separa a água salgada), <b>destilação fracionada</b> (líquidos miscíveis com pontos de ebulição diferentes — separa o petróleo e o álcool/água) e cristalização.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> escolher o método certo para uma mistura específica (água+óleo → decantação; água+sal → destilação; ar líquido / petróleo → destilação fracionada). A destilação fracionada do petróleo conecta com a Área 12.</div>
+        <div class="ex"><b>Exemplo:</b> como separar sal dissolvido na água, recuperando a água? <span class="resp">Destilação simples (evapora e condensa a água).</span></div>
+      </section>
+
+      <section class="card" id="a1-simples">
+        <div class="kicker">Fundamentos · 1.10</div>
+        <h3>Substâncias simples e compostas</h3>
+        <p class="lead">Uma <b>substância simples</b> é formada por <b>um único elemento</b> (O₂, O₃, Fe, N₂); uma <b>substância composta</b> reúne <b>dois ou mais elementos</b> (H₂O, CO₂, NaCl) e só se decompõe por reação química. <b>Alotropia</b> é quando o mesmo elemento forma substâncias simples diferentes (O₂ e O₃; diamante e grafite, ambos de carbono).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar fórmulas em simples × composta e identificar <b>alótropos</b> (oxigênio/ozônio; diamante/grafite/fulereno). Não confundir <b>substância composta</b> (1 tipo de molécula, separável só por reação) com <b>mistura</b> (separável por método físico).</div>
+        <div class="ex"><b>Exemplo:</b> O₂ e O₃ são a mesma substância? <span class="resp">Não — são alótropos: substâncias simples diferentes do mesmo elemento (oxigênio).</span></div>
+      </section>
+
+      <section class="card" id="a1-mol">
+        <div class="kicker">Fundamentos · 1.11</div>
+        <h3>Mol, constante de Avogadro, massa molar</h3>
+        <p class="lead">O <b>mol</b> é a unidade de <b>quantidade de matéria</b>: 1 mol contém <b>6,02 × 10²³</b> entidades (a <b>constante de Avogadro</b>) — é a “dúzia do químico”. A <b>massa molar</b> (M, em g/mol) é a massa de 1 mol de uma substância, numericamente igual à sua massa molecular (somando as massas atômicas da tabela periódica). Ela faz a ponte entre <b>massa</b> (g) e <b>quantidade</b> (mol).</p>
+        <div class="formula-box">\( n = \dfrac{m}{M} \qquad N = n \times 6{,}02\times10^{23} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> é a ferramenta-base de todo cálculo químico (estequiometria, soluções, gases). Converter massa ↔ mol ↔ número de partículas ↔ volume de gás. Calcular massa molar somando as massas atômicas é passo obrigatório.</div>
+        <div class="ex"><b>Exemplo:</b> quantos mols há em 36 g de água (M = 18 g/mol)? <span class="resp">n = 36 ÷ 18 = 2 mol (≈ 1,2 × 10²⁴ moléculas).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 2 ===================== -->
+      <div class="area a2">
+      <div class="chapter" id="a2">
+        <div class="num">Área 2</div>
+        <h2>Estrutura Atômica</h2>
+        <p>Como o átomo é por dentro: a evolução dos modelos, as partículas (próton, elétron, nêutron), a distribuição dos elétrons, a radioatividade e a organização dos elementos na tabela periódica. Base para entender ligações, reações e propriedades.</p>
+        <div class="mini">
+          <a href="#a2-modelos">Modelos atômicos</a>
+          <a href="#a2-particulas">Prótons, elétrons e nêutrons</a>
+          <a href="#a2-numeros">Z, A, isótopos e isóbaros</a>
+          <a href="#a2-distrib">Distribuição eletrônica</a>
+          <a href="#a2-espectro">Espectro eletromagnético</a>
+          <a href="#a2-radio">Radioatividade</a>
+          <a href="#a2-nuclear">Fissão e fusão nuclear</a>
+          <a href="#a2-tabela">Tabela periódica</a>
+        </div>
+      </div>
+
+      <section class="card" id="a2-modelos">
+        <div class="kicker">Átomo · 2.1</div>
+        <h3>Modelos atômicos</h3>
+        <p class="lead">A ideia de átomo evoluiu: <b>Dalton</b> (esfera maciça e indivisível, “bola de bilhar”); <b>Thomson</b> (descobre o elétron — “pudim de passas”: massa positiva com elétrons incrustados); <b>Rutherford</b> (experimento da folha de ouro → átomo com <b>núcleo</b> pequeno, positivo e denso, e elétrons na eletrosfera — modelo “planetário”); <b>Bohr</b> (elétrons em <b>órbitas/níveis</b> de energia definidos, saltando entre eles ao absorver/emitir energia).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar cientista ↔ modelo ↔ experimento (Rutherford–folha de ouro; Thomson–raios catódicos). O modelo de <b>Bohr</b> explica os espectros e os “saltos” de elétrons (luz, fogos de artifício) — muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> qual experimento revelou que o átomo é “quase vazio”, com núcleo denso? <span class="resp">O da folha de ouro, de Rutherford.</span></div>
+      </section>
+
+      <section class="card" id="a2-particulas">
+        <div class="kicker">Átomo · 2.2</div>
+        <h3>Partículas: prótons, elétrons e nêutrons</h3>
+        <p class="lead">O átomo tem um <b>núcleo</b> com <b>prótons</b> (carga +1, massa 1 u) e <b>nêutrons</b> (sem carga, massa 1 u), e uma <b>eletrosfera</b> com <b>elétrons</b> (carga −1, massa desprezível). Num átomo <b>neutro</b>, nº de prótons = nº de elétrons. Quando ganha ou perde elétrons, vira <b>íon</b>: <b>cátion</b> (positivo, perdeu elétron) ou <b>ânion</b> (negativo, ganhou elétron).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular prótons/elétrons/nêutrons de um átomo ou íon. A pegadinha do íon: o nº de <b>prótons não muda</b> (define o elemento); muda só o nº de <b>elétrons</b>. Na² ⁺ tem 11 prótons e 10 elétrons, por exemplo.</div>
+        <div class="ex"><b>Exemplo:</b> quantos elétrons tem o cátion Ca²⁺ (Z = 20)? <span class="resp">18 (perdeu 2 dos 20 elétrons; prótons continuam 20).</span></div>
+      </section>
+
+      <section class="card" id="a2-numeros">
+        <div class="kicker">Átomo · 2.3</div>
+        <h3>Número atômico, número de massa, isótopos e isóbaros</h3>
+        <p class="lead">O <b>número atômico (Z)</b> = nº de prótons — é a “identidade” do elemento. O <b>número de massa (A)</b> = prótons + nêutrons (A = Z + N). Conceitos semelhantes (“iso”): <b>isótopos</b> têm o mesmo Z, A diferente (mesmo elemento, ex.: ¹²C e ¹⁴C); <b>isóbaros</b> têm o mesmo A, Z diferente; <b>isótonos</b> têm o mesmo nº de nêutrons.</p>
+        <div class="formula-box">A = Z + N &nbsp;|&nbsp; isótopo: mesmo <b>Z</b> · isóbaro: mesmo <b>A</b> · isótono: mesmo <b>N</b></div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar pares iso (a dica está em qual número é igual: Z→isótopo, A→isóbaro, N→isótono) e calcular nêutrons (N = A − Z). Os isótopos do carbono e do hidrogênio (prótio, deutério, trítio) são exemplos recorrentes.</div>
+        <div class="ex"><b>Exemplo:</b> o ⁴⁰Ca (Z=20) e o ⁴⁰Ar (Z=18) são o quê? <span class="resp">Isóbaros (mesmo A = 40, Z diferente).</span></div>
+      </section>
+
+      <section class="card" id="a2-distrib">
+        <div class="kicker">Átomo · 2.4</div>
+        <h3>Níveis de energia e distribuição eletrônica</h3>
+        <p class="lead">Os elétrons se organizam em <b>níveis</b> (camadas K, L, M, N…) e <b>subníveis</b> (s, p, d, f), preenchidos em ordem crescente de energia pelo <b>diagrama de Linus Pauling</b>. Capacidades: s (2), p (6), d (10), f (14). A <b>camada de valência</b> (a mais externa) é a que participa das ligações. Ex.: sódio (Z=11) = 1s² 2s² 2p⁶ 3s¹.</p>
+        <div class="formula-box">ordem (Pauling): 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p 7s…</div>
+        <div class="uso"><b>Como cai no vestibular:</b> fazer a distribuição eletrônica e identificar a <b>camada de valência</b> (que prevê a posição na tabela e o tipo de ligação). Distribuir <b>íons</b> (tirar/pôr elétrons da última camada) é a variação mais cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> quantos elétrons de valência tem o oxigênio (Z=8: 1s² 2s² 2p⁴)? <span class="resp">6 (2s² 2p⁴) — por isso tende a ganhar 2 elétrons.</span></div>
+      </section>
+
+      <section class="card" id="a2-espectro">
+        <div class="kicker">Átomo · 2.5</div>
+        <h3>Espectro eletromagnético e interação com a matéria</h3>
+        <p class="lead">A luz é uma <b>onda eletromagnética</b>; o <b>espectro</b> ordena as radiações por energia/frequência: rádio, micro-ondas, infravermelho, <b>visível</b>, ultravioleta, raios X e gama (energia crescente). Quando um elétron <b>absorve</b> energia, ele “salta” para um nível mais externo (excitado) e, ao <b>voltar</b>, <b>emite</b> luz de cor específica. Isso gera os <b>espectros de emissão</b>, característicos de cada elemento.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o modelo de <b>Bohr</b> + salto eletrônico explica a cor de fogos de artifício e o <b>teste de chama</b> (sódio amarelo, cobre verde). Ordenar radiações por energia e relacionar energia ↔ frequência (maior frequência = mais energia) é cobrado, ligando com Física.</div>
+        <div class="ex"><b>Exemplo:</b> por que o teste de chama dá cores diferentes para cada metal? <span class="resp">Cada elemento emite luz de comprimentos de onda próprios quando seus elétrons retornam ao estado fundamental.</span></div>
+      </section>
+
+      <section class="card" id="a2-radio">
+        <div class="kicker">Átomo · 2.6</div>
+        <h3>Radioatividade e emissões</h3>
+        <p class="lead">Núcleos instáveis emitem radiação para se estabilizar. As três emissões clássicas: <b>alfa (α)</b> = núcleo de hélio (2 prótons + 2 nêutrons; pouco penetrante, barrada por papel) → reduz A em 4 e Z em 2; <b>beta (β)</b> = elétron emitido pelo núcleo (um nêutron vira próton) → Z aumenta em 1, A constante; <b>gama (γ)</b> = onda eletromagnética de alta energia (muito penetrante, não muda A nem Z). A <b>meia-vida</b> é o tempo para metade dos núcleos decaírem.</p>
+        <div class="formula-box">α: A−4, Z−2 &nbsp;|&nbsp; β: A igual, Z+1 &nbsp;|&nbsp; γ: A e Z iguais</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o novo elemento após emissões (somar os efeitos em A e Z) e resolver <b>meia-vida</b> (quantas massas restam após n períodos: divide por 2 a cada meia-vida). Datação por carbono-14 é aplicação típica.</div>
+        <div class="ex"><b>Exemplo:</b> 80 g de um isótopo com meia-vida de 5 anos. Quanto resta em 15 anos? <span class="resp">15 anos = 3 meias-vidas → 80 → 40 → 20 → 10 g.</span></div>
+      </section>
+
+      <section class="card" id="a2-nuclear">
+        <div class="kicker">Átomo · 2.7</div>
+        <h3>Fissão e fusão nuclear</h3>
+        <p class="lead">São reações que liberam <b>enorme energia</b> alterando o núcleo. A <b>fissão</b> quebra um núcleo grande (urânio-235) em núcleos menores, em <b>reação em cadeia</b> — é a base das usinas nucleares e da bomba atômica. A <b>fusão</b> une núcleos pequenos (hidrogênio → hélio), liberando ainda mais energia — é o que ocorre no <b>Sol</b> e nas estrelas. Ambas convertem massa em energia (E = mc²).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar <b>fissão (quebra, urânio, usinas)</b> de <b>fusão (une, hidrogênio, Sol)</b> e discutir prós/contras da energia nuclear (alta energia, sem CO₂ × lixo atômico e riscos) — tema que conecta com a Área 12.</div>
+        <div class="ex"><b>Exemplo:</b> a energia do Sol vem de fissão ou fusão? <span class="resp">Fusão nuclear (hidrogênio formando hélio).</span></div>
+      </section>
+
+      <section class="card" id="a2-tabela">
+        <div class="kicker">Átomo · 2.8</div>
+        <h3>Tabela periódica e propriedades periódicas</h3>
+        <p class="lead">Os elementos estão organizados por <b>número atômico crescente</b> em <b>períodos</b> (linhas = nº de camadas) e <b>grupos/famílias</b> (colunas = mesma valência, propriedades parecidas). Famílias importantes: metais alcalinos (1), alcalino-terrosos (2), calcogênios (16), halogênios (17), gases nobres (18). As <b>propriedades periódicas</b> variam de modo previsível: o <b>raio atômico</b> cresce para baixo e para a esquerda; a <b>eletronegatividade</b> e a <b>energia de ionização</b> crescem para cima e para a direita (rumo ao flúor).</p>
+        <div class="formula-box">raio atômico ↑ (esquerda/baixo) &nbsp;×&nbsp; eletronegatividade e ionização ↑ (direita/cima)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> comparar elementos quanto a raio, eletronegatividade e energia de ionização (com base na posição), e classificar em metal/ametal/gás nobre. A localização (período/grupo) a partir da distribuição eletrônica é muito cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> entre Na e Cl (mesmo período), quem tem maior eletronegatividade? <span class="resp">O cloro (mais à direita).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 3 ===================== -->
+      <div class="area a3">
+      <div class="chapter" id="a3">
+        <div class="num">Área 3</div>
+        <h2>Ligações Químicas</h2>
+        <p>Como os átomos se unem para formar substâncias: a regra do octeto, as ligações iônica e covalente, a polaridade, as forças entre moléculas e a geometria molecular. Explica praticamente todas as propriedades físicas dos materiais.</p>
+        <div class="mini">
+          <a href="#a3-octeto">Teoria do octeto</a>
+          <a href="#a3-ionica">Ligação iônica</a>
+          <a href="#a3-covalente">Ligação covalente (σ e π)</a>
+          <a href="#a3-carater">Caráter iônico × covalente</a>
+          <a href="#a3-polaridade">Polaridade</a>
+          <a href="#a3-propriedades">Propriedades dos compostos</a>
+          <a href="#a3-forcas">Forças intermoleculares</a>
+          <a href="#a3-geometria">Geometria molecular</a>
+        </div>
+      </div>
+
+      <section class="card" id="a3-octeto">
+        <div class="kicker">Ligações · 3.1</div>
+        <h3>Teoria do octeto</h3>
+        <p class="lead">Os átomos se ligam buscando <b>estabilidade</b>, geralmente atingindo <b>8 elétrons na camada de valência</b> (como os gases nobres) — a <b>regra do octeto</b> (exceção: H e He, que estabilizam com 2). Para isso, os átomos <b>transferem</b> (ligação iônica) ou <b>compartilham</b> (ligação covalente) elétrons. É um modelo simplificado, com exceções (B, com 6; expansão do octeto em P e S).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> prever quantos elétrons um átomo ganha/perde/compartilha (a partir da valência) e o tipo de ligação resultante. A regra orienta a montagem de fórmulas e estruturas de Lewis.</div>
+        <div class="ex"><b>Exemplo:</b> quantos elétrons o oxigênio (6 na valência) precisa para o octeto? <span class="resp">2 — por isso forma O²⁻ ou duas ligações covalentes.</span></div>
+      </section>
+
+      <section class="card" id="a3-ionica">
+        <div class="kicker">Ligações · 3.2</div>
+        <h3>Ligação iônica</h3>
+        <p class="lead">Ocorre entre <b>metal</b> (baixa eletronegatividade, perde elétron → cátion) e <b>ametal</b> (alta eletronegatividade, ganha elétron → ânion), por <b>transferência</b> definitiva de elétrons. A atração eletrostática entre os íons forma um <b>retículo cristalino</b>. Resultado: compostos iônicos (sais como NaCl), sólidos à temperatura ambiente, de alto ponto de fusão.</p>
+        <div class="formula-box">Na (perde 1 e⁻) + Cl (ganha 1 e⁻) → Na⁺ Cl⁻ (NaCl)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar a ligação iônica (metal + ametal) e montar a fórmula do composto pelo equilíbrio de cargas (ex.: Ca²⁺ + Cl⁻ → CaCl₂). As propriedades (sólido, alto PF, conduz corrente dissolvido/fundido) vêm a seguir.</div>
+        <div class="ex"><b>Exemplo:</b> qual a fórmula do composto entre Al³⁺ e O²⁻? <span class="resp">Al₂O₃ (cruzando as cargas para neutralizar).</span></div>
+      </section>
+
+      <section class="card" id="a3-covalente">
+        <div class="kicker">Ligações · 3.3</div>
+        <h3>Ligação covalente, sigma (σ) e pi (π); Lewis</h3>
+        <p class="lead">Ocorre entre <b>ametais</b> (ou com H), por <b>compartilhamento</b> de pares de elétrons. A primeira ligação entre dois átomos é sempre <b>sigma (σ)</b> (mais forte, frontal); ligações <b>duplas</b> e <b>triplas</b> acrescentam ligações <b>pi (π)</b> (laterais). As <b>estruturas de Lewis</b> representam os elétrons de valência como pontos, mostrando os pares ligantes e os pares isolados.</p>
+        <div class="formula-box">simples = 1σ &nbsp;|&nbsp; dupla = 1σ + 1π &nbsp;|&nbsp; tripla = 1σ + 2π &nbsp;(ex.: N≡N)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> contar ligações <b>σ e π</b> numa molécula (toda ligação tem 1 σ; cada “traço extra” é 1 π) e desenhar/interpretar estruturas de Lewis. Casos como CO₂ (O=C=O: 2σ + 2π) e N₂ (1σ + 2π) são recorrentes.</div>
+        <div class="ex"><b>Exemplo:</b> quantas ligações σ e π há no gás nitrogênio, N≡N? <span class="resp">1 sigma e 2 pi.</span></div>
+      </section>
+
+      <section class="card" id="a3-carater">
+        <div class="kicker">Ligações · 3.4</div>
+        <h3>Caráter iônico e caráter covalente</h3>
+        <p class="lead">Na prática, as ligações formam um <b>contínuo</b>: quanto <b>maior a diferença de eletronegatividade</b> entre os átomos, mais <b>iônico</b> o caráter; quanto menor, mais <b>covalente</b>. Diferença nula (átomos iguais, como em O₂) = covalente <b>apolar</b>; diferença pequena = covalente <b>polar</b>; diferença grande (metal + ametal) = iônica.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> ordenar ligações por caráter iônico usando a diferença de eletronegatividade, e classificar a ligação (apolar / polar / iônica). Liga diretamente com a polaridade (3.5).</div>
+        <div class="ex"><b>Exemplo:</b> qual liga tem maior caráter iônico: H–Cl ou Na–Cl? <span class="resp">Na–Cl (maior diferença de eletronegatividade).</span></div>
+      </section>
+
+      <section class="card" id="a3-polaridade">
+        <div class="kicker">Ligações · 3.5</div>
+        <h3>Polaridade de ligações e de moléculas</h3>
+        <p class="lead">Uma <b>ligação</b> é <b>polar</b> se une átomos de eletronegatividades diferentes (forma-se um dipolo). Já a <b>molécula</b> pode ser polar ou apolar dependendo também da <b>geometria</b>: se os dipolos se <b>cancelam</b> (molécula simétrica), ela é apolar mesmo tendo ligações polares (ex.: CO₂); se <b>não se cancelam</b>, é polar (ex.: H₂O). Regra prática: moléculas simétricas sem pares isolados no átomo central tendem a ser apolares.</p>
+        <div class="formula-box">CO₂ (linear, simétrica) = apolar &nbsp;×&nbsp; H₂O (angular) = polar</div>
+        <div class="uso"><b>Como cai no vestibular:</b> decidir se a molécula é polar (depende da geometria + soma vetorial dos dipolos) — a comparação <b>CO₂ apolar × H₂O polar</b> é a campeã. Conecta com “semelhante dissolve semelhante” (solubilidade) e com forças intermoleculares.</div>
+        <div class="ex"><b>Exemplo:</b> por que o CO₂ é apolar se as ligações C=O são polares? <span class="resp">A molécula é linear e simétrica: os dipolos se cancelam.</span></div>
+      </section>
+
+      <section class="card" id="a3-propriedades">
+        <div class="kicker">Ligações · 3.6</div>
+        <h3>Propriedades dos compostos iônicos e covalentes</h3>
+        <p class="lead">O tipo de ligação define o comportamento do material. <b>Iônicos</b>: sólidos cristalinos, <b>altos</b> pontos de fusão/ebulição, duros e quebradiços, conduzem corrente <b>fundidos ou dissolvidos</b> (íons livres), muitos solúveis em água. <b>Covalentes (moleculares)</b>: pontos de fusão menores, podem ser sólidos, líquidos ou gases, <b>geralmente não conduzem</b> corrente (exceto soluções de ácidos). Caso à parte: <b>covalentes em rede</b> (diamante, sílica), duríssimos e de altíssimo PF.</p>
+        <table class="tab"><thead><tr><th>Propriedade</th><th>Iônico</th><th>Molecular</th></tr></thead><tbody>
+          <tr><th>Ponto de fusão</th><td>alto</td><td>baixo/médio</td></tr>
+          <tr><th>Estado (25°C)</th><td>sólido</td><td>sól/líq/gás</td></tr>
+          <tr><th>Conduz corrente</th><td>fundido/dissolvido</td><td>em geral não</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> deduzir o tipo de ligação a partir de uma <b>tabela de propriedades</b> (alto PF + conduz dissolvido → iônico) — formato clássico de questão. A condução elétrica como teste para íons é muito cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> um sólido funde a 800 °C e conduz corrente quando dissolvido. Que ligação? <span class="resp">Iônica.</span></div>
+      </section>
+
+      <section class="card" id="a3-forcas">
+        <div class="kicker">Ligações · 3.7</div>
+        <h3>Forças intermoleculares</h3>
+        <p class="lead">São atrações <b>entre</b> moléculas (mais fracas que as ligações internas) que determinam pontos de fusão/ebulição e solubilidade. Da mais fraca à mais forte: <b>forças de van der Waals / dipolo induzido</b> (em apolares, como gases nobres e CH₄); <b>dipolo-dipolo</b> (entre moléculas polares); e a <b>ligação de hidrogênio</b> (a mais forte — quando o H está ligado a <b>F, O ou N</b>, como na água). Há ainda a <b>íon-dipolo</b> (na dissolução de sais em água).</p>
+        <div class="formula-box">van der Waals &lt; dipolo-dipolo &lt; ligação de hidrogênio (intensidade crescente)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar o <b>alto ponto de ebulição da água</b> (ligações de hidrogênio) e comparar PE de substâncias pela força intermolecular. Quanto mais forte a interação, maior o PE — raciocínio cobradíssimo.</div>
+        <div class="ex"><b>Exemplo:</b> por que a água ferve a 100 °C, bem acima de moléculas de massa parecida? <span class="resp">Pelas ligações de hidrogênio entre suas moléculas (interação forte).</span></div>
+      </section>
+
+      <section class="card" id="a3-geometria">
+        <div class="kicker">Ligações · 3.8</div>
+        <h3>Geometria molecular</h3>
+        <p class="lead">A forma da molécula resulta da <b>repulsão entre os pares de elétrons</b> ao redor do átomo central (teoria VSEPR), que se afastam o máximo possível. Formas principais: <b>linear</b> (CO₂, BeH₂), <b>angular</b> (H₂O, SO₂ — por causa dos pares isolados), <b>trigonal plana</b> (BF₃), <b>piramidal</b> (NH₃), <b>tetraédrica</b> (CH₄), <b>bipiramidal trigonal</b> (PCl₅) e <b>octaédrica</b> (SF₆). Os <b>pares isolados</b> no átomo central “entortam” a geometria.</p>
+        <table class="tab"><thead><tr><th>Geometria</th><th>Exemplo</th></tr></thead><tbody>
+          <tr><th>Linear</th><td>CO₂</td></tr>
+          <tr><th>Angular</th><td>H₂O</td></tr>
+          <tr><th>Trigonal plana</th><td>BF₃</td></tr>
+          <tr><th>Piramidal</th><td>NH₃</td></tr>
+          <tr><th>Tetraédrica</th><td>CH₄</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar a geometria (contando ligações e pares isolados no átomo central) e usá-la para decidir a <b>polaridade</b> da molécula. H₂O (angular, polar) × CO₂ (linear, apolar) é o par mais cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> qual a geometria da molécula de metano (CH₄)? <span class="resp">Tetraédrica (ângulos de ~109,5°).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 4 ===================== -->
+      <div class="area a4">
+      <div class="chapter" id="a4">
+        <div class="num">Área 4</div>
+        <h2>Funções Químicas</h2>
+        <p>As grandes “famílias” de compostos inorgânicos — ácidos, bases, sais, óxidos e hidretos — com sua identificação, nomenclatura e propriedades. Inclui os conceitos de ácido-base (Arrhenius, Brønsted, Lewis) e a água. Pré-requisito para reações, soluções e equilíbrio.</p>
+        <div class="mini">
+          <a href="#a4-acidos">Ácidos</a>
+          <a href="#a4-bases">Bases</a>
+          <a href="#a4-sais">Sais</a>
+          <a href="#a4-oxidos">Óxidos</a>
+          <a href="#a4-hidretos">Hidretos</a>
+          <a href="#a4-conceitos">Arrhenius, Brønsted e Lewis</a>
+          <a href="#a4-neutra">Neutralização</a>
+          <a href="#a4-agua">Água e íons em solução</a>
+        </div>
+      </div>
+
+      <section class="card" id="a4-acidos">
+        <div class="kicker">Funções · 4.1</div>
+        <h3>Ácidos</h3>
+        <p class="lead">Pela definição de <b>Arrhenius</b>, ácidos são compostos que, em água, liberam como cátion <b>apenas H⁺</b> (na verdade H₃O⁺). Têm sabor azedo, conduzem corrente em solução e mudam a cor de indicadores. Classificam-se pela presença de oxigênio (<b>oxiácidos</b>, como H₂SO₄, e <b>hidrácidos</b>, como HCl) e pelo nº de H ionizáveis. Nomenclatura: hidrácidos terminam em <b>-ídrico</b> (ácido clorídrico); oxiácidos em <b>-ico</b> ou <b>-oso</b>.</p>
+        <div class="formula-box">HCl → H⁺ + Cl⁻ &nbsp;|&nbsp; H₂SO₄ → 2 H⁺ + SO₄²⁻</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer/nomear ácidos e prever sua ionização. Os “famosos” (HCl–estômago, H₂SO₄–baterias, H₂CO₃–refrigerante, CH₃COOH–vinagre) aparecem em contexto. A força do ácido conecta com equilíbrio iônico (Área 9).</div>
+        <div class="ex"><b>Exemplo:</b> qual o nome do HCl em solução aquosa? <span class="resp">Ácido clorídrico (hidrácido → terminação -ídrico).</span></div>
+      </section>
+
+      <section class="card" id="a4-bases">
+        <div class="kicker">Funções · 4.2</div>
+        <h3>Bases (hidróxidos)</h3>
+        <p class="lead">Por <b>Arrhenius</b>, bases liberam em água como ânion <b>apenas OH⁻</b> (hidroxila). Têm sabor adstringente, são escorregadias ao tato e mudam indicadores (deixam a fenolftaleína rósea). Geralmente são <b>metal + OH</b> (NaOH, Ca(OH)₂). A nomenclatura é “hidróxido de [metal]”, indicando a carga quando o metal tem mais de uma (hidróxido de ferro III).</p>
+        <div class="formula-box">NaOH → Na⁺ + OH⁻ &nbsp;|&nbsp; Ca(OH)₂ → Ca²⁺ + 2 OH⁻</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar/nomear bases e contrastar com ácidos (indicadores, pH > 7). Exemplos do cotidiano (NaOH–soda cáustica/desentupidor, Mg(OH)₂–leite de magnésia, Ca(OH)₂–cal hidratada) são frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> que íon toda base de Arrhenius libera em água? <span class="resp">O ânion hidroxila, OH⁻.</span></div>
+      </section>
+
+      <section class="card" id="a4-sais">
+        <div class="kicker">Funções · 4.3</div>
+        <h3>Sais</h3>
+        <p class="lead">Sais são compostos iônicos formados na reação entre um <b>ácido e uma base</b> (neutralização): o cátion vem da base e o ânion, do ácido, mais a água. Têm um cátion <b>diferente de H⁺</b> e um ânion <b>diferente de OH⁻</b>. Ex.: NaCl (sal de cozinha), CaCO₃ (calcário/mármore), NaHCO₃ (bicarbonato), Na₂CO₃ (barrilha). A nomenclatura deriva do ácido de origem (-ídrico→-eto, -ico→-ato, -oso→-ito).</p>
+        <div class="formula-box">HCl + NaOH → NaCl + H₂O &nbsp;(ácido + base → sal + água)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> prever o sal formado numa neutralização e sua nomenclatura, e reconhecer sais do cotidiano. A hidrólise de sais (se a solução fica ácida/básica/neutra) é cobrada na Área 9.</div>
+        <div class="ex"><b>Exemplo:</b> que sal se forma na reação de HCl com NaOH? <span class="resp">Cloreto de sódio (NaCl), além de água.</span></div>
+      </section>
+
+      <section class="card" id="a4-oxidos">
+        <div class="kicker">Funções · 4.4</div>
+        <h3>Óxidos</h3>
+        <p class="lead">São compostos <b>binários</b> (dois elementos) em que o <b>oxigênio</b> é o mais eletronegativo (ex.: CO₂, Fe₂O₃, CaO). Classes principais: <b>óxidos ácidos/anidridos</b> (ametal + O; com água formam ácidos — CO₂, SO₃), <b>óxidos básicos</b> (metal + O; com água formam bases — Na₂O, CaO), <b>anfóteros</b> (comportam-se como ácido ou base — Al₂O₃, ZnO) e <b>neutros</b> (CO, NO, N₂O).</p>
+        <div class="formula-box">CO₂ + H₂O → H₂CO₃ (óxido ácido) &nbsp;|&nbsp; CaO + H₂O → Ca(OH)₂ (óxido básico)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar o óxido e prever o produto com água. Óxidos ácidos (CO₂, SO₂, NOₓ) ligam-se a problemas ambientais — <b>chuva ácida</b> e <b>efeito estufa</b> (Área 12) — tema certeiro no ENEM.</div>
+        <div class="ex"><b>Exemplo:</b> o SO₃ é óxido ácido ou básico? O que forma com água? <span class="resp">Ácido (ametal): com água forma H₂SO₄ (ácido sulfúrico).</span></div>
+      </section>
+
+      <section class="card" id="a4-hidretos">
+        <div class="kicker">Funções · 4.5</div>
+        <h3>Hidretos</h3>
+        <p class="lead">São compostos <b>binários com hidrogênio</b>. Os <b>hidretos iônicos/metálicos</b> ocorrem com metais muito eletropositivos (o H aparece como H⁻, ex.: NaH, CaH₂) e reagem com água liberando H₂. Os <b>hidretos moleculares</b> ocorrem com ametais (H é o menos eletronegativo, ex.: NH₃, CH₄, HCl, H₂O — muitos coincidem com ácidos ou outras funções).</p>
+        <div class="formula-box">NaH (hidreto iônico, H⁻) &nbsp;|&nbsp; NH₃, CH₄ (hidretos moleculares)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> tópico menos cobrado isoladamente, mas aparece ao classificar compostos binários e ao tratar do <b>número de oxidação do hidrogênio</b> (+1 com ametais; <b>−1</b> nos hidretos metálicos) — detalhe importante para Nox (Área 5).</div>
+        <div class="ex"><b>Exemplo:</b> qual o Nox do hidrogênio no NaH? <span class="resp">−1 (hidreto metálico — exceção ao usual +1).</span></div>
+      </section>
+
+      <section class="card" id="a4-conceitos">
+        <div class="kicker">Funções · 4.6</div>
+        <h3>Conceitos de ácido-base: Arrhenius, Brønsted-Lowry e Lewis</h3>
+        <p class="lead">Três definições, cada vez mais amplas. <b>Arrhenius</b> (em água): ácido libera H⁺, base libera OH⁻. <b>Brønsted-Lowry</b> (mais geral): ácido <b>doa próton (H⁺)</b>, base <b>recebe próton</b> — surge o conceito de <b>par conjugado</b>. <b>Lewis</b> (a mais ampla): ácido <b>recebe par de elétrons</b>, base <b>doa par de elétrons</b> (explica reações até sem hidrogênio).</p>
+        <div class="formula-box">NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ &nbsp;(H₂O doa H⁺: ácido de Brønsted; NH₃ recebe: base)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar ácido/base de <b>Brønsted</b> e os <b>pares conjugados</b> numa equação (diferem por um H⁺). A noção de <b>anfótero</b> (a água age como ácido ou base) e o conceito de Lewis aparecem em questões mais teóricas.</div>
+        <div class="ex"><b>Exemplo:</b> em HCl + H₂O → H₃O⁺ + Cl⁻, quem é a base de Brønsted? <span class="resp">A água (recebe o próton, formando H₃O⁺).</span></div>
+      </section>
+
+      <section class="card" id="a4-neutra">
+        <div class="kicker">Funções · 4.7</div>
+        <h3>Reações de neutralização ácido-base</h3>
+        <p class="lead">Quando um <b>ácido</b> reage com uma <b>base</b>, o H⁺ e o OH⁻ se combinam formando <b>água</b>, e os íons restantes formam um <b>sal</b>. É a reação <b>ácido + base → sal + água</b>. A neutralização é <b>total</b> quando todos os H⁺ e OH⁻ reagem, na proporção certa (estequiometria). É a base da <b>titulação</b>, usada para descobrir a concentração de uma solução.</p>
+        <div class="formula-box">H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O</div>
+        <div class="uso"><b>Como cai no vestibular:</b> balancear a neutralização e calcular volumes/concentrações em <b>titulações</b> (n de H⁺ = n de OH⁻ no ponto de equivalência). Aplicações: antiácidos neutralizando o ácido do estômago, correção de pH do solo (calagem).</div>
+        <div class="ex"><b>Exemplo:</b> quantos mols de NaOH neutralizam 1 mol de H₂SO₄? <span class="resp">2 mols (o ácido tem 2 H⁺ ionizáveis).</span></div>
+      </section>
+
+      <section class="card" id="a4-agua">
+        <div class="kicker">Funções · 4.8</div>
+        <h3>Água: propriedades, tratamento e íons em solução</h3>
+        <p class="lead">A <b>água</b> é polar, excelente <b>solvente</b> (“dissolve” compostos iônicos e polares por íon-dipolo e ligações de H) e tem propriedades anômalas (alto PE, densidade máxima a 4 °C, gelo flutua). No <b>tratamento</b> público passa por floculação, decantação, filtração, <b>cloração</b> (desinfecção) e, às vezes, fluoretação. Em solução, sais e ácidos se <b>dissociam/ionizam</b> em <b>cátions e ânions</b>, tornando a água condutora (eletrólitos).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar a água como solvente (polaridade, ligações de H) e as etapas do tratamento; distinguir <b>dissociação</b> (sais iônicos separam íons já existentes) de <b>ionização</b> (ácidos formam íons ao reagir com a água). Conecta com soluções (Área 7) e ciclo da água (Área 12).</div>
+        <div class="ex"><b>Exemplo:</b> qual etapa do tratamento de água elimina microrganismos? <span class="resp">A cloração (desinfecção).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 5 ===================== -->
+      <div class="area a5">
+      <div class="chapter" id="a5">
+        <div class="num">Área 5</div>
+        <h2>Reações Químicas e Energia</h2>
+        <p>O coração quantitativo da Química: as leis das reações, o balanceamento (inclusive de oxirredução), o número de oxidação e, sobretudo, a estequiometria — “a regra de três da Química”, presente em metade das provas.</p>
+        <div class="mini">
+          <a href="#a5-leis">Leis ponderais</a>
+          <a href="#a5-formula">Fórmula empírica e molecular</a>
+          <a href="#a5-balanceamento">Tipos de reação e balanceamento</a>
+          <a href="#a5-nox">Número de oxidação (Nox)</a>
+          <a href="#a5-redox">Oxidação e redução</a>
+          <a href="#a5-balredox">Balanceamento redox</a>
+          <a href="#a5-esteq">Estequiometria e reagente limitante</a>
+        </div>
+      </div>
+
+      <section class="card" id="a5-leis">
+        <div class="kicker">Reações · 5.1</div>
+        <h3>Leis das combinações (leis ponderais)</h3>
+        <p class="lead">São as leis que regem as massas nas reações. <b>Lei de Lavoisier</b> (conservação da massa): a soma das massas dos reagentes = soma das massas dos produtos. <b>Lei de Proust</b> (proporções definidas): uma substância tem sempre a <b>mesma proporção</b> em massa entre seus elementos (a água é sempre 1:8 de H:O em massa), independentemente da origem — a base das fórmulas fixas.</p>
+        <div class="formula-box">Lavoisier: Σ massa reagentes = Σ massa produtos &nbsp;|&nbsp; Proust: proporção fixa</div>
+        <div class="uso"><b>Como cai no vestibular:</b> usar Lavoisier para achar massa que falta e Proust para calcular massas em outra escala (regra de três de proporção). Tabelas de experimentos com massas que “seguem ou não a proporção” são típicas.</div>
+        <div class="ex"><b>Exemplo:</b> se 2 g de H₂ reagem com 16 g de O₂ formando 18 g de água, quanto se forma com 4 g de H₂ e O₂ suficiente? <span class="resp">36 g de água (Proust: dobra tudo).</span></div>
+      </section>
+
+      <section class="card" id="a5-formula">
+        <div class="kicker">Reações · 5.2</div>
+        <h3>Fórmula empírica e molecular</h3>
+        <p class="lead">A <b>fórmula molecular</b> mostra o número <b>real</b> de átomos de cada elemento na molécula (ex.: glicose C₆H₁₂O₆). A <b>fórmula empírica (mínima)</b> mostra a <b>menor proporção</b> inteira entre os átomos (a da glicose é CH₂O). Obtém-se a empírica a partir das massas/porcentagens dos elementos (dividindo pelos mols e simplificando); a molecular sai da empírica usando a massa molar.</p>
+        <div class="formula-box">glicose: molecular C₆H₁₂O₆ → empírica CH₂O</div>
+        <div class="uso"><b>Como cai no vestibular:</b> determinar a fórmula mínima/molecular a partir da <b>composição percentual</b> (análise elementar) — cálculo clássico. Reconhecer que substâncias diferentes podem ter a mesma fórmula empírica também cai.</div>
+        <div class="ex"><b>Exemplo:</b> um composto tem proporção C:H:O de 1:2:1 em mol e massa molar 60 g/mol. Fórmula molecular? <span class="resp">C₂H₄O₂ (empírica CH₂O, massa 30 → ×2).</span></div>
+      </section>
+
+      <section class="card" id="a5-balanceamento">
+        <div class="kicker">Reações · 5.3</div>
+        <h3>Tipos de reação e balanceamento</h3>
+        <p class="lead">As reações classificam-se em <b>síntese</b> (A + B → AB), <b>decomposição</b> (AB → A + B), <b>simples troca/deslocamento</b> (A + BC → AC + B) e <b>dupla troca</b> (AB + CD → AD + CB). <b>Balancear</b> é igualar o nº de átomos de cada elemento nos dois lados (Lavoisier), ajustando os <b>coeficientes</b> (nunca os índices). Pelo método das tentativas, costuma-se começar por C, depois H e por último O.</p>
+        <div class="formula-box">CH₄ + 2 O₂ → CO₂ + 2 H₂O &nbsp;(combustão balanceada)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> balancear equações (e somar os coeficientes) é passo obrigatório antes de qualquer estequiometria. Classificar o tipo de reação e prever produtos de dupla troca (forma precipitado, gás ou água) é comum.</div>
+        <div class="ex"><b>Exemplo:</b> balanceie a combustão: C₃H₈ + O₂ → CO₂ + H₂O. <span class="resp">C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O.</span></div>
+      </section>
+
+      <section class="card" id="a5-nox">
+        <div class="kicker">Reações · 5.4</div>
+        <h3>Número de oxidação (Nox)</h3>
+        <p class="lead">O <b>Nox</b> é a carga (real ou aparente) de um átomo num composto. Regras úteis: elemento puro tem Nox <b>0</b> (O₂, Fe); <b>H</b> é +1 (−1 em hidretos metálicos); <b>O</b> é −2 (−1 em peróxidos); a soma dos Nox numa molécula neutra é <b>0</b> e num íon é igual à <b>carga</b>. Metais alcalinos = +1; alcalino-terrosos = +2.</p>
+        <div class="formula-box">no H₂SO₄: H = +1, O = −2 → S = +6 &nbsp;(soma = 0)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o Nox de um elemento (em geral o central) é pré-requisito para reconhecer oxirredução. Determinar o Nox do enxofre, nitrogênio ou cloro em diferentes compostos é cobrado diretamente.</div>
+        <div class="ex"><b>Exemplo:</b> qual o Nox do cloro no ânion ClO₃⁻? <span class="resp">+5 (3 oxigênios = −6; total = −1 → Cl = +5).</span></div>
+      </section>
+
+      <section class="card" id="a5-redox">
+        <div class="kicker">Reações · 5.5</div>
+        <h3>Oxidação e redução (redox)</h3>
+        <p class="lead">Numa reação de <b>oxirredução</b> há <b>transferência de elétrons</b>, detectada pela variação do Nox. <b>Oxidação</b> = <b>perde</b> elétrons (Nox <b>aumenta</b>); <b>redução</b> = <b>ganha</b> elétrons (Nox <b>diminui</b>). O <b>agente oxidante</b> é quem <b>sofre redução</b> (causa a oxidação do outro); o <b>agente redutor</b> é quem <b>sofre oxidação</b>. As <b>semirreações</b> mostram separadamente os elétrons perdidos e ganhos.</p>
+        <div class="formula-box">oxidação: perde e⁻, Nox ↑ &nbsp;|&nbsp; redução: ganha e⁻, Nox ↓ &nbsp;(mnemônico: PEROXI / GANHARE)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar quem oxida/reduz e os <b>agentes</b> oxidante e redutor numa equação (pela variação de Nox). É a base da eletroquímica (Área 10) e aparece em corrosão (ferrugem), pilhas e combustão.</div>
+        <div class="ex"><b>Exemplo:</b> em Zn + Cu²⁺ → Zn²⁺ + Cu, quem é o agente redutor? <span class="resp">O zinco (oxida-se, Nox 0→+2, doando elétrons).</span></div>
+      </section>
+
+      <section class="card" id="a5-balredox">
+        <div class="kicker">Reações · 5.6</div>
+        <h3>Balanceamento de equações de oxirredução</h3>
+        <p class="lead">Quando a reação é redox, o balanceamento exige igualar os <b>elétrons</b> perdidos e ganhos. Passos: achar os Nox, identificar a <b>variação (Δ Nox)</b> de quem oxida e de quem reduz, multiplicar pelos átomos envolvidos para achar o nº total de elétrons, e usar esses valores (invertidos) como coeficientes iniciais do oxidante e do redutor; depois completa-se por tentativas.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> balancear equações redox mais complexas (permanganato, dicromato) onde tentativa simples não basta. O passo-chave é <b>igualar os elétrons</b> trocados. Costuma pedir a soma dos coeficientes ao final.</div>
+        <div class="ex"><b>Exemplo:</b> o princípio para balancear uma redox é... <span class="resp">Igualar o total de elétrons perdidos na oxidação ao total ganho na redução.</span></div>
+      </section>
+
+      <section class="card" id="a5-esteq">
+        <div class="kicker">Reações · 5.7</div>
+        <h3>Cálculo estequiométrico e reagente limitante</h3>
+        <p class="lead">A <b>estequiometria</b> calcula quanto se produz/consome numa reação, usando os <b>coeficientes</b> da equação balanceada como proporção em <b>mols</b>. Roteiro: (1) balancear; (2) converter o dado em mols (n = m/M ou via volume de gás); (3) usar a <b>proporção</b> dos coeficientes; (4) converter para a unidade pedida. Quando há quantidades dos dois reagentes, identifica-se o <b>reagente limitante</b> (o que acaba primeiro e define a quantidade de produto); o outro fica em <b>excesso</b>.</p>
+        <div class="formula-box">N₂ + 3 H₂ → 2 NH₃ &nbsp;(1 mol N₂ : 3 mol H₂ : 2 mol NH₃)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> é o cálculo mais cobrado de toda a Química. Massa↔massa, massa↔volume de gás, com <b>reagente limitante</b>, <b>rendimento</b> (%) e <b>pureza</b>. Sempre comece <b>balanceando</b> e trabalhando em <b>mols</b>.</div>
+        <div class="ex"><b>Exemplo:</b> quantos mols de NH₃ se formam com 2 mol de N₂ e H₂ suficiente? <span class="resp">4 mol (proporção 1 N₂ : 2 NH₃).</span></div>
+        <div class="warn"><b>Pegadinha:</b> a proporção dos coeficientes vale em <b>mol</b>, não em grama. Converta massas em mols antes de aplicar a razão.</div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 6 ===================== -->
+      <div class="area a6">
+      <div class="chapter" id="a6">
+        <div class="num">Área 6</div>
+        <h2>Estados Físicos e Estrutura da Matéria (Gases)</h2>
+        <p>Como a matéria se organiza nos três estados e, em especial, o comportamento dos gases: as leis físicas, a equação dos gases ideais, as pressões parciais e os fenômenos ligados à pressão de vapor e às mudanças de estado.</p>
+        <div class="mini">
+          <a href="#a6-estados">Sólidos, líquidos e gases</a>
+          <a href="#a6-transf">Transformações gasosas</a>
+          <a href="#a6-avogadro">Hipótese de Avogadro e volume molar</a>
+          <a href="#a6-ideais">Equação dos gases ideais</a>
+          <a href="#a6-pressao">Pressão e temperatura absoluta</a>
+          <a href="#a6-parciais">Pressões parciais</a>
+          <a href="#a6-vapor">Mudanças de estado e pressão de vapor</a>
+        </div>
+      </div>
+
+      <section class="card" id="a6-estados">
+        <div class="kicker">Gases · 6.1</div>
+        <h3>Estrutura e propriedades de sólidos, líquidos e gases</h3>
+        <p class="lead">A diferença está na <b>energia</b> e na <b>liberdade</b> das partículas. <b>Sólidos</b>: forte interação, partículas organizadas e vibrando em posições fixas → forma e volume próprios, incompressíveis. <b>Líquidos</b>: partículas próximas mas móveis → volume fixo, forma do recipiente. <b>Gases</b>: partículas muito afastadas e velozes, interação desprezível → ocupam todo o volume, altamente <b>compressíveis</b> e de baixa densidade.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar o estado à organização das partículas, à compressibilidade e à densidade. Explicar por que só os gases são muito compressíveis (espaços vazios entre partículas) é cobrado, junto com a teoria cinética.</div>
+        <div class="ex"><b>Exemplo:</b> por que gases são facilmente comprimidos e líquidos não? <span class="resp">No gás há grande espaço vazio entre as partículas; no líquido elas já estão próximas.</span></div>
+      </section>
+
+      <section class="card" id="a6-transf">
+        <div class="kicker">Gases · 6.2</div>
+        <h3>Transformações gasosas (leis físicas dos gases)</h3>
+        <p class="lead">Mantendo uma variável fixa, relacionam-se as outras duas. <b>Isotérmica (T cte) — Lei de Boyle</b>: P e V são <b>inversamente</b> proporcionais (P·V = cte). <b>Isobárica (P cte) — Lei de Charles</b>: V e T são <b>diretamente</b> proporcionais (V/T = cte). <b>Isovolumétrica (V cte) — Lei de Gay-Lussac</b>: P e T diretamente proporcionais (P/T = cte). Tudo se reúne na equação geral dos gases.</p>
+        <div class="formula-box">\( \dfrac{P_1 V_1}{T_1} = \dfrac{P_2 V_2}{T_2} \qquad (T \text{ em kelvin}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> dado um estado inicial e a mudança de uma variável, achar a outra pela equação geral. <b>Sempre converter a temperatura para kelvin</b> é a regra de ouro (e a pegadinha mais comum).</div>
+        <div class="ex"><b>Exemplo:</b> um gás a T constante passa de 2 atm/3 L para 6 atm. Novo volume? <span class="resp">Boyle: 2·3 = 6·V → V = 1 L.</span></div>
+      </section>
+
+      <section class="card" id="a6-avogadro">
+        <div class="kicker">Gases · 6.3</div>
+        <h3>Hipótese de Avogadro e volume molar</h3>
+        <p class="lead"><b>Hipótese de Avogadro</b>: volumes iguais de gases <b>quaisquer</b>, nas mesmas condições de temperatura e pressão, contêm o <b>mesmo número de moléculas</b>. Consequência: 1 mol de qualquer gás ocupa o mesmo <b>volume molar</b> — <b>22,4 L</b> nas <b>CNTP</b> (0 °C e 1 atm). Isso permite converter direto entre volume de gás e quantidade de matéria.</p>
+        <div class="formula-box">1 mol de gás (CNTP) = 22,4 L = 6,02 × 10²³ moléculas</div>
+        <div class="uso"><b>Como cai no vestibular:</b> converter <b>volume de gás ↔ mol</b> em estequiometria (ex.: “quantos litros de CO₂ nas CNTP...?”). A ideia de que o volume não depende do tipo de gás (só da quantidade) é muito cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> qual o volume de 0,5 mol de O₂ nas CNTP? <span class="resp">0,5 × 22,4 = 11,2 L.</span></div>
+      </section>
+
+      <section class="card" id="a6-ideais">
+        <div class="kicker">Gases · 6.4</div>
+        <h3>Teoria cinética e equação dos gases ideais</h3>
+        <p class="lead">A <b>teoria cinética</b> idealiza o gás: partículas pontuais, em movimento aleatório constante, sem forças entre si e com colisões elásticas; a temperatura mede a energia cinética média. Disso resulta a <b>equação dos gases ideais</b>, que relaciona pressão, volume, quantidade e temperatura num único estado.</p>
+        <div class="formula-box">\( PV = nRT \qquad R = 0{,}082\ \text{atm·L·mol}^{-1}\text{K}^{-1} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> usar <b>PV = nRT</b> para achar qualquer das variáveis (ou massa, via n = m/M). Atenção às <b>unidades</b> compatíveis com o R escolhido e à temperatura em <b>kelvin</b>. Gases reais desviam do ideal em alta pressão/baixa temperatura.</div>
+        <div class="ex"><b>Exemplo:</b> 1 mol de gás a 1 atm e 273 K ocupa que volume? <span class="resp">V = nRT/P = (1·0,082·273)/1 ≈ 22,4 L.</span></div>
+      </section>
+
+      <section class="card" id="a6-pressao">
+        <div class="kicker">Gases · 6.5</div>
+        <h3>Pressão e temperatura absoluta</h3>
+        <p class="lead">A <b>pressão</b> de um gás vem das colisões das partículas com as paredes; mede-se em atm, mmHg (torr), Pa ou bar (1 atm = 760 mmHg ≈ 10⁵ Pa). A <b>temperatura absoluta</b> usa a escala <b>Kelvin</b>, em que 0 K (zero absoluto) é a mínima agitação possível — por isso T em kelvin é sempre positiva e proporcional à energia cinética, o que é exigido nas leis dos gases.</p>
+        <div class="formula-box">1 atm = 760 mmHg ≈ 101,3 kPa &nbsp;|&nbsp; T(K) = T(°C) + 273</div>
+        <div class="uso"><b>Como cai no vestibular:</b> converter unidades de pressão e, sobretudo, <b>°C → K</b> antes de aplicar qualquer lei dos gases. A barométrica (Torricelli, 760 mmHg ao nível do mar) aparece em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> a pressão de 380 mmHg corresponde a quantas atm? <span class="resp">0,5 atm (380 ÷ 760).</span></div>
+      </section>
+
+      <section class="card" id="a6-parciais">
+        <div class="kicker">Gases · 6.6</div>
+        <h3>Pressões parciais (Lei de Dalton)</h3>
+        <p class="lead">Numa <b>mistura</b> de gases, cada gás exerce a pressão que teria se estivesse sozinho no recipiente — a <b>pressão parcial</b>. A <b>Lei de Dalton</b> diz que a <b>pressão total</b> é a <b>soma</b> das parciais. A pressão parcial de cada gás é proporcional à sua <b>fração molar</b> (proporção em mols) na mistura.</p>
+        <div class="formula-box">\( P_{total} = P_1 + P_2 + \dots \qquad P_i = x_i \cdot P_{total} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a pressão parcial de um componente a partir da composição (fração molar × pressão total) — clássico com a composição do <b>ar</b> (≈ 78% N₂, 21% O₂). Também aparece com gases coletados sobre água (descontar a pressão de vapor).</div>
+        <div class="ex"><b>Exemplo:</b> numa mistura a 4 atm com 25% de O₂ (em mol), qual a pressão parcial do O₂? <span class="resp">0,25 × 4 = 1 atm.</span></div>
+      </section>
+
+      <section class="card" id="a6-vapor">
+        <div class="kicker">Gases · 6.7</div>
+        <h3>Mudanças de estado, pressão de vapor e equilíbrio entre fases</h3>
+        <p class="lead">A <b>pressão de vapor</b> é a pressão exercida pelo vapor em <b>equilíbrio</b> com seu líquido (num recipiente fechado, evaporação e condensação se igualam). Ela <b>cresce com a temperatura</b> e é maior em líquidos mais <b>voláteis</b> (forças intermoleculares fracas). Um líquido <b>ferve</b> quando sua pressão de vapor iguala a pressão externa — por isso, em altitude (pressão menor), a água ferve abaixo de 100 °C. Diagramas de fases mostram em que P e T cada estado é estável.</p>
+        <div class="formula-box">ebulição: pressão de vapor = pressão externa</div>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar <b>volatilidade ↔ forças intermoleculares ↔ ponto de ebulição</b>, interpretar curvas de pressão de vapor × temperatura e explicar a ebulição em diferentes altitudes (panela de pressão, cozinhar na serra). Liga com forças intermoleculares (Área 3).</div>
+        <div class="ex"><b>Exemplo:</b> por que a água ferve a menos de 100 °C no alto de uma montanha? <span class="resp">A pressão atmosférica é menor, então a pressão de vapor a iguala numa temperatura mais baixa.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 7 ===================== -->
+      <div class="area a7">
+      <div class="chapter" id="a7">
+        <div class="num">Área 7</div>
+        <h2>Soluções e Propriedades Coligativas</h2>
+        <p>As misturas homogêneas: como classificá-las, expressar a concentração (g/L, mol/L, %), trabalhar diluições e curvas de solubilidade, e entender como o soluto altera as propriedades do solvente (coligativas) — inclusive a osmose.</p>
+        <div class="mini">
+          <a href="#a7-classif">Soluções: classificação</a>
+          <a href="#a7-concent">Unidades de concentração</a>
+          <a href="#a7-diluicao">Diluição e mistura</a>
+          <a href="#a7-solub">Solubilidade e saturação</a>
+          <a href="#a7-coligativas">Propriedades coligativas</a>
+          <a href="#a7-osmose">Osmose e pressão osmótica</a>
+        </div>
+      </div>
+
+      <section class="card" id="a7-classif">
+        <div class="kicker">Soluções · 7.1</div>
+        <h3>Soluções: classificação e propriedades gerais</h3>
+        <p class="lead">Uma <b>solução</b> é uma mistura <b>homogênea</b> de <b>soluto</b> (disperso, em menor quantidade) em <b>solvente</b> (dispersante; a água é o universal). Classificam-se quanto ao estado (sólida, líquida, gasosa), quanto à proporção (<b>diluída</b> × <b>concentrada</b>) e quanto à saturação (<b>insaturada</b>, <b>saturada</b>, <b>supersaturada</b>). Soluções com íons (eletrolíticas) conduzem corrente; as moleculares, em geral, não.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir soluto/solvente e classificar a solução; diferenciar <b>solução</b> (partículas invisíveis, não sedimenta) de <b>coloide</b> e <b>suspensão</b>. A condutividade como indício de eletrólito conecta com funções (Área 4).</div>
+        <div class="ex"><b>Exemplo:</b> no soro fisiológico (NaCl em água), quem é soluto e solvente? <span class="resp">Soluto: NaCl; solvente: água.</span></div>
+      </section>
+
+      <section class="card" id="a7-concent">
+        <div class="kicker">Soluções · 7.2</div>
+        <h3>Unidades de concentração</h3>
+        <p class="lead">Expressam “quanto de soluto” há na solução. As principais: <b>concentração comum</b> C = massa do soluto ÷ volume (g/L); <b>concentração molar (molaridade)</b> M = mols do soluto ÷ volume (mol/L) — a mais usada; <b>título/percentual</b> (% em massa); e <b>fração molar</b> (mols do componente ÷ mols totais). Elas se relacionam pela massa molar (C = M·M_molar) e pela densidade.</p>
+        <div class="formula-box">\( C = \dfrac{m}{V}\ (\text{g/L}) \qquad M = \dfrac{n}{V} = \dfrac{m}{M_{molar}\cdot V}\ (\text{mol/L}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular e <b>converter</b> entre unidades (g/L ↔ mol/L ↔ %) — cálculo onipresente. Atenção ao <b>volume em litros</b> e à massa molar. Concentração de soro, vinagre, água sanitária aparece em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> dissolveram-se 0,5 mol de NaCl em 2 L. Qual a molaridade? <span class="resp">M = 0,5 ÷ 2 = 0,25 mol/L.</span></div>
+      </section>
+
+      <section class="card" id="a7-diluicao">
+        <div class="kicker">Soluções · 7.3</div>
+        <h3>Diluição e mistura de soluções</h3>
+        <p class="lead">Na <b>diluição</b>, acrescenta-se solvente: o volume aumenta, mas a <b>quantidade de soluto não muda</b>, então a concentração cai. Vale C₁V₁ = C₂V₂ (ou M₁V₁ = M₂V₂). Ao <b>misturar</b> soluções do mesmo soluto, somam-se as quantidades de soluto e os volumes. Se houver reação (ex.: ácido + base), entra a estequiometria.</p>
+        <div class="formula-box">\( C_1 V_1 = C_2 V_2 \qquad (\text{diluição: } n \text{ do soluto constante}) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o volume final/concentração após diluir, ou a concentração ao misturar soluções. Em mistura <b>com reação</b> (neutralização), usa-se mols e a equação — clássico em titulação (Área 4).</div>
+        <div class="ex"><b>Exemplo:</b> 100 mL de solução 0,6 mol/L são diluídos a 300 mL. Concentração final? <span class="resp">0,6·100 = M₂·300 → M₂ = 0,2 mol/L.</span></div>
+      </section>
+
+      <section class="card" id="a7-solub">
+        <div class="kicker">Soluções · 7.4</div>
+        <h3>Solubilidade, saturação e temperatura</h3>
+        <p class="lead">O <b>coeficiente de solubilidade</b> é a quantidade máxima de soluto que se dissolve numa dada quantidade de solvente, a certa temperatura. Abaixo dele a solução é <b>insaturada</b>; no limite, <b>saturada</b>; acima (instável), <b>supersaturada</b> (qualquer perturbação precipita o excesso, o <b>corpo de fundo</b>). Para a maioria dos sólidos, a solubilidade <b>aumenta com a temperatura</b>; para gases, <b>diminui</b> (água quente “perde” o gás).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar <b>curvas de solubilidade</b> (solubilidade × temperatura) — quanto precipita ao esfriar, se a solução está saturada etc. A menor solubilidade de gases em água quente explica a morte de peixes por poluição térmica (liga com Área 12).</div>
+        <div class="ex"><b>Exemplo:</b> por que um refrigerante “choca” (perde gás) mais rápido quente? <span class="resp">A solubilidade dos gases diminui com o aumento da temperatura.</span></div>
+      </section>
+
+      <section class="card" id="a7-coligativas">
+        <div class="kicker">Soluções · 7.5</div>
+        <h3>Propriedades coligativas</h3>
+        <p class="lead">São efeitos que dependem <b>apenas da quantidade de partículas</b> dissolvidas (não da sua natureza). Adicionar soluto não volátil: <b>abaixa a pressão de vapor</b> (tonoscopia), <b>aumenta a temperatura de ebulição</b> (ebulioscopia), <b>diminui a temperatura de congelamento</b> (crioscopia) e gera <b>pressão osmótica</b> (osmometria). Quanto mais partículas (lembrar que sais se dissociam em vários íons), maior o efeito.</p>
+        <div class="formula-box">soluto não volátil: P. vapor ↓ · T. ebulição ↑ · T. congelamento ↓</div>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar aplicações: <b>sal no gelo</b> das estradas e <b>anticongelante</b> no radiador (crioscopia), <b>sal na água</b> de cozimento (ebulioscopia). Comparar efeitos entre soluções pelo nº de partículas (NaCl → 2 íons faz mais efeito que glicose) é o ponto-chave.</div>
+        <div class="ex"><b>Exemplo:</b> por que se joga sal na neve para derretê-la? <span class="resp">Efeito crioscópico: o sal abaixa o ponto de congelamento da água.</span></div>
+      </section>
+
+      <section class="card" id="a7-osmose">
+        <div class="kicker">Soluções · 7.6</div>
+        <h3>Osmose e pressão osmótica</h3>
+        <p class="lead">A <b>osmose</b> é a passagem do <b>solvente</b> (água) através de uma <b>membrana semipermeável</b>, do meio <b>menos concentrado</b> (hipotônico) para o <b>mais concentrado</b> em soluto (hipertônico), tendendo a igualar as concentrações. A <b>pressão osmótica</b> é a pressão necessária para <b>impedir</b> esse fluxo. Na <b>osmose reversa</b>, aplica-se pressão maior que a osmótica para forçar o caminho inverso (dessalinização da água).</p>
+        <div class="formula-box">solvente migra: hipotônico → hipertônico &nbsp;|&nbsp; osmose reversa = dessalinização</div>
+        <div class="uso"><b>Como cai no vestibular:</b> prever o sentido da osmose e efeitos em células (murchar em meio salgado, inchar em água) — interdisciplinar com Biologia. <b>Conservas em sal/açúcar</b> (desidratam micróbios) e a <b>osmose reversa</b> são aplicações cobradas.</div>
+        <div class="ex"><b>Exemplo:</b> por que carne salgada se conserva mais? <span class="resp">O sal cria meio hipertônico: a água sai das bactérias por osmose, desidratando-as.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 8 ===================== -->
+      <div class="area a8">
+      <div class="chapter" id="a8">
+        <div class="num">Área 8</div>
+        <h2>Termoquímica</h2>
+        <p>A energia (calor) envolvida nas reações: medir calor (calorimetria), classificar reações em exo/endotérmicas, trabalhar com entalpia e calcular o calor de reação pela Lei de Hess e pelas energias de ligação.</p>
+        <div class="mini">
+          <a href="#a8-calorimetria">Calorimetria</a>
+          <a href="#a8-exoendo">Exo e endotérmicas</a>
+          <a href="#a8-entalpia">Entalpia e calor de reação</a>
+          <a href="#a8-formacao">Calor de formação</a>
+          <a href="#a8-hess">Lei de Hess</a>
+          <a href="#a8-ligacao">Energia de ligação</a>
+        </div>
+      </div>
+
+      <section class="card" id="a8-calorimetria">
+        <div class="kicker">Termoquímica · 8.1</div>
+        <h3>Calorimetria e capacidade calorífica</h3>
+        <p class="lead">A <b>calorimetria</b> mede o calor trocado. A quantidade de calor depende da massa, do material e da variação de temperatura: Q = m·c·ΔT, onde <b>c</b> é o <b>calor específico</b> (calor para elevar 1 °C em 1 g — o da água é alto, 1 cal/g·°C). A <b>capacidade calorífica</b> (C = m·c) é o calor para elevar 1 °C de todo o corpo. Mede-se em <b>calorímetros</b>.</p>
+        <div class="formula-box">\( Q = m \cdot c \cdot \Delta T \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o calor absorvido/liberado (Q = m·c·ΔT), muitas vezes integrando Física. O <b>alto calor específico da água</b> (regula o clima, refrigera) é aplicação recorrente.</div>
+        <div class="ex"><b>Exemplo:</b> calor para aquecer 200 g de água de 20 °C a 30 °C (c = 1 cal/g·°C)? <span class="resp">Q = 200·1·10 = 2000 cal.</span></div>
+      </section>
+
+      <section class="card" id="a8-exoendo">
+        <div class="kicker">Termoquímica · 8.2</div>
+        <h3>Reações exotérmicas e endotérmicas</h3>
+        <p class="lead">Uma reação <b>exotérmica</b> <b>libera</b> calor para o ambiente (ΔH < 0; produtos com menos energia que reagentes) — ex.: combustões, respiração. Uma reação <b>endotérmica</b> <b>absorve</b> calor (ΔH > 0; produtos com mais energia) — ex.: fotossíntese, cozimento. Nas <b>equações termoquímicas</b>, indica-se o ΔH e o estado físico, pois afetam o calor envolvido.</p>
+        <div class="formula-box">exotérmica: ΔH &lt; 0 (libera) &nbsp;|&nbsp; endotérmica: ΔH &gt; 0 (absorve)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar a reação pelo sinal do ΔH ou por um <b>diagrama de energia</b> (produtos abaixo dos reagentes = exotérmica). Bolsas térmicas (quente/fria) e a sensação de frio ao evaporar são aplicações.</div>
+        <div class="ex"><b>Exemplo:</b> numa reação, os produtos têm energia menor que os reagentes. Exo ou endotérmica? <span class="resp">Exotérmica (ΔH < 0, liberou energia).</span></div>
+      </section>
+
+      <section class="card" id="a8-entalpia">
+        <div class="kicker">Termoquímica · 8.3</div>
+        <h3>Entalpia e calor de reação</h3>
+        <p class="lead">A <b>entalpia (H)</b> é o conteúdo de energia de um sistema à pressão constante. Não se mede H absoluto, mas sua <b>variação</b>: o <b>calor de reação</b> ΔH = H(produtos) − H(reagentes). ΔH negativo = libera calor (exotérmica); positivo = absorve (endotérmica). O ΔH depende do estado físico, da quantidade e das condições (daí o <b>estado padrão</b>: 25 °C, 1 atm).</p>
+        <div class="formula-box">\( \Delta H = H_{produtos} - H_{reagentes} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular ΔH a partir de entalpias e interpretar diagramas. Saber que ΔH é <b>proporcional à quantidade</b> (dobrar a reação dobra o ΔH) e que inverter a reação <b>troca o sinal</b> prepara para a Lei de Hess.</div>
+        <div class="ex"><b>Exemplo:</b> se a formação de 1 mol de água libera 286 kJ, quanto libera a formação de 2 mol? <span class="resp">572 kJ (proporcional à quantidade).</span></div>
+      </section>
+
+      <section class="card" id="a8-formacao">
+        <div class="kicker">Termoquímica · 8.4</div>
+        <h3>Calor (entalpia) padrão de formação</h3>
+        <p class="lead">É o ΔH da reação que forma <b>1 mol</b> de uma substância a partir de seus <b>elementos no estado padrão</b> (forma mais estável a 25 °C, 1 atm). Por convenção, a entalpia de formação de uma <b>substância simples no estado padrão é zero</b> (O₂, H₂, C grafite). Com uma tabela de ΔHf°, calcula-se o ΔH de qualquer reação: ΔH = ΣΔHf(produtos) − ΣΔHf(reagentes).</p>
+        <div class="formula-box">\( \Delta H_{reação} = \sum \Delta H_f^{\circ}(prod.) - \sum \Delta H_f^{\circ}(reag.) \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o ΔH de uma reação usando entalpias de formação tabeladas — método direto e muito cobrado. Lembrar que <b>substância simples padrão tem ΔHf = 0</b> é o detalhe-chave.</div>
+        <div class="ex"><b>Exemplo:</b> qual a entalpia de formação padrão do gás O₂? <span class="resp">Zero (substância simples no estado padrão).</span></div>
+      </section>
+
+      <section class="card" id="a8-hess">
+        <div class="kicker">Termoquímica · 8.5</div>
+        <h3>Lei de Hess</h3>
+        <p class="lead">Diz que o ΔH de uma reação <b>depende apenas dos estados inicial e final</b>, não do caminho percorrido. Logo, se uma reação pode ser obtida pela <b>soma</b> de etapas, seu ΔH é a soma dos ΔH das etapas. Para manipular as equações: ao <b>inverter</b> uma reação, inverte-se o sinal do ΔH; ao <b>multiplicar</b> os coeficientes, multiplica-se o ΔH.</p>
+        <div class="formula-box">\( \Delta H_{total} = \Delta H_1 + \Delta H_2 + \dots \) (somando as etapas)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular o ΔH de uma reação “difícil” combinando equações dadas (invertendo e multiplicando conforme necessário). É um dos cálculos mais cobrados de Termoquímica — exige organizar as etapas para que somem na reação-alvo.</div>
+        <div class="ex"><b>Exemplo:</b> se inverto uma reação com ΔH = −400 kJ, qual o novo ΔH? <span class="resp">+400 kJ (inverter troca o sinal).</span></div>
+      </section>
+
+      <section class="card" id="a8-ligacao">
+        <div class="kicker">Termoquímica · 8.6</div>
+        <h3>Energia de ligação</h3>
+        <p class="lead">É a energia necessária para <b>quebrar 1 mol</b> de uma ligação (no estado gasoso) — quebrar ligação <b>absorve</b> energia (endotérmico); formar ligação <b>libera</b> energia (exotérmico). O ΔH da reação pode ser estimado por: energia das ligações <b>quebradas</b> (reagentes) menos energia das ligações <b>formadas</b> (produtos).</p>
+        <div class="formula-box">\( \Delta H = \sum E_{ligações\ quebradas} - \sum E_{ligações\ formadas} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular ΔH a partir de uma <b>tabela de energias de ligação</b> (contar ligações quebradas e formadas). Cuidado com o sinal: quebrar = gasta energia; formar = libera. Resultado é aproximado.</div>
+        <div class="ex"><b>Exemplo:</b> quebrar ligações é processo que absorve ou libera energia? <span class="resp">Absorve (endotérmico); formar ligações é que libera.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 9 ===================== -->
+      <div class="area a9">
+      <div class="chapter" id="a9">
+        <div class="num">Área 9</div>
+        <h2>Cinética Química e Equilíbrio Químico</h2>
+        <p>Duas perguntas-chave: com que <b>velocidade</b> uma reação ocorre (cinética) e até onde ela vai, quando reagentes e produtos coexistem (equilíbrio). Inclui Le Chatelier, pH, hidrólise e solubilidade — temas pesados e muito cobrados.</p>
+        <div class="mini">
+          <a href="#a9-velocidade">Velocidade das reações</a>
+          <a href="#a9-colisoes">Colisões e energia de ativação</a>
+          <a href="#a9-fatores">Fatores e catalisadores</a>
+          <a href="#a9-equilibrio">Equilíbrio e constante</a>
+          <a href="#a9-lechatelier">Le Chatelier</a>
+          <a href="#a9-ionico">Equilíbrio iônico (Ka, Kb)</a>
+          <a href="#a9-ph">pH, pOH e Kw</a>
+          <a href="#a9-hidrolise">Hidrólise salina</a>
+          <a href="#a9-kps">Kps (solubilidade)</a>
+        </div>
+      </div>
+
+      <section class="card" id="a9-velocidade">
+        <div class="kicker">Cinética · 9.1</div>
+        <h3>Velocidade das reações e lei da ação das massas</h3>
+        <p class="lead">A <b>velocidade</b> mede o quanto a concentração de reagente (ou produto) varia por unidade de tempo. A <b>lei da velocidade</b> (lei cinética) relaciona a velocidade às concentrações dos reagentes elevadas a expoentes determinados <b>experimentalmente</b>: v = k·[A]ᵃ·[B]ᵇ. A constante <b>k</b> depende da temperatura.</p>
+        <div class="formula-box">\( v = k \cdot [A]^a [B]^b \qquad v_{média} = \dfrac{\Delta[\,]}{\Delta t} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular velocidade média (variação de concentração ÷ tempo, respeitando a proporção dos coeficientes) e determinar a <b>ordem da reação</b> e o valor de k a partir de uma <b>tabela experimental</b> (ver como v muda ao dobrar [reagente]).</div>
+        <div class="ex"><b>Exemplo:</b> ao dobrar [A], a velocidade quadruplica. Qual a ordem em relação a A? <span class="resp">Segunda ordem (2² = 4).</span></div>
+      </section>
+
+      <section class="card" id="a9-colisoes">
+        <div class="kicker">Cinética · 9.2</div>
+        <h3>Teoria das colisões, estado ativado e energia de ativação</h3>
+        <p class="lead">Para reagir, as partículas precisam <b>colidir</b> com <b>energia suficiente</b> e <b>orientação adequada</b>. A <b>energia de ativação (Ea)</b> é a barreira mínima de energia para a reação ocorrer; no topo dela forma-se o <b>complexo ativado</b> (estado de transição, instável). Quanto <b>menor</b> a Ea, mais rápida a reação.</p>
+        <div class="formula-box">reagentes → [complexo ativado] → produtos &nbsp;(pico = energia de ativação)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretar o <b>diagrama de energia</b> (identificar Ea, complexo ativado, ΔH e o efeito do catalisador, que abaixa a Ea). Explicar por que nem toda colisão gera reação (energia + orientação) é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o que o catalisador faz no diagrama de energia? <span class="resp">Cria um caminho com menor energia de ativação (sem alterar o ΔH).</span></div>
+      </section>
+
+      <section class="card" id="a9-fatores">
+        <div class="kicker">Cinética · 9.3</div>
+        <h3>Fatores que afetam a velocidade e catalisadores</h3>
+        <p class="lead">Aumentam a velocidade: maior <b>concentração</b> (mais colisões), maior <b>temperatura</b> (partículas mais energéticas — fator mais influente), maior <b>superfície de contato</b> (sólido em pó reage mais rápido), maior <b>pressão</b> (em gases) e a presença de <b>catalisador</b> (diminui a Ea sem ser consumido; as <b>enzimas</b> são catalisadores biológicos).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> prever o efeito de cada fator e justificar pela teoria das colisões. Exemplos do cotidiano: alimento na geladeira (temperatura), lenha fina pega fogo mais rápido (superfície), catalisador dos carros. O catalisador <b>não desloca equilíbrio</b> — só acelera (pegadinha).</div>
+        <div class="ex"><b>Exemplo:</b> por que um comprimido efervescente triturado dissolve mais rápido? <span class="resp">Maior superfície de contato → mais colisões por segundo.</span></div>
+      </section>
+
+      <section class="card" id="a9-equilibrio">
+        <div class="kicker">Equilíbrio · 9.4</div>
+        <h3>Reversibilidade, equilíbrio e constante (Kc, Kp)</h3>
+        <p class="lead">Muitas reações são <b>reversíveis</b> (⇌). O <b>equilíbrio químico</b> ocorre quando as velocidades das reações direta e inversa se <b>igualam</b>: as concentrações ficam <b>constantes</b> (não nulas nem iguais) — é um equilíbrio <b>dinâmico</b>. A <b>constante de equilíbrio</b> relaciona produtos e reagentes elevados aos seus coeficientes; depende só da <b>temperatura</b>. Kc usa concentrações; Kp, pressões parciais.</p>
+        <div class="formula-box">\( aA + bB \rightleftharpoons cC + dD \qquad K_c = \dfrac{[C]^c[D]^d}{[A]^a[B]^b} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> montar a expressão de Kc (sólidos e líquidos puros <b>não entram</b>), calcular K a partir das concentrações no equilíbrio e interpretar seu valor (K grande → favorece produtos). Tabelas “início–reage–equilíbrio” são o formato clássico.</div>
+        <div class="ex"><b>Exemplo:</b> um Kc muito grande indica o quê sobre a reação? <span class="resp">Que, no equilíbrio, predominam os produtos (reação “quase completa”).</span></div>
+      </section>
+
+      <section class="card" id="a9-lechatelier">
+        <div class="kicker">Equilíbrio · 9.5</div>
+        <h3>Deslocamento do equilíbrio (Princípio de Le Chatelier)</h3>
+        <p class="lead">Se um equilíbrio é <b>perturbado</b>, ele se desloca no sentido que <b>minimiza</b> a perturbação. <b>Concentração</b>: adicionar um reagente desloca para os produtos (e vice-versa). <b>Pressão</b> (gases): aumentar a pressão desloca para o lado de <b>menor volume</b> (menos mols gasosos). <b>Temperatura</b>: aquecer favorece o sentido <b>endotérmico</b>. <b>Catalisador não desloca</b> o equilíbrio (só o atinge mais rápido).</p>
+        <div class="formula-box">↑ concentração → afasta-se dela · ↑ pressão → menos mols de gás · ↑ T → sentido endotérmico</div>
+        <div class="uso"><b>Como cai no vestibular:</b> prever o sentido do deslocamento ao mudar concentração, pressão ou temperatura — campeão de Equilíbrio. O processo <b>Haber-Bosch</b> (síntese da amônia) é o exemplo clássico de otimização por Le Chatelier.</div>
+        <div class="ex"><b>Exemplo:</b> em N₂ + 3H₂ ⇌ 2NH₃, aumentar a pressão desloca para onde? <span class="resp">Para a amônia (lado com menos mols de gás: 2 < 4).</span></div>
+      </section>
+
+      <section class="card" id="a9-ionico">
+        <div class="kicker">Equilíbrio · 9.6</div>
+        <h3>Equilíbrio iônico e força dos eletrólitos (Ka, Kb)</h3>
+        <p class="lead">Ácidos e bases <b>fracos</b> ionizam-se parcialmente, estabelecendo um equilíbrio com sua constante de ionização (<b>Ka</b> para ácidos, <b>Kb</b> para bases). Quanto <b>maior o Ka</b>, <b>mais forte</b> o ácido (ioniza mais). O <b>grau de ionização (α)</b> é a fração que se ioniza. Ácidos fortes (HCl, H₂SO₄) têm α ≈ 100%; fracos (acético, carbônico), baixo.</p>
+        <div class="formula-box">\( HA \rightleftharpoons H^+ + A^- \qquad K_a = \dfrac{[H^+][A^-]}{[HA]} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> comparar a força de ácidos/bases pelos valores de Ka/Kb e calcular [H⁺] ou α. A relação “maior Ka = mais forte = menor pH (para mesma concentração)” liga diretamente com o cálculo de pH.</div>
+        <div class="ex"><b>Exemplo:</b> entre dois ácidos, o de maior Ka é mais forte ou mais fraco? <span class="resp">Mais forte (ioniza-se mais, libera mais H⁺).</span></div>
+      </section>
+
+      <section class="card" id="a9-ph">
+        <div class="kicker">Equilíbrio · 9.7</div>
+        <h3>Produto iônico da água, pH e pOH</h3>
+        <p class="lead">A água se autoioniza: H₂O ⇌ H⁺ + OH⁻, com <b>Kw = [H⁺][OH⁻] = 10⁻¹⁴</b> a 25 °C. O <b>pH</b> mede a acidez: pH = −log[H⁺]. Escala (25 °C): <b>pH < 7 ácido</b>, <b>= 7 neutro</b>, <b>> 7 básico</b>. O pOH = −log[OH⁻], e <b>pH + pOH = 14</b>. Mede-se com indicadores (papel/tornassol, fenolftaleína) ou pHmetro.</p>
+        <div class="formula-box">\( pH = -\log[H^+] \qquad pH + pOH = 14 \qquad K_w = [H^+][OH^-] = 10^{-14} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular pH/pOH a partir das concentrações (e vice-versa) — cálculo certeiro. Lembrar que cada unidade de pH é um fator <b>10</b> em [H⁺] (pH 3 é 10× mais ácido que pH 4). pH de sucos, sangue, produtos de limpeza aparece em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> qual o pH de uma solução com [H⁺] = 10⁻³ mol/L? <span class="resp">pH = 3 (ácida).</span></div>
+      </section>
+
+      <section class="card" id="a9-hidrolise">
+        <div class="kicker">Equilíbrio · 9.8</div>
+        <h3>Hidrólise salina</h3>
+        <p class="lead">Quando um <b>sal</b> se dissolve, seus íons podem reagir com a água e alterar o pH. A regra: o sal “puxa” o pH para o lado do componente <b>forte</b>. Sal de <b>ácido forte + base forte</b> (NaCl) → solução <b>neutra</b>. <b>Ácido forte + base fraca</b> (NH₄Cl) → <b>ácida</b>. <b>Ácido fraco + base forte</b> (CH₃COONa) → <b>básica</b>.</p>
+        <table class="tab"><thead><tr><th>Sal de…</th><th>pH da solução</th></tr></thead><tbody>
+          <tr><th>Ácido forte + base forte</th><td>neutro (≈7)</td></tr>
+          <tr><th>Ácido forte + base fraca</th><td>ácido (&lt;7)</td></tr>
+          <tr><th>Ácido fraco + base forte</th><td>básico (&gt;7)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> prever se a solução de um sal é ácida, básica ou neutra (identificando a força do ácido e da base que o originaram). É a aplicação mais cobrada do equilíbrio iônico em sais.</div>
+        <div class="ex"><b>Exemplo:</b> a solução de NaCl é ácida, básica ou neutra? <span class="resp">Neutra (HCl e NaOH são ambos fortes).</span></div>
+      </section>
+
+      <section class="card" id="a9-kps">
+        <div class="kicker">Equilíbrio · 9.9</div>
+        <h3>Produto de solubilidade (Kps)</h3>
+        <p class="lead">Para sais <b>pouco solúveis</b>, há equilíbrio entre o sólido e seus íons em solução saturada. O <b>Kps</b> é a constante desse equilíbrio (produto das concentrações dos íons, elevadas aos coeficientes). Quanto <b>menor o Kps</b>, <b>menos solúvel</b> o sal. Se o produto das concentrações ultrapassa o Kps, ocorre <b>precipitação</b>.</p>
+        <div class="formula-box">\( \text{AgCl} \rightleftharpoons \text{Ag}^+ + \text{Cl}^- \qquad K_{ps} = [\text{Ag}^+][\text{Cl}^-] \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> montar a expressão do Kps, calcular a solubilidade a partir dele (ou vice-versa) e prever <b>se há precipitação</b> (comparar o produto iônico com o Kps). Comparar solubilidades de sais pelos seus Kps é frequente.</div>
+        <div class="ex"><b>Exemplo:</b> entre dois sais, o de menor Kps é mais ou menos solúvel? <span class="resp">Menos solúvel (precipita com concentrações menores de íons).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 10 ===================== -->
+      <div class="area a10">
+      <div class="chapter" id="a10">
+        <div class="num">Área 10</div>
+        <h2>Eletroquímica</h2>
+        <p>A relação entre reações de oxirredução e eletricidade: como reações espontâneas geram corrente (pilhas) e como a corrente força reações não espontâneas (eletrólise). Inclui potenciais padrão e as Leis de Faraday.</p>
+        <div class="mini">
+          <a href="#a10-potenciais">Potenciais de redução</a>
+          <a href="#a10-pilhas">Pilhas (células galvânicas)</a>
+          <a href="#a10-ddp">ddp e espontaneidade</a>
+          <a href="#a10-eletrolise">Eletrólise</a>
+          <a href="#a10-faraday">Leis de Faraday</a>
+        </div>
+      </div>
+
+      <section class="card" id="a10-potenciais">
+        <div class="kicker">Eletroquímica · 10.1</div>
+        <h3>Potenciais padrão de redução e eletrodo de hidrogênio</h3>
+        <p class="lead">O <b>potencial padrão de redução (E°)</b> mede a “tendência” de uma espécie de <b>ganhar elétrons</b> (reduzir-se). Como não se mede um eletrodo isolado, adota-se o <b>eletrodo padrão de hidrogênio</b> (EPH) como referência, com E° = 0,00 V. Quanto <b>maior o E° de redução</b>, maior a tendência de se reduzir (melhor <b>oxidante</b>); quanto menor (mais negativo), maior a tendência de oxidar (melhor <b>redutor</b>, como os metais alcalinos).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> usar uma <b>tabela de potenciais</b> para prever quem oxida e quem reduz, ordenar a reatividade de metais e prever se um metal “desloca” outro de uma solução (fila de reatividade). Base para o cálculo da ddp.</div>
+        <div class="ex"><b>Exemplo:</b> entre dois metais, qual sofre oxidação na pilha? <span class="resp">O de menor potencial de redução (maior tendência a perder elétrons).</span></div>
+      </section>
+
+      <section class="card" id="a10-pilhas">
+        <div class="kicker">Eletroquímica · 10.2</div>
+        <h3>Pilhas e baterias (células galvânicas)</h3>
+        <p class="lead">Uma <b>pilha</b> transforma energia <b>química → elétrica</b> por uma reação redox <b>espontânea</b>. Tem dois eletrodos: no <b>ânodo</b> ocorre a <b>oxidação</b> (polo negativo, “corrói”) e no <b>cátodo</b> a <b>redução</b> (polo positivo, “engorda”). Os elétrons fluem pelo fio do ânodo ao cátodo; a <b>ponte salina</b> mantém a neutralidade das soluções. Exemplo clássico: pilha de Daniell (Zn/Cu).</p>
+        <div class="formula-box">ânodo: oxidação (−) &nbsp;→ elétrons →&nbsp; cátodo: redução (+)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar ânodo/cátodo, o sentido dos elétrons e qual eletrodo perde massa (o ânodo). Mnemônico útil: “<b>RedCat</b>” (redução no cátodo) e “oxida no ânodo”. Pilhas e baterias reais (e seu descarte) ligam com a Área 12.</div>
+        <div class="ex"><b>Exemplo:</b> na pilha de Daniell (Zn e Cu), qual eletrodo se desgasta? <span class="resp">O de zinco (ânodo: oxida-se, Zn → Zn²⁺).</span></div>
+      </section>
+
+      <section class="card" id="a10-ddp">
+        <div class="kicker">Eletroquímica · 10.3</div>
+        <h3>Força eletromotriz (ddp) e espontaneidade</h3>
+        <p class="lead">A <b>ddp</b> (ou fem) da pilha é a “voltagem” que ela fornece, calculada pela diferença entre os potenciais de redução: ΔE° = E°(cátodo, maior) − E°(ânodo, menor). Se <b>ΔE° > 0</b>, a reação é <b>espontânea</b> (funciona como pilha); se ΔE° < 0, não é espontânea (precisaria de eletrólise).</p>
+        <div class="formula-box">\( \Delta E^{\circ} = E^{\circ}_{cátodo} - E^{\circ}_{ânodo} \qquad \Delta E^{\circ} > 0 \Rightarrow \text{espontânea} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a ddp da pilha (sempre maior E° menos menor E°, dando valor positivo) e decidir a espontaneidade. Lembrar que multiplicar a equação <b>não muda</b> o E° (potencial é intensivo) — pegadinha comum.</div>
+        <div class="ex"><b>Exemplo:</b> cátodo E° = +0,34 V e ânodo E° = −0,76 V. Qual a ddp? <span class="resp">ΔE° = 0,34 − (−0,76) = 1,10 V.</span></div>
+      </section>
+
+      <section class="card" id="a10-eletrolise">
+        <div class="kicker">Eletroquímica · 10.4</div>
+        <h3>Eletrólise (células eletrolíticas)</h3>
+        <p class="lead">É o processo inverso da pilha: usa energia <b>elétrica → química</b> para forçar uma reação <b>não espontânea</b>. Uma fonte externa empurra os elétrons. Na <b>eletrólise ígnea</b> eletrolisa-se a substância <b>fundida</b> (ex.: obtenção de alumínio e sódio metálicos); na <b>eletrólise aquosa</b>, a substância está <b>dissolvida em água</b> (e a água pode descarregar no lugar dos íons, conforme a facilidade). Aqui o cátodo é negativo e o ânodo, positivo (inverso da pilha).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar pilha (espontânea, gera corrente) × eletrólise (forçada, consome corrente) e suas aplicações: <b>galvanoplastia</b> (cromagem, douração), produção de Cl₂/NaOH, refino de metais e <b>recarga</b> de baterias. Prever os produtos na eletrólise aquosa cai em provas mais difíceis.</div>
+        <div class="ex"><b>Exemplo:</b> revestir uma peça com cromo (cromação) é exemplo de quê? <span class="resp">Eletrólise (galvanoplastia).</span></div>
+      </section>
+
+      <section class="card" id="a10-faraday">
+        <div class="kicker">Eletroquímica · 10.5</div>
+        <h3>Leis de Faraday</h3>
+        <p class="lead">Relacionam a <b>quantidade de substância</b> depositada/produzida na eletrólise com a <b>carga elétrica</b> que passou. A massa é proporcional à carga (Q = i·t) e ao nº de elétrons envolvidos. Constante de Faraday: <b>1 mol de elétrons = 96 500 C</b> (1 F). Assim, para depositar 1 mol de um metal de carga +n, são necessários n × 96 500 C.</p>
+        <div class="formula-box">\( Q = i \cdot t \qquad 1\ \text{mol de e}^- = 96\,500\ \text{C} \)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> calcular a massa de metal depositada dado corrente (A) e tempo (s): achar Q = i·t, converter em mols de elétrons (÷96500) e usar a estequiometria do cátion. É o cálculo central da eletrólise.</div>
+        <div class="ex"><b>Exemplo:</b> uma corrente de 9650 C deposita quantos mols de elétrons? <span class="resp">9650 ÷ 96500 = 0,1 mol de elétrons.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 11 ===================== -->
+      <div class="area a11">
+      <div class="chapter" id="a11">
+        <div class="num">Área 11</div>
+        <h2>Química Orgânica</h2>
+        <p>A química do carbono e de seus compostos — a base da vida e dos materiais (combustíveis, plásticos, fármacos). Cai em reconhecer cadeias e funções, nomear compostos, prever propriedades, identificar isomeria e entender polímeros e combustão.</p>
+        <div class="mini">
+          <a href="#a11-carbono">O carbono e as cadeias</a>
+          <a href="#a11-cadeias">Classificação das cadeias</a>
+          <a href="#a11-hidrocarbonetos">Hidrocarbonetos</a>
+          <a href="#a11-oxigenadas">Funções oxigenadas</a>
+          <a href="#a11-nitrogenadas">Funções nitrogenadas</a>
+          <a href="#a11-nomenclatura">Nomenclatura</a>
+          <a href="#a11-propriedades">Propriedades físicas</a>
+          <a href="#a11-isoplana">Isomeria plana</a>
+          <a href="#a11-isogeo">Isomeria geométrica</a>
+          <a href="#a11-reacoes">Reações e combustão</a>
+          <a href="#a11-polimeros">Polímeros</a>
+        </div>
+      </div>
+
+      <section class="card" id="a11-carbono">
+        <div class="kicker">Orgânica · 11.1</div>
+        <h3>O átomo de carbono e as cadeias carbônicas</h3>
+        <p class="lead">O <b>carbono</b> é a base da química orgânica por ser <b>tetravalente</b> (faz 4 ligações) e ter a capacidade única de se ligar a outros carbonos formando <b>cadeias</b> longas, ramificadas ou em anel (encadeamento). Faz ligações simples, duplas e triplas. Classificam-se os carbonos pela posição: <b>primário</b> (ligado a 1 outro C), <b>secundário</b> (2), <b>terciário</b> (3) e <b>quaternário</b> (4).</p>
+        <div class="formula-box">C tetravalente: 4 ligações &nbsp;|&nbsp; C primário/secundário/terciário/quaternário</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar carbonos (primário a quaternário) e contar ligações numa estrutura. A tetravalência e o encadeamento explicam a enorme diversidade de compostos orgânicos — ideia cobrada em teoria.</div>
+        <div class="ex"><b>Exemplo:</b> um carbono ligado a outros três carbonos é classificado como? <span class="resp">Terciário.</span></div>
+      </section>
+
+      <section class="card" id="a11-cadeias">
+        <div class="kicker">Orgânica · 11.2</div>
+        <h3>Classificação das cadeias carbônicas</h3>
+        <p class="lead">As cadeias classificam-se por critérios: <b>abertas/acíclicas</b> (extremidades livres) × <b>fechadas/cíclicas</b> (anel); <b>normais</b> (sem ramificação) × <b>ramificadas</b>; <b>saturadas</b> (só ligações simples) × <b>insaturadas</b> (têm dupla/tripla); e <b>homogêneas</b> (só C entre os carbonos) × <b>heterogêneas</b> (têm <b>heteroátomo</b> — O, N, S — entre carbonos).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar uma cadeia segundo todos os critérios a partir da estrutura, e identificar <b>heteroátomos</b> e <b>insaturações</b>. É um “esquenta” que prepara para nomenclatura e funções.</div>
+        <div class="ex"><b>Exemplo:</b> uma cadeia em anel com uma dupla ligação é classificada como? <span class="resp">Cíclica (fechada) e insaturada.</span></div>
+      </section>
+
+      <section class="card" id="a11-hidrocarbonetos">
+        <div class="kicker">Orgânica · 11.3</div>
+        <h3>Hidrocarbonetos</h3>
+        <p class="lead">São compostos formados <b>só por carbono e hidrogênio</b> — os mais simples e a base do petróleo. Principais grupos: <b>alcanos</b> (só simples, CₙH₂ₙ₊₂, ex.: metano CH₄), <b>alcenos</b> (uma dupla, CₙH₂ₙ, ex.: eteno), <b>alcinos</b> (uma tripla, ex.: etino/acetileno), <b>alcadienos</b> (duas duplas), <b>ciclanos</b> (em anel) e <b>aromáticos</b> (anel benzênico, como o benzeno C₆H₆).</p>
+        <div class="formula-box">alcano CₙH₂ₙ₊₂ · alceno CₙH₂ₙ · alcino CₙH₂ₙ₋₂ · aromático: anel benzênico</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer o tipo pela insaturação e aplicar a <b>fórmula geral</b> (achar nº de H dado o nº de C). São os principais <b>combustíveis</b> (gás natural, GLP, gasolina) — conecta com combustão e meio ambiente (Área 12).</div>
+        <div class="ex"><b>Exemplo:</b> qual a fórmula molecular do alcano com 3 carbonos (propano)? <span class="resp">C₃H₈ (CₙH₂ₙ₊₂ → 2·3+2 = 8 H).</span></div>
+      </section>
+
+      <section class="card" id="a11-oxigenadas">
+        <div class="kicker">Orgânica · 11.4</div>
+        <h3>Funções oxigenadas</h3>
+        <p class="lead">São funções cujo grupo característico contém <b>oxigênio</b>. As principais: <b>álcool</b> (–OH em carbono saturado, ex.: etanol), <b>fenol</b> (–OH ligado ao anel aromático), <b>aldeído</b> (–CHO na ponta), <b>cetona</b> (C=O no meio da cadeia), <b>ácido carboxílico</b> (–COOH, ex.: ácido acético), <b>éster</b> (de ácido + álcool, aroma de frutas) e <b>éter</b> (oxigênio entre dois carbonos).</p>
+        <table class="tab"><thead><tr><th>Função</th><th>Grupo</th><th>Exemplo</th></tr></thead><tbody>
+          <tr><th>Álcool</th><td>–OH</td><td>etanol</td></tr>
+          <tr><th>Aldeído</th><td>–CHO</td><td>formol</td></tr>
+          <tr><th>Cetona</th><td>C=O (meio)</td><td>acetona</td></tr>
+          <tr><th>Ácido carboxílico</th><td>–COOH</td><td>ácido acético</td></tr>
+          <tr><th>Éster</th><td>–COO–</td><td>acetato de etila</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar a função pelo <b>grupo funcional</b> numa estrutura (campeão de Orgânica). Exemplos do cotidiano: etanol (álcool/combustível), acetona, vinagre (ácido), ésteres (essências, biodiesel). Distinguir álcool/fenol e aldeído/cetona é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o grupo –COOH caracteriza qual função? <span class="resp">Ácido carboxílico.</span></div>
+      </section>
+
+      <section class="card" id="a11-nitrogenadas">
+        <div class="kicker">Orgânica · 11.5</div>
+        <h3>Funções nitrogenadas</h3>
+        <p class="lead">Têm <b>nitrogênio</b> no grupo funcional. As principais: <b>aminas</b> (derivadas do NH₃, com caráter básico, ex.: cheiro de peixe), <b>amidas</b> (grupo –CONH₂, presentes em proteínas e no náilon) e <b>nitrocompostos</b> (–NO₂). Os <b>aminoácidos</b> reúnem amina + ácido carboxílico — são as unidades das proteínas (ligação com Biologia).</p>
+        <div class="formula-box">amina: R–NH₂ (básica) &nbsp;|&nbsp; amida: R–CONH₂ &nbsp;|&nbsp; aminoácido: –NH₂ + –COOH</div>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar amina/amida pelo grupo e reconhecer o caráter <b>básico</b> das aminas. A conexão com <b>proteínas</b> (ligação peptídica = amida) e <b>aminoácidos</b> aparece em questões interdisciplinares.</div>
+        <div class="ex"><b>Exemplo:</b> a ligação que une aminoácidos nas proteínas é de qual função? <span class="resp">Amida (ligação peptídica).</span></div>
+      </section>
+
+      <section class="card" id="a11-nomenclatura">
+        <div class="kicker">Orgânica · 11.6</div>
+        <h3>Fundamentos de nomenclatura</h3>
+        <p class="lead">A nomenclatura <b>IUPAC</b> monta o nome em três partes: <b>prefixo</b> (nº de carbonos: met-1, et-2, prop-3, but-4, pent-5…), <b>infixo/ligação</b> (-an- só simples, -en- dupla, -in- tripla) e <b>sufixo</b> (função: -o hidrocarboneto, -ol álcool, -al aldeído, -ona cetona, -oico ácido). Numera-se a cadeia principal para dar os <b>menores números</b> às insaturações e ramificações.</p>
+        <div class="formula-box">prefixo (nº C) + infixo (ligação) + sufixo (função) → ex.: prop-an-ol = propanol</div>
+        <div class="uso"><b>Como cai no vestibular:</b> nomear um composto a partir da estrutura (e vice-versa), identificando a cadeia principal, ramificações e a posição correta dos grupos. Decorar prefixos (1 a 10) e os sufixos das funções resolve a maioria.</div>
+        <div class="ex"><b>Exemplo:</b> o álcool de 2 carbonos chama-se? <span class="resp">Etanol (et- = 2C, -an- simples, -ol = álcool).</span></div>
+      </section>
+
+      <section class="card" id="a11-propriedades">
+        <div class="kicker">Orgânica · 11.7</div>
+        <h3>Propriedades físicas dos compostos orgânicos</h3>
+        <p class="lead">Dependem das <b>forças intermoleculares</b> e da <b>massa molar</b>. Ponto de ebulição: cresce com a cadeia (mais massa) e é maior em funções que fazem <b>ligação de hidrogênio</b> (álcoois e ácidos > aldeídos/cetonas > hidrocarbonetos). Solubilidade: “<b>semelhante dissolve semelhante</b>” — compostos polares (com –OH) dissolvem em água; apolares (hidrocarbonetos) dissolvem em solventes orgânicos. A parte apolar grande (cadeia longa) reduz a solubilidade em água.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> comparar pontos de ebulição e solubilidade entre compostos pela <b>função</b> e <b>tamanho da cadeia</b> (álcool ferve mais que o alcano de massa parecida). Explicar por que o etanol mistura com água, mas a gasolina não, é clássico. Liga com forças intermoleculares (Área 3).</div>
+        <div class="ex"><b>Exemplo:</b> entre etano e etanol, qual tem maior ponto de ebulição? <span class="resp">Etanol (faz ligações de hidrogênio pelo –OH).</span></div>
+      </section>
+
+      <section class="card" id="a11-isoplana">
+        <div class="kicker">Orgânica · 11.8</div>
+        <h3>Isomeria plana</h3>
+        <p class="lead">Isômeros são compostos de <b>mesma fórmula molecular</b> e estruturas diferentes. Na <b>isomeria plana</b>, a diferença aparece na fórmula estrutural: <b>de cadeia</b> (cadeias diferentes), <b>de posição</b> (muda a posição do grupo/insaturação), <b>de função</b> (funções diferentes — álcool e éter; aldeído e cetona), <b>de compensação/metameria</b> (posição do heteroátomo) e <b>tautomeria</b> (equilíbrio dinâmico, ex.: aldeído ⇌ enol).</p>
+        <div class="formula-box">C₂H₆O → etanol (álcool) ou dimetil-éter (éter) = isomeria de função</div>
+        <div class="uso"><b>Como cai no vestibular:</b> dada uma fórmula molecular, identificar o <b>tipo</b> de isomeria entre duas estruturas. O par <b>álcool/éter</b> (C₂H₆O) e <b>aldeído/cetona</b> (isomeria de função) são os mais cobrados.</div>
+        <div class="ex"><b>Exemplo:</b> etanol e dimetil-éter têm a mesma fórmula C₂H₆O. Que isomeria? <span class="resp">Isomeria plana de função.</span></div>
+      </section>
+
+      <section class="card" id="a11-isogeo">
+        <div class="kicker">Orgânica · 11.9</div>
+        <h3>Isomeria geométrica (cis-trans)</h3>
+        <p class="lead">É um tipo de isomeria <b>espacial</b>: aparece em compostos com <b>dupla ligação</b> (ou em ciclos) quando cada carbono da dupla tem <b>dois ligantes diferentes</b>. Há duas formas: <b>cis</b> (grupos iguais do <b>mesmo</b> lado) e <b>trans</b> (em lados <b>opostos</b>). Por terem arranjos espaciais distintos, têm propriedades físicas diferentes (ex.: gorduras cis × trans).</p>
+        <div class="formula-box">cis = mesmos grupos do mesmo lado &nbsp;|&nbsp; trans = lados opostos</div>
+        <div class="uso"><b>Como cai no vestibular:</b> verificar se há isomeria geométrica (condição: dupla com ligantes diferentes em cada carbono) e classificar em cis/trans. A relação com <b>gorduras trans</b> (saúde) é um gancho frequente no ENEM.</div>
+        <div class="ex"><b>Exemplo:</b> o but-2-eno apresenta isomeria geométrica? <span class="resp">Sim (cada carbono da dupla tem H e CH₃ diferentes → cis e trans).</span></div>
+      </section>
+
+      <section class="card" id="a11-reacoes">
+        <div class="kicker">Orgânica · 11.10</div>
+        <h3>Reações orgânicas e combustão</h3>
+        <p class="lead">Tipos principais: <b>substituição</b> (um átomo entra no lugar de outro — típica de alcanos e aromáticos), <b>adição</b> (a dupla/tripla se rompe e recebe novos átomos — típica de alcenos, como a hidrogenação) e <b>eliminação</b> (sai um grupo, formando insaturação). A <b>combustão</b> é a reação com O₂ que libera energia: <b>completa</b> (excesso de O₂ → CO₂ + H₂O) ou <b>incompleta</b> (pouco O₂ → CO ou fuligem/C).</p>
+        <div class="formula-box">combustão completa: CₓHᵧ + O₂ → CO₂ + H₂O &nbsp;(incompleta → CO ou C)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar a reação (substituição/adição/eliminação) e, sobretudo, balancear <b>combustões</b> e diferenciar completa × incompleta — a incompleta produz o tóxico <b>CO</b> (monóxido de carbono). Liga combustíveis e poluição (Área 12).</div>
+        <div class="ex"><b>Exemplo:</b> por que a combustão incompleta é perigosa em ambientes fechados? <span class="resp">Produz monóxido de carbono (CO), gás tóxico.</span></div>
+      </section>
+
+      <section class="card" id="a11-polimeros">
+        <div class="kicker">Orgânica · 11.11</div>
+        <h3>Polímeros naturais e sintéticos</h3>
+        <p class="lead">Polímeros são <b>macromoléculas</b> formadas pela união de muitas unidades pequenas (<b>monômeros</b>) na <b>polimerização</b>. <b>Naturais</b>: amido, celulose, proteínas, borracha natural, DNA. <b>Sintéticos</b>: polietileno (PE — sacolas), PVC (tubos), polipropileno (PP), poliestireno (isopor), PET (garrafas), náilon. Formam-se por <b>adição</b> (monômeros com dupla se somam) ou <b>condensação</b> (união com saída de água).</p>
+        <div class="formula-box">n monômeros → polímero (ex.: n eteno → polietileno)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer o monômero/polímero e o tipo de polimerização, e discutir o <b>impacto ambiental dos plásticos</b> (não biodegradáveis, reciclagem, microplásticos) — gancho certeiro com a Área 12. Identificar polímeros do cotidiano pelas siglas (PET, PVC, PE) é comum.</div>
+        <div class="ex"><b>Exemplo:</b> qual o monômero do polietileno? <span class="resp">O eteno (etileno).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ÁREA 12 ===================== -->
+      <div class="area a12">
+      <div class="chapter" id="a12">
+        <div class="num">Área 12</div>
+        <h2>A Química Aplicada e o Meio Ambiente</h2>
+        <p>A Química no mundo real: fontes de energia (renováveis e não), combustíveis, e os grandes problemas ambientais (efeito estufa, chuva ácida, camada de ozônio, poluição e lixo). É a área mais interdisciplinar e presente em textos do ENEM.</p>
+        <div class="mini">
+          <a href="#a12-energia">Energia: renovável × não renovável</a>
+          <a href="#a12-biomassa">Biomassa e biocombustíveis</a>
+          <a href="#a12-carvao">Carvão</a>
+          <a href="#a12-petroleo">Petróleo e derivados</a>
+          <a href="#a12-ar">Poluição do ar</a>
+          <a href="#a12-aguasolo">Poluição da água e do solo</a>
+          <a href="#a12-lixo">Lixo e ciclo da água</a>
+        </div>
+      </div>
+
+      <section class="card" id="a12-energia">
+        <div class="kicker">Ambiente · 12.1</div>
+        <h3>Recursos energéticos: renováveis e não renováveis</h3>
+        <p class="lead">As fontes <b>não renováveis</b> se esgotam e/ou se formam muito lentamente: <b>combustíveis fósseis</b> (petróleo, carvão, gás natural) e o urânio (nuclear) — em geral mais poluentes (liberam CO₂). As <b>renováveis</b> se repõem na escala humana: <b>solar, eólica, hidrelétrica, biomassa, geotérmica</b> — mais limpas, mas com seus próprios impactos (ex.: alagamento de hidrelétricas). Há sempre um <b>balanço</b> entre custo, disponibilidade e impacto ambiental/social.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> classificar fontes em renovável × não renovável e <b>comparar prós e contras</b> (emissão de CO₂, esgotamento, impacto) — formato típico do ENEM. A matriz energética brasileira (forte em hidrelétrica e biomassa) aparece em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> o gás natural é fonte renovável ou não renovável? <span class="resp">Não renovável (combustível fóssil).</span></div>
+      </section>
+
+      <section class="card" id="a12-biomassa">
+        <div class="kicker">Ambiente · 12.2</div>
+        <h3>Biomassa e biocombustíveis</h3>
+        <p class="lead"><b>Biomassa</b> é a matéria orgânica usada como energia (madeira, bagaço de cana, resíduos). Dela vêm os <b>biocombustíveis</b>: o <b>etanol</b> (fermentação da cana — destaque do Brasil), o <b>biodiesel</b> (de óleos vegetais/gordura, por transesterificação) e o <b>biogás</b> (metano da decomposição de resíduos). São <b>renováveis</b> e considerados de baixo impacto líquido de CO₂, pois a planta absorve, ao crescer, parte do carbono que será liberado na queima.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar por que biocombustíveis são “mais limpos” (ciclo do carbono ~equilibrado) e seus limites (uso de terra, competição com alimentos). Etanol da cana e biodiesel são exemplos brasileiros certeiros. Liga com fermentação (Biologia) e combustão (Área 11).</div>
+        <div class="ex"><b>Exemplo:</b> qual o processo que produz o etanol combustível da cana? <span class="resp">A fermentação dos açúcares (por leveduras).</span></div>
+      </section>
+
+      <section class="card" id="a12-carvao">
+        <div class="kicker">Ambiente · 12.3</div>
+        <h3>Carvão: mineral, vegetal e metalúrgico</h3>
+        <p class="lead">O <b>carvão mineral</b> é um combustível fóssil (formado de vegetais ao longo de milhões de anos), rico em carbono, usado em termelétricas e siderurgia — bastante poluente (CO₂, SO₂). O <b>carvão vegetal</b> vem da queima controlada (pirólise) da madeira, renovável se de reflorestamento. O <b>carvão metalúrgico</b> (coque) é usado na <b>siderurgia</b> como redutor do minério de ferro nos altos-fornos.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar os tipos de carvão e seus usos, e o papel do <b>coque</b> como agente redutor na produção do ferro (Fe₂O₃ + CO → Fe + CO₂) — conecta com oxirredução (Área 5). Impactos do carvão mineral (chuva ácida, CO₂) caem junto.</div>
+        <div class="ex"><b>Exemplo:</b> qual carvão é usado para reduzir o minério de ferro na siderurgia? <span class="resp">O carvão metalúrgico (coque).</span></div>
+      </section>
+
+      <section class="card" id="a12-petroleo">
+        <div class="kicker">Ambiente · 12.4</div>
+        <h3>Petróleo e seus derivados</h3>
+        <p class="lead">O <b>petróleo</b> é uma mistura de <b>hidrocarbonetos</b> de origem fóssil. Separa-se por <b>destilação fracionada</b> (pelas diferentes faixas de ponto de ebulição), gerando frações: gases (GLP), gasolina, querosene, óleo diesel, lubrificantes e asfalto. O <b>craqueamento</b> quebra moléculas grandes em menores (mais gasolina). É a base da petroquímica (plásticos, solventes), mas sua queima é grande fonte de <b>CO₂</b> e poluentes.</p>
+        <div class="formula-box">petróleo → destilação fracionada → GLP, gasolina, querosene, diesel, asfalto</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>destilação fracionada</b> (separa por ponto de ebulição — frações leves saem no topo) conecta com separação de misturas (Área 1) e hidrocarbonetos (Área 11). Ordenar as frações por tamanho/PE e discutir impactos da queima é frequente.</div>
+        <div class="ex"><b>Exemplo:</b> qual técnica separa o petróleo em suas frações? <span class="resp">Destilação fracionada (por diferença de pontos de ebulição).</span></div>
+      </section>
+
+      <section class="card" id="a12-ar">
+        <div class="kicker">Ambiente · 12.5</div>
+        <h3>Poluição do ar: efeito estufa, chuva ácida e camada de ozônio</h3>
+        <p class="lead">Três fenômenos <b>distintos</b> (não confundir!). <b>Efeito estufa intensificado</b>: gases como <b>CO₂ e CH₄</b> retêm calor → aquecimento global (causa: queima de combustíveis fósseis e desmatamento). <b>Chuva ácida</b>: óxidos de <b>enxofre e nitrogênio</b> (SO₂, NOₓ) reagem com a água formando ácidos (H₂SO₄, HNO₃) → corrói construções e acidifica solos/águas. <b>Destruição da camada de ozônio</b>: os <b>CFCs</b> degradam o O₃ da estratosfera → mais radiação UV.</p>
+        <table class="tab"><thead><tr><th>Problema</th><th>Causa principal</th></tr></thead><tbody>
+          <tr><th>Efeito estufa</th><td>CO₂, CH₄ (queima de fósseis)</td></tr>
+          <tr><th>Chuva ácida</th><td>SO₂, NOₓ</td></tr>
+          <tr><th>Buraco de ozônio</th><td>CFCs</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> o tema ambiental mais cobrado. A <b>pegadinha clássica</b>: não confundir efeito estufa (CO₂, calor) com buraco de ozônio (CFC, radiação UV) — são problemas diferentes. Associar cada poluente ao seu efeito é essencial.</div>
+        <div class="ex"><b>Exemplo:</b> os CFCs estão ligados a qual problema ambiental? <span class="resp">À destruição da camada de ozônio (não ao efeito estufa).</span></div>
+        <div class="warn"><b>Pegadinha:</b> efeito estufa ≠ buraco de ozônio. CO₂/CH₄ → aquecimento; CFC → ozônio/UV. São fenômenos independentes.</div>
+      </section>
+
+      <section class="card" id="a12-aguasolo">
+        <div class="kicker">Ambiente · 12.6</div>
+        <h3>Poluição da água e do solo; resíduos industriais</h3>
+        <p class="lead">A <b>água</b> sofre com esgoto (eutrofização — excesso de nutrientes → algas → falta de O₂ → morte de peixes), metais pesados (mercúrio, chumbo — <b>bioacumulação</b> na cadeia), agrotóxicos e poluição térmica. O <b>solo</b> é degradado por agrotóxicos, fertilizantes em excesso, lixões e <b>chuva ácida</b>. <b>Resíduos industriais</b> exigem tratamento antes do descarte (neutralização, precipitação de metais).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> explicar a <b>eutrofização</b> (passo a passo) e a <b>bioacumulação/magnificação</b> de metais e agrotóxicos na cadeia alimentar — temas interdisciplinares com Biologia (Ecologia). Tratamento de efluentes liga com ácido-base (neutralização, Área 4).</div>
+        <div class="ex"><b>Exemplo:</b> por que o excesso de esgoto/fertilizante mata peixes num lago? <span class="resp">Eutrofização: nutrientes → proliferação de algas → consumo do O₂ dissolvido.</span></div>
+      </section>
+
+      <section class="card" id="a12-lixo">
+        <div class="kicker">Ambiente · 12.7</div>
+        <h3>Lixo (urbano, atômico, eletrônico) e ciclo da água</h3>
+        <p class="lead">A destinação do <b>lixo</b> é um desafio: o <b>urbano</b> deve ir a aterros sanitários (não lixões), com <b>coleta seletiva</b>, reciclagem e compostagem; os <b>3 Rs</b> (reduzir, reutilizar, reciclar) orientam a gestão. O <b>lixo atômico</b> (rejeitos radioativos) exige isolamento por longuíssimo tempo. O <b>lixo eletrônico</b> contém metais pesados e tóxicos, exigindo descarte especial. O <b>ciclo da água</b> (evaporação, condensação, precipitação, infiltração) renova a água doce, mas é afetado por poluição e desmatamento.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> discutir gestão de resíduos (aterro × lixão, reciclagem, 3 Rs) e os perigos do lixo radioativo e eletrônico. O <b>ciclo da água</b> e a importância da preservação dos mananciais aparecem em questões interdisciplinares (com Biologia/Geografia).</div>
+        <div class="ex"><b>Exemplo:</b> o que diferencia um aterro sanitário de um lixão? <span class="resp">O aterro é impermeabilizado e tratado (chorume e gases controlados); o lixão é descarte a céu aberto, sem controle.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Química · organizado por áreas do programa do vestibular. Conferir sempre unidades, balanceamento e condições antes de aplicar as fórmulas.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
