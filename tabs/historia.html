@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Guia de História para o Vestibular — Conteúdos Explicados</title>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e7e2dc; --line-strong:#d6cfc5;
+    --accent:#9a3412; --accent-2:#c2410c; --accent-soft:#fdf4ee;
+    --paper:#ffffff; --bg:#f0ece6;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f6f5f3; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbf9f6; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#7c2d12,#b45309); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:70ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#faf7f3; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE CAPÍTULO ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:24px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid var(--line-strong); border-radius:10px;
+    padding:13px 15px; text-align:center; font-size:14px; margin:14px 0; overflow-x:auto; color:var(--ink); font-weight:600; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.4px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR PARTE (I a IV) ===== */
+  .secI{ --accent:#6d28d9; --accent-2:#7c3aed; --accent-soft:#f5f3ff; }   /* Fontes/Historiografia */
+  .secII{ --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9; }  /* História Geral */
+  .secIII{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; } /* América */
+  .secIV{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }  /* Brasil e SC */
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Guia de História</div>
+      <div class="sub">Conteúdos do programa do vestibular, explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+
+        <div class="grp">I · Fontes e Escrita da História</div>
+        <ol>
+          <li><a href="#his1"><b>1</b> Fontes e escrita da história</a></li>
+        </ol>
+
+        <div class="grp">II · História Geral</div>
+        <ol>
+          <li><a href="#ger1"><b>1</b> Ocupação, meio ambiente e Pré-História</a></li>
+          <li><a href="#ger2"><b>2</b> Mundo Antigo</a></li>
+          <li><a href="#ger3"><b>3</b> Idade Média</a></li>
+          <li><a href="#ger4"><b>4</b> Mercantilismo e Navegações</a></li>
+          <li><a href="#ger5"><b>5</b> Colonialismos</a></li>
+          <li><a href="#ger6"><b>6</b> Reforma e Contrarreforma</a></li>
+          <li><a href="#ger7"><b>7</b> Renascimento, Ciência e Iluminismo</a></li>
+          <li><a href="#ger8"><b>8</b> Revolução Francesa</a></li>
+          <li><a href="#ger9"><b>9</b> Revolução Industrial</a></li>
+          <li><a href="#ger10"><b>10</b> Ideologias dos séculos XIX–XX</a></li>
+          <li><a href="#ger11"><b>11</b> Fascismos, Nazismo e Guerras</a></li>
+          <li><a href="#ger12"><b>12</b> Guerra Fria e Nova Ordem</a></li>
+          <li><a href="#ger13"><b>13</b> Mundo Contemporâneo e Globalização</a></li>
+        </ol>
+
+        <div class="grp">III · América</div>
+        <ol>
+          <li><a href="#ame1"><b>1</b> Civilizações Pré-Colombianas</a></li>
+          <li><a href="#ame2"><b>2</b> Conquista e Colonização</a></li>
+          <li><a href="#ame3"><b>3</b> Processos de Emancipação</a></li>
+          <li><a href="#ame4"><b>4</b> América Contemporânea</a></li>
+        </ol>
+
+        <div class="grp">IV · Brasil e Santa Catarina</div>
+        <ol>
+          <li><a href="#bra1"><b>1</b> Indígenas, Ocupação e Povoamento</a></li>
+          <li><a href="#bra2"><b>2</b> Brasil Colônia</a></li>
+          <li><a href="#bra3"><b>3</b> Brasil Império</a></li>
+          <li><a href="#bra4"><b>4</b> Brasil República</a></li>
+          <li><a href="#bra5"><b>5</b> Santa Catarina</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de História — Conteúdos Explicados</h1>
+        <p>Um passeio por todo o programa de História do vestibular, das fontes históricas ao Brasil contemporâneo. Cada tópico responde a três perguntas: <b>o que foi / o que é</b> (com contexto e consequências), <b>como cai na prova</b> e <b>um exemplo</b> — para reconhecer o assunto no enunciado e entender do que se trata.</p>
+        <div class="chips">
+          <span>Fontes</span><span>Mundo Antigo</span><span>Idade Média</span><span>Navegações</span>
+          <span>Revoluções</span><span>Guerras Mundiais</span><span>Guerra Fria</span>
+          <span>América</span><span>Brasil</span><span>Santa Catarina</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que foi”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. O índice ao lado agrupa os capítulos nas 4 partes do programa (I a IV); dentro de cada capítulo há atalhos para os tópicos. As caixas destacadas trazem datas-chave e pegadinhas.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha de prova</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== PARTE I — FONTES ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="his1">
+        <div class="num">I · Fontes e Escrita da História</div>
+        <h2>1. Fontes e Escrita da História</h2>
+        <p>Antes dos fatos, a pergunta: como se faz História? Aqui você vê o que é a disciplina, com que “matérias-primas” (fontes) o historiador trabalha, como o tempo é organizado e as diferentes maneiras de interpretar o passado. Cai cada vez mais, sobretudo no ENEM.</p>
+        <div class="mini">
+          <a href="#his1-oque">O que é História</a>
+          <a href="#his1-fontes">Fontes históricas</a>
+          <a href="#his1-tempo">Tempo e periodização</a>
+          <a href="#his1-correntes">Correntes historiográficas</a>
+        </div>
+      </div>
+
+      <section class="card" id="his1-oque">
+        <div class="kicker">Fontes e Escrita · 1.1</div>
+        <h3>O que é História e o ofício do historiador</h3>
+        <p class="lead">A <b>História</b> estuda as ações humanas no <b>tempo</b>, buscando compreender as sociedades do passado e suas transformações. Ela não é uma “coleção de fatos prontos”: o historiador <b>interpreta</b> as fontes e <b>constrói</b> uma narrativa, sempre a partir de um ponto de vista e de perguntas do presente. Por isso o conhecimento histórico é uma <b>construção</b>, sujeita a revisões — não uma verdade absoluta.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a ideia de que a História é <b>interpretação</b> (e não cópia neutra do passado) é cobrada em textos sobre o ofício do historiador. Reconhecer que toda narrativa tem um <b>ponto de vista</b> e que o passado é relido conforme o presente é o ponto central.</div>
+        <div class="ex"><b>Exemplo:</b> por que um mesmo acontecimento é contado de formas diferentes? <span class="resp">Porque depende das fontes usadas e do ponto de vista de quem narra — a História é interpretação.</span></div>
+      </section>
+
+      <section class="card" id="his1-fontes">
+        <div class="kicker">Fontes e Escrita · 1.2</div>
+        <h3>Fontes históricas</h3>
+        <p class="lead">As <b>fontes</b> são os vestígios deixados pelas sociedades, a “matéria-prima” do historiador. Podem ser <b>escritas</b> (leis, cartas, jornais), <b>materiais</b> (ruínas, ferramentas, moedas), <b>iconográficas</b> (pinturas, fotos), <b>orais</b> (relatos, memórias) e <b>imateriais</b> (músicas, festas, tradições). A ampliação do que conta como fonte (não só documentos oficiais) foi uma grande mudança da historiografia do século XX.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> identificar o tipo de fonte e <b>analisá-la criticamente</b> — quem produziu, com que intenção, o que revela e o que omite. O ENEM adora apresentar uma fonte (imagem, charge, trecho) e pedir interpretação no contexto histórico.</div>
+        <div class="ex"><b>Exemplo:</b> uma propaganda nazista serve como fonte histórica confiável? <span class="resp">Sim, mas como fonte da <b>propaganda</b> (revela a ideologia/intenção), não como retrato neutro dos fatos.</span></div>
+      </section>
+
+      <section class="card" id="his1-tempo">
+        <div class="kicker">Fontes e Escrita · 1.3</div>
+        <h3>Tempo histórico e periodização</h3>
+        <p class="lead">Para organizar o estudo, divide-se o tempo em <b>períodos</b> (Idade Antiga, Média, Moderna, Contemporânea). Mas essa <b>periodização</b> é uma <b>convenção</b> — eurocêntrica e com marcos discutíveis (a “queda de Roma” em 476, a de Constantinopla em 1453). O tempo histórico não é só cronológico: há ritmos diferentes (eventos rápidos × estruturas de longa duração) e ele varia entre culturas.</p>
+        <div class="formula-box">Antiga (até 476) · Média (476–1453) · Moderna (1453–1789) · Contemporânea (1789–hoje)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> criticar a periodização tradicional (é <b>eurocêntrica</b> e artificial) e reconhecer diferentes <b>durações</b> do tempo histórico. Saber os marcos clássicos ajuda, mas a prova valoriza quem entende que são convenções.</div>
+        <div class="ex"><b>Exemplo:</b> por que a divisão em “Idades” é criticada? <span class="resp">É eurocêntrica e usa marcos europeus que não fazem sentido para outras sociedades.</span></div>
+      </section>
+
+      <section class="card" id="his1-correntes">
+        <div class="kicker">Fontes e Escrita · 1.4</div>
+        <h3>Correntes historiográficas</h3>
+        <p class="lead">Existem diferentes formas de <b>escrever</b> a História. O <b>Positivismo</b> (séc. XIX) focava fatos políticos, grandes personagens e documentos oficiais, buscando “neutralidade”. O <b>Materialismo histórico</b> (Marx) explica a História pela <b>luta de classes</b> e pelas condições econômicas. A <b>Escola dos Annales</b> ampliou os temas (economia, mentalidades, cotidiano) e as fontes. A <b>Nova História</b> trouxe a história do cotidiano, das mulheres, das minorias.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar a corrente à sua abordagem (positivista = fatos/heróis; marxista = economia/classes; Annales = longa duração/cotidiano). Identificar a <b>perspectiva</b> de um texto historiográfico cai em provas mais teóricas.</div>
+        <div class="ex"><b>Exemplo:</b> uma análise que explica a Revolução pela economia e pela luta de classes segue qual corrente? <span class="resp">O materialismo histórico (marxista).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 1 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger1">
+        <div class="num">II · História Geral</div>
+        <h2>1. Ocupação do Espaço, Meio Ambiente e Pré-História</h2>
+        <p>O começo da trajetória humana: como os primeiros grupos ocuparam os continentes, sua relação com o meio ambiente e a grande virada do Neolítico, quando a humanidade passou a produzir o próprio alimento.</p>
+        <div class="mini">
+          <a href="#ger1-prehist">Pré-História e ocupação humana</a>
+          <a href="#ger1-ambiente">Revolução Neolítica</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger1-prehist">
+        <div class="kicker">Pré-História · 1.1</div>
+        <h3>Pré-História e ocupação humana</h3>
+        <p class="lead">A <b>Pré-História</b> é o longo período antes da escrita, dividido sobretudo pelo uso de instrumentos: <b>Paleolítico</b> (pedra lascada, caça e coleta, nomadismo) e <b>Neolítico</b> (pedra polida). Surgida na <b>África</b>, a espécie humana se espalhou pelos continentes (Ásia, Europa, Oceania e, por último, a América), adaptando-se a diferentes ambientes. Eram grupos <b>nômades</b>, vivendo da caça, pesca e coleta.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>origem africana</b> e a dispersão humana, e a vida nômade no Paleolítico (caça/coleta). Cuidado com o termo “Pré-História”, hoje criticado por sugerir que esses povos eram “sem história”.</div>
+        <div class="ex"><b>Exemplo:</b> como viviam os grupos do período Paleolítico? <span class="resp">Eram nômades, caçadores-coletores, usando instrumentos de pedra lascada.</span></div>
+      </section>
+
+      <section class="card" id="ger1-ambiente">
+        <div class="kicker">Pré-História · 1.2</div>
+        <h3>A Revolução Neolítica e o meio ambiente</h3>
+        <p class="lead">Por volta de <b>10.000 a.C.</b>, grupos humanos passaram a <b>cultivar plantas</b> e <b>domesticar animais</b> — a <b>Revolução Agrícola (Neolítica)</b>. Isso permitiu a <b>fixação</b> (sedentarismo), o crescimento da população, o surgimento de aldeias, do <b>excedente</b> de alimentos, da propriedade e da divisão social. Foi a base para as primeiras cidades e civilizações. A relação com o <b>meio ambiente</b> tornou-se de transformação ativa da natureza.</p>
+        <div class="formula-box">caça/coleta + nomadismo → agricultura + sedentarismo (Revolução Neolítica, ~10.000 a.C.)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>Revolução Neolítica</b> como marco (sedentarização, excedente, desigualdade social e Estado) é muito cobrada. Relacionar o domínio da agricultura ao surgimento das primeiras civilizações é o raciocínio central.</div>
+        <div class="ex"><b>Exemplo:</b> qual mudança permitiu o surgimento das cidades e do excedente agrícola? <span class="resp">A Revolução Neolítica (agricultura + domesticação + sedentarismo).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 2 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger2">
+        <div class="num">II · História Geral</div>
+        <h2>2. Mundo Antigo</h2>
+        <p>As primeiras grandes civilizações: as do Oriente (Egito, Mesopotâmia), organizadas em torno dos rios e do poder religioso, e as clássicas (Grécia e Roma), que moldaram a política, a filosofia e o direito ocidentais.</p>
+        <div class="mini">
+          <a href="#ger2-oriental">Antiguidade Oriental</a>
+          <a href="#ger2-grecia">Grécia Antiga</a>
+          <a href="#ger2-roma">Roma Antiga</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger2-oriental">
+        <div class="kicker">Mundo Antigo · 2.1</div>
+        <h3>Antiguidade Oriental (Egito e Mesopotâmia)</h3>
+        <p class="lead">As primeiras civilizações surgiram em <b>vales de rios</b> férteis (“civilizações hidráulicas”): o <b>Egito</b> (rio Nilo) e a <b>Mesopotâmia</b> (rios Tigre e Eufrates). Eram sociedades <b>agrárias</b>, marcadas por poder <b>centralizado e teocrático</b> (o faraó era um deus vivo), forte hierarquia social, escravidão e religião <b>politeísta</b>. Legados: escrita (hieróglifos, cuneiforme), o calendário, a matemática e códigos de leis (Código de Hamurabi, da “lei de talião”).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a relação <b>rio–agricultura–poder</b> (controle das águas justifica o Estado forte) e o caráter <b>teocrático</b>. O Código de Hamurabi (“olho por olho”) e a escrita como marco do fim da Pré-História são clássicos.</div>
+        <div class="ex"><b>Exemplo:</b> por que o Egito é chamado de “dádiva do Nilo”? <span class="resp">As cheias do Nilo fertilizavam o solo, base de toda a economia agrária egípcia.</span></div>
+      </section>
+
+      <section class="card" id="ger2-grecia">
+        <div class="kicker">Mundo Antigo · 2.2</div>
+        <h3>Grécia Antiga</h3>
+        <p class="lead">A Grécia organizava-se em <b>cidades-Estado</b> (pólis) independentes, com destaque para <b>Atenas</b> (berço da <b>democracia</b>, embora restrita a homens livres — excluía mulheres, escravos e estrangeiros) e <b>Esparta</b> (militarista e oligárquica). Foi o berço da <b>filosofia</b> (Sócrates, Platão, Aristóteles), do teatro, dos Jogos Olímpicos e de um pensamento <b>racional</b> sobre o mundo. A religião era politeísta e antropomórfica.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>democracia ateniense</b> e seus <b>limites</b> (direta, mas excludente) — comparação com a democracia atual é certeira. Contrastar Atenas (cultura/democracia) × Esparta (militarismo) e o legado da filosofia grega.</div>
+        <div class="ex"><b>Exemplo:</b> a democracia ateniense era igual à atual? <span class="resp">Não — era direta, mas excluía mulheres, escravos e estrangeiros (só homens livres participavam).</span></div>
+      </section>
+
+      <section class="card" id="ger2-roma">
+        <div class="kicker">Mundo Antigo · 2.3</div>
+        <h3>Roma Antiga</h3>
+        <p class="lead">Roma passou por três fases: <b>Monarquia</b>, <b>República</b> (poder do Senado, expansão pelo Mediterrâneo, conflitos entre patrícios e plebeus) e <b>Império</b> (a partir de Augusto). Construiu um vasto domínio sustentado pelo <b>exército</b>, pela <b>escravidão</b> e pela engenharia (estradas, aquedutos). Seu maior legado é o <b>Direito Romano</b>, base das leis ocidentais. O Império enfraqueceu e o Ocidente “caiu” em <b>476</b> (invasões germânicas), marco do fim da Antiguidade.</p>
+        <div class="formula-box">Monarquia → República → Império · queda do Império Romano do Ocidente: 476</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as fases de Roma, o <b>Direito Romano</b> como legado e as causas da crise/queda do Império (crise escravista, gastos militares, invasões). “Pão e circo” como controle social aparece em contexto. A queda de Roma como marco do fim da Idade Antiga.</div>
+        <div class="ex"><b>Exemplo:</b> qual é o principal legado jurídico de Roma para o Ocidente? <span class="resp">O Direito Romano, base dos sistemas jurídicos atuais.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 3 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger3">
+        <div class="num">II · História Geral</div>
+        <h2>3. Idade Média</h2>
+        <p>O “milênio medieval” (séc. V–XV): a sociedade feudal e seus laços de dependência, o enorme poder da Igreja, o florescimento do mundo islâmico e de Bizâncio, e a crise que abriu caminho para a Idade Moderna.</p>
+        <div class="mini">
+          <a href="#ger3-feudal">Feudalismo</a>
+          <a href="#ger3-igreja">Igreja e cultura medieval</a>
+          <a href="#ger3-islabiz">Islã e Bizâncio</a>
+          <a href="#ger3-crise">Crise do feudalismo</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger3-feudal">
+        <div class="kicker">Idade Média · 3.1</div>
+        <h3>Feudalismo</h3>
+        <p class="lead">Após a queda de Roma, formou-se na Europa o <b>feudalismo</b>: economia <b>rural e de subsistência</b>, centrada no <b>feudo</b>. A sociedade era <b>estamental</b> (rígida, definida pelo nascimento): <b>clero</b> (rezava), <b>nobreza</b> (guerreava) e <b>servos/camponeses</b> (trabalhavam). Os laços eram de <b>suserania e vassalagem</b> (entre nobres) e de <b>servidão</b> (o servo estava preso à terra, pagando pesadas obrigações ao senhor, como a corveia e a talha).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a sociedade <b>estamental</b> (sem mobilidade social) e as <b>relações de servidão</b> (o servo não era escravo, mas estava preso à terra). Diferenciar suserania-vassalagem (entre nobres) de servidão (senhor-servo) é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> o servo medieval era um escravo? <span class="resp">Não — estava preso à terra e devia obrigações, mas não era propriedade que se comprava/vendia.</span></div>
+      </section>
+
+      <section class="card" id="ger3-igreja">
+        <div class="kicker">Idade Média · 3.2</div>
+        <h3>A Igreja e a cultura medieval</h3>
+        <p class="lead">A <b>Igreja Católica</b> foi a instituição mais poderosa da Idade Média: grande <b>proprietária de terras</b>, deteve o monopólio do saber (mosteiros, cópia de livros) e moldou a mentalidade — o <b>teocentrismo</b> (Deus no centro de tudo). Controlava a vida pela fé, pelos sacramentos e pelo medo do inferno, e perseguia desvios como heresias (Inquisição). A cultura, a arte (românico, gótico) e a educação eram dominadas pela religião.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>teocentrismo</b> e o poder econômico/ideológico da Igreja (será contestado depois pelo Renascimento e pela Reforma). O monopólio cultural e a relação fé × razão na Escolástica aparecem em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> que visão de mundo predominava na mentalidade medieval? <span class="resp">O teocentrismo (Deus como centro e explicação de tudo).</span></div>
+      </section>
+
+      <section class="card" id="ger3-islabiz">
+        <div class="kicker">Idade Média · 3.3</div>
+        <h3>Mundo islâmico e Império Bizantino</h3>
+        <p class="lead">Enquanto a Europa Ocidental se ruralizava, floresciam dois grandes centros. O <b>Império Bizantino</b> (Império Romano do Oriente, capital <b>Constantinopla</b>) preservou a cultura greco-romana e prosperou no comércio por mil anos, até 1453. O <b>mundo islâmico</b>, unificado pela religião fundada por <b>Maomé</b> (séc. VII), expandiu-se da Arábia à Espanha, destacando-se no comércio, na medicina, na matemática (álgebra) e na preservação do saber clássico.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o papel de <b>árabes e bizantinos</b> como pontes culturais e comerciais (e o avanço científico islâmico, frequentemente subestimado). A tomada de <b>Constantinopla pelos turcos em 1453</b> é marco da Idade Moderna e estímulo às Grandes Navegações.</div>
+        <div class="ex"><b>Exemplo:</b> que evento de 1453 estimulou os europeus a buscar novas rotas marítimas? <span class="resp">A tomada de Constantinopla pelos turcos otomanos (bloqueou o comércio terrestre com o Oriente).</span></div>
+      </section>
+
+      <section class="card" id="ger3-crise">
+        <div class="kicker">Idade Média · 3.4</div>
+        <h3>Baixa Idade Média e a crise do feudalismo</h3>
+        <p class="lead">A partir do século XI, o <b>renascimento comercial e urbano</b> (reativado pelas <b>Cruzadas</b>) trouxe o crescimento das cidades (burgos) e de uma nova classe, a <b>burguesia</b>. No século XIV, uma grande <b>crise</b> abalou o feudalismo: a <b>Peste Negra</b> (que matou cerca de 1/3 da Europa), fomes, a Guerra dos Cem Anos e revoltas camponesas. Esse colapso, somado ao fortalecimento dos reis, marcou a <b>transição</b> do feudalismo para o capitalismo e a Idade Moderna.</p>
+        <div class="formula-box">renascimento comercial e urbano + Peste Negra (séc. XIV) → crise do feudalismo</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>crise do século XIV</b> e o renascimento comercial/urbano como motores da transição feudalismo→capitalismo. O surgimento da <b>burguesia</b> e o fortalecimento dos reis (rumo ao Absolutismo) são o fio condutor para a Idade Moderna.</div>
+        <div class="ex"><b>Exemplo:</b> que catástrofe do século XIV acelerou a crise do feudalismo? <span class="resp">A Peste Negra, que dizimou cerca de um terço da população europeia.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 4 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger4">
+        <div class="num">II · História Geral</div>
+        <h2>4. Mercantilismo e Navegações (séculos XV–XVI)</h2>
+        <p>O nascimento do mundo moderno: a formação dos Estados nacionais e do Absolutismo, a política econômica mercantilista e as Grandes Navegações, que conectaram os continentes e iniciaram a expansão europeia.</p>
+        <div class="mini">
+          <a href="#ger4-estados">Estados Nacionais e Absolutismo</a>
+          <a href="#ger4-merc">Mercantilismo</a>
+          <a href="#ger4-naveg">Grandes Navegações</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger4-estados">
+        <div class="kicker">Idade Moderna · 4.1</div>
+        <h3>Formação dos Estados Nacionais e Absolutismo</h3>
+        <p class="lead">Com a crise do feudalismo, os <b>reis</b> centralizaram o poder, formando os <b>Estados nacionais modernos</b>, com territórios, exércitos, moeda e leis unificados. Surgiu o <b>Absolutismo</b>: o poder concentrado nas mãos do rei, justificado pela teoria do <b>direito divino</b> (o rei governaria em nome de Deus — defendida por Bossuet; Hobbes deu uma versão racional). Houve uma <b>aliança</b> entre o rei e a <b>burguesia</b> (que queria ordem e mercados) contra a velha nobreza feudal.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>centralização do poder</b> e as justificativas do Absolutismo (direito divino × contrato de Hobbes). A frase “O Estado sou eu” (Luís XIV) e a aliança rei-burguesia são clássicas, e preparam o terreno para o mercantilismo.</div>
+        <div class="ex"><b>Exemplo:</b> qual teoria justificava o poder absoluto do rei como vindo de Deus? <span class="resp">A teoria do direito divino dos reis (Bossuet).</span></div>
+      </section>
+
+      <section class="card" id="ger4-merc">
+        <div class="kicker">Idade Moderna · 4.2</div>
+        <h3>Mercantilismo</h3>
+        <p class="lead">O <b>mercantilismo</b> foi a política econômica dos Estados absolutistas (séc. XVI–XVIII). Seus princípios: <b>metalismo</b> (riqueza = acúmulo de ouro e prata), <b>balança comercial favorável</b> (exportar mais do que importar), <b>protecionismo</b> e <b>pacto colonial</b> (o monopólio do comércio com as colônias, que existiam para enriquecer a metrópole). O Estado intervinha fortemente na economia.</p>
+        <div class="formula-box">metalismo + balança comercial favorável + protecionismo + pacto colonial</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os princípios mercantilistas e, sobretudo, o <b>pacto/exclusivo colonial</b> (a colônia só comercia com a metrópole) — chave para entender o Brasil Colônia. Contrastar com o liberalismo (que virá depois, criticando a intervenção estatal).</div>
+        <div class="ex"><b>Exemplo:</b> o que era o “pacto colonial”? <span class="resp">O monopólio comercial da metrópole sobre a colônia, que só podia comerciar com ela.</span></div>
+      </section>
+
+      <section class="card" id="ger4-naveg">
+        <div class="kicker">Idade Moderna · 4.3</div>
+        <h3>Grandes Navegações</h3>
+        <p class="lead">Nos séculos XV–XVI, os europeus lançaram-se ao mar em busca de novas <b>rotas para as Índias</b> (especiarias) e de metais preciosos, contornando o bloqueo turco ao Mediterrâneo. <b>Portugal</b> (pioneiro, com Sagres e a rota africana) e a <b>Espanha</b> (Colombo chega à América em 1492) lideraram. Foi possível pelo avanço técnico (bússola, caravela, astrolábio), pelo apoio do <b>Estado</b> e da <b>burguesia</b>. O <b>Tratado de Tordesilhas</b> (1494) dividiu o “novo mundo” entre as duas coroas.</p>
+        <div class="formula-box">1492 — Colombo chega à América · 1494 — Tratado de Tordesilhas · 1500 — chegada ao Brasil</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas</b> (busca de rotas/metais, fim do bloqueio turco) e as <b>condições</b> (técnica + Estado + burguesia) do pioneirismo ibérico. Tordesilhas e o início da expansão europeia/colonização da América são certeiros.</div>
+        <div class="ex"><b>Exemplo:</b> que tratado dividiu as terras “descobertas” entre Portugal e Espanha? <span class="resp">O Tratado de Tordesilhas (1494).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 5 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger5">
+        <div class="num">II · História Geral</div>
+        <h2>5. Colonialismos</h2>
+        <p>A expansão europeia transformou continentes inteiros em colônias. Aqui se distinguem os tipos de colonização e se entende o motor desumano do sistema: o tráfico e a escravidão atlântica, que sustentaram a economia colonial.</p>
+        <div class="mini">
+          <a href="#ger5-sistema">O sistema colonial</a>
+          <a href="#ger5-trafico">Escravidão e tráfico atlântico</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger5-sistema">
+        <div class="kicker">Colonialismos · 5.1</div>
+        <h3>O sistema colonial: exploração e povoamento</h3>
+        <p class="lead">A colonização moderna serviu ao <b>mercantilismo</b>: as colônias existiam para enriquecer a metrópole (pacto colonial). Distinguem-se dois tipos: as <b>colônias de exploração</b> (tropicais, como o Brasil — voltadas para exportar produtos com <b>monocultura</b>, <b>latifúndio</b> e <b>trabalho escravo</b>) e as <b>colônias de povoamento</b> (como o norte dos EUA — produção variada para o mercado interno, pequena propriedade, trabalho livre). Essa diferença explica trajetórias econômicas distintas.</p>
+        <table class="tab"><thead><tr><th>Exploração</th><th>Povoamento</th></tr></thead><tbody>
+          <tr><td>monocultura de exportação</td><td>policultura / mercado interno</td></tr>
+          <tr><td>latifúndio + escravidão</td><td>pequena propriedade + trabalho livre</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> a oposição <b>exploração × povoamento</b> é uma das comparações mais cobradas (e ajuda a explicar as diferenças entre a América Latina e os EUA). Relacionar o tipo de colônia ao pacto colonial e ao mercantilismo.</div>
+        <div class="ex"><b>Exemplo:</b> o Brasil foi colônia de exploração ou de povoamento? <span class="resp">De exploração (monocultura, latifúndio e escravidão voltados à metrópole).</span></div>
+      </section>
+
+      <section class="card" id="ger5-trafico">
+        <div class="kicker">Colonialismos · 5.2</div>
+        <h3>Escravidão e tráfico atlântico</h3>
+        <p class="lead">A economia colonial baseou-se no <b>trabalho escravo</b>, sobretudo de <b>africanos</b> traficados pelo Atlântico. O <b>tráfico negreiro</b> foi um negócio extremamente lucrativo, que arrancou milhões de pessoas da África em condições brutais (os “navios negreiros”). A escravidão sustentou a produção de açúcar, ouro e algodão nas Américas e deixou marcas profundas — sociais, econômicas e raciais — até hoje. Sempre houve <b>resistência</b> (fugas, quilombos, revoltas).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o tráfico como <b>engrenagem econômica</b> do sistema colonial (não apenas “mão de obra”), as condições desumanas e a <b>resistência</b> escrava (quilombos). Interdisciplinar com Sociologia e atualíssimo (debates sobre racismo e reparação).</div>
+        <div class="ex"><b>Exemplo:</b> qual era a principal mão de obra das colônias de exploração? <span class="resp">A escravizada, sobretudo africana, trazida pelo tráfico atlântico.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 6 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger6">
+        <div class="num">II · História Geral</div>
+        <h2>6. Reforma Protestante e Contrarreforma</h2>
+        <p>A ruptura da unidade religiosa da Europa: a Reforma quebrou o monopólio católico e abriu espaço para novas igrejas e valores (afinados com a burguesia), enquanto a Igreja reagia com a Contrarreforma.</p>
+        <div class="mini">
+          <a href="#ger6-reforma">Reforma Protestante</a>
+          <a href="#ger6-contra">Contrarreforma</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger6-reforma">
+        <div class="kicker">Reforma · 6.1</div>
+        <h3>Reforma Protestante</h3>
+        <p class="lead">Em <b>1517</b>, o monge <b>Martinho Lutero</b> publicou suas <b>95 teses</b>, criticando a Igreja Católica — sobretudo a venda de <b>indulgências</b> (o “perdão” comprado). A Reforma defendia a salvação pela <b>fé</b>, a <b>Bíblia</b> como única autoridade e o fim de intermediários. Espalhou-se com <b>Calvino</b> (cuja ideia de predestinação e valorização do trabalho/lucro agradava à <b>burguesia</b>) e com o <b>Anglicanismo</b> na Inglaterra (rompimento do rei Henrique VIII com o Papa).</p>
+        <div class="formula-box">1517 — 95 teses de Lutero · luteranismo · calvinismo · anglicanismo</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas</b> (críticas à Igreja + ascensão da burguesia, que via no calvinismo a legitimação do lucro) e as principais vertentes. A relação entre <b>calvinismo e espírito capitalista</b> (Max Weber) é gancho interdisciplinar com Sociologia.</div>
+        <div class="ex"><b>Exemplo:</b> qual prática da Igreja Lutero atacou diretamente em 1517? <span class="resp">A venda de indulgências (o “perdão dos pecados” por dinheiro).</span></div>
+      </section>
+
+      <section class="card" id="ger6-contra">
+        <div class="kicker">Reforma · 6.2</div>
+        <h3>Contrarreforma (Reforma Católica)</h3>
+        <p class="lead">A Igreja Católica reagiu ao avanço protestante com a <b>Contrarreforma</b>. No <b>Concílio de Trento</b> (1545–1563), reafirmou seus dogmas e disciplinou o clero. Fortaleceu a <b>Inquisição</b> (tribunais contra hereges) e criou o <b>Índice</b> de livros proibidos. Fundou a <b>Companhia de Jesus</b> (os <b>jesuítas</b>), ordem voltada à educação e à catequese — que teria papel central na colonização da América (inclusive no Brasil).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os instrumentos da reação católica (Concílio de Trento, Inquisição, Índice, jesuítas) e o papel dos <b>jesuítas na catequese</b> das colônias — ligação direta com o Brasil Colônia. Não confundir Contrarreforma (reação) com a Reforma (ruptura).</div>
+        <div class="ex"><b>Exemplo:</b> que ordem religiosa, criada na Contrarreforma, atuou na catequese indígena no Brasil? <span class="resp">A Companhia de Jesus (os jesuítas).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 7 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger7">
+        <div class="num">II · História Geral</div>
+        <h2>7. Renascimento, Revolução Científica e Iluminismo</h2>
+        <p>A grande virada do pensamento ocidental: do teocentrismo medieval ao antropocentrismo e à razão. O Renascimento, a ciência moderna e o Iluminismo prepararam as revoluções políticas e a mentalidade contemporânea.</p>
+        <div class="mini">
+          <a href="#ger7-renasc">Renascimento</a>
+          <a href="#ger7-cientifica">Revolução Científica</a>
+          <a href="#ger7-ilum">Iluminismo</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger7-renasc">
+        <div class="kicker">Mentalidades · 7.1</div>
+        <h3>Renascimento</h3>
+        <p class="lead">O <b>Renascimento</b> (séc. XIV–XVI, iniciado na Itália) foi um movimento cultural e artístico que retomou os ideais <b>greco-romanos</b>. Seus valores: o <b>humanismo</b> (valorização do ser humano), o <b>antropocentrismo</b> (o homem no centro, contra o teocentrismo medieval), o <b>racionalismo</b> e o <b>naturalismo</b>. Foi patrocinado pela <b>burguesia</b> e por mecenas. Nomes: Leonardo da Vinci, Michelangelo, Rafael.</p>
+        <div class="formula-box">teocentrismo (medieval) → antropocentrismo + humanismo (Renascimento)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a passagem do <b>teocentrismo ao antropocentrismo</b> e o <b>humanismo</b> como marcos da mentalidade moderna; o financiamento pela burguesia/mecenato. Pegadinha: o Renascimento é <b>cultural</b>, não a Reforma (religiosa) — não confundir.</div>
+        <div class="ex"><b>Exemplo:</b> que mudança de mentalidade o Renascimento representa? <span class="resp">A passagem do teocentrismo (Deus no centro) para o antropocentrismo (o ser humano no centro).</span></div>
+      </section>
+
+      <section class="card" id="ger7-cientifica">
+        <div class="kicker">Mentalidades · 7.2</div>
+        <h3>Revolução Científica</h3>
+        <p class="lead">Entre os séculos XVI e XVII, o <b>método científico</b> (observação, experimentação, razão) substituiu as explicações baseadas na fé e na tradição. <b>Copérnico</b> e <b>Galileu</b> defenderam o <b>heliocentrismo</b> (a Terra gira em torno do Sol), contrariando a Igreja; <b>Newton</b> formulou as leis da física. Essa nova forma de conhecer o mundo é a base da ciência moderna.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>heliocentrismo</b> e o conflito <b>ciência × Igreja</b> (Galileu), e o método científico como ruptura com o pensamento medieval. Conecta com a área de “investigação científica” de outras disciplinas e com o Iluminismo.</div>
+        <div class="ex"><b>Exemplo:</b> que teoria de Copérnico e Galileu entrou em choque com a Igreja? <span class="resp">O heliocentrismo (o Sol, e não a Terra, no centro).</span></div>
+      </section>
+
+      <section class="card" id="ger7-ilum">
+        <div class="kicker">Mentalidades · 7.3</div>
+        <h3>Iluminismo</h3>
+        <p class="lead">O <b>Iluminismo</b> (séc. XVIII, “Século das Luzes”) defendeu a <b>razão</b> como guia, contra o absolutismo, o mercantilismo e os privilégios. Ideias-chave: <b>liberdade</b>, <b>igualdade</b>, separação dos <b>três poderes</b> (Montesquieu), <b>soberania popular</b> (Rousseau) e <b>liberalismo econômico</b> (Adam Smith, contra a intervenção do Estado). Foi a base ideológica da <b>Revolução Francesa</b>, das independências americanas e do mundo liberal.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> associar cada pensador à sua ideia (Montesquieu–tripartição dos poderes; Rousseau–soberania popular/contrato social; Smith–liberalismo econômico) e identificar o Iluminismo como <b>base</b> das revoluções burguesas. Tema certeiro e muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> qual iluminista propôs a divisão dos três poderes? <span class="resp">Montesquieu (Executivo, Legislativo e Judiciário).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 8 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger8">
+        <div class="num">II · História Geral</div>
+        <h2>8. Revolução Francesa</h2>
+        <p>O marco que encerra a Idade Moderna e inaugura a Contemporânea (1789): a burguesia, armada das ideias iluministas, derrubou o Antigo Regime e espalhou os ideais de “Liberdade, Igualdade e Fraternidade”.</p>
+        <div class="mini">
+          <a href="#ger8-franc">A Revolução Francesa</a>
+          <a href="#ger8-napo">Era Napoleônica</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger8-franc">
+        <div class="kicker">Revolução Francesa · 8.1</div>
+        <h3>A Revolução Francesa (1789)</h3>
+        <p class="lead">A França do <b>Antigo Regime</b> era marcada por desigualdade: o <b>Terceiro Estado</b> (burguesia, trabalhadores, camponeses) sustentava com impostos os privilégios do clero e da nobreza. Em <b>1789</b>, a crise econômica e as ideias iluministas levaram à <b>Revolução</b> (Queda da Bastilha). Fases: a <b>Monárquica</b>, a radical <b>Convenção</b> (com o Terror de Robespierre) e o <b>Diretório</b>. Lema: <b>“Liberdade, Igualdade, Fraternidade”</b> e a Declaração dos Direitos do Homem.</p>
+        <div class="formula-box">1789 — Queda da Bastilha · Liberdade, Igualdade, Fraternidade · fim do Antigo Regime</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas</b> (desigualdade do Antigo Regime + Iluminismo) e o significado: <b>revolução burguesa</b> que marca o início da Idade Contemporânea. A Declaração dos Direitos do Homem e os ideais revolucionários são certeiros e atuais.</div>
+        <div class="ex"><b>Exemplo:</b> qual grupo social liderou a Revolução Francesa contra os privilégios? <span class="resp">A burguesia (parte do Terceiro Estado).</span></div>
+      </section>
+
+      <section class="card" id="ger8-napo">
+        <div class="kicker">Revolução Francesa · 8.2</div>
+        <h3>Era Napoleônica</h3>
+        <p class="lead"><b>Napoleão Bonaparte</b> chegou ao poder (golpe de 1799) e consolidou conquistas da Revolução, mas de forma autoritária. Criou o <b>Código Civil</b> (que difundiu igualdade jurídica e direito de propriedade pela Europa), expandiu o império com guerras e impôs o <b>Bloqueio Continental</b> contra a Inglaterra. Esse bloqueio teve efeito direto no Brasil: levou a <b>família real portuguesa</b> a fugir para o Rio de Janeiro em <b>1808</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>Código Napoleônico</b> (difusão dos ideais liberais) e, principalmente, a ligação do <b>Bloqueio Continental</b> com a <b>vinda da Corte para o Brasil (1808)</b> — conexão direta com a História do Brasil, muito cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> que medida de Napoleão levou a Corte portuguesa a fugir para o Brasil em 1808? <span class="resp">O Bloqueio Continental contra a Inglaterra (Portugal, aliado inglês, foi invadido).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 9 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger9">
+        <div class="num">II · História Geral</div>
+        <h2>9. Revolução Industrial</h2>
+        <p>A transformação que mudou o modo de produzir e de viver: a passagem da manufatura para a fábrica e a máquina, o surgimento do operariado e os profundos impactos sociais que ainda definem o mundo do trabalho.</p>
+        <div class="mini">
+          <a href="#ger9-industrial">A Revolução Industrial</a>
+          <a href="#ger9-impactos">Impactos e movimento operário</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger9-industrial">
+        <div class="kicker">Revolução Industrial · 9.1</div>
+        <h3>A Revolução Industrial</h3>
+        <p class="lead">Iniciada na <b>Inglaterra</b> (séc. XVIII), substituiu a produção <b>manual/artesanal</b> pela <b>maquinofatura</b> nas <b>fábricas</b>, movida por novas fontes de energia (máquina a vapor, carvão). A Inglaterra foi pioneira por reunir capital, mão de obra, carvão/ferro, mercado e estabilidade política. Consolidou o <b>capitalismo industrial</b> e a divisão entre <b>burguesia</b> (dona dos meios de produção) e <b>proletariado</b> (vende a força de trabalho).</p>
+        <div class="formula-box">artesanato → manufatura → maquinofatura (fábrica + máquina a vapor)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>fatores do pioneirismo inglês</b> e a nova relação <b>burguesia × proletariado</b>. As “fases” (1ª: vapor/carvão; 2ª: aço, eletricidade, petróleo; 3ª: informática) e a divisão internacional do trabalho são frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> por que a Revolução Industrial começou na Inglaterra? <span class="resp">Reunia capital, mão de obra, carvão e ferro, mercado consumidor e estabilidade política.</span></div>
+      </section>
+
+      <section class="card" id="ger9-impactos">
+        <div class="kicker">Revolução Industrial · 9.2</div>
+        <h3>Impactos sociais e movimento operário</h3>
+        <p class="lead">A industrialização trouxe <b>urbanização</b> acelerada e <b>péssimas condições</b> de trabalho: jornadas de 14–16 horas, salários baixíssimos, trabalho infantil e feminino mal pago, insalubridade. Em reação, surgiram movimentos operários: o <b>ludismo</b> (quebra de máquinas), o <b>cartismo</b> (luta por direitos políticos) e os <b>sindicatos</b>, além das ideologias <b>socialistas</b>. Aos poucos, conquistaram-se direitos trabalhistas.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>condições de trabalho</b> e as formas de <b>resistência operária</b> (ludismo × cartismo × sindicalismo) — base para entender o socialismo. Conecta com debates atuais sobre direitos trabalhistas e automação.</div>
+        <div class="ex"><b>Exemplo:</b> o que foi o ludismo? <span class="resp">Um movimento de operários que destruíam as máquinas, culpadas pelo desemprego e pela exploração.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 10 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger10">
+        <div class="num">II · História Geral</div>
+        <h2>10. Ideologias dos séculos XIX–XX</h2>
+        <p>As grandes correntes de pensamento que disputaram a organização do mundo industrial: o liberalismo e o capitalismo, as respostas socialistas, o imperialismo que repartiu o planeta e, no fim do século XX, o neoliberalismo.</p>
+        <div class="mini">
+          <a href="#ger10-liberal">Liberalismo e Capitalismo</a>
+          <a href="#ger10-social">Socialismos</a>
+          <a href="#ger10-imper">Imperialismo</a>
+          <a href="#ger10-neo">Neoliberalismo</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger10-liberal">
+        <div class="kicker">Ideologias · 10.1</div>
+        <h3>Liberalismo e Capitalismo</h3>
+        <p class="lead">O <b>liberalismo</b> (Adam Smith) defende a <b>liberdade econômica</b>: o Estado deve intervir o mínimo (<b>laissez-faire</b>), deixando o mercado se autorregular pela “mão invisível”. No plano político, defende liberdades individuais e a propriedade privada. É a ideologia da <b>burguesia</b> e a base do <b>capitalismo</b> — sistema fundado na propriedade privada dos meios de produção, no lucro, no trabalho assalariado e na livre concorrência.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> contrastar o <b>liberalismo</b> (Estado mínimo, mercado livre) com o <b>mercantilismo</b> anterior (Estado intervencionista) e com o socialismo. O capitalismo e suas fases (comercial, industrial, financeiro) estruturam toda a História Contemporânea.</div>
+        <div class="ex"><b>Exemplo:</b> o que prega o liberalismo econômico de Adam Smith? <span class="resp">A mínima intervenção do Estado na economia (laissez-faire), regulada pelo mercado.</span></div>
+      </section>
+
+      <section class="card" id="ger10-social">
+        <div class="kicker">Ideologias · 10.2</div>
+        <h3>Socialismos</h3>
+        <p class="lead">Como reação à exploração do capitalismo industrial, surgiram os <b>socialismos</b>. O <b>socialismo utópico</b> (Owen, Fourier) idealizava sociedades justas, sem dizer como chegar lá. O <b>socialismo científico</b> de <b>Marx e Engels</b> (Manifesto Comunista, 1848) analisou o capitalismo: a <b>luta de classes</b>, a <b>mais-valia</b> (lucro extraído do trabalhador) e a previsão de uma revolução do proletariado rumo ao comunismo (sociedade sem classes). Há ainda o <b>anarquismo</b> (fim do Estado).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar socialismo <b>utópico × científico</b> e dominar os conceitos marxistas (<b>luta de classes</b>, <b>mais-valia</b>) — interdisciplinar com Sociologia. Base para entender a Revolução Russa e a Guerra Fria.</div>
+        <div class="ex"><b>Exemplo:</b> o conceito de “mais-valia” de Marx se refere a quê? <span class="resp">À parte do valor produzido pelo trabalhador que é apropriada pelo capitalista (lucro).</span></div>
+      </section>
+
+      <section class="card" id="ger10-imper">
+        <div class="kicker">Ideologias · 10.3</div>
+        <h3>Imperialismo e Neocolonialismo</h3>
+        <p class="lead">No fim do século XIX, as potências industriais partiram para o <b>Imperialismo</b> (Neocolonialismo): dominar <b>África e Ásia</b> em busca de <b>matérias-primas</b>, <b>mercados</b> e investimentos para sua indústria. A <b>Conferência de Berlim</b> (1884–85) repartiu a África entre os europeus sem considerar os povos locais. O domínio era justificado por ideologias racistas como o <b>darwinismo social</b> e a “missão civilizadora”. Deixou fronteiras artificiais e conflitos até hoje.</p>
+        <div class="formula-box">Conferência de Berlim (1884–85): partilha da África entre potências europeias</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas econômicas</b> (matéria-prima/mercado para a 2ª Revolução Industrial), as <b>justificativas ideológicas</b> (darwinismo social, eurocentrismo) e as consequências (fronteiras artificiais, conflitos atuais na África). Tema certeiro.</div>
+        <div class="ex"><b>Exemplo:</b> que conferência repartiu o continente africano entre as potências europeias? <span class="resp">A Conferência de Berlim (1884–1885).</span></div>
+      </section>
+
+      <section class="card" id="ger10-neo">
+        <div class="kicker">Ideologias · 10.4</div>
+        <h3>Neoliberalismo</h3>
+        <p class="lead">O <b>neoliberalismo</b> é a retomada das ideias liberais no fim do século XX (anos 1970–80), em reação ao <b>Estado de Bem-Estar Social</b>. Prega o <b>Estado mínimo</b>, <b>privatizações</b>, desregulamentação, abertura de mercados e redução de gastos sociais. Foi aplicado por <b>Thatcher</b> (Reino Unido) e <b>Reagan</b> (EUA) e, nos anos 1990, em vários países da América Latina (inclusive no Brasil).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> caracterizar o neoliberalismo (Estado mínimo, privatizações) e situá-lo no contexto da <b>globalização</b> e do fim da Guerra Fria. Relacionar com as políticas dos anos 1990 no Brasil é gancho frequente.</div>
+        <div class="ex"><b>Exemplo:</b> quais líderes são associados à guinada neoliberal dos anos 1980? <span class="resp">Margaret Thatcher (Reino Unido) e Ronald Reagan (EUA).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 11 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger11">
+        <div class="num">II · História Geral</div>
+        <h2>11. Fascismos, Nazismo e Conflitos Mundiais</h2>
+        <p>A primeira metade do século XX: duas guerras mundiais, a Revolução Russa, a maior crise do capitalismo e a ascensão dos regimes totalitários. Período denso e dos mais cobrados nas provas.</p>
+        <div class="mini">
+          <a href="#ger11-1guerra">Primeira Guerra Mundial</a>
+          <a href="#ger11-russa">Revolução Russa</a>
+          <a href="#ger11-1929">Crise de 1929</a>
+          <a href="#ger11-totalit">Fascismo e Nazismo</a>
+          <a href="#ger11-2guerra">Segunda Guerra Mundial</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger11-1guerra">
+        <div class="kicker">Conflitos Mundiais · 11.1</div>
+        <h3>Primeira Guerra Mundial (1914–1918)</h3>
+        <p class="lead">Causada pela tensão entre as potências — <b>nacionalismo</b>, disputa <b>imperialista</b>, <b>militarismo</b> e o sistema de <b>alianças</b> (Tríplice Aliança × Tríplice Entente) — a guerra foi deflagrada pelo <b>assassinato do arquiduque Francisco Ferdinando</b> em Sarajevo (1914). Caracterizou-se pela <b>guerra de trincheiras</b> e por novas armas. Terminou em 1918 com a derrota alemã; o <b>Tratado de Versalhes</b> impôs duras punições à Alemanha — semente da Segunda Guerra.</p>
+        <div class="formula-box">1914–1918 · estopim: Sarajevo · trincheiras · Tratado de Versalhes (pune a Alemanha)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas</b> (nacionalismo + imperialismo + militarismo + alianças) e as <b>consequências</b> do Tratado de Versalhes (humilhação alemã → ascensão do nazismo). Distinguir o <b>estopim</b> (Sarajevo) das causas profundas é cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> como o Tratado de Versalhes contribuiu para a Segunda Guerra? <span class="resp">As punições humilhantes à Alemanha geraram revolta e crise, explorada depois pelo nazismo.</span></div>
+      </section>
+
+      <section class="card" id="ger11-russa">
+        <div class="kicker">Conflitos Mundiais · 11.2</div>
+        <h3>Revolução Russa (1917)</h3>
+        <p class="lead">Em 1917, a Rússia czarista — atrasada, agrária e abalada pela Primeira Guerra — viveu a <b>Revolução</b>. Os <b>bolcheviques</b>, liderados por <b>Lênin</b>, tomaram o poder (Revolução de Outubro) sob o lema “paz, terra e pão”. Foi a <b>primeira experiência socialista</b> da história, criando a <b>URSS</b> — uma economia <b>planificada</b>, com fim da propriedade privada dos meios de produção. Depois, sob <b>Stálin</b>, tornou-se uma ditadura industrializadora e repressiva.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a Revolução Russa como <b>primeiro Estado socialista</b> (aplicação prática do marxismo) e o contexto (czarismo + guerra). É a chave para entender a <b>Guerra Fria</b> e a polarização do século XX.</div>
+        <div class="ex"><b>Exemplo:</b> que país resultou da Revolução Russa de 1917? <span class="resp">A URSS (União Soviética), primeiro Estado socialista.</span></div>
+      </section>
+
+      <section class="card" id="ger11-1929">
+        <div class="kicker">Conflitos Mundiais · 11.3</div>
+        <h3>Crise de 1929</h3>
+        <p class="lead">A <b>quebra da Bolsa de Nova York</b> (1929) desencadeou a <b>Grande Depressão</b>, a maior crise do capitalismo. A causa foi a <b>superprodução</b> (produzia-se mais do que se conseguia consumir) somada à especulação financeira. O desemprego e a miséria se espalharam pelo mundo. A resposta nos EUA foi o <b>New Deal</b> (Roosevelt): forte <b>intervenção do Estado</b> na economia (obras públicas, empregos), inspirada nas ideias de <b>Keynes</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>superprodução</b> como causa e o <b>New Deal</b> (intervenção estatal/keynesianismo) como resposta — marca o fim do liberalismo puro. A crise também afetou o Brasil (queda do preço do café). Conecta com a ascensão dos totalitarismos.</div>
+        <div class="ex"><b>Exemplo:</b> qual foi a principal medida dos EUA para sair da crise de 1929? <span class="resp">O New Deal: intervenção do Estado com obras públicas e geração de empregos.</span></div>
+      </section>
+
+      <section class="card" id="ger11-totalit">
+        <div class="kicker">Conflitos Mundiais · 11.4</div>
+        <h3>Fascismo e Nazismo (totalitarismos)</h3>
+        <p class="lead">Na crise do entreguerras, ascenderam regimes <b>totalitários</b> de extrema-direita: o <b>Fascismo</b> de <b>Mussolini</b> (Itália) e o <b>Nazismo</b> de <b>Hitler</b> (Alemanha). Características comuns: <b>nacionalismo</b> extremo, <b>partido único</b>, <b>culto ao líder</b>, <b>militarismo</b>, anticomunismo, repressão e propaganda. O Nazismo somou o <b>racismo</b> e o <b>antissemitismo</b>, com a teoria da “raça ariana”, que levaria ao <b>Holocausto</b> (extermínio de milhões de judeus e outras minorias).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> as características do totalitarismo (partido único, líder, propaganda) e o que distingue o Nazismo (racismo/antissemitismo). Relacionar a ascensão à crise de 1929 e a Versalhes. Tema sensível e atual (combate ao autoritarismo).</div>
+        <div class="ex"><b>Exemplo:</b> que elemento diferencia o Nazismo do Fascismo italiano? <span class="resp">O racismo e o antissemitismo (teoria da “raça ariana”), que levaram ao Holocausto.</span></div>
+      </section>
+
+      <section class="card" id="ger11-2guerra">
+        <div class="kicker">Conflitos Mundiais · 11.5</div>
+        <h3>Segunda Guerra Mundial (1939–1945)</h3>
+        <p class="lead">A maior guerra da história começou com a <b>invasão da Polônia</b> por Hitler (1939), opondo o <b>Eixo</b> (Alemanha, Itália, Japão) aos <b>Aliados</b> (EUA, URSS, Reino Unido, França). Marcou-a o <b>Holocausto</b> e o uso de novas tecnologias bélicas. Terminou em <b>1945</b> com a derrota do Eixo e as <b>bombas atômicas</b> sobre Hiroshima e Nagasaki. Consequências: ~50 milhões de mortos, a criação da <b>ONU</b>, a divisão do mundo entre <b>EUA e URSS</b> (início da Guerra Fria).</p>
+        <div class="formula-box">1939–1945 · Eixo × Aliados · Holocausto · bombas atômicas (1945) · criação da ONU</div>
+        <div class="uso"><b>Como cai no vestibular:</b> Eixo × Aliados, o <b>Holocausto</b>, as bombas atômicas e as consequências (ONU, bipolaridade EUA-URSS). A passagem direta para a <b>Guerra Fria</b> é o elo mais cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> que evento de 1945 marcou o fim da Segunda Guerra no Pacífico? <span class="resp">As bombas atômicas dos EUA sobre Hiroshima e Nagasaki.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 12 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger12">
+        <div class="num">II · História Geral</div>
+        <h2>12. Guerra Fria e a Nova Ordem Mundial</h2>
+        <p>A disputa entre EUA e URSS dividiu o mundo por quase meio século, sem confronto direto. Em paralelo, a descolonização criou dezenas de países, e o fim da URSS abriu uma nova ordem mundial.</p>
+        <div class="mini">
+          <a href="#ger12-fria">Guerra Fria</a>
+          <a href="#ger12-descol">Descolonização</a>
+          <a href="#ger12-nova">Fim da URSS e nova ordem</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger12-fria">
+        <div class="kicker">Guerra Fria · 12.1</div>
+        <h3>Guerra Fria (1947–1991)</h3>
+        <p class="lead">Após 1945, o mundo ficou <b>bipolar</b>: de um lado os <b>EUA</b> (capitalismo, OTAN), de outro a <b>URSS</b> (socialismo, Pacto de Varsóvia). Foi uma <b>guerra “fria”</b> porque não houve confronto militar direto entre as superpotências — mas sim <b>corrida armamentista</b> e <b>espacial</b>, espionagem, propaganda e <b>conflitos indiretos</b> (Coreia, Vietnã, Cuba). O <b>Muro de Berlim</b> (1961) tornou-se o símbolo da divisão do mundo.</p>
+        <div class="formula-box">EUA (capitalismo/OTAN) × URSS (socialismo/Pacto de Varsóvia) · mundo bipolar</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>bipolaridade</b> e os conflitos <b>indiretos</b> (por que “fria”), além de símbolos como o <b>Muro de Berlim</b> e a corrida espacial. Relacionar com ditaduras na América Latina (apoiadas pelos EUA no contexto anticomunista) é gancho com o Brasil.</div>
+        <div class="ex"><b>Exemplo:</b> por que o conflito EUA × URSS é chamado de Guerra “Fria”? <span class="resp">Não houve confronto militar direto entre as duas superpotências, mas tensão e disputas indiretas.</span></div>
+      </section>
+
+      <section class="card" id="ger12-descol">
+        <div class="kicker">Guerra Fria · 12.2</div>
+        <h3>Descolonização afro-asiática</h3>
+        <p class="lead">Após a Segunda Guerra, as colônias da <b>Ásia e África</b> conquistaram a <b>independência</b>, enfraquecidas as metrópoles europeias. Casos marcantes: a <b>Índia</b> (1947, com <b>Gandhi</b> e a resistência pacífica) e a independência de diversos países africanos nas décadas de 1950–60. A <b>Conferência de Bandung</b> (1955) reuniu os novos países. Muitos, porém, ficaram presos ao <b>neocolonialismo</b> (dependência econômica) e a conflitos herdados das fronteiras artificiais.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a descolonização no contexto do pós-guerra e da Guerra Fria, a figura de <b>Gandhi</b> (não violência) e a persistência da <b>dependência econômica</b> (neocolonialismo). Liga com o imperialismo (causa) e com o Terceiro Mundo.</div>
+        <div class="ex"><b>Exemplo:</b> que líder conduziu a independência da Índia pela resistência pacífica? <span class="resp">Mahatma Gandhi (1947).</span></div>
+      </section>
+
+      <section class="card" id="ger12-nova">
+        <div class="kicker">Guerra Fria · 12.3</div>
+        <h3>Fim da URSS e a nova ordem mundial</h3>
+        <p class="lead">Nos anos 1980, a URSS entrou em crise; <b>Gorbachev</b> tentou reformá-la (<b>glasnost</b> e <b>perestroika</b>), sem sucesso. A <b>Queda do Muro de Berlim</b> (1989) e a <b>dissolução da URSS</b> (1991) encerraram a Guerra Fria, com a <b>vitória do capitalismo</b>. O mundo passou de bipolar a <b>unipolar</b> (hegemonia dos EUA) e, depois, multipolar (ascensão de China, União Europeia e outros polos). Avançaram a globalização e o neoliberalismo.</p>
+        <div class="formula-box">1989 — Queda do Muro de Berlim · 1991 — fim da URSS → mundo unipolar/multipolar</div>
+        <div class="uso"><b>Como cai no vestibular:</b> glasnost/perestroika, a <b>queda do Muro (1989)</b> e o fim da URSS (1991) como marcos, e a transição para a <b>nova ordem</b> (unipolaridade dos EUA → multipolaridade). Conecta diretamente com a globalização.</div>
+        <div class="ex"><b>Exemplo:</b> que acontecimento de 1989 simbolizou o fim da Guerra Fria? <span class="resp">A Queda do Muro de Berlim.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== HISTÓRIA GERAL 13 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ger13">
+        <div class="num">II · História Geral</div>
+        <h2>13. Mundo Contemporâneo e Globalização</h2>
+        <p>O mundo em que vivemos: economias integradas, fluxos globais de informação e capital, mas também novas desigualdades e conflitos. Tema interdisciplinar e onipresente no ENEM.</p>
+        <div class="mini">
+          <a href="#ger13-global">Globalização</a>
+          <a href="#ger13-conflitos">Conflitos contemporâneos</a>
+        </div>
+      </div>
+
+      <section class="card" id="ger13-global">
+        <div class="kicker">Mundo Contemporâneo · 13.1</div>
+        <h3>Globalização</h3>
+        <p class="lead">A <b>globalização</b> é a intensificação da <b>integração</b> econômica, cultural e política mundial, acelerada após a Guerra Fria pela <b>revolução tecnológica</b> (internet, telecomunicações) e pelo <b>neoliberalismo</b>. Caracteriza-se por fluxos globais de <b>capital, mercadorias e informação</b>, empresas <b>multinacionais</b>, <b>blocos econômicos</b> (União Europeia, Mercosul) e a divisão internacional do trabalho. Traz oportunidades, mas também aprofunda <b>desigualdades</b> entre países e dentro deles.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> caracterizar a globalização (integração + tecnologia + neoliberalismo) e debater seus <b>efeitos contraditórios</b> (conexão global × desigualdade, homogeneização cultural × resistências locais). Tema certeiro no ENEM, interdisciplinar com Geografia e Sociologia.</div>
+        <div class="ex"><b>Exemplo:</b> que fator tecnológico mais acelerou a globalização recente? <span class="resp">A revolução das telecomunicações e da informática (internet).</span></div>
+      </section>
+
+      <section class="card" id="ger13-conflitos">
+        <div class="kicker">Mundo Contemporâneo · 13.2</div>
+        <h3>Conflitos contemporâneos e terrorismo</h3>
+        <p class="lead">O mundo pós-Guerra Fria não é pacífico: persistem conflitos <b>étnicos</b>, <b>religiosos</b> e por <b>recursos</b>, sobretudo no <b>Oriente Médio</b> (questão Israel-Palestina, guerras no Golfo, Síria). O <b>terrorismo</b> ganhou destaque global após os atentados de <b>11 de setembro de 2001</b> nos EUA, que inauguraram a “guerra ao terror”. Somam-se crises de <b>refugiados</b>, tensões nacionalistas e desafios globais como as <b>questões ambientais</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> contextualizar o <b>11 de Setembro</b> e os conflitos do Oriente Médio, e relacioná-los à nova ordem mundial e à globalização. Hobsbawm e outros analisam essa instabilidade — gancho com a bibliografia indicada.</div>
+        <div class="ex"><b>Exemplo:</b> que atentado de 2001 marcou o início da “guerra ao terror”? <span class="resp">Os ataques de 11 de Setembro às Torres Gêmeas, nos EUA.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== AMÉRICA 1 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="ame1">
+        <div class="num">III · América</div>
+        <h2>1. Civilizações Pré-Colombianas</h2>
+        <p>Muito antes da chegada dos europeus, a América já abrigava sociedades complexas, urbanizadas e populosas: maias e astecas na Mesoamérica e incas nos Andes. Eram civilizações agrárias, teocráticas e com grandes realizações científicas e arquitetônicas.</p>
+        <div class="mini">
+          <a href="#ame1-meso">Maias e Astecas</a>
+          <a href="#ame1-incas">Incas</a>
+        </div>
+      </div>
+
+      <section class="card" id="ame1-meso">
+        <div class="kicker">Pré-Colombianas · 1.1</div>
+        <h3>Maias e Astecas (Mesoamérica)</h3>
+        <p class="lead">Os <b>maias</b> (região do México e Guatemala) organizavam-se em <b>cidades-Estado independentes</b> (não unificadas), e destacaram-se na <b>astronomia</b>, na <b>matemática</b> (conceito de zero), na escrita e num calendário preciso. Os <b>astecas</b> formaram um <b>império militarista e tributário</b>, com capital em <b>Tenochtitlán</b> (sobre o lago Texcoco, atual Cidade do México), cobrando tributos dos povos dominados. Ambos eram <b>agrários</b> (base no milho), <b>politeístas</b> (com sacrifícios humanos) e profundamente <b>religiosos</b>.</p>
+        <div class="formula-box">Maias: cidades-Estado, astronomia e escrita · Astecas: império tributário, Tenochtitlán</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o caráter <b>agrário</b> (milho), <b>urbano</b> e <b>religioso</b> dessas sociedades, e os avanços maias (astronomia/zero). Pegadinha clássica: <b>não confundir</b> maias (cidades-Estado descentralizadas) com astecas (império centralizado e tributário).</div>
+        <div class="ex"><b>Exemplo:</b> qual civilização tinha sua capital em Tenochtitlán? <span class="resp">Os astecas (no atual México).</span></div>
+      </section>
+
+      <section class="card" id="ame1-incas">
+        <div class="kicker">Pré-Colombianas · 1.2</div>
+        <h3>Incas (Andes)</h3>
+        <p class="lead">O <b>Império Inca</b> (Tahuantinsuyu) dominou a <b>Cordilheira dos Andes</b> (centro no atual Peru), com capital em <b>Cusco</b>. Era um Estado <b>centralizado e teocrático</b> (o Inca era tido como “filho do Sol”), com economia <b>coletivista</b> organizada em <b>ayllus</b> (comunidades), <b>sem moeda nem propriedade privada da terra</b>. Realizações: agricultura em <b>terraços</b> nas montanhas, extensa rede de <b>estradas</b> e os <b>quipos</b> (cordões de nós usados para registrar dados, já que não tinham escrita alfabética). O trabalho compulsório era a <b>mita</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>centralização</b> e o <b>coletivismo</b> incaicos (contraste com o individualismo/propriedade europeus) e as soluções engenhosas (terraços, estradas, quipos). A mita aparecerá de novo na exploração espanhola.</div>
+        <div class="ex"><b>Exemplo:</b> como os incas registravam informações sem escrita alfabética? <span class="resp">Pelos quipos (cordões com nós).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== AMÉRICA 2 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="ame2">
+        <div class="num">III · América</div>
+        <h2>2. Conquista e Colonização</h2>
+        <p>O choque entre europeus e povos americanos: a destruição dos grandes impérios indígenas e a montagem de dois modelos coloniais muito diferentes — a exploração espanhola, baseada na prata e no trabalho indígena, e a colonização inglesa, marcada pelo povoamento no Norte.</p>
+        <div class="mini">
+          <a href="#ame2-conquista">A Conquista</a>
+          <a href="#ame2-espanhola">América Espanhola</a>
+          <a href="#ame2-inglesa">América Inglesa</a>
+        </div>
+      </div>
+
+      <section class="card" id="ame2-conquista">
+        <div class="kicker">Conquista · 2.1</div>
+        <h3>A Conquista da América</h3>
+        <p class="lead">A partir de <b>1492</b>, os espanhóis destruíram os grandes impérios: <b>Cortés</b> derrubou os <b>astecas</b> (1521) e <b>Pizarro</b>, os <b>incas</b> (1533). A conquista combinou <b>superioridade bélica</b> (armas de fogo, cavalos, aço), <b>alianças</b> com povos submetidos aos astecas/incas e, decisivamente, as <b>epidemias</b> (varíola, sarampo, gripe), que dizimaram populações sem imunidade. Houve violência, escravização e imposição da religião (catequese). Por isso a historiografia atual fala em <b>conquista/choque</b> — e não em pacífico “descobrimento” ou “encontro”.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o papel <b>decisivo das doenças</b> no colapso demográfico indígena e a <b>visão crítica</b> (conquista e violência × “descobrimento”). A destruição cultural e a catequese aparecem em contexto.</div>
+        <div class="ex"><b>Exemplo:</b> além das armas, que fator foi decisivo para o colapso das populações indígenas? <span class="resp">As epidemias (varíola, sarampo) trazidas pelos europeus.</span></div>
+      </section>
+
+      <section class="card" id="ame2-espanhola">
+        <div class="kicker">Conquista · 2.2</div>
+        <h3>América Espanhola (colônia de exploração)</h3>
+        <p class="lead">A Espanha montou uma colônia de <b>exploração</b> centrada na <b>mineração de prata</b> (com destaque para <b>Potosí</b>) e ouro, sob administração <b>centralizada</b> (vice-reinos, como Nova Espanha e Peru). A mão de obra <b>indígena</b> era compulsória: a <b>mita</b> (trabalho forçado, sobretudo nas minas) e a <b>encomienda</b> (grupos de índios “confiados” a um colono). A sociedade era estratificada pela origem: <b>chapetones</b> (espanhóis nascidos na Europa, no topo), <b>criollos</b> (descendentes nascidos na América), <b>mestiços</b>, indígenas e africanos.</p>
+        <div class="formula-box">prata de Potosí · mita + encomienda (trabalho indígena) · vice-reinos · sociedade de castas</div>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>mita</b> e <b>encomienda</b> como trabalho compulsório indígena, a <b>prata</b> como motor econômico e a hierarquia social (a tensão <b>chapetones × criollos</b> que mais tarde alimentaria as independências).</div>
+        <div class="ex"><b>Exemplo:</b> que sistema obrigava os indígenas ao trabalho forçado nas minas espanholas? <span class="resp">A mita.</span></div>
+      </section>
+
+      <section class="card" id="ame2-inglesa">
+        <div class="kicker">Conquista · 2.3</div>
+        <h3>América Inglesa (as Treze Colônias)</h3>
+        <p class="lead">As colônias inglesas dividiam-se em dois perfis. No <b>Norte</b>, colônias de <b>povoamento</b>: clima temperado, <b>pequena propriedade</b>, policultura, <b>trabalho livre</b>, voltadas ao <b>mercado interno</b> e com forte <b>autonomia</b> (autogoverno) — muitos colonos eram puritanos fugindo de perseguição religiosa. No <b>Sul</b>, <b>plantations</b> de exportação (tabaco, algodão), com <b>latifúndio</b> e <b>escravidão</b>. Essa autonomia e o dinamismo do Norte ajudam a explicar a trajetória posterior dos EUA.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o contraste <b>Norte (povoamento/autonomia) × Sul (plantation escravista)</b> dentro da própria América inglesa, e a comparação com a América Latina (predomínio da exploração). Liga-se ao capítulo “Colonialismos”.</div>
+        <div class="ex"><b>Exemplo:</b> o que diferenciava as colônias do Norte das do Sul na América inglesa? <span class="resp">Norte: povoamento, trabalho livre e mercado interno; Sul: plantation escravista de exportação.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== AMÉRICA 3 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="ame3">
+        <div class="num">III · América</div>
+        <h2>3. Os Processos de Emancipação</h2>
+        <p>Entre o fim do século XVIII e o início do XIX, uma onda de independências varreu o continente: os EUA (1776), o Haiti (1804) e a América hispânica (1810–1825), inspiradas no Iluminismo e impulsionadas pela crise dos impérios ibéricos.</p>
+        <div class="mini">
+          <a href="#ame3-eua">Independência dos EUA</a>
+          <a href="#ame3-haiti">Revolução Haitiana</a>
+          <a href="#ame3-hispanica">Independências hispano-americanas</a>
+        </div>
+      </div>
+
+      <section class="card" id="ame3-eua">
+        <div class="kicker">Emancipação · 3.1</div>
+        <h3>Independência dos Estados Unidos (1776)</h3>
+        <p class="lead">Foi a <b>primeira</b> colônia das Américas a se tornar independente. Depois de vencer a França, a Inglaterra <b>aumentou os impostos</b> sobre as Treze Colônias (Lei do Selo, Lei do Chá), gerando revolta — o lema “<b>nenhuma taxação sem representação</b>”. Inspirados no <b>Iluminismo</b>, os colonos declararam independência em <b>1776</b> e venceram a guerra (com apoio francês). Criaram uma <b>república federativa e presidencialista</b>, com <b>Constituição</b> (1787) e separação dos poderes.</p>
+        <div class="formula-box">1776 — Declaração de Independência · 1787 — Constituição (república federativa e presidencialista)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas</b> (aumento de impostos no pós-guerra + ideias iluministas) e o <b>pioneirismo</b> — 1ª independência da América e 1º modelo republicano/federativo moderno, que influenciou a Revolução Francesa.</div>
+        <div class="ex"><b>Exemplo:</b> que ideário inspirou a independência dos Estados Unidos? <span class="resp">O Iluminismo (liberdade, direitos naturais, soberania).</span></div>
+      </section>
+
+      <section class="card" id="ame3-haiti">
+        <div class="kicker">Emancipação · 3.2</div>
+        <h3>Revolução Haitiana (1804)</h3>
+        <p class="lead">No <b>Haiti</b> (colônia francesa de São Domingos, riquíssima em açúcar), os <b>escravizados se rebelaram</b> a partir de 1791, sob a liderança de <b>Toussaint Louverture</b>, e conquistaram a independência em <b>1804</b>. Foi a <b>única revolução de escravizados bem-sucedida</b> da história e a <b>primeira república negra</b> do mundo, unindo independência e <b>abolição da escravidão</b>. O exemplo aterrorizou as elites escravistas das Américas — inclusive do <b>Brasil</b> —, que passaram a temer o “haitianismo”.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o caráter <b>único</b> (independência + abolição feitas pelos próprios escravizados) e o “<b>medo do Haiti</b>” entre as elites escravistas — gancho direto com o Brasil e com os debates sobre escravidão.</div>
+        <div class="ex"><b>Exemplo:</b> por que a Revolução Haitiana é considerada única? <span class="resp">Foi a única independência conduzida por escravizados, que aboliu a escravidão e criou a 1ª república negra.</span></div>
+      </section>
+
+      <section class="card" id="ame3-hispanica">
+        <div class="kicker">Emancipação · 3.3</div>
+        <h3>Independências da América Hispânica</h3>
+        <p class="lead">A <b>crise da Espanha</b> (invadida por Napoleão em 1808) abriu espaço para os <b>criollos</b> liderarem a emancipação (1810–1825). Líderes como <b>Simón Bolívar</b> (no norte) e <b>San Martín</b> (no sul) comandaram as guerras de independência. Diferentemente do Brasil, a América espanhola se <b>fragmentou</b> em vários países — o sonho de Bolívar de uma grande nação unida fracassou —, em geral <b>repúblicas</b> dominadas por elites locais.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o papel dos <b>criollos</b> e da <b>crise napoleônica</b>; o contraste entre a <b>fragmentação</b> hispano-americana (vários países) e a <b>unidade</b> do Brasil (que virou monarquia). Bolívar e o ideal pan-americano frustrado.</div>
+        <div class="ex"><b>Exemplo:</b> por que a América espanhola se fragmentou em vários países? <span class="resp">Pelas disputas entre as elites/criollos regionais; o Brasil, ao contrário, manteve a unidade sob a monarquia.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== AMÉRICA 4 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="ame4">
+        <div class="num">III · América</div>
+        <h2>4. América Contemporânea</h2>
+        <p>Os rumos do continente nos séculos XIX–XXI: de um lado, a ascensão dos EUA à condição de superpotência; de outro, uma América Latina marcada por revoluções, ditaduras e dependência econômica.</p>
+        <div class="mini">
+          <a href="#ame4-eua">EUA: ascensão à potência</a>
+          <a href="#ame4-latina">América Latina: revoluções e ditaduras</a>
+        </div>
+      </div>
+
+      <section class="card" id="ame4-eua">
+        <div class="kicker">América Contemporânea · 4.1</div>
+        <h3>Estados Unidos: a ascensão à potência</h3>
+        <p class="lead">No século XIX, os EUA <b>expandiram-se para o oeste</b> (a ideologia do <b>Destino Manifesto</b>), superaram a <b>Guerra de Secessão</b> (1861–1865: Norte industrial × Sul escravista, com vitória do Norte e <b>abolição</b> da escravidão) e se <b>industrializaram</b>. Tornaram-se a potência <b>hegemônica</b> do continente e passaram a intervir na América Latina — com a <b>Doutrina Monroe</b> (“América para os americanos”) e a política do <b>Big Stick</b>. No século XX, lideraram o bloco capitalista na Guerra Fria e se firmaram como <b>superpotência global</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>Destino Manifesto</b>, a <b>Guerra de Secessão</b> (que aboliu a escravidão nos EUA) e o <b>intervencionismo</b> (Doutrina Monroe / Big Stick) sobre a América Latina. Conecta com a Guerra Fria e as ditaduras latino-americanas.</div>
+        <div class="ex"><b>Exemplo:</b> que doutrina justificou a influência dos EUA sobre a América Latina? <span class="resp">A Doutrina Monroe (“América para os americanos”).</span></div>
+      </section>
+
+      <section class="card" id="ame4-latina">
+        <div class="kicker">América Contemporânea · 4.2</div>
+        <h3>América Latina: revoluções e ditaduras</h3>
+        <p class="lead">A região foi marcada pela <b>dependência econômica</b> e pela instabilidade. No século XX, viveu <b>revoluções</b> — a <b>Mexicana</b> (1910) e a <b>Cubana</b> (1959), que implantou o <b>socialismo</b> sob Fidel Castro — e uma onda de <b>ditaduras militares</b> (anos 1960–80), muitas <b>apoiadas pelos EUA</b> no contexto anticomunista da Guerra Fria, como no <b>Chile</b> (golpe contra Allende e ditadura de Pinochet, 1973) e na <b>Argentina</b>. A partir dos anos 1980 veio a <b>redemocratização</b>, seguida das políticas <b>neoliberais</b> dos anos 1990.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>Revolução Cubana</b> (único regime socialista das Américas) e as <b>ditaduras militares</b> ligadas à Guerra Fria — paralelo direto com a <b>ditadura no Brasil</b>. A dependência econômica e a redemocratização também aparecem.</div>
+        <div class="ex"><b>Exemplo:</b> que revolução de 1959 implantou um regime socialista nas Américas? <span class="resp">A Revolução Cubana (Fidel Castro).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== BRASIL E SC 1 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="bra1">
+        <div class="num">IV · Brasil e Santa Catarina</div>
+        <h2>1. Sociedades Indígenas, Ocupação e Povoamento</h2>
+        <p>O Brasil antes e no momento da chegada dos portugueses: a diversidade dos povos originários e o início da ocupação europeia, da exploração do pau-brasil à colonização efetiva.</p>
+        <div class="mini">
+          <a href="#bra1-indigenas">Sociedades Indígenas</a>
+          <a href="#bra1-povoamento">Início da colonização</a>
+        </div>
+      </div>
+
+      <section class="card" id="bra1-indigenas">
+        <div class="kicker">Indígenas · 1.1</div>
+        <h3>Sociedades Indígenas</h3>
+        <p class="lead">Antes de 1500, o território abrigava <b>milhões de indígenas</b>, com enorme <b>diversidade</b> de povos e línguas (troncos <b>tupi-guarani</b> e <b>macro-jê</b>, entre outros). Viviam da <b>caça, pesca, coleta e agricultura</b> (mandioca), em sociedades <b>sem Estado</b> e <b>sem propriedade privada da terra</b>, organizadas em tribos. Os <b>tupis</b> (litoral) foram os primeiros a contatar os portugueses. A colonização trouxe <b>escravização, doenças e catequese</b> (jesuítas) e forte queda populacional — mas também houve <b>resistência</b> e persistência cultural até hoje.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>diversidade</b> e a organização (sem Estado nem propriedade privada) dos povos originários, a crítica à ideia de “índio genérico”, e o impacto da colonização (doenças, escravização, catequese) com a resistência indígena. Tema atual (direitos e terras indígenas).</div>
+        <div class="ex"><b>Exemplo:</b> como se organizavam, em geral, as sociedades indígenas antes de 1500? <span class="resp">Em tribos, sem Estado nem propriedade privada da terra, vivendo de caça, pesca, coleta e agricultura.</span></div>
+      </section>
+
+      <section class="card" id="bra1-povoamento">
+        <div class="kicker">Ocupação · 1.2</div>
+        <h3>Início da ocupação e do povoamento</h3>
+        <p class="lead">Nos primeiros anos (<b>1500–1530</b>), Portugal apenas <b>explorou o pau-brasil</b>, por <b>escambo</b> com os indígenas, através de <b>feitorias</b>, sem colonizar de fato. A ameaça de <b>invasores</b> (sobretudo franceses) e a necessidade de garantir a posse levaram à <b>colonização efetiva</b> a partir de <b>1530</b> (expedição de Martim Afonso de Sousa, fundação de São Vicente) e à montagem do aparato administrativo: as <b>capitanias hereditárias</b> (1534) e o <b>Governo-Geral</b> (1548).</p>
+        <div class="formula-box">1500 chegada · 1500–1530 pau-brasil/feitorias · 1534 capitanias · 1548 Governo-Geral</div>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir a <b>fase pré-colonizadora</b> (pau-brasil/escambo) do <b>início da colonização efetiva</b> (a partir de 1530), motivada pela <b>defesa do território</b> e pela montagem da economia açucareira.</div>
+        <div class="ex"><b>Exemplo:</b> o que motivou Portugal a efetivamente colonizar o Brasil a partir de 1530? <span class="resp">A defesa do território (ameaça francesa) e a exploração econômica (açúcar).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== BRASIL E SC 2 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="bra2">
+        <div class="num">IV · Brasil e Santa Catarina</div>
+        <h2>2. Brasil Colônia</h2>
+        <p>Três séculos de domínio português: os ciclos econômicos do açúcar e do ouro, uma sociedade patriarcal e escravista, a administração colonial e as primeiras revoltas contra a metrópole.</p>
+        <div class="mini">
+          <a href="#bra2-economia">Economia (açúcar e ouro)</a>
+          <a href="#bra2-sociedade">Sociedade e escravidão</a>
+          <a href="#bra2-admin">Administração e revoltas</a>
+        </div>
+      </div>
+
+      <section class="card" id="bra2-economia">
+        <div class="kicker">Brasil Colônia · 2.1</div>
+        <h3>Economia colonial: açúcar e ouro</h3>
+        <p class="lead">A economia girava em torno da <b>exportação</b> (pacto colonial). O <b>açúcar</b> (séc. XVI–XVII), no Nordeste, foi a base, no sistema de <b>plantation</b>: <b>latifúndio + monocultura + trabalho escravo</b> voltados ao mercado externo. A invasão <b>holandesa</b> em Pernambuco e a concorrência antilhana levaram à decadência do açúcar. No <b>século XVIII</b>, veio o <b>ouro</b> (Minas Gerais), que deslocou o eixo econômico para o <b>Centro-Sul</b>, aumentou a fiscalização (o <b>quinto</b>, a <b>derrama</b>) e estimulou a urbanização.</p>
+        <div class="formula-box">pau-brasil → açúcar (plantation, séc. XVI–XVII) → ouro (Minas, séc. XVIII)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>sistema de plantation</b> açucareiro (latifúndio, monocultura de exportação e escravidão) e a <b>mineração</b> (quinto, derrama, deslocamento do eixo para o Sudeste). Sempre ligado ao <b>pacto colonial</b> e ao mercantilismo.</div>
+        <div class="ex"><b>Exemplo:</b> quais eram as características do sistema de plantation açucareiro? <span class="resp">Latifúndio, monocultura de exportação e trabalho escravo.</span></div>
+      </section>
+
+      <section class="card" id="bra2-sociedade">
+        <div class="kicker">Brasil Colônia · 2.2</div>
+        <h3>Sociedade e escravidão</h3>
+        <p class="lead">A sociedade colonial era <b>patriarcal, rural e escravista</b>, dominada pelos <b>senhores de engenho</b>. A mão de obra foi sobretudo <b>escravizada</b> — primeiro indígena, depois majoritariamente <b>africana</b>, trazida pelo <b>tráfico atlântico</b>. A escravidão sustentou toda a economia e foi marcada por violência extrema, mas também por intensa <b>resistência</b>: fugas, revoltas e a formação de <b>quilombos</b>, como o de <b>Palmares</b> (liderado por <b>Zumbi</b>).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o caráter <b>escravista e patriarcal</b> da sociedade colonial e, sobretudo, a <b>resistência negra</b> (Palmares, Zumbi) — tema central e atual. Diferenciar a escravidão indígena da africana.</div>
+        <div class="ex"><b>Exemplo:</b> que quilombo, liderado por Zumbi, simbolizou a resistência à escravidão? <span class="resp">O Quilombo dos Palmares.</span></div>
+      </section>
+
+      <section class="card" id="bra2-admin">
+        <div class="kicker">Brasil Colônia · 2.3</div>
+        <h3>Administração e revoltas coloniais</h3>
+        <p class="lead">Portugal administrava a colônia pelas <b>capitanias hereditárias</b> (1534), pelo <b>Governo-Geral</b> (1548) e pelas <b>câmaras municipais</b> (poder dos “homens bons”, a elite local). As tensões do pacto colonial geraram revoltas: as <b>nativistas</b> (contra abusos pontuais, ainda <b>sem ideia de independência</b> — como a Revolta de Beckman e a Guerra dos Mascates) e as <b>separatistas/emancipacionistas</b> (já influenciadas pelo <b>Iluminismo</b> — a <b>Inconfidência Mineira</b>, 1789, contra a derrama, e a <b>Conjuração Baiana</b>, 1798, de caráter mais popular).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar as revoltas <b>nativistas</b> (locais, sem ruptura) das <b>separatistas</b> (Inconfidência Mineira e Conjuração Baiana, com influência iluminista). A <b>Inconfidência Mineira</b> (Tiradentes, derrama) é certeira.</div>
+        <div class="ex"><b>Exemplo:</b> o que diferencia a Inconfidência Mineira das revoltas nativistas? <span class="resp">Ela já tinha caráter separatista/emancipacionista, influenciada pelo Iluminismo.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== BRASIL E SC 3 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="bra3">
+        <div class="num">IV · Brasil e Santa Catarina</div>
+        <h2>3. Brasil Império</h2>
+        <p>De colônia a nação independente (1822) e os rumos da monarquia: o Primeiro Reinado, o turbulento período Regencial e o Segundo Reinado, até a abolição e a queda do Império.</p>
+        <div class="mini">
+          <a href="#bra3-independencia">Independência e 1º Reinado</a>
+          <a href="#bra3-regencia">Período Regencial</a>
+          <a href="#bra3-segundo">2º Reinado e Abolição</a>
+        </div>
+      </div>
+
+      <section class="card" id="bra3-independencia">
+        <div class="kicker">Brasil Império · 3.1</div>
+        <h3>Independência e Primeiro Reinado</h3>
+        <p class="lead">A <b>vinda da família real</b> (1808), fugindo de Napoleão, transformou a colônia (<b>abertura dos portos</b>, elevação a <b>Reino Unido</b> em 1815). Pressionado, <b>D. Pedro I</b> proclamou a <b>independência em 7 de setembro de 1822</b>, de forma <b>negociada</b>: manteve a <b>monarquia</b>, a <b>unidade territorial</b> e a <b>escravidão</b> (sem grande ruptura social — diferente da América espanhola). Outorgou a <b>Constituição de 1824</b> (autoritária, com o <b>Poder Moderador</b>). O Primeiro Reinado, marcado por crises e autoritarismo, terminou com a <b>abdicação</b> em 1831.</p>
+        <div class="formula-box">1808 vinda da Corte · 7/9/1822 Independência · 1824 Constituição (Poder Moderador) · 1831 abdicação</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o caráter <b>negociado e conservador</b> da independência (monarquia, unidade e escravidão mantidas) e a <b>Constituição de 1824</b>/Poder Moderador. Conexão direta com a vinda da Corte (1808) e o Bloqueio Continental.</div>
+        <div class="ex"><b>Exemplo:</b> que característica diferenciou a independência do Brasil das da América espanhola? <span class="resp">Foi negociada e conservadora: manteve a monarquia, a unidade territorial e a escravidão.</span></div>
+      </section>
+
+      <section class="card" id="bra3-regencia">
+        <div class="kicker">Brasil Império · 3.2</div>
+        <h3>Período Regencial (1831–1840)</h3>
+        <p class="lead">Com <b>D. Pedro II</b> ainda criança, o país foi governado por <b>regentes</b>. Foi o período mais <b>turbulento e descentralizado</b> do Império, com intensas <b>revoltas provinciais</b> que questionavam o poder central e as condições sociais: a <b>Cabanagem</b> (Pará), a <b>Sabinada</b> (Bahia), a <b>Balaiada</b> (Maranhão) e a <b>Revolução Farroupilha</b> (Rio Grande do Sul, que chegou a Santa Catarina com a República Juliana). Para conter a instabilidade, antecipou-se a maioridade do imperador (<b>Golpe da Maioridade</b>, 1840).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o período regencial como o mais <b>instável</b> (ameaça à unidade nacional) e as <b>revoltas regionais</b> (Cabanagem, Sabinada, Balaiada, Farroupilha — esta ligada também a SC). O Golpe da Maioridade encerra a fase.</div>
+        <div class="ex"><b>Exemplo:</b> por que o período regencial é considerado o mais instável do Império? <span class="resp">Pela ausência do imperador e pelas inúmeras revoltas provinciais que ameaçaram a unidade do país.</span></div>
+      </section>
+
+      <section class="card" id="bra3-segundo">
+        <div class="kicker">Brasil Império · 3.3</div>
+        <h3>Segundo Reinado e Abolição</h3>
+        <p class="lead">Sob <b>D. Pedro II</b> (1840–1889), o Império se estabilizou. O <b>café</b> (Sudeste) tornou-se o motor da economia e financiou modernizações (ferrovias). O Brasil venceu a <b>Guerra do Paraguai</b> (1864–1870), que fortaleceu o <b>Exército</b>. A pressão contra a escravidão cresceu em <b>leis graduais</b> (fim do tráfico em 1850, <b>Ventre Livre</b> em 1871, <b>Sexagenários</b> em 1885) até a <b>Lei Áurea</b> (1888). O fim da escravidão, somado ao descontentamento do Exército e dos cafeicultores, minou a monarquia, derrubada pela <b>Proclamação da República</b> (1889).</p>
+        <div class="formula-box">café · Guerra do Paraguai (1864–70) · Lei Áurea (1888) · Proclamação da República (1889)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>café</b> como base econômica, a <b>Guerra do Paraguai</b> (Exército fortalecido) e o processo <b>gradual</b> de abolição (1850 → 1888) e suas consequências (crise da monarquia → República). Tema muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> que fatores levaram à queda da monarquia em 1889? <span class="resp">O fim da escravidão (1888), que afastou a elite agrária, e o descontentamento do Exército, somados ao movimento republicano.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== BRASIL E SC 4 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="bra4">
+        <div class="num">IV · Brasil e Santa Catarina</div>
+        <h2>4. Brasil República</h2>
+        <p>Do ideário republicano à democracia atual: a República Velha das oligarquias, a Era Vargas, o período democrático, a Ditadura Militar e a redemocratização que desemboca no Brasil contemporâneo.</p>
+        <div class="mini">
+          <a href="#bra4-velha">República Velha</a>
+          <a href="#bra4-vargas">Revolução de 1930 e Era Vargas</a>
+          <a href="#bra4-democracia">República democrática (1945–64)</a>
+          <a href="#bra4-ditadura">Ditadura Militar</a>
+          <a href="#bra4-redemoc">Redemocratização e Brasil atual</a>
+        </div>
+      </div>
+
+      <section class="card" id="bra4-velha">
+        <div class="kicker">Brasil República · 4.1</div>
+        <h3>República Velha (1889–1930)</h3>
+        <p class="lead">Os primeiros anos foram dominados pelas <b>oligarquias rurais</b>. Vigorava a política do <b>café com leite</b> (revezamento entre São Paulo, do café, e Minas Gerais, do leite, na presidência), sustentada pelo <b>coronelismo</b> (poder dos coronéis locais), pelo <b>voto de cabresto</b> e pela “política dos governadores”. A economia dependia do <b>café</b>. O período teve revoltas: <b>Canudos</b> e <b>Contestado</b> (sociais/messiânicas), a Revolta da Vacina, a Revolta da Chibata e o <b>tenentismo</b> (jovens militares insatisfeitos).</p>
+        <div class="formula-box">café com leite (SP + MG) · coronelismo · voto de cabresto · tenentismo</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>ideário republicano</b> traído na prática (oligarquias, coronelismo, exclusão popular), a política do <b>café com leite</b> e as revoltas (Canudos, Contestado, tenentismo) que corroeram o sistema até 1930.</div>
+        <div class="ex"><b>Exemplo:</b> como funcionava a política do “café com leite”? <span class="resp">Pelo revezamento no poder entre as oligarquias de São Paulo (café) e de Minas Gerais (leite/pecuária).</span></div>
+      </section>
+
+      <section class="card" id="bra4-vargas">
+        <div class="kicker">Brasil República · 4.2</div>
+        <h3>A Revolução de 1930 e a Era Vargas</h3>
+        <p class="lead">A <b>crise de 1929</b> (queda do café) e a ruptura do café com leite levaram à <b>Revolução de 1930</b>, que pôs <b>Getúlio Vargas</b> no poder, encerrando a República Velha. Vargas <b>centralizou</b> o Estado, promoveu a <b>industrialização</b> e criou as <b>leis trabalhistas</b> (consolidadas na <b>CLT</b>) — base de seu <b>trabalhismo</b> e populismo. Em 1937, implantou o <b>Estado Novo</b>, ditadura nacionalista e autoritária (propaganda e repressão). Deposto em 1945, voltou eleito em 1951 e terminou com o <b>suicídio</b> em 1954.</p>
+        <div class="formula-box">1930 Revolução · 1937–45 Estado Novo (ditadura) · CLT/trabalhismo · 1954 suicídio</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>Revolução de 1930</b> como marco (fim da República Velha) e a <b>Era Vargas</b>: industrialização, leis trabalhistas (CLT), populismo e o <b>Estado Novo</b> (ditadura). Ligar a crise de 1929 à ruptura política.</div>
+        <div class="ex"><b>Exemplo:</b> que conjunto de medidas marcou o trabalhismo getulista? <span class="resp">As leis trabalhistas, consolidadas na CLT, que regularam o trabalho urbano.</span></div>
+      </section>
+
+      <section class="card" id="bra4-democracia">
+        <div class="kicker">Brasil República · 4.3</div>
+        <h3>A República Democrática (1945–1964)</h3>
+        <p class="lead">Após o Estado Novo, o Brasil viveu um período <b>democrático</b>, com nova <b>Constituição (1946)</b>. Foi marcado pelo <b>desenvolvimentismo</b> e pelo <b>populismo</b>: o governo <b>JK</b> (Juscelino Kubitschek) prometeu “<b>50 anos em 5</b>”, industrializou o país (indústria automobilística) e construiu <b>Brasília</b>. Cresceram as tensões (as <b>reformas de base</b> de João Goulart, o medo do comunismo no contexto da <b>Guerra Fria</b>), que culminaram no <b>golpe militar de 1964</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>desenvolvimentismo de JK</b> (Brasília, indústria) e a crescente <b>polarização</b> (reformas de base × anticomunismo da Guerra Fria) que abriu caminho para o golpe de 1964.</div>
+        <div class="ex"><b>Exemplo:</b> que governo do período democrático construiu Brasília sob o lema “50 anos em 5”? <span class="resp">O de Juscelino Kubitschek (JK).</span></div>
+      </section>
+
+      <section class="card" id="bra4-ditadura">
+        <div class="kicker">Brasil República · 4.4</div>
+        <h3>A Ditadura Militar (1964–1985)</h3>
+        <p class="lead">Em <b>1964</b>, um <b>golpe militar</b> (apoiado por setores civis e pelos EUA, no contexto da Guerra Fria) derrubou João Goulart. Seguiram-se <b>21 anos</b> de regime autoritário: governos de generais, <b>atos institucionais</b> (o <b>AI-5</b>, de 1968, foi o auge da repressão), <b>censura</b>, perseguição, <b>tortura</b> e cassação de direitos. Na economia, houve o “<b>milagre econômico</b>” (crescimento com endividamento e desigualdade). A crise, a <b>Lei da Anistia</b> (1979) e o movimento <b>Diretas Já</b> levaram ao fim do regime em <b>1985</b>.</p>
+        <div class="formula-box">1964 golpe · AI-5 (1968) repressão · “milagre econômico” · 1985 fim do regime</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o golpe no contexto da <b>Guerra Fria</b> (paralelo com a América Latina), o <b>AI-5</b> como auge do autoritarismo, a tortura/censura e o “milagre”. Tema sensível, atual e muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> que ato institucional de 1968 marcou o auge da repressão na ditadura? <span class="resp">O AI-5 (Ato Institucional nº 5).</span></div>
+      </section>
+
+      <section class="card" id="bra4-redemoc">
+        <div class="kicker">Brasil República · 4.5</div>
+        <h3>Redemocratização e Brasil Contemporâneo</h3>
+        <p class="lead">A transição (lenta e negociada) culminou no movimento <b>Diretas Já</b> (1984), na eleição indireta de Tancredo Neves e na <b>Constituição de 1988</b> (a “<b>Constituição Cidadã</b>”), que garantiu direitos e liberdades. Seguiram-se eleições diretas, o <b>impeachment de Collor</b> (1992), a estabilização da moeda (<b>Plano Real</b>, 1994) e governos que alternaram projetos (FHC, Lula e outros), com avanços sociais e novas crises políticas e econômicas. O Brasil contemporâneo <b>consolidou a democracia</b>, ainda enfrentando desigualdade e instabilidade.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o processo de <b>redemocratização</b> (Diretas Já → <b>Constituição de 1988</b>) e os marcos seguintes (impeachment de Collor, Plano Real). A Constituição de 1988 como marco dos direitos é certeira.</div>
+        <div class="ex"><b>Exemplo:</b> que documento de 1988 consolidou a redemocratização e os direitos no Brasil? <span class="resp">A Constituição de 1988 (a “Constituição Cidadã”).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== BRASIL E SC 5 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="bra5">
+        <div class="num">IV · Brasil e Santa Catarina</div>
+        <h2>5. Santa Catarina</h2>
+        <p>A história do estado, exigida no programa: a ocupação por povos indígenas e por açorianos, a imigração europeia que moldou sua cultura e economia, e a Guerra do Contestado, maior conflito social catarinense.</p>
+        <div class="mini">
+          <a href="#bra5-ocupacao">Ocupação e povoamento</a>
+          <a href="#bra5-imigracao">Imigração europeia</a>
+          <a href="#bra5-contestado">Guerra do Contestado</a>
+        </div>
+      </div>
+
+      <section class="card" id="bra5-ocupacao">
+        <div class="kicker">Santa Catarina · 5.1</div>
+        <h3>Ocupação e povoamento de Santa Catarina</h3>
+        <p class="lead">O território foi ocupado originalmente por <b>povos indígenas</b>: os <b>Xokleng</b> e <b>Kaingang</b> (tronco macro-jê, no planalto/interior) e os <b>Guarani</b> (tronco tupi, no litoral), além dos antigos povos dos <b>sambaquis</b> litorâneos. A colonização começou nos séculos XVII–XVIII com os <b>vicentistas</b> e, sobretudo, com a chegada dos <b>imigrantes açorianos</b> (a partir de <b>1748</b>), que povoaram o litoral (Desterro — atual <b>Florianópolis</b> — e Laguna) e marcaram a cultura local. Pelo <b>planalto</b> passavam os <b>tropeiros</b> (caminho do gado entre Sul e Sudeste), origem de Lages.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>povos indígenas de SC</b> (Xokleng, Kaingang, Guarani) e os <b>açorianos</b> como base do povoamento litorâneo; os tropeiros no planalto. Conteúdo regional certeiro nas provas catarinenses (UDESC/UFSC).</div>
+        <div class="ex"><b>Exemplo:</b> que imigrantes, a partir de 1748, povoaram o litoral catarinense e marcaram sua cultura? <span class="resp">Os açorianos (vindos das ilhas dos Açores).</span></div>
+      </section>
+
+      <section class="card" id="bra5-imigracao">
+        <div class="kicker">Santa Catarina · 5.2</div>
+        <h3>Imigração europeia</h3>
+        <p class="lead">No século XIX, o governo incentivou a <b>imigração europeia</b> para SC, sobretudo de <b>alemães</b> (a partir de 1829; depois <b>Blumenau</b> e <b>Joinville</b>) e <b>italianos</b> (décadas de 1870–80, no sul e nos vales). Vinham para <b>colônias de pequenas propriedades</b> e <b>policultura</b>, fugindo de crises na Europa. Essa imigração moldou a <b>economia</b> (agricultura familiar e, depois, indústria têxtil e metalúrgica) e a <b>cultura</b> do estado (festas, línguas, arquitetura), num modelo bem diferente do latifúndio escravista do restante do Brasil.</p>
+        <div class="formula-box">alemães (1829 → Blumenau, Joinville) · italianos (1870s, sul/vales) · pequena propriedade</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a imigração <b>alemã e italiana</b> como base da <b>pequena propriedade</b>, da industrialização e da <b>identidade cultural</b> catarinense (Vale do Itajaí, norte). Contrastar com o latifúndio escravista do resto do país.</div>
+        <div class="ex"><b>Exemplo:</b> quais foram os dois principais grupos de imigrantes europeus que colonizaram SC no século XIX? <span class="resp">Os alemães e os italianos.</span></div>
+      </section>
+
+      <section class="card" id="bra5-contestado">
+        <div class="kicker">Santa Catarina · 5.3</div>
+        <h3>Guerra do Contestado (1912–1916)</h3>
+        <p class="lead">Foi o maior <b>conflito social</b> da história de SC. Numa região <b>disputada</b> entre Santa Catarina e Paraná (o “contestado”), <b>camponeses pobres</b> — expulsos de suas terras pela construção da <b>ferrovia</b> e pela exploração <b>madeireira</b> de empresas estrangeiras — uniram-se num movimento <b>messiânico</b> (liderado por monges, como José Maria), criando “cidades santas”. Foram <b>reprimidos brutalmente pelo Exército</b>. O conflito revelou a <b>concentração de terras</b>, a miséria rural e o messianismo — à semelhança de <b>Canudos</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>causas sociais</b> (expulsão de camponeses pela ferrovia/madeireiras, concentração de terras) e o caráter <b>messiânico</b> do Contestado — paralelo direto com <b>Canudos</b>. Conteúdo catarinense altamente cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> que fatores estão na origem da Guerra do Contestado? <span class="resp">A expulsão de camponeses pela ferrovia e pelas madeireiras, a concentração de terras e a miséria, somadas ao messianismo.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de História · organizado nas 4 partes do programa do vestibular. Toda fonte tem um ponto de vista — leia criticamente datas e narrativas.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
