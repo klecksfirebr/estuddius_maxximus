@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Guia de Filosofia para o Vestibular — Conteúdos Explicados</title>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e7e2dc; --line-strong:#d6cfc5;
+    --accent:#3730a3; --accent-2:#4f46e5; --accent-soft:#eef2ff;
+    --paper:#ffffff; --bg:#eef0f4;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f6f5f3; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbf9f6; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#312e81,#6d28d9); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:72ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#faf7f3; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE CAPÍTULO ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:24px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid var(--line-strong); border-radius:10px;
+    padding:13px 15px; text-align:center; font-size:14px; margin:14px 0; overflow-x:auto; color:var(--ink); font-weight:600; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.4px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR PARTE (I a IV) ===== */
+  .secI{ --accent:#6d28d9; --accent-2:#7c3aed; --accent-soft:#f5f3ff; }   /* Orientação e Habilidades */
+  .secII{ --accent:#1f4e79; --accent-2:#2e6da4; --accent-soft:#eef3f9; }  /* Aristóteles */
+  .secIII{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; } /* Platão */
+  .secIV{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }  /* Síntese */
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Guia de Filosofia</div>
+      <div class="sub">Os dois clássicos do programa, explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+
+        <div class="grp">I · Orientação e Habilidades</div>
+        <ol>
+          <li><a href="#ori1"><b>1</b> Orientação geral e habilidades de leitura</a></li>
+        </ol>
+
+        <div class="grp">II · Aristóteles — Ética a Nicômacos (I)</div>
+        <ol>
+          <li><a href="#ari1"><b>1</b> O bem como finalidade</a></li>
+          <li><a href="#ari2"><b>2</b> Felicidade e os gêneros de vida</a></li>
+          <li><a href="#ari3"><b>3</b> A função do homem e a definição de felicidade</a></li>
+          <li><a href="#ari4"><b>4</b> A alma e as virtudes</a></li>
+        </ol>
+
+        <div class="grp">III · Platão — A República (VII)</div>
+        <ol>
+          <li><a href="#pla1"><b>1</b> A Alegoria da Caverna</a></li>
+          <li><a href="#pla2"><b>2</b> Do sensível ao inteligível: o Sol e o Bem</a></li>
+          <li><a href="#pla3"><b>3</b> A educação como conversão e o retorno</a></li>
+          <li><a href="#pla4"><b>4</b> O currículo formativo e a dialética</a></li>
+        </ol>
+
+        <div class="grp">IV · Síntese e Aplicação</div>
+        <ol>
+          <li><a href="#sin1"><b>1</b> Diálogo entre os textos e as habilidades</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de Filosofia — Conteúdos Explicados</h1>
+        <p>A leitura dos dois clássicos do programa: a <b>Ética a Nicômacos</b> (Livro I), de Aristóteles, e <b>A República</b> (Livro VII), de Platão. Cada tópico responde a três perguntas: <b>o que diz o texto</b> (com contexto e conceitos), <b>como cai na prova</b> e <b>um exemplo</b> — para reconhecer a ideia no enunciado e entender o argumento.</p>
+        <div class="chips">
+          <span>Sumo bem</span><span>Felicidade</span><span>Virtude</span><span>Função (ergon)</span>
+          <span>Gêneros de vida</span><span>Alegoria da Caverna</span><span>Dois mundos</span>
+          <span>Ideia do Bem</span><span>Conversão (periagogé)</span><span>Dialética</span><span>Reis-filósofos</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que o texto diz”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. O índice ao lado agrupa o material nas 4 partes (I a IV); dentro de cada capítulo há atalhos para os tópicos. As caixas destacadas trazem conceitos-chave e pegadinhas de interpretação.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha / atenção</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== PARTE I — ORIENTAÇÃO ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="ori1">
+        <div class="num">I · Orientação e Habilidades</div>
+        <h2>1. Orientação Geral e Habilidades de Leitura</h2>
+        <p>Antes dos conteúdos, o método. O programa não cobra “toda a história da filosofia”, mas a leitura atenta de dois clássicos. Aqui você entende o que se espera de você como leitor: captar o tema central, mapear os conceitos e seguir o raciocínio do autor.</p>
+        <div class="mini">
+          <a href="#ori1-programa">O programa</a>
+          <a href="#ori1-unidade">Unidade temática</a>
+          <a href="#ori1-conceitos">Conceitos e relações</a>
+          <a href="#ori1-argumento">Linha argumentativa</a>
+          <a href="#ori1-metodo">Como ler filosofia</a>
+        </div>
+      </div>
+
+      <section class="card" id="ori1-programa">
+        <div class="kicker">Orientação · 1.1</div>
+        <h3>O programa: dois clássicos, não um manual</h3>
+        <p class="lead">O programa de Filosofia fundamenta-se na compreensão de dois textos clássicos: a <b>Ética a Nicômacos</b> (Livro I), de <b>Aristóteles</b>, e <b>A República</b> (Livro VII), de <b>Platão</b>. Não se trata de decorar correntes ou datas, mas de <b>ler filosoficamente</b>: acompanhar um problema sendo investigado. No fundo, os dois textos giram em torno da mesma pergunta socrática — <b>como devemos viver?</b> — e a respondem por caminhos diferentes: Aristóteles pergunta qual é o <b>bem supremo</b> da vida humana; Platão, como a alma <b>conhece o Bem</b> e se forma para ele.</p>
+        <div class="formula-box">Aristóteles, Ética a Nicômacos (Livro I) · Platão, A República (Livro VII)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a prova cobra <b>interpretação de trechos</b>, não erudição. Saber localizar o tema de cada livro e reconhecer um conceito no enunciado vale mais que memorizar comentadores.</div>
+        <div class="ex"><b>Exemplo:</b> qual pergunta une os dois textos do programa? <span class="resp">Ambos respondem, de modos distintos, a “como devemos viver?” — Aristóteles pela felicidade, Platão pelo conhecimento do Bem.</span></div>
+      </section>
+
+      <section class="card" id="ori1-unidade">
+        <div class="kicker">Orientação · 1.2</div>
+        <h3>Habilidade 1 — Compreender a unidade temática</h3>
+        <p class="lead">Todo texto filosófico clássico tem um fio que costura o conjunto: uma <b>pergunta central</b> a que tudo se subordina. Compreender a <b>unidade temática</b> é saber dizer, em uma frase, do que o texto trata. No Livro I da <b>Ética</b>, a unidade é a investigação do <b>sumo bem</b> (a felicidade) e sua definição. No Livro VII da <b>República</b>, é o caminho da <b>educação</b> e do <b>conhecimento</b> que conduz a alma à Ideia do Bem — e o dever de quem o alcança.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> questões pedem o “tema central”, a “tese” ou a “ideia que organiza o texto”. Distinguir o <b>assunto principal</b> dos exemplos e digressões é a habilidade testada.</div>
+        <div class="ex"><b>Exemplo:</b> qual é a unidade temática do Livro I da Ética a Nicômacos? <span class="resp">A busca e a definição do bem supremo da vida humana, identificado com a felicidade (eudaimonia).</span></div>
+      </section>
+
+      <section class="card" id="ori1-conceitos">
+        <div class="kicker">Orientação · 1.3</div>
+        <h3>Habilidade 2 — Identificar conceitos e suas relações</h3>
+        <p class="lead">Filosofia se faz com <b>conceitos</b>. Não basta reconhecê-los isoladamente: é preciso ver como se <b>ligam, opõem e dependem</b> uns dos outros. Em Aristóteles, conceitos como <b>fim (telos)</b>, <b>bem</b>, <b>felicidade</b>, <b>virtude</b> e <b>função (ergon)</b> formam uma cadeia. Em Platão, <b>sensível e inteligível</b>, <b>opinião e ciência</b>, <b>Sol e Bem</b>, <b>educação e conversão</b> se articulam numa só arquitetura. Ler bem é desenhar esse <b>mapa de relações</b>.</p>
+        <div class="warn"><b>Atenção:</b> um mesmo termo pode ter sentido técnico próprio em cada autor. “Bem”, em Platão, é uma Ideia transcendente; em Aristóteles, é sempre o fim de uma ação concreta — e ele critica a noção platônica.</div>
+        <div class="ex"><b>Exemplo:</b> como se relacionam “fim” e “bem” em Aristóteles? <span class="resp">Todo bem é o fim que uma ação ou arte busca; o sumo bem é o fim último, querido por si mesmo.</span></div>
+      </section>
+
+      <section class="card" id="ori1-argumento">
+        <div class="kicker">Orientação · 1.4</div>
+        <h3>Habilidade 3 — Acompanhar a linha argumentativa</h3>
+        <p class="lead">Um texto filosófico não é uma lista de afirmações, mas um <b>percurso</b>: parte de premissas, levanta objeções, descarta hipóteses e chega a uma conclusão. Perceber a <b>linha argumentativa</b> é seguir esse encadeamento — notar onde o autor <b>afirma</b>, onde <b>exemplifica</b>, onde <b>refuta</b>. Aristóteles avança por etapas (de “toda ação visa um bem” até a definição de felicidade); Platão vai da <b>imagem</b> (a caverna) à sua <b>interpretação</b> e às consequências para a educação e a política.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a prova valoriza quem distingue <b>tese, argumento e exemplo</b>, e quem percebe a função de um trecho dentro do todo (ele prova? ilustra? objeta?).</div>
+        <div class="ex"><b>Exemplo:</b> no Livro I, qual é o passo final do argumento de Aristóteles? <span class="resp">Após mostrar que o bem é fim e que há um fim último, ele define esse fim — a felicidade — como atividade da alma conforme a virtude.</span></div>
+      </section>
+
+      <section class="card" id="ori1-metodo">
+        <div class="kicker">Orientação · 1.5</div>
+        <h3>Como ler filosofia para o vestibular</h3>
+        <p class="lead">Leia em <b>duas camadas</b>. Primeiro, a <b>leitura global</b>: qual o problema, qual a tese, como termina. Depois, a <b>leitura analítica</b>: marque os conceitos-chave, reconstrua os passos do raciocínio e identifique exemplos e objeções. <b>Releia</b> trechos densos — a filosofia clássica é econômica, cada frase carrega peso. E <b>relacione</b>: o que o autor afirma dialoga com o outro texto e com questões atuais (educação, política, ética).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> bancas (ENEM, UFSC, UEL) costumam trazer um trecho do próprio clássico ou um comentário e pedir a <b>melhor interpretação</b>. Treinar leitura atenta vale mais que resumos prontos.</div>
+        <div class="ex"><b>Exemplo:</b> diante de um trecho desconhecido, por onde começar? <span class="resp">Identifique o tema, o conceito central e a conclusão; depois confira qual alternativa respeita a linha de raciocínio do autor.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ARISTÓTELES 1 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ari1">
+        <div class="num">II · Aristóteles — Ética a Nicômacos (Livro I)</div>
+        <h2>1. O Bem como Finalidade</h2>
+        <p>O Livro I abre com uma tese teleológica: toda atividade humana tende a um bem. A partir daí, Aristóteles organiza os fins em hierarquia e mostra que deve haver um fim último — o sumo bem —, cujo estudo cabe à mais alta das ciências, a política.</p>
+        <div class="mini">
+          <a href="#ari1-contexto">Aristóteles e a ética prática</a>
+          <a href="#ari1-bem-fim">Toda ação visa a um bem</a>
+          <a href="#ari1-sumo-bem">A hierarquia e o sumo bem</a>
+          <a href="#ari1-politica">A política como ciência arquitetônica</a>
+        </div>
+      </div>
+
+      <section class="card" id="ari1-contexto">
+        <div class="kicker">Ética a Nicômacos · 1.1</div>
+        <h3>Aristóteles e a ética como saber prático</h3>
+        <p class="lead"><b>Aristóteles</b> (384–322 a.C.), discípulo de Platão e preceptor de Alexandre, fundou o <b>Liceu</b>. A <b>Ética a Nicômacos</b> (ligada ao nome de seu filho, Nicômaco) é o primeiro tratado sistemático de ética do Ocidente. Para ele, a ética é uma <b>filosofia prática</b>: seu objetivo não é apenas <b>saber</b> o que é o bem, mas <b>tornar-se bom</b> — agir bem. Por isso parte da <b>experiência</b> e do que se diz comumente (as opiniões correntes), buscando o fim de toda a vida humana.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer a ética aristotélica como saber voltado à <b>ação</b> (e não à contemplação pura) e seu método <b>indutivo</b>, que parte das opiniões correntes, é base para interpretar o Livro I.</div>
+        <div class="ex"><b>Exemplo:</b> por que estudamos ética “não para saber, mas para nos tornarmos bons”? <span class="resp">Porque a ética é um saber prático, voltado à ação virtuosa, não apenas ao conhecimento teórico.</span></div>
+      </section>
+
+      <section class="card" id="ari1-bem-fim">
+        <div class="kicker">Ética a Nicômacos · 1.2</div>
+        <h3>Toda ação visa a um bem (teleologia)</h3>
+        <p class="lead">A frase de abertura dá o tom: <b>“Toda arte e toda investigação, bem como toda ação e toda escolha, tendem a algum bem; por isso foi dito, com acerto, que o bem é aquilo a que todas as coisas tendem.”</b> Aristóteles é <b>teleológico</b>: tudo o que fazemos visa a um <b>fim (telos)</b>, e esse fim é percebido como um bem. A medicina visa à saúde, a construção naval ao navio, a estratégia à vitória. O bem, aqui, não é uma essência abstrata, mas o <b>objetivo concreto</b> de cada prática.</p>
+        <div class="formula-box">toda ação → um fim (telos) → percebido como um bem</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a definição inicial — “o bem é aquilo a que todas as coisas tendem” — é citadíssima. Saber que ela é <b>teleológica</b> (liga bem e finalidade) é essencial.</div>
+        <div class="ex"><b>Exemplo:</b> qual é o “bem” da medicina, segundo essa lógica? <span class="resp">A saúde, que é o fim a que a arte médica tende.</span></div>
+      </section>
+
+      <section class="card" id="ari1-sumo-bem">
+        <div class="kicker">Ética a Nicômacos · 1.3</div>
+        <h3>A hierarquia dos fins e o sumo bem</h3>
+        <p class="lead">Os fins se <b>ordenam</b>: alguns são meios para outros. A fabricação de freios serve à equitação, que serve à arte militar, que serve à vitória. Se quiséssemos cada fim sempre em vista de outro, a série seria <b>infinita</b> e o desejo, “vão e inútil”. Logo, deve existir um <b>fim último</b>, desejado <b>por si mesmo</b> e não por causa de outra coisa — o <b>sumo bem</b>. Conhecê-lo tem enorme peso para a vida, como arqueiros que têm um alvo à frente.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o argumento da <b>regressão ao infinito</b> (sem um fim último, todo desejo seria vazio) prova a existência de um sumo bem. Cai como estrutura lógica do texto.</div>
+        <div class="ex"><b>Exemplo:</b> por que precisa existir um fim último? <span class="resp">Porque, sem ele, cada fim remeteria a outro indefinidamente e o desejo seria vão; o sumo bem é querido por si mesmo.</span></div>
+      </section>
+
+      <section class="card" id="ari1-politica">
+        <div class="kicker">Ética a Nicômacos · 1.4</div>
+        <h3>A política como ciência arquitetônica</h3>
+        <p class="lead">Qual ciência estuda o sumo bem? A mais soberana e abrangente: a <b>política</b>. Ela é <b>arquitetônica</b> — determina quais ciências devem existir na cidade, quem as estuda e até onde. Como engloba o fim das demais, seu fim <b>contém o bem humano</b>. E há mais: embora o bem do indivíduo seja desejável, o <b>bem da cidade</b> é “maior e mais perfeito”, mais belo e mais divino. Ética e política são, para Aristóteles, <b>contínuas</b> — viver bem é viver bem na <b>pólis</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> dois pontos certeiros: a política como ciência <b>“arquitetônica”</b> (organiza as demais) e a <b>primazia do bem comum</b> sobre o individual. A continuidade ética–política é marca de Aristóteles.</div>
+        <div class="ex"><b>Exemplo:</b> por que a política é a ciência “arquitetônica”? <span class="resp">Porque ordena todas as outras (quais existem e quem as pratica) e visa ao bem mais alto, o da cidade inteira.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ARISTÓTELES 2 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ari2">
+        <div class="num">II · Aristóteles — Ética a Nicômacos (Livro I)</div>
+        <h2>2. Felicidade e os Gêneros de Vida</h2>
+        <p>Definido que há um sumo bem, Aristóteles enfrenta a pergunta: o que é ele? Antes, fixa o método (a precisão possível em ética); depois mostra o consenso sobre o nome — felicidade — e a divergência sobre o conteúdo, examinando os modos de vida e criticando a Ideia do Bem de Platão.</p>
+        <div class="mini">
+          <a href="#ari2-metodo">O método e a precisão</a>
+          <a href="#ari2-eudaimonia">A felicidade como sumo bem</a>
+          <a href="#ari2-generos">Os três gêneros de vida</a>
+          <a href="#ari2-critica">A crítica à Ideia do Bem</a>
+        </div>
+      </div>
+
+      <section class="card" id="ari2-metodo">
+        <div class="kicker">Ética a Nicômacos · 2.1</div>
+        <h3>O método e a precisão possível em ética</h3>
+        <p class="lead">Aristóteles adverte: cada assunto admite o <b>grau de rigor</b> que sua natureza comporta. As coisas humanas — o belo e o justo — <b>variam</b> e valem “na maior parte das vezes” (não com a exatidão da matemática). Por isso, em ética, devemos contentar-nos com conclusões <b>gerais e prováveis</b>, sem exigir demonstração necessária. E o bom ouvinte precisa de <b>experiência</b>: o jovem, levado pelas paixões e sem vivência, <b>não é bom aluno</b> de ética e política.</p>
+        <div class="warn"><b>Pegadinha:</b> Aristóteles não é “impreciso” por descuido. Ele afirma que exigir exatidão matemática da ética seria um <b>erro de método</b> — cada saber tem seu grau próprio de rigor.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o princípio metodológico — <b>não exigir mais precisão do que a matéria permite</b> — e a ideia de que a ética requer experiência (não serve ao jovem imaturo) são cobrados em questões sobre o método aristotélico.</div>
+        <div class="ex"><b>Exemplo:</b> por que não se deve buscar exatidão matemática na ética? <span class="resp">Porque as ações humanas variam e valem na maioria dos casos; cada matéria comporta apenas o rigor próprio à sua natureza.</span></div>
+      </section>
+
+      <section class="card" id="ari2-eudaimonia">
+        <div class="kicker">Ética a Nicômacos · 2.2</div>
+        <h3>A felicidade: consenso no nome, divergência no conteúdo</h3>
+        <p class="lead">Quanto ao <b>nome</b> do sumo bem, há acordo: quase todos dizem ser a <b>felicidade (eudaimonia)</b>, entendida como “<b>viver bem e agir bem</b>”. Mas sobre o <b>que ela é</b>, começa a discórdia. O vulgo a identifica ao <b>prazer</b>; outros, às <b>honras</b>; outros, à <b>riqueza</b>; e cada um muda conforme a situação (o doente, à saúde; o pobre, à riqueza). Aristóteles parte desse material — o que se diz — para depurá-lo e chegar a uma definição mais precisa.</p>
+        <div class="warn"><b>Atenção:</b> “eudaimonia” é <b>florescimento</b> / viver e agir bem, não um sentimento passageiro. Traduz-se por “felicidade”, mas não é o mesmo que prazer ou bom humor.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a distinção entre <b>concordar no nome</b> (felicidade) e <b>divergir no conteúdo</b> estrutura todo o Livro I e costuma ser o eixo das questões.</div>
+        <div class="ex"><b>Exemplo:</b> todos concordam sobre o que é a felicidade? <span class="resp">Concordam que o sumo bem se chama felicidade (“viver e agir bem”), mas divergem sobre em que ela consiste.</span></div>
+      </section>
+
+      <section class="card" id="ari2-generos">
+        <div class="kicker">Ética a Nicômacos · 2.3</div>
+        <h3>Os três gêneros de vida</h3>
+        <p class="lead">A cada concepção de felicidade corresponde um <b>modo de vida</b>. A <b>vida de gozo</b> (prazer) é própria da maioria, mas “servil e bestial”, porque iguala o homem aos animais. A <b>vida política</b> busca a <b>honra</b> — só que a honra depende de quem a concede, é <b>exterior</b>; no fundo, esses homens querem a <b>virtude</b>, prova de que a honra não basta. A <b>vida contemplativa</b> (teorética), dedicada ao conhecimento, será examinada depois (Livro X) e apontada como a mais alta. A <b>riqueza</b>, por fim, não é o bem buscado: é apenas <b>útil</b>, meio para outra coisa.</p>
+        <table class="tab"><thead><tr><th>Gênero de vida</th><th>Busca</th><th>Limite</th></tr></thead><tbody>
+          <tr><td>Gozo / prazer</td><td>o prazer</td><td>servil; comum aos animais</td></tr>
+          <tr><td>Política</td><td>a honra</td><td>depende de outros; busca mesmo é a virtude</td></tr>
+          <tr><td>Contemplativa</td><td>o conhecimento</td><td>a mais elevada (vista no Livro X)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>três gêneros de vida</b> (prazer, honra/política, contemplação) e a crítica à <b>riqueza como mero meio</b> são clássicos. A honra é recusada por ser <b>exterior</b> e dependente.</div>
+        <div class="ex"><b>Exemplo:</b> por que a honra não é o bem supremo? <span class="resp">Porque depende de quem a concede (é exterior); quem a busca, no fundo, quer a virtude que ela reconhece.</span></div>
+      </section>
+
+      <section class="card" id="ari2-critica">
+        <div class="kicker">Ética a Nicômacos · 2.4</div>
+        <h3>A crítica à Ideia do Bem de Platão</h3>
+        <p class="lead">Aristóteles afasta-se do mestre. Platão sustentava um <b>Bem em si</b>, Ideia única, universal e <b>separada</b>. Aristóteles objeta: “bem” se <b>diz de muitos modos</b> (tantos quantas as categorias — substância, qualidade, relação…), logo não há uma só Ideia comum a tudo o que é bom. E, ainda que existisse esse Bem separado e eterno, seria <b>inútil para a ação</b>: o médico não cura a “saúde em si”, mas a saúde <b>deste</b> homem; o bem praticável é sempre <b>concreto</b>, realizável aqui. Daí a célebre lealdade à verdade acima da amizade.</p>
+        <div class="formula-box">“Sendo Platão e a verdade nossos amigos, é um dever sagrado preferir a verdade.”</div>
+        <div class="warn"><b>Erro comum:</b> tratar Platão e Aristóteles como idênticos. Aristóteles <b>rejeita</b> o Bem transcendente e separado; para ele, o bem é <b>imanente, plural e prático</b>.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a recusa da Ideia do Bem (o bem “se diz de muitos modos” e um Bem separado seria inútil à práxis) é a principal <b>divergência</b> entre os dois autores do programa — prato cheio para questões comparativas.</div>
+        <div class="ex"><b>Exemplo:</b> por que Aristóteles rejeita o “Bem em si” platônico? <span class="resp">Porque “bem” tem muitos sentidos (não cabe numa só Ideia) e um Bem separado seria inútil para a ação, que lida sempre com bens concretos.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ARISTÓTELES 3 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ari3">
+        <div class="num">II · Aristóteles — Ética a Nicômacos (Livro I)</div>
+        <h2>3. A Função do Homem e a Definição de Felicidade</h2>
+        <p>Aqui está o coração do Livro I. Aristóteles fixa dois critérios do sumo bem — ser final e autossuficiente — e, pelo argumento da função (ergon), chega à célebre definição de felicidade como atividade da alma conforme a virtude.</p>
+        <div class="mini">
+          <a href="#ari3-final">O bem final e autossuficiente</a>
+          <a href="#ari3-funcao">O argumento da função (ergon)</a>
+          <a href="#ari3-definicao">A definição de felicidade</a>
+          <a href="#ari3-bens">A felicidade e os bens exteriores</a>
+        </div>
+      </div>
+
+      <section class="card" id="ari3-final">
+        <div class="kicker">Ética a Nicômacos · 3.1</div>
+        <h3>O bem final e autossuficiente</h3>
+        <p class="lead">Antes de definir a felicidade, Aristóteles fixa dois traços do sumo bem. Ele é <b>final / perfeito</b>: é desejado <b>sempre por si mesmo</b> e nunca por causa de outra coisa — ao contrário da riqueza ou da honra, que queremos em vista de algo. E é <b>autossuficiente (autárkeia)</b>: por si só torna a vida desejável e <b>completa</b>, sem que falte nada. Ora, só a <b>felicidade</b> satisfaz ambos: ninguém quer ser feliz para obter outra coisa; ela <b>basta</b>.</p>
+        <div class="formula-box">sumo bem = fim final (querido só por si) + autossuficiente (nada falta)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os dois critérios — <b>finalidade</b> e <b>autossuficiência</b> — são a “peneira” que só a felicidade atravessa. Queremos saúde, honra e virtude também por causa da felicidade; a felicidade, só por si.</div>
+        <div class="ex"><b>Exemplo:</b> que dois critérios o sumo bem deve cumprir? <span class="resp">Ser final (desejado por si mesmo) e autossuficiente (bastar-se, tornando a vida completa).</span></div>
+      </section>
+
+      <section class="card" id="ari3-funcao">
+        <div class="kicker">Ética a Nicômacos · 3.2</div>
+        <h3>O argumento da função (ergon)</h3>
+        <p class="lead">Dizer “felicidade” ainda é vago; falta o conteúdo. Aristóteles recorre à <b>função própria (ergon)</b> do homem. Assim como o flautista, o escultor ou o olho têm uma função, e seu bem está em <b>desempenhá-la bem</b>, o homem deve ter uma função que lhe seja própria. Não é o simples <b>viver</b> (que as plantas também têm), nem o <b>sentir</b> (comum aos animais), mas a <b>atividade da parte racional</b> da alma. A função do homem é, pois, a <b>atividade da alma segundo a razão</b>.</p>
+        <div class="formula-box">viver (plantas) &lt; sentir (animais) &lt; agir conforme a razão (homem)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o “argumento da função” (ergon) é o passo decisivo: define o bem humano pela <b>atividade racional da alma</b> — aquilo que distingue o homem. Saber a escala (vegetar/sentir/raciocinar) ajuda muito.</div>
+        <div class="ex"><b>Exemplo:</b> qual é a função própria do homem, segundo Aristóteles? <span class="resp">A atividade da alma conforme a razão, que o distingue das plantas (que só vivem) e dos animais (que só sentem).</span></div>
+      </section>
+
+      <section class="card" id="ari3-definicao">
+        <div class="kicker">Ética a Nicômacos · 3.3</div>
+        <h3>A definição de felicidade</h3>
+        <p class="lead">Reunindo as peças: se a função do homem é a <b>atividade racional da alma</b>, e se executar bem uma função é fazê-la conforme sua <b>excelência (virtude)</b>, então o bem humano é a <b>atividade da alma conforme a virtude</b> — e, havendo várias virtudes, conforme a <b>mais alta e completa</b>. Falta um último traço: “<b>uma andorinha não faz verão</b>, nem um só dia”. A felicidade exige uma <b>vida completa</b>, não um instante. Felicidade não é estado nem prazer, mas <b>atividade (energeia)</b> virtuosa ao longo da vida.</p>
+        <div class="formula-box">felicidade = atividade da alma conforme a virtude, numa vida completa</div>
+        <div class="warn"><b>Não confunda:</b> para Aristóteles, felicidade é <b>atividade (energeia)</b>, não um sentimento nem posse passiva. E é <b>duradoura</b> — “uma andorinha não faz verão”.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> esta é A definição do Livro I e a mais cobrada de toda a obra. Memorize os três elementos: <b>atividade da alma + conforme a virtude + vida completa</b>.</div>
+        <div class="ex"><b>Exemplo:</b> como Aristóteles define a felicidade? <span class="resp">Como atividade da alma em conformidade com a virtude (a mais perfeita), realizada ao longo de uma vida completa.</span></div>
+      </section>
+
+      <section class="card" id="ari3-bens">
+        <div class="kicker">Ética a Nicômacos · 3.4</div>
+        <h3>A felicidade e os bens exteriores</h3>
+        <p class="lead">A virtude é o essencial, mas o homem não é um ser isolado: a felicidade precisa também de <b>bens exteriores</b> como <b>instrumentos</b> — amigos, recursos, saúde, certa boa fortuna. Sem eles, o exercício virtuoso fica <b>dificultado</b> (é difícil agir nobremente sem meios). Ainda assim, o <b>núcleo</b> é a atividade virtuosa, que é <b>estável</b>: o homem feliz não vira “camaleão” a cada revés. Por isso Aristóteles discute o dito de Sólon — “<b>ninguém é feliz antes de morrer</b>” —, reconhecendo o peso da <b>fortuna</b>, mas afirmando a <b>constância</b> de quem age com virtude.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> ponto sutil e cobrado: a felicidade aristotélica <b>não dispensa bens exteriores</b> (não é puro mérito interior), mas tem na <b>virtude</b> seu centro estável. O equilíbrio entre virtude e fortuna é a chave.</div>
+        <div class="ex"><b>Exemplo:</b> bastam a virtude e nada mais para ser feliz? <span class="resp">A virtude é o essencial, mas a felicidade requer também bens exteriores (amigos, recursos, saúde) como instrumentos da ação.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== ARISTÓTELES 4 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="ari4">
+        <div class="num">II · Aristóteles — Ética a Nicômacos (Livro I)</div>
+        <h2>4. A Alma e as Virtudes</h2>
+        <p>Para fechar o Livro I e abrir caminho ao Livro II, Aristóteles examina a alma — pois a felicidade é atividade dela conforme a virtude — e distingue dois tipos de virtude, conforme as partes da alma.</p>
+        <div class="mini">
+          <a href="#ari4-alma">A divisão da alma e os tipos de virtude</a>
+        </div>
+      </div>
+
+      <section class="card" id="ari4-alma">
+        <div class="kicker">Ética a Nicômacos · 4.1</div>
+        <h3>A divisão da alma e os dois tipos de virtude</h3>
+        <p class="lead">Como a felicidade é atividade da alma conforme a virtude, é preciso <b>conhecer a alma</b>. Aristóteles a divide em parte <b>irracional</b> e parte <b>racional</b>. A irracional tem um nível <b>vegetativo</b> (nutrição e crescimento, sem nenhuma participação na razão) e um nível <b>desiderativo</b> (os apetites e desejos), que <b>pode obedecer</b> à razão, escutá-la como a um pai. Daí dois tipos de virtude: as <b>dianoéticas (intelectuais)</b>, da parte racional — como a sabedoria e a prudência —, adquiridas pelo <b>ensino</b>; e as <b>éticas (morais)</b>, do caráter — como a coragem e a temperança —, adquiridas pelo <b>hábito</b>, na parte que obedece à razão.</p>
+        <table class="tab"><thead><tr><th>Parte da alma</th><th>Virtude correspondente</th></tr></thead><tbody>
+          <tr><th>Racional</th><td>Virtudes <b>dianoéticas</b> (intelectuais): sabedoria, prudência — pelo ensino</td></tr>
+          <tr><th>Irracional que obedece à razão</th><td>Virtudes <b>éticas</b> (morais): coragem, temperança, justiça — pelo hábito</td></tr>
+          <tr><th>Irracional vegetativa</th><td>sem virtude própria (nutrição e crescimento)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> a divisão da alma (racional/irracional) e a distinção entre virtudes <b>intelectuais</b> (dianoéticas, pelo ensino) e <b>morais</b> (éticas, pelo hábito) preparam toda a teoria da virtude como <b>meio-termo</b> (Livro II). Muito cobrada.</div>
+        <div class="ex"><b>Exemplo:</b> qual a diferença entre virtudes dianoéticas e éticas? <span class="resp">As dianoéticas (intelectuais) pertencem à parte racional e nascem do ensino; as éticas (morais) nascem do hábito, na parte que obedece à razão.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PLATÃO 1 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="pla1">
+        <div class="num">III · Platão — A República (Livro VII)</div>
+        <h2>1. A Alegoria da Caverna</h2>
+        <p>O Livro VII abre com a imagem mais famosa da filosofia. Para mostrar “o quanto nossa natureza pode ser ou não iluminada pela educação”, Platão narra a alegoria da caverna — figura do caminho que vai da ignorância ao conhecimento, do mundo sensível ao inteligível.</p>
+        <div class="mini">
+          <a href="#pla1-contexto">Platão e a cidade justa</a>
+          <a href="#pla1-caverna">A narrativa da caverna</a>
+          <a href="#pla1-elementos">Os elementos e seus significados</a>
+          <a href="#pla1-libertacao">A libertação e a ascensão</a>
+        </div>
+      </div>
+
+      <section class="card" id="pla1-contexto">
+        <div class="kicker">A República · 1.1</div>
+        <h3>Platão, A República e a cidade justa</h3>
+        <p class="lead"><b>Platão</b> (428–347 a.C.), discípulo de <b>Sócrates</b> e mestre de Aristóteles, escreve <b>A República</b> para responder “<b>o que é a justiça?</b>”. Para isso, projeta uma <b>cidade ideal</b> (a <b>kallípolis</b>), dividida em três classes (produtores, guardiões e governantes), análoga às três partes da alma (apetitiva, irascível e racional). A tese central: a cidade só será justa se for governada por quem <b>conhece o Bem</b> — os <b>reis-filósofos</b>. O Livro VII explica <b>como se forma</b> esse filósofo: pela educação que <b>converte a alma</b> e a eleva ao conhecimento.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> situar o Livro VII no projeto da República (justiça, cidade ideal, três classes/partes da alma, reis-filósofos) ajuda a entender por que a caverna desemboca em <b>educação e política</b>.</div>
+        <div class="ex"><b>Exemplo:</b> qual a função do Livro VII na República? <span class="resp">Mostrar como a educação forma o filósofo capaz de conhecer o Bem e, por isso, apto a governar a cidade justa.</span></div>
+      </section>
+
+      <section class="card" id="pla1-caverna">
+        <div class="kicker">A República · 1.2</div>
+        <h3>A narrativa da caverna</h3>
+        <p class="lead">Imagine homens presos <b>desde a infância</b> numa caverna subterrânea, acorrentados pelas pernas e pelo pescoço, de modo que só podem olhar a <b>parede do fundo</b>. Atrás e acima deles arde uma <b>fogueira</b>; entre o fogo e os prisioneiros há um <b>muro baixo</b>, atrás do qual outros transportam estatuetas e objetos, cujas <b>sombras</b> se projetam na parede. Os prisioneiros, que nunca viram outra coisa, tomam as <b>sombras pela única realidade</b>; ouvem os ecos e creem que as próprias sombras falam. E honram quem melhor <b>adivinha a ordem</b> em que as sombras aparecem.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> conhecer os elementos da cena (correntes, fogo, muro, objetos, sombras, ecos) é indispensável — a prova frequentemente descreve a caverna e pede a <b>interpretação correta</b> de cada parte.</div>
+        <div class="ex"><b>Exemplo:</b> o que os prisioneiros tomam por realidade? <span class="resp">As sombras projetadas na parede, únicas coisas que jamais viram.</span></div>
+      </section>
+
+      <section class="card" id="pla1-elementos">
+        <div class="kicker">A República · 1.3</div>
+        <h3>Os elementos da alegoria e seus significados</h3>
+        <p class="lead">Cada elemento é um <b>símbolo</b>. A <b>caverna</b> é o <b>mundo sensível</b>, em que vivemos pelos sentidos; as <b>correntes</b>, a ignorância e os preconceitos que nos prendem; as <b>sombras</b>, as aparências e opiniões que tomamos por verdade; o <b>fogo</b>, uma luz inferior (o “sol” do mundo sensível). <b>Sair</b> da caverna é o percurso do conhecimento rumo ao <b>mundo inteligível</b>, e o <b>Sol exterior</b> é a <b>Ideia do Bem</b>. A <b>subida</b> representa a educação filosófica; a <b>descida</b>, o retorno do filósofo à cidade.</p>
+        <table class="tab"><thead><tr><th>Elemento</th><th>Significado</th></tr></thead><tbody>
+          <tr><th>Caverna</th><td>mundo sensível (das aparências)</td></tr>
+          <tr><th>Correntes</th><td>ignorância, preconceitos, sentidos</td></tr>
+          <tr><th>Sombras</th><td>aparências e opiniões (dóxa)</td></tr>
+          <tr><th>Fogo</th><td>“sol” do mundo sensível (luz inferior)</td></tr>
+          <tr><th>Saída / subida</th><td>educação; passagem ao mundo inteligível</td></tr>
+          <tr><th>Sol exterior</th><td>a Ideia do Bem</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> decodificar a alegoria item a item é a questão mais comum. Em especial: <b>sombras = opiniões/aparências</b>; <b>sair da caverna = conhecer</b>; <b>Sol = Ideia do Bem</b>.</div>
+        <div class="ex"><b>Exemplo:</b> o que representa o Sol fora da caverna? <span class="resp">A Ideia do Bem, fonte última da verdade e do ser, vista por último e com esforço.</span></div>
+      </section>
+
+      <section class="card" id="pla1-libertacao">
+        <div class="kicker">A República · 1.4</div>
+        <h3>A libertação e a ascensão</h3>
+        <p class="lead">Suponha que um prisioneiro seja <b>libertado</b> e forçado a levantar-se, voltar-se para a luz e subir. O processo é <b>penoso e ofuscante</b>: a princípio, a claridade o cega e ele preferiria voltar às sombras familiares. Aos poucos, <b>acostuma-se</b> — primeiro distingue sombras e reflexos na água, depois os próprios objetos, em seguida os astros à noite e, por fim, o próprio <b>Sol</b>. A ascensão é <b>gradual e difícil</b>: o conhecimento verdadeiro exige esforço, ruptura com o hábito e adaptação progressiva à verdade.</p>
+        <div class="warn"><b>Atenção:</b> a caverna não simboliza só “ignorância” em geral. É a <b>condição comum</b> de quem vive preso às aparências e à opinião — e a saída é <b>dolorosa</b>, não automática.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a dificuldade e a gradualidade da subida (o ofuscamento, a resistência, as etapas) caem como <b>metáfora do esforço do conhecimento</b>. A libertação “forçada” sugere o papel do educador.</div>
+        <div class="ex"><b>Exemplo:</b> por que a saída da caverna é dolorosa? <span class="resp">Porque a luz ofusca quem só conhecia sombras; romper com o hábito e ascender à verdade exige esforço e adaptação gradual.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PLATÃO 2 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="pla2">
+        <div class="num">III · Platão — A República (Livro VII)</div>
+        <h2>2. Do Sensível ao Inteligível: o Sol e o Bem</h2>
+        <p>A alegoria traduz a metafísica de Platão: há dois planos de realidade. Aqui se explicam os dois mundos (a Teoria das Ideias), o sentido do Sol como Ideia do Bem e os graus do conhecimento que escalonam a subida.</p>
+        <div class="mini">
+          <a href="#pla2-dois-mundos">Os dois mundos (Teoria das Ideias)</a>
+          <a href="#pla2-sol">O Sol e a Ideia do Bem</a>
+          <a href="#pla2-graus">Os graus do conhecimento</a>
+        </div>
+      </div>
+
+      <section class="card" id="pla2-dois-mundos">
+        <div class="kicker">A República · 2.1</div>
+        <h3>Os dois mundos e a Teoria das Ideias</h3>
+        <p class="lead">Para Platão, a realidade se divide em <b>dois planos</b>. O <b>mundo sensível</b> é o das coisas materiais, <b>múltiplas e mutáveis</b>, captadas pelos sentidos — é o mundo do <b>vir-a-ser</b>, das cópias imperfeitas, de que só temos <b>opinião (dóxa)</b>. O <b>mundo inteligível</b> é o das <b>Ideias (ou Formas)</b>: essências <b>eternas, imutáveis e perfeitas</b>, captadas só pela razão — é o mundo do <b>ser</b>, de que se tem <b>ciência (epistéme)</b>. As coisas sensíveis são <b>cópias</b> das Ideias (há muitas mesas, mas uma só Ideia de mesa).</p>
+        <table class="tab"><thead><tr><th>Mundo sensível</th><th>Mundo inteligível</th></tr></thead><tbody>
+          <tr><td>coisas materiais, múltiplas, mutáveis</td><td>Ideias: eternas, imutáveis, perfeitas</td></tr>
+          <tr><td>captado pelos sentidos</td><td>captado pela razão</td></tr>
+          <tr><td>vir-a-ser; cópias</td><td>ser; modelos (Formas)</td></tr>
+          <tr><td>gera opinião (dóxa)</td><td>gera ciência (epistéme)</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> a oposição <b>sensível × inteligível</b> (e opinião × ciência) é a espinha dorsal do platonismo. A caverna é a <b>imagem</b> dessa divisão: dentro = sensível; fora = inteligível.</div>
+        <div class="ex"><b>Exemplo:</b> qual a diferença entre os dois mundos? <span class="resp">O sensível é mutável e copiado, conhecido pelos sentidos (opinião); o inteligível é eterno e verdadeiro, conhecido pela razão (ciência).</span></div>
+      </section>
+
+      <section class="card" id="pla2-sol">
+        <div class="kicker">A República · 2.2</div>
+        <h3>O Sol e a Ideia do Bem</h3>
+        <p class="lead">No mundo inteligível, a Ideia suprema é a do <b>Bem</b>, simbolizada pelo <b>Sol</b>. Assim como o sol, no mundo visível, dá <b>luz</b> e torna as coisas <b>visíveis</b>, além de gerar e nutrir a vida, a <b>Ideia do Bem</b> é a fonte da <b>verdade</b> e do <b>ser</b>: ela ilumina as demais Ideias (torna-as cognoscíveis) e lhes dá existência. É o que há de mais alto, “visto por último e com dificuldade”. Quem a contempla compreende que ela é a <b>causa de tudo o que é reto e belo</b> — e só quem a conhece pode agir com <b>sabedoria</b> na vida pública e privada.</p>
+        <div class="warn"><b>Atenção:</b> não reduza o Bem a um valor moral qualquer. Em Platão, a Ideia do Bem é <b>princípio supremo</b>: causa do ser e da verdade de todas as outras Ideias — por isso o <b>Sol</b>, e não uma estrela qualquer.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a analogia <b>Sol–Bem</b> é certeira: o Bem está para o inteligível como o sol para o visível (fonte de luz/visão = fonte de verdade/conhecimento e de ser). É o <b>ápice</b> do percurso.</div>
+        <div class="ex"><b>Exemplo:</b> por que a Ideia do Bem é comparada ao Sol? <span class="resp">Porque, como o sol ilumina, faz ver as coisas e as nutre, o Bem é a fonte da verdade, do conhecimento e do ser das demais Ideias.</span></div>
+      </section>
+
+      <section class="card" id="pla2-graus">
+        <div class="kicker">A República · 2.3</div>
+        <h3>Os graus do conhecimento (a linha dividida)</h3>
+        <p class="lead">À subida na caverna correspondem <b>graus de conhecimento</b>, que Platão ordena na “<b>linha dividida</b>”. No domínio <b>sensível</b> (opinião / dóxa): a <b>imaginação ou conjectura (eikasía)</b> — sombras e imagens — e a <b>crença (pístis)</b> — os objetos sensíveis. No domínio <b>inteligível</b> (ciência / epistéme): o <b>pensamento discursivo (diánoia)</b> — o raciocínio matemático, que ainda parte de hipóteses e figuras — e a <b>intelecção (nóesis)</b> — o conhecimento puro das Ideias pela dialética, até o Bem. Sobe-se da sombra à Ideia, da opinião à ciência.</p>
+        <div class="formula-box">eikasía → pístis │ diánoia → nóesis &nbsp;&nbsp;(opinião │ ciência)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os quatro graus (eikasía, pístis, diánoia, nóesis) e sua divisão em <b>opinião</b> (sensível) e <b>ciência</b> (inteligível) caem direto. A linha é exposta no Livro VI e <b>ilustrada</b> pela caverna no VII.</div>
+        <div class="ex"><b>Exemplo:</b> qual a forma mais alta de conhecimento na linha dividida? <span class="resp">A nóesis (intelecção), conhecimento puro das Ideias pela dialética, que culmina na Ideia do Bem.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PLATÃO 3 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="pla3">
+        <div class="num">III · Platão — A República (Livro VII)</div>
+        <h2>3. A Educação como Conversão e o Retorno</h2>
+        <p>Da metafísica, Platão extrai uma teoria da educação e uma ética política. Educar é converter a alma para a luz; e quem ascende ao Bem tem o dever de descer e governar a cidade.</p>
+        <div class="mini">
+          <a href="#pla3-periagoge">A educação como conversão (periagogé)</a>
+          <a href="#pla3-retorno">O retorno e o dever do filósofo</a>
+          <a href="#pla3-reis">Os reis-filósofos</a>
+        </div>
+      </div>
+
+      <section class="card" id="pla3-periagoge">
+        <div class="kicker">A República · 3.1</div>
+        <h3>A educação como conversão da alma (periagogé)</h3>
+        <p class="lead">Platão recusa a ideia de que educar seja “<b>depositar</b>” saber numa alma vazia, como quem põe vista em olhos cegos. A <b>capacidade de conhecer</b> já existe em cada alma; o que falta é a <b>direção</b> certa. Educar é, portanto, <b>converter (periagogé)</b> — virar a <b>alma inteira</b> das sombras para a luz, do vir-a-ser para o ser, até que suporte contemplar o Bem. Como o olho não vê sem voltar-se com todo o corpo, a alma só conhece quando se <b>volta por inteiro</b>. A educação é a <b>arte dessa conversão</b>, não da transmissão.</p>
+        <div class="warn"><b>Pegadinha clássica:</b> para Platão, educar <b>NÃO</b> é transferir conteúdo para uma mente vazia, e sim <b>reorientar (converter)</b> uma capacidade que a alma já possui.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> o conceito de <b>periagogé</b> (conversão / giro da alma) é dos mais cobrados: educação como <b>mudança de direção do olhar</b> da alma, não como enchimento. Atualíssimo nos debates sobre ensino.</div>
+        <div class="ex"><b>Exemplo:</b> o que é educar, segundo Platão? <span class="resp">É converter a alma (periagogé), voltando-a das sombras para a luz; não é depositar conhecimento numa alma vazia, mas redirecionar uma capacidade que ela já tem.</span></div>
+      </section>
+
+      <section class="card" id="pla3-retorno">
+        <div class="kicker">A República · 3.2</div>
+        <h3>O retorno à caverna e o dever do filósofo</h3>
+        <p class="lead">Quem contemplou o Sol <b>não pode permanecer</b> no alto. Platão impõe ao filósofo o <b>retorno à caverna</b>, para libertar e governar os que ficaram. O regresso é <b>ingrato</b>: de volta à penumbra, seus olhos não distinguem bem as sombras, e os prisioneiros o julgam tolo — “subiu e voltou com a vista estragada”. Chegam a querer <b>matar</b> quem tente desacorrentá-los (alusão à condenação de <b>Sócrates</b>). Mas a <b>lei</b> não visa à felicidade de uma só classe, e sim ao <b>bem de toda a cidade</b>: por isso os que foram <b>educados pela cidade</b> devem servi-la.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o retorno obrigatório e a hostilidade dos prisioneiros (referência à <b>morte de Sócrates</b>) são muito explorados. O princípio-chave: o <b>bem do todo</b> acima do bem de um grupo.</div>
+        <div class="ex"><b>Exemplo:</b> por que o filósofo deve voltar à caverna? <span class="resp">Porque a cidade o educou e a lei visa ao bem de todos; ele tem o dever de libertar e governar os demais, ainda que isso o exponha à incompreensão.</span></div>
+      </section>
+
+      <section class="card" id="pla3-reis">
+        <div class="kicker">A República · 3.3</div>
+        <h3>Os reis-filósofos e o governo dos que não desejam o poder</h3>
+        <p class="lead">Só deve governar quem <b>conhece o Bem</b> — o <b>filósofo</b>. E, paradoxalmente, o melhor governante é aquele que <b>menos deseja</b> governar. Nas cidades comuns, disputam o poder os <b>ávidos por mando</b>, que governam para si; na cidade justa, o poder cabe a quem o vê como um <b>dever penoso</b>, não como prêmio. Tendo algo melhor a fazer (contemplar a verdade), o filósofo governa por <b>obrigação</b>, e por isso governa bem. “<b>A cidade mais bem governada é aquela em que os chamados a governar menos desejam o poder.</b>”</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a tese dos <b>reis-filósofos</b> e o <b>paradoxo do governante relutante</b> (quem menos quer o poder governa melhor) são certeiros — e ótimos para discutir política contemporânea (competência × ambição).</div>
+        <div class="ex"><b>Exemplo:</b> quem deve governar a cidade justa? <span class="resp">O filósofo, que conhece o Bem; e o melhor governante é justamente o que vê o poder como dever, não como privilégio.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PLATÃO 4 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="pla4">
+        <div class="num">III · Platão — A República (Livro VII)</div>
+        <h2>4. O Currículo Formativo e a Dialética</h2>
+        <p>Como formar quem chegará ao Bem? Platão descreve um currículo de estudos que prepara a alma — as ciências matemáticas — e coroa tudo com a dialética, a ciência suprema.</p>
+        <div class="mini">
+          <a href="#pla4-curriculo">O currículo propedêutico</a>
+          <a href="#pla4-dialetica">A dialética como ciência suprema</a>
+        </div>
+      </div>
+
+      <section class="card" id="pla4-curriculo">
+        <div class="kicker">A República · 4.1</div>
+        <h3>O currículo propedêutico</h3>
+        <p class="lead">Que estudos voltam a alma do <b>sensível</b> para o <b>inteligível</b>? Não as artes manuais nem a mera experiência, mas as <b>ciências matemáticas</b>, que lidam com objetos abstratos e obrigam a pensar para além dos sentidos. Na ordem de Platão: a <b>aritmética</b> (a ciência do número), a <b>geometria plana</b>, a <b>geometria dos sólidos</b>, a <b>astronomia</b> (o estudo do <b>movimento</b>, não o mero olhar o céu) e a <b>harmonia</b> (as razões numéricas dos sons). Todas exercitam o raciocínio e “puxam” a alma para o <b>ser</b> — mas são apenas um <b>prelúdio</b>, não a melodia final.</p>
+        <div class="formula-box">aritmética → geometria → sólidos → astronomia → harmonia → (dialética)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a lista das <b>ciências propedêuticas</b> (sobretudo aritmética e geometria) e sua função — <b>converter a alma</b> do sensível ao inteligível, preparando a dialética — é cobrada. São o “prelúdio” do conhecimento supremo.</div>
+        <div class="ex"><b>Exemplo:</b> para que servem a matemática e a geometria na formação do filósofo? <span class="resp">Para voltar a alma do sensível ao inteligível, exercitando o pensamento abstrato como preparação (prelúdio) para a dialética.</span></div>
+      </section>
+
+      <section class="card" id="pla4-dialetica">
+        <div class="kicker">A República · 4.2</div>
+        <h3>A dialética como ciência suprema</h3>
+        <p class="lead">No topo do currículo está a <b>dialética</b>, o “<b>coroamento</b>” de todas as ciências. Enquanto a matemática ainda se apoia em <b>hipóteses</b> e figuras, a dialética procede <b>só pela razão</b>, sem recurso aos sentidos, percorrendo as Ideias até alcançar o <b>princípio de tudo</b>: a <b>Ideia do Bem</b>, que não depende de hipótese alguma. Só a dialética <b>sobe até esse princípio</b> e, a partir dele, compreende todo o resto. É a única ciência que apreende a <b>essência</b> de cada coisa e conduz o olhar da alma ao mais alto. Por isso <b>encerra</b> a formação do filósofo-governante.</p>
+        <div class="warn"><b>Atenção:</b> não confunda a <b>dialética platônica</b> (ascensão racional às Ideias e ao Bem) com “debate” ou retórica. É o método que <b>dispensa hipóteses</b> e chega ao princípio supremo.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a dialética como <b>ciência mais alta</b> (acima da matemática) e <b>via de acesso ao Bem</b> é o ápice do Livro VII. Saber que ela <b>prescinde dos sentidos</b> e supera as hipóteses é o ponto fino.</div>
+        <div class="ex"><b>Exemplo:</b> por que a dialética é a ciência suprema? <span class="resp">Porque, só pela razão e sem os sentidos, percorre as Ideias até o princípio incondicionado — a Ideia do Bem —, fundamentando todo o conhecimento.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== SÍNTESE ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="sin1">
+        <div class="num">IV · Síntese e Aplicação</div>
+        <h2>1. Diálogo entre os Textos e Aplicação das Habilidades</h2>
+        <p>Para fechar, um confronto entre os dois clássicos e um treino das três habilidades do programa: captar a unidade temática, mapear conceitos e suas relações, e seguir a linha argumentativa de cada texto.</p>
+        <div class="mini">
+          <a href="#sin1-comparacao">Platão × Aristóteles</a>
+          <a href="#sin1-unidade">Habilidade 1: unidade temática</a>
+          <a href="#sin1-conceitos">Habilidade 2: conceitos e relações</a>
+          <a href="#sin1-argumento">Habilidade 3: linha argumentativa</a>
+          <a href="#sin1-prova">Como cai no vestibular</a>
+        </div>
+      </div>
+
+      <section class="card" id="sin1-comparacao">
+        <div class="kicker">Síntese · 1.1</div>
+        <h3>Platão × Aristóteles: convergências e divergências</h3>
+        <p class="lead">Mestre e discípulo <b>partilham</b> muito: ambos são <b>teleológicos</b>, fazem da <b>razão</b> o que há de mais alto no homem e veem <b>ética e política</b> como inseparáveis. Mas <b>divergem</b> no essencial. Platão é <b>dualista</b>: o bem é uma <b>Ideia transcendente</b>, conhecida pela dialética, e a vida plena é <b>contemplação</b> que se converte em dever político. Aristóteles é mais <b>imanente</b>: nega o Bem separado, define a felicidade na <b>ação virtuosa concreta</b> (que precisa até de bens exteriores) e chega ao bem pela <b>experiência</b>, não pela ascensão a outro mundo.</p>
+        <table class="tab"><thead><tr><th>Aspecto</th><th>Platão (República VII)</th><th>Aristóteles (Ética I)</th></tr></thead><tbody>
+          <tr><th>Bem</th><td>Ideia transcendente (o Sol)</td><td>fim concreto, “dito de muitos modos”</td></tr>
+          <tr><th>Conhecimento</th><td>dialética; sai do sensível</td><td>parte da experiência / opinião</td></tr>
+          <tr><th>Vida plena</th><td>contemplar o Bem + governar</td><td>atividade virtuosa na vida completa</td></tr>
+          <tr><th>Educação</th><td>conversão da alma (periagogé)</td><td>hábito (virtudes éticas) + ensino</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> questões comparativas adoram este eixo: <b>idealismo / transcendência</b> (Platão) × <b>realismo / imanência</b> (Aristóteles); e a <b>crítica explícita</b> de Aristóteles à Ideia do Bem.</div>
+        <div class="ex"><b>Exemplo:</b> em que Aristóteles mais se afasta de Platão? <span class="resp">Ao recusar o Bem transcendente e situar o bem humano na ação virtuosa concreta, e não na contemplação de uma Ideia separada.</span></div>
+      </section>
+
+      <section class="card" id="sin1-unidade">
+        <div class="kicker">Síntese · 1.2</div>
+        <h3>Habilidade 1 aplicada: a unidade temática</h3>
+        <p class="lead">Resuma cada texto em <b>uma frase</b>. <b>Ética a Nicômacos, Livro I:</b> a investigação do <b>sumo bem</b> da vida humana, que se mostra ser a <b>felicidade</b>, definida como atividade da alma conforme a virtude. <b>A República, Livro VII:</b> o caminho da <b>educação</b> que converte a alma e a eleva ao <b>conhecimento da Ideia do Bem</b>, com o consequente <b>dever do filósofo</b> de governar. Captar essa frase-síntese é dominar a unidade do texto.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> treine reduzir o texto a uma <b>tese</b>. Bancas pedem “a ideia central” — e os distratores costumam trocar o tema por um detalhe <b>verdadeiro, mas secundário</b>.</div>
+        <div class="ex"><b>Exemplo:</b> em uma frase, qual o tema do Livro VII? <span class="resp">A educação como conversão da alma rumo ao Bem e o dever político de quem o conhece.</span></div>
+      </section>
+
+      <section class="card" id="sin1-conceitos">
+        <div class="kicker">Síntese · 1.3</div>
+        <h3>Habilidade 2 aplicada: conceitos e suas relações</h3>
+        <p class="lead">Monte o <b>mapa conceitual</b> de cada texto. Em <b>Aristóteles</b>: fim (telos) → bem → sumo bem → felicidade → função (ergon) → virtude → vida completa, com a <b>política</b> como ciência que tudo ordena. Em <b>Platão</b>: sensível × inteligível → opinião × ciência → graus do conhecimento → Sol / Ideia do Bem → educação como conversão → dialética → reis-filósofos. Os conceitos <b>não valem soltos</b>: cada um puxa o seguinte.</p>
+        <table class="tab"><thead><tr><th>Aristóteles (conceitos-chave)</th><th>Platão (conceitos-chave)</th></tr></thead><tbody>
+          <tr><td>telos, bem, sumo bem</td><td>sensível × inteligível</td></tr>
+          <tr><td>eudaimonia (felicidade)</td><td>Ideia do Bem (Sol)</td></tr>
+          <tr><td>ergon (função)</td><td>periagogé (conversão)</td></tr>
+          <tr><td>virtude (dianoética / ética)</td><td>dialética</td></tr>
+          <tr><td>política (ciência arquitetônica)</td><td>reis-filósofos</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer um conceito e sua <b>função na cadeia</b> (e não só sua “definição de dicionário”) é o que distingue a interpretação correta nas alternativas.</div>
+        <div class="ex"><b>Exemplo:</b> a que conceito se liga diretamente a “função (ergon)” em Aristóteles? <span class="resp">À definição de felicidade: por ter uma função própria (a atividade racional), o homem tem um bem próprio — a virtude dessa atividade.</span></div>
+      </section>
+
+      <section class="card" id="sin1-argumento">
+        <div class="kicker">Síntese · 1.4</div>
+        <h3>Habilidade 3 aplicada: a linha argumentativa</h3>
+        <p class="lead">Reconstrua o <b>percurso</b>. Aristóteles argumenta em <b>cadeia</b>: (1) toda ação visa um bem; (2) deve haver um fim último; (3) todos o chamam felicidade; (4) mas o que é? — pelo argumento da função, (5) é a atividade da alma conforme a virtude, numa vida completa. Platão argumenta por <b>imagem e desdobramento</b>: (1) a alegoria da caverna; (2) sua interpretação (sensível/inteligível, Sol/Bem); (3) a educação como conversão; (4) o currículo e a dialética; (5) o retorno e os reis-filósofos. Em ambos, <b>nada é solto</b>: cada passo prepara o próximo.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> perceber a <b>função de cada trecho</b> (afirmar, exemplificar, refutar, concluir) é a habilidade mais alta cobrada. Em Platão, a caverna <b>ilustra</b>; em Aristóteles, o ergon <b>prova</b>.</div>
+        <div class="ex"><b>Exemplo:</b> qual a função da alegoria da caverna no argumento de Platão? <span class="resp">É a imagem que ilustra a tese (a passagem do sensível ao inteligível) e fundamenta o que vem depois: a educação como conversão e o papel do filósofo.</span></div>
+      </section>
+
+      <section class="card" id="sin1-prova">
+        <div class="kicker">Síntese · 1.5</div>
+        <h3>Como esses textos caem no vestibular</h3>
+        <p class="lead">Os formatos mais comuns: (1) um <b>trecho do clássico</b> seguido de “a melhor interpretação é…”; (2) <b>decodificar a alegoria</b> da caverna (o que são as sombras, o Sol, a saída); (3) <b>reconhecer uma definição</b> (felicidade, virtude, periagogé, dialética); (4) <b>comparar</b> os dois autores; (5) <b>relacionar</b> o texto a um tema atual (educação, “sombras” como desinformação, política e competência para governar). Em todos, vale a <b>leitura atenta</b>: identifique tema, conceito e conclusão antes de escolher a alternativa.</p>
+        <div class="warn"><b>Atenção:</b> os distratores mais perigosos são afirmações <b>verdadeiras sobre o autor</b>, mas que <b>não respondem</b> ao que o trecho diz. Responda ao texto dado, não ao seu resumo geral do autor.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> ENEM e bancas como UFSC/UEL/UFU privilegiam <b>interpretação de texto</b> e atualização dos conceitos. Treine ler trechos curtos e <b>parafrasear a tese</b>.</div>
+        <div class="ex"><b>Exemplo:</b> a alegoria da caverna pode ser usada para discutir que tema atual? <span class="resp">A manipulação da informação e a passagem da opinião ao conhecimento — por exemplo, as sombras como desinformação e a educação como saída.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Filosofia · Aristóteles (Ética a Nicômacos, Livro I) e Platão (A República, Livro VII). Ler filosofia é acompanhar um problema: capte o tema, mapeie os conceitos e siga o argumento.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

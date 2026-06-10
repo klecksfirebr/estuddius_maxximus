@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Geografia</title>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e4e8e7; --line-strong:#cdd6d4;
+    --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#effbf9;
+    --paper:#ffffff; --bg:#e9efed;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f5f6f5; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#f5f9f8; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#0f766e,#0891b2); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:70ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#f3f8f6; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE CAPÍTULO ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:24px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid var(--line-strong); border-radius:10px;
+    padding:13px 15px; text-align:center; font-size:14px; margin:14px 0; overflow-x:auto; color:var(--ink); font-weight:600; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.4px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:center; }
+  table.tab thead th{ background:var(--accent); color:#fff; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR PARTE (I a IV) ===== */
+  .secI{ --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#effbf9; }    /* Terra e Cartografia */
+  .secII{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }   /* Dinâmica da Natureza */
+  .secIII{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; }  /* População, Cidade e Campo */
+  .secIV{ --accent:#1d4ed8; --accent-2:#2563eb; --accent-soft:#eff6ff; }   /* Regiões e Geopolítica */
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Guia de Geografia</div>
+      <div class="sub">Conteúdos do programa do vestibular (UFSC), explicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+
+        <div class="grp">I · A Terra e a Cartografia</div>
+        <ol>
+          <li><a href="#ter1"><b>1</b> O Globo e os movimentos da Terra</a></li>
+          <li><a href="#ter2"><b>2</b> Cartografia e representação do espaço</a></li>
+          <li><a href="#ter3"><b>3</b> Situação geográfica, fronteiras e limites</a></li>
+        </ol>
+
+        <div class="grp">II · A Dinâmica da Natureza</div>
+        <ol>
+          <li><a href="#nat1"><b>1</b> As esferas da Terra e sua interdependência</a></li>
+          <li><a href="#nat2"><b>2</b> Paisagens naturais e problemas ambientais globais</a></li>
+          <li><a href="#nat3"><b>3</b> Aspectos naturais do Brasil</a></li>
+          <li><a href="#nat4"><b>4</b> Natureza e ambiente em Santa Catarina</a></li>
+        </ol>
+
+        <div class="grp">III · População, Cidade e Campo</div>
+        <ol>
+          <li><a href="#hum1"><b>1</b> Demografia</a></li>
+          <li><a href="#hum2"><b>2</b> Urbanização</a></li>
+          <li><a href="#hum3"><b>3</b> Indústria, energia e serviços</a></li>
+          <li><a href="#hum4"><b>4</b> O espaço agrário</a></li>
+        </ol>
+
+        <div class="grp">IV · Regiões e Mundo Contemporâneo</div>
+        <ol>
+          <li><a href="#reg1"><b>1</b> Regionalização do Brasil</a></li>
+          <li><a href="#reg2"><b>2</b> Regionalização de Santa Catarina</a></li>
+          <li><a href="#reg3"><b>3</b> Ordem mundial, globalização e blocos</a></li>
+          <li><a href="#reg4"><b>4</b> Subdesenvolvimento e geopolítica</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM · foco UFSC</div>
+        <h1>Guia de Geografia — Conteúdos Explicados</h1>
+        <p>Um percurso por todo o programa de Geografia do vestibular, do globo terrestre à geopolítica contemporânea, com atenção especial a <b>Santa Catarina</b> (exigida no edital da UFSC). Cada tópico responde a três perguntas: <b>o que é</b> (com causas e consequências), <b>como cai na prova</b> e <b>um exemplo</b> — para reconhecer o assunto no enunciado e entender do que se trata.</p>
+        <div class="chips">
+          <span>Cartografia</span><span>Coordenadas</span><span>Fusos</span><span>Relevo</span>
+          <span>Clima</span><span>Hidrografia</span><span>Biomas</span><span>Demografia</span>
+          <span>Urbanização</span><span>Espaço agrário</span><span>Regiões</span><span>Geopolítica</span>
+          <span>Santa Catarina</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que é”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. O índice ao lado agrupa os capítulos nas 4 partes do programa (I a IV); dentro de cada capítulo há atalhos para os tópicos. As caixas destacadas trazem dados-chave, esquemas e pegadinhas. Para o conteúdo catarinense, vale consultar o <b>Atlas Geográfico de Santa Catarina</b> (UDESC, fascículos 1, 2 e 3), citado no edital.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha de prova</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- CONTENT-START -->
+
+      <!-- ===================== PARTE I — CAP 1 ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="ter1">
+        <div class="num">I · A Terra e a Cartografia</div>
+        <h2>1. O Globo Terrestre e os Movimentos da Terra</h2>
+        <p>O ponto de partida da Geografia: a forma do planeta e seus dois grandes movimentos, que explicam os dias e as noites, as estações do ano, a orientação no espaço e a divisão do mundo em fusos horários.</p>
+        <div class="mini">
+          <a href="#ter1-rotacao">Forma e rotação</a>
+          <a href="#ter1-translacao">Translação e estações</a>
+          <a href="#ter1-orientacao">Orientação espacial</a>
+          <a href="#ter1-coord">Coordenadas geográficas</a>
+          <a href="#ter1-fusos">Fusos horários</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter1-rotacao">
+        <div class="kicker">A Terra · 1.1</div>
+        <h3>Forma da Terra e movimento de rotação</h3>
+        <p class="lead">A Terra não é uma esfera perfeita: é um <b>geoide</b> — levemente <b>achatada nos polos</b> e dilatada no Equador. A <b>rotação</b> é o giro em torno do próprio <b>eixo</b>, de <b>Oeste para Leste</b>, em aproximadamente <b>24 horas</b>. Suas consequências são a <b>sucessão dos dias e noites</b>, o <b>movimento aparente do Sol</b> (que parece “nascer” a leste e “se pôr” a oeste) e a diferença de horários entre os lugares (a base dos <b>fusos</b>).</p>
+        <div class="formula-box">rotação ≈ 24 h · sentido Oeste → Leste · gera dias/noites e fusos horários</div>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>consequências da rotação</b> (dia e noite, movimento aparente do Sol, fusos) e o <b>sentido</b> O→L. Cuidado para não confundir rotação (eixo, 24h) com translação (Sol, 1 ano).</div>
+        <div class="ex"><b>Exemplo:</b> por que o Sol parece “nascer” no leste? <span class="resp">É um movimento aparente causado pela rotação da Terra de Oeste para Leste.</span></div>
+      </section>
+
+      <section class="card" id="ter1-translacao">
+        <div class="kicker">A Terra · 1.2</div>
+        <h3>Translação e as estações do ano</h3>
+        <p class="lead">A <b>translação</b> é o movimento da Terra <b>ao redor do Sol</b>, que dura cerca de <b>365 dias e 6 horas</b> (as 6 horas acumuladas geram o <b>ano bissexto</b>). Combinada com a <b>inclinação do eixo terrestre</b> (~<b>23,5°</b>), ela produz as <b>estações do ano</b>: a luz solar incide de forma desigual nos hemisférios ao longo do ano. Quando é <b>verão</b> no Hemisfério Sul (dezembro), é <b>inverno</b> no Norte. Os marcos são os <b>solstícios</b> (verão/inverno) e os <b>equinócios</b> (outono/primavera).</p>
+        <div class="formula-box">translação ≈ 365 d 6 h + inclinação do eixo 23,5° → estações do ano</div>
+        <table class="tab"><thead><tr><th>Data aproximada</th><th>Hemisfério Sul</th><th>Hemisfério Norte</th></tr></thead><tbody>
+          <tr><td>21–22 dez (solstício)</td><td>início do verão</td><td>início do inverno</td></tr>
+          <tr><td>20–21 jun (solstício)</td><td>início do inverno</td><td>início do verão</td></tr>
+          <tr><td>mar / set (equinócios)</td><td>outono / primavera</td><td>primavera / outono</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> a causa das estações é a <b>inclinação do eixo</b> somada à translação — não a distância da Terra ao Sol. Relacionar solstícios/equinócios aos hemisférios é o raciocínio central.</div>
+        <div class="warn"><b>Pegadinha:</b> as estações <b>não</b> são causadas pela maior ou menor distância ao Sol. A causa é a <b>inclinação do eixo</b> (por isso as estações são opostas em cada hemisfério).</div>
+        <div class="ex"><b>Exemplo:</b> o que causa as estações do ano? <span class="resp">A inclinação do eixo terrestre (~23,5°) combinada com o movimento de translação.</span></div>
+      </section>
+
+      <section class="card" id="ter1-orientacao">
+        <div class="kicker">A Terra · 1.3</div>
+        <h3>Orientação espacial</h3>
+        <p class="lead">Orientar-se é definir direções a partir de referências. Os <b>pontos cardeais</b> são <b>Norte, Sul, Leste (Este) e Oeste</b>; os <b>colaterais</b> (NE, SE, SO, NO) ficam entre eles, formando a <b>rosa dos ventos</b>. Para se orientar, usam-se o <b>Sol</b> (nasce a leste, põe-se a oeste), o <b>Cruzeiro do Sul</b> (constelação que indica o Sul no Hemisfério Sul), a <b>bússola</b> (aponta o norte magnético) e, hoje, o <b>GPS</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> orientação pelo <b>Sol</b> e pelo <b>Cruzeiro do Sul</b>, leitura da rosa dos ventos e a diferença entre <b>norte magnético</b> (bússola) e <b>norte geográfico</b> (eixo da Terra).</div>
+        <div class="ex"><b>Exemplo:</b> no Hemisfério Sul, que constelação serve de referência para encontrar o ponto cardeal Sul? <span class="resp">O Cruzeiro do Sul.</span></div>
+      </section>
+
+      <section class="card" id="ter1-coord">
+        <div class="kicker">A Terra · 1.4</div>
+        <h3>Coordenadas geográficas</h3>
+        <p class="lead">As <b>coordenadas</b> localizam qualquer ponto da Terra por dois valores. A <b>latitude</b> é a distância angular até a <b>Linha do Equador</b> (de <b>0°</b> a <b>90°</b>, Norte ou Sul) e é medida sobre os <b>paralelos</b> (linhas horizontais). A <b>longitude</b> é a distância angular até o <b>Meridiano de Greenwich</b> (de <b>0°</b> a <b>180°</b>, Leste ou Oeste) e é medida sobre os <b>meridianos</b> (linhas verticais).</p>
+        <div class="formula-box">LATITUDE → Equador (0°), paralelos, N/S · LONGITUDE → Greenwich (0°), meridianos, L/O</div>
+        <table class="tab"><thead><tr><th>Paralelo notável</th><th>Latitude</th></tr></thead><tbody>
+          <tr><td>Linha do Equador</td><td>0°</td></tr>
+          <tr><td>Trópicos (Câncer N / Capricórnio S)</td><td>23,5°</td></tr>
+          <tr><td>Círculos Polares (Ártico / Antártico)</td><td>66,5°</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir <b>latitude × longitude</b>, identificar os paralelos notáveis e relacionar a <b>latitude</b> às <b>zonas térmicas</b> (e, portanto, ao clima) — quanto maior a latitude, mais frio.</div>
+        <div class="ex"><b>Exemplo:</b> a linha de latitude 0°, que divide a Terra em dois hemisférios, é? <span class="resp">A Linha do Equador.</span></div>
+      </section>
+
+      <section class="card" id="ter1-fusos">
+        <div class="kicker">A Terra · 1.5</div>
+        <h3>Fusos horários</h3>
+        <p class="lead">Como a Terra (360°) gira em 24 horas, cada <b>fuso horário</b> corresponde a <b>15°</b> de longitude (360 ÷ 24 = 15°), ou seja, <b>1 hora</b>. A contagem parte de <b>Greenwich</b>: a <b>Leste</b>, os horários <b>adiantam</b> (+); a <b>Oeste</b>, <b>atrasam</b> (−). Perto de 180° fica a <b>Linha Internacional de Data</b>. O <b>Brasil</b> possui atualmente <b>três fusos</b> horários, todos a oeste de Greenwich (horário de Brasília = GMT−3).</p>
+        <div class="formula-box">360° ÷ 24 = 15° por fuso · a Leste de Greenwich adianta (+) · a Oeste atrasa (−)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>cálculo de fusos</b> (cada 15° = 1 hora), o sentido <b>leste adianta / oeste atrasa</b> e os fusos do Brasil. Questões pedem a hora em outra cidade dada a diferença de longitude.</div>
+        <div class="warn"><b>Pegadinha:</b> a <b>Oeste</b> de Greenwich o horário <b>atrasa</b> — muita gente inverte. Como o Brasil está a oeste, está “atrás” do horário de Londres.</div>
+        <div class="ex"><b>Exemplo:</b> dois pontos separados por 30° de longitude têm quantas horas de diferença? <span class="resp">2 horas (30° ÷ 15° = 2).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE I — CAP 2 ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="ter2">
+        <div class="num">I · A Terra e a Cartografia</div>
+        <h2>2. Cartografia e Representação do Espaço</h2>
+        <p>Como representar uma Terra esférica num papel plano? A cartografia traduz o espaço em mapas, sempre com escolhas: escala, projeção, símbolos. Hoje, satélites e softwares revolucionaram essa ciência.</p>
+        <div class="mini">
+          <a href="#ter2-escala">Cartografia e escala</a>
+          <a href="#ter2-proj">Projeções cartográficas</a>
+          <a href="#ter2-mapas">Elementos e tipos de mapas</a>
+          <a href="#ter2-tec">Geotecnologias modernas</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter2-escala">
+        <div class="kicker">Cartografia · 2.1</div>
+        <h3>Cartografia e escala</h3>
+        <p class="lead">A <b>cartografia</b> é a ciência e a técnica de <b>representar a superfície terrestre</b> em mapas. A <b>escala</b> indica quantas vezes a realidade foi <b>reduzida</b>: pode ser <b>numérica</b> (ex.: 1:100.000, em que 1 cm no mapa = 100.000 cm = 1 km no terreno) ou <b>gráfica</b> (uma régua desenhada). <b>Escala grande</b> (ex.: 1:1.000) mostra uma <b>área pequena com muito detalhe</b>; <b>escala pequena</b> (ex.: 1:10.000.000) mostra uma <b>área grande com pouco detalhe</b>.</p>
+        <div class="formula-box">escala = distância no mapa ÷ distância real · 1:100.000 → 1 cm = 1 km</div>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>interpretar</b> e <b>converter</b> escalas e entender a relação <b>denominador × detalhe</b>. Cálculo de distância real a partir do mapa é clássico.</div>
+        <div class="warn"><b>Pegadinha:</b> quanto <b>maior o denominador</b>, <b>menor</b> a escala e menos detalhe. 1:1.000 é escala grande; 1:1.000.000 é escala pequena.</div>
+        <div class="ex"><b>Exemplo:</b> num mapa 1:50.000, 2 cm equivalem a quanto no terreno? <span class="resp">1 km (2 × 50.000 = 100.000 cm = 1.000 m).</span></div>
+      </section>
+
+      <section class="card" id="ter2-proj">
+        <div class="kicker">Cartografia · 2.2</div>
+        <h3>Projeções cartográficas</h3>
+        <p class="lead">Passar a Terra <b>esférica</b> para um <b>plano</b> sempre gera <b>distorções</b> — é impossível preservar ao mesmo tempo forma, área, distância e direção. Cada <b>projeção</b> escolhe o que conservar. A de <b>Mercator</b> (cilíndrica, <b>conforme</b>) mantém os <b>ângulos/formas</b> e foi feita para a navegação, mas <b>exagera as áreas</b> em altas latitudes (a Groenlândia parece do tamanho da África). A de <b>Peters</b> (<b>equivalente</b>) mantém as <b>áreas</b> proporcionais, mas distorce as formas, valorizando os países tropicais. Há ainda projeções <b>cônicas</b> e <b>azimutais/polares</b>.</p>
+        <table class="tab"><thead><tr><th>Projeção de Mercator</th><th>Projeção de Peters</th></tr></thead><tbody>
+          <tr><td>conforme (mantém formas/ângulos)</td><td>equivalente (mantém áreas)</td></tr>
+          <tr><td>exagera áreas polares (Norte)</td><td>distorce as formas</td></tr>
+          <tr><td>ideal para navegação</td><td>visão “justa” dos trópicos</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> associar cada projeção à <b>propriedade preservada</b> e à <b>crítica ideológica</b> (Mercator tida como eurocêntrica por agigantar o Norte; Peters reabilita as áreas tropicais reais).</div>
+        <div class="ex"><b>Exemplo:</b> que projeção mantém as áreas proporcionais e ficou conhecida por mostrar os países tropicais em seu tamanho real? <span class="resp">A projeção de Peters (equivalente).</span></div>
+      </section>
+
+      <section class="card" id="ter2-mapas">
+        <div class="kicker">Cartografia · 2.3</div>
+        <h3>Elementos e tipos de mapas</h3>
+        <p class="lead">Todo mapa bem construído tem <b>título</b>, <b>legenda</b>, <b>escala</b>, <b>orientação</b> (rosa dos ventos), <b>coordenadas</b> e <b>fonte</b>. Quanto ao conteúdo, há mapas <b>físicos</b> (relevo, rios), <b>políticos</b> (fronteiras, cidades) e <b>temáticos</b> (climáticos, demográficos, econômicos). Os <b>cartogramas</b> e as <b>anamorfoses</b> deformam os territórios para representar dados (ex.: população). No relevo, as <b>curvas de nível</b> unem pontos de mesma <b>altitude</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>identificar os elementos</b> de um mapa, ler a <b>legenda</b> e interpretar <b>curvas de nível</b> e <b>mapas temáticos</b> (relacionando dados ao território).</div>
+        <div class="ex"><b>Exemplo:</b> as linhas que unem pontos de mesma altitude num mapa de relevo são chamadas? <span class="resp">Curvas de nível.</span></div>
+      </section>
+
+      <section class="card" id="ter2-tec">
+        <div class="kicker">Cartografia · 2.4</div>
+        <h3>Geotecnologias modernas</h3>
+        <p class="lead">As <b>geotecnologias</b> transformaram a cartografia. O <b>GPS/GNSS</b> fornece a <b>localização</b> precisa por satélites. O <b>sensoriamento remoto</b> capta <b>imagens da superfície à distância</b> (satélites, fotografias aéreas, drones). O <b>SIG (Sistema de Informação Geográfica)</b> cruza <b>camadas</b> de dados georreferenciados (relevo, vegetação, população) num mesmo mapa digital. Aplicações: monitorar <b>desmatamento</b>, prever o tempo, planejar cidades e a <b>agricultura de precisão</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer cada tecnologia e suas <b>aplicações</b> — em especial o <b>SIG</b> como cruzamento de dados em camadas e o <b>sensoriamento remoto</b> no monitoramento ambiental.</div>
+        <div class="ex"><b>Exemplo:</b> que tecnologia capta imagens da superfície terrestre a distância, por satélites e drones, sem contato físico? <span class="resp">O sensoriamento remoto.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE I — CAP 3 ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="ter3">
+        <div class="num">I · A Terra e a Cartografia</div>
+        <h2>3. Situação Geográfica, Fronteiras e Limites</h2>
+        <p>Onde estão os continentes, o Brasil e Santa Catarina no globo — e o que significam suas posições. Aqui se distinguem também dois conceitos cobrados: limite (a linha) e fronteira (a zona de contato).</p>
+        <div class="mini">
+          <a href="#ter3-situacao">Situação do Brasil no mundo</a>
+          <a href="#ter3-fronteiras">Fronteiras e limites</a>
+          <a href="#ter3-sc">Posição de Santa Catarina</a>
+        </div>
+      </div>
+
+      <section class="card" id="ter3-situacao">
+        <div class="kicker">Situação · 3.1</div>
+        <h3>A situação geográfica do Brasil e dos continentes</h3>
+        <p class="lead">O <b>Brasil</b> ocupa quase metade da <b>América do Sul</b> e é o <b>5º maior país</b> do mundo em área. É cortado ao norte pela <b>Linha do Equador</b> e ao sul pelo <b>Trópico de Capricórnio</b>, o que coloca a maior parte do território na <b>zona intertropical</b> — daí o predomínio de <b>climas quentes</b>. Está quase todo no <b>Hemisfério Sul</b> e <b>Ocidental</b>, com um extenso <b>litoral atlântico</b>, posição estratégica em relação ao Atlântico Sul e à África.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>posição do Brasil</b> (tropical, hemisférios Sul e Ocidental) e suas <b>consequências climáticas</b>; o caráter <b>continental</b> do território. Relacionar latitude baixa ao calor predominante.</div>
+        <div class="ex"><b>Exemplo:</b> que duas linhas imaginárias cortam o Brasil e ajudam a explicar o predomínio de climas quentes? <span class="resp">A Linha do Equador (norte) e o Trópico de Capricórnio (sul).</span></div>
+      </section>
+
+      <section class="card" id="ter3-fronteiras">
+        <div class="kicker">Situação · 3.2</div>
+        <h3>Fronteiras e limites dos territórios</h3>
+        <p class="lead">Embora pareçam sinônimos, são conceitos distintos. O <b>limite</b> é a <b>linha abstrata</b> que separa dois territórios; a <b>fronteira</b> é a <b>faixa (zona) de contato</b> e interação entre eles — mais ampla e “viva” (com fluxos de pessoas, comércio, cultura). Os limites podem ser <b>naturais</b> (rios, montanhas) ou <b>artificiais</b> (paralelos, meridianos). O Brasil faz fronteira com <b>10 países</b> da América do Sul; sua <b>faixa de fronteira</b> tem 150 km de largura.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar <b>limite (linha)</b> de <b>fronteira (faixa de interação)</b> e conhecer os <b>vizinhos</b> do Brasil. A fronteira como espaço dinâmico, e não só divisória, é o ponto valorizado.</div>
+        <div class="warn"><b>Pegadinha:</b> o Brasil faz fronteira com <b>todos</b> os países da América do Sul, <b>exceto Chile e Equador</b>.</div>
+        <div class="ex"><b>Exemplo:</b> qual a diferença entre limite e fronteira? <span class="resp">O limite é a linha divisória; a fronteira é a faixa de contato e interação entre os territórios.</span></div>
+      </section>
+
+      <section class="card" id="ter3-sc">
+        <div class="kicker">Santa Catarina · 3.3</div>
+        <h3>A posição de Santa Catarina</h3>
+        <p class="lead"><b>Santa Catarina</b> situa-se na <b>Região Sul</b>, entre o <b>Paraná</b> (norte) e o <b>Rio Grande do Sul</b> (sul), com o <b>Oceano Atlântico</b> a leste e a <b>Argentina</b> a oeste (única fronteira internacional do estado). Por estar inteiramente <b>ao sul do Trópico de Capricórnio</b>, SC fica fora da zona tropical: predomina o <b>clima subtropical</b>, com as <b>quatro estações</b> bem marcadas e geadas no inverno. A capital é <b>Florianópolis</b>, em grande parte na <b>Ilha de Santa Catarina</b>.</p>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> a <b>posição subtropical</b> de SC (ao sul do Trópico) e suas implicações climáticas; os estados e o país <b>vizinhos</b> (PR, RS e Argentina). Detalhe regional muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> com qual país Santa Catarina faz fronteira internacional? <span class="resp">A Argentina (a oeste).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE II — CAP 1 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="nat1">
+        <div class="num">II · A Dinâmica da Natureza</div>
+        <h2>1. As Esferas da Terra e sua Interdependência</h2>
+        <p>O planeta funciona como um grande sistema integrado. As quatro “esferas” — litosfera, atmosfera, hidrosfera e biosfera — interagem o tempo todo, e é dessa dinâmica que nascem o relevo, o clima, as águas e a vida.</p>
+        <div class="mini">
+          <a href="#nat1-lito">Litosfera e relevo</a>
+          <a href="#nat1-atmo">Atmosfera: tempo e clima</a>
+          <a href="#nat1-hidro">Hidrosfera</a>
+          <a href="#nat1-bio">Biosfera e interdependência</a>
+        </div>
+      </div>
+
+      <section class="card" id="nat1-lito">
+        <div class="kicker">Esferas · 1.1</div>
+        <h3>Litosfera: estrutura interna e relevo</h3>
+        <p class="lead">A Terra é formada por camadas: <b>crosta</b> (a litosfera, sólida e fina), <b>manto</b> e <b>núcleo</b>. A litosfera é fragmentada em <b>placas tectônicas</b> que se deslocam sobre o manto (a <b>deriva continental</b> de Wegener). Onde as placas se chocam ou se afastam, ocorrem <b>terremotos</b>, <b>vulcões</b> e <b>dobramentos</b> (montanhas jovens, como os Andes e o Himalaia) — caso do <b>Círculo de Fogo do Pacífico</b>. O relevo é trabalhado por <b>agentes internos</b> (tectonismo, vulcanismo — que <b>constroem</b>) e <b>agentes externos</b> (intemperismo e erosão pela água, vento e gelo — que <b>desgastam e modelam</b>).</p>
+        <div class="formula-box">agentes INTERNOS (constroem: tectonismo, vulcanismo) × agentes EXTERNOS (modelam: erosão, intemperismo)</div>
+        <table class="tab"><thead><tr><th>Tipo de rocha</th><th>Origem</th><th>Exemplos</th></tr></thead><tbody>
+          <tr><td>Magmática (ígnea)</td><td>resfriamento do magma</td><td>granito, basalto</td></tr>
+          <tr><td>Sedimentar</td><td>acúmulo de sedimentos</td><td>arenito, calcário (petróleo, carvão)</td></tr>
+          <tr><td>Metamórfica</td><td>transformação por calor/pressão</td><td>mármore, gnaisse</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>tectônica de placas</b> e sua relação com terremotos/vulcões, os <b>tipos de rocha</b> e a oposição <b>agentes internos × externos</b>. O Brasil, no <b>centro</b> de uma placa, é uma área <b>estável</b> (sem grandes abalos).</div>
+        <div class="ex"><b>Exemplo:</b> por que Japão e Chile têm muitos terremotos e vulcões, e o Brasil não? <span class="resp">Eles ficam em bordas de placas tectônicas; o Brasil está no interior da placa Sul-Americana (área estável).</span></div>
+      </section>
+
+      <section class="card" id="nat1-atmo">
+        <div class="kicker">Esferas · 1.2</div>
+        <h3>Atmosfera: tempo e clima</h3>
+        <p class="lead">A <b>atmosfera</b> tem camadas — a <b>troposfera</b> (onde ocorrem os fenômenos do tempo) e a <b>estratosfera</b> (onde está a <b>camada de ozônio</b>), entre outras. É preciso distinguir <b>tempo</b> (estado <b>momentâneo</b> da atmosfera num lugar) de <b>clima</b> (o <b>padrão médio</b> ao longo de muitos anos). Os <b>elementos</b> do clima são temperatura, umidade, pressão, ventos e chuvas; os <b>fatores</b> que os controlam são <b>latitude</b>, <b>altitude</b>, <b>maritimidade/continentalidade</b>, <b>massas de ar</b>, correntes marítimas e o relevo.</p>
+        <div class="formula-box">TEMPO (momentâneo) × CLIMA (padrão médio, anos) · fatores: latitude · altitude · maritimidade · massas de ar</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a diferença <b>tempo × clima</b> e a distinção <b>elementos × fatores</b>. Efeitos da <b>latitude</b> (quanto maior, mais frio) e da <b>altitude</b> (quanto maior, mais frio) sobre a temperatura são certeiros.</div>
+        <div class="ex"><b>Exemplo:</b> qual a diferença entre tempo e clima? <span class="resp">Tempo é o estado momentâneo da atmosfera; clima é o padrão médio observado ao longo de muitos anos.</span></div>
+      </section>
+
+      <section class="card" id="nat1-hidro">
+        <div class="kicker">Esferas · 1.3</div>
+        <h3>Hidrosfera: as águas do planeta</h3>
+        <p class="lead">A água cobre cerca de <b>71%</b> da superfície terrestre, mas <b>~97%</b> é <b>salgada</b> (oceanos). A água <b>doce</b> é minoria — e a maior parte dela está <b>congelada</b> (geleiras, calotas) ou no <b>subsolo</b> (aquíferos, como o <b>Guarani</b>); só uma fração está disponível em rios e lagos. O <b>ciclo hidrológico</b> (evaporação → condensação → precipitação) mantém a água em movimento. Nos oceanos, as <b>correntes marítimas</b> (quentes e frias) influenciam o clima do litoral e a pesca.</p>
+        <div class="formula-box">~71% da superfície é água · ~97% salgada · ciclo: evaporação → condensação → precipitação</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>distribuição</b> da água (pouca doce e disponível), o <b>ciclo hidrológico</b>, os <b>aquíferos</b> e o papel das <b>correntes marítimas</b> no clima. A escassez de água doce conecta-se a debates ambientais.</div>
+        <div class="ex"><b>Exemplo:</b> onde está a maior parte da água doce do planeta? <span class="resp">Em geleiras/calotas polares e no subsolo (aquíferos) — e não nos rios e lagos.</span></div>
+      </section>
+
+      <section class="card" id="nat1-bio">
+        <div class="kicker">Esferas · 1.4</div>
+        <h3>Biosfera e a interdependência das esferas</h3>
+        <p class="lead">A <b>biosfera</b> é o conjunto de todos os <b>seres vivos</b> e dos ambientes que habitam — uma fina faixa onde litosfera, atmosfera e hidrosfera se encontram. As esferas são <b>interdependentes</b>: o relevo influencia o clima, o clima molda a vegetação e os rios, a vegetação protege o solo e regula a água. Um <b>ecossistema</b> é a comunidade de seres vivos somada ao meio físico, num <b>equilíbrio dinâmico</b>. Por isso, alterar uma parte (desmatar, poluir) repercute em todo o sistema.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>visão sistêmica</b> (interdependência das esferas) e o conceito de <b>ecossistema</b> — base para entender os impactos ambientais, em que mexer num elemento desequilibra o conjunto.</div>
+        <div class="ex"><b>Exemplo:</b> o conjunto dos seres vivos e suas relações com o meio físico, na interface das esferas, forma o quê? <span class="resp">A biosfera (organizada em ecossistemas).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE II — CAP 2 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="nat2">
+        <div class="num">II · A Dinâmica da Natureza</div>
+        <h2>2. Paisagens Naturais e Problemas Ambientais Globais</h2>
+        <p>Do clima nascem as grandes paisagens do mundo, das florestas equatoriais às tundras polares. E quando a sociedade industrial rompe esses equilíbrios, os problemas — aquecimento, poluição, desmatamento — ganham escala planetária.</p>
+        <div class="mini">
+          <a href="#nat2-paisagens">Grandes paisagens naturais</a>
+          <a href="#nat2-ambiente">Problemas ambientais globais</a>
+        </div>
+      </div>
+
+      <section class="card" id="nat2-paisagens">
+        <div class="kicker">Paisagens · 2.1</div>
+        <h3>As grandes paisagens naturais do mundo</h3>
+        <p class="lead">As <b>paisagens naturais</b> resultam principalmente do <b>clima</b> e se expressam nas grandes <b>formações vegetais</b>, distribuídas conforme a <b>latitude</b> e a <b>altitude</b>. Vão das <b>florestas equatoriais e tropicais</b> (quentes e úmidas, como a Amazônia e o Congo) às <b>savanas</b> (tropical com estação seca, como o cerrado), aos <b>desertos</b> (árido), às <b>estepes e pradarias</b> (semiárido/temperado), às <b>florestas temperadas</b>, à <b>taiga</b> (floresta de coníferas, fria) e à <b>tundra</b> (vegetação rasteira das altas latitudes polares).</p>
+        <table class="tab"><thead><tr><th>Clima</th><th>Paisagem / vegetação</th></tr></thead><tbody>
+          <tr><td>Equatorial</td><td>floresta densa e perene (Amazônia)</td></tr>
+          <tr><td>Tropical com seca</td><td>savana / cerrado</td></tr>
+          <tr><td>Árido</td><td>deserto (vegetação esparsa)</td></tr>
+          <tr><td>Frio (alta latitude)</td><td>taiga (coníferas) e tundra</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>associar clima a paisagem/vegetação</b> e entender a distribuição por <b>latitude</b> (do Equador, quente e florestado, aos polos, frios e de tundra). Mapas de biomas mundiais são frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> que formação vegetal, de clima frio e altas latitudes, é dominada por coníferas (pinheiros)? <span class="resp">A taiga (floresta boreal).</span></div>
+      </section>
+
+      <section class="card" id="nat2-ambiente">
+        <div class="kicker">Paisagens · 2.2</div>
+        <h3>A globalização dos problemas ambientais</h3>
+        <p class="lead">Os problemas ambientais <b>ultrapassam fronteiras</b> — são <b>globais</b>. Os principais: o <b>aquecimento global</b> e as mudanças climáticas (intensificação do <b>efeito estufa</b> pela queima de combustíveis fósseis, CO₂); o <b>buraco na camada de ozônio</b> (causado pelos <b>CFCs</b>); a <b>chuva ácida</b> (poluição industrial); o <b>desmatamento</b> e a perda de <b>biodiversidade</b>; a poluição da água e do ar; as <b>ilhas de calor</b> urbanas. A resposta internacional vem de conferências — <b>ECO-92</b> (Rio), <b>Protocolo de Kyoto</b>, <b>Acordo de Paris</b> — e da meta de <b>desenvolvimento sustentável</b>.</p>
+        <div class="formula-box">efeito estufa intensificado → aquecimento global · CFCs → camada de ozônio · ECO-92 · Kyoto · Acordo de Paris</div>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>distinguir</b> os problemas (sobretudo aquecimento global × camada de ozônio), conhecer os <b>acordos</b> e o conceito de <b>desenvolvimento sustentável</b> (atender ao presente sem comprometer as gerações futuras).</div>
+        <div class="warn"><b>Pegadinha:</b> <b>aquecimento global</b> (efeito estufa, CO₂) é diferente do <b>buraco na camada de ozônio</b> (CFCs). São dois problemas distintos — não confunda causas e efeitos.</div>
+        <div class="ex"><b>Exemplo:</b> que conferência da ONU, realizada no Brasil em 1992, foi um marco da agenda ambiental global? <span class="resp">A ECO-92 (Rio-92 / Cúpula da Terra).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE II — CAP 3 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="nat3">
+        <div class="num">II · A Dinâmica da Natureza</div>
+        <h2>3. Aspectos Naturais do Brasil</h2>
+        <p>O quadro físico do território brasileiro: uma estrutura geológica antiga e estável, relevo de altitudes modestas, grande diversidade de climas, abundância de água e um mosaico de biomas — da Amazônia ao Pampa.</p>
+        <div class="mini">
+          <a href="#nat3-relevo">Estrutura geológica e relevo</a>
+          <a href="#nat3-clima">Climas do Brasil</a>
+          <a href="#nat3-hidro">Hidrografia</a>
+          <a href="#nat3-bio">Domínios morfoclimáticos e biomas</a>
+        </div>
+      </div>
+
+      <section class="card" id="nat3-relevo">
+        <div class="kicker">Brasil natural · 3.1</div>
+        <h3>Estrutura geológica e relevo do Brasil</h3>
+        <p class="lead">A estrutura geológica do Brasil é <b>antiga e estável</b>: formada por <b>escudos cristalinos</b> (rochas magmáticas e metamórficas muito antigas, ricas em <b>minérios</b> como o ferro) e por <b>bacias sedimentares</b> (onde se acumulam <b>petróleo</b>, <b>carvão</b> e água subterrânea). Por <b>não ter dobramentos modernos</b>, o relevo é de <b>altitudes modestas</b> — não há grandes cadeias. As classificações mais citadas são a de <b>Aroldo de Azevedo</b> (planaltos e planícies), a de <b>Aziz Ab’Sáber</b> e a de <b>Jurandyr Ross</b> (a mais atual: planaltos, planícies e <b>depressões</b>). Ponto culminante: <b>Pico da Neblina</b>.</p>
+        <table class="tab"><thead><tr><th>Classificação</th><th>Formas reconhecidas</th></tr></thead><tbody>
+          <tr><td>Aroldo de Azevedo</td><td>planaltos e planícies (critério altimétrico)</td></tr>
+          <tr><td>Aziz Ab’Sáber</td><td>planaltos e planícies (critério de erosão/sedimentação)</td></tr>
+          <tr><td>Jurandyr Ross (atual)</td><td>planaltos, planícies e <b>depressões</b></td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> a estrutura <b>antiga e estável</b> (sem vulcões/dobramentos, ligada à riqueza mineral) e o reconhecimento das <b>três classificações</b> do relevo — Ross é a mais recente e introduz as <b>depressões</b>.</div>
+        <div class="ex"><b>Exemplo:</b> por que o Brasil não possui grandes cadeias montanhosas como os Andes? <span class="resp">Sua estrutura é antiga e estável, sem dobramentos modernos (está no interior da placa).</span></div>
+      </section>
+
+      <section class="card" id="nat3-clima">
+        <div class="kicker">Brasil natural · 3.2</div>
+        <h3>Os climas do Brasil</h3>
+        <p class="lead">Pela posição <b>tropical</b> e pela grande extensão, o Brasil reúne vários climas: <b>equatorial</b> (Amazônia — quente e úmido o ano inteiro), <b>tropical</b> (predominante — quente, com verão chuvoso e inverno seco), <b>tropical de altitude</b> (áreas serranas do Sudeste), <b>semiárido</b> (sertão nordestino — irregularidade de chuvas e <b>secas</b>) e <b>subtropical</b> (Sul — abaixo do Trópico, com quatro estações e <b>geadas</b>). As <b>massas de ar</b> (equatorial, tropical e a polar atlântica) comandam as variações de tempo.</p>
+        <table class="tab"><thead><tr><th>Clima</th><th>Região predominante</th></tr></thead><tbody>
+          <tr><td>Equatorial</td><td>Norte (Amazônia)</td></tr>
+          <tr><td>Semiárido</td><td>Sertão do Nordeste</td></tr>
+          <tr><td>Tropical</td><td>Centro do país (maior parte)</td></tr>
+          <tr><td>Subtropical</td><td>Sul</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>associar clima à região</b>, o papel das <b>massas de ar</b>, o <b>semiárido</b> e as secas, e o <b>subtropical</b> do Sul. Climogramas (gráficos de temperatura e chuva) são comuns.</div>
+        <div class="ex"><b>Exemplo:</b> que clima predomina na Região Sul, com quatro estações bem definidas e geadas no inverno? <span class="resp">O clima subtropical.</span></div>
+      </section>
+
+      <section class="card" id="nat3-hidro">
+        <div class="kicker">Brasil natural · 3.3</div>
+        <h3>Hidrografia do Brasil</h3>
+        <p class="lead">O Brasil é <b>riquíssimo em água doce</b>. Seus rios são, em geral, de <b>planalto</b> (com grande <b>potencial hidrelétrico</b>), de <b>regime pluvial</b> (alimentados pelas chuvas) e <b>perenes</b>. As principais bacias são a <b>Amazônica</b> (a maior do mundo em volume), a do <b>Paraná/Platina</b> (a mais <b>aproveitada para energia</b> — usina de <b>Itaipu</b>), a do <b>São Francisco</b> (o “rio da integração nacional”, no Nordeste) e a do <b>Tocantins-Araguaia</b>. No subsolo, destaca-se o <b>Aquífero Guarani</b>.</p>
+        <table class="tab"><thead><tr><th>Bacia</th><th>Destaque</th></tr></thead><tbody>
+          <tr><td>Amazônica</td><td>maior do mundo em volume e área</td></tr>
+          <tr><td>Paraná (Platina)</td><td>maior aproveitamento hidrelétrico (Itaipu)</td></tr>
+          <tr><td>São Francisco</td><td>“rio da integração”, perene no semiárido</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>características</b> dos rios (planalto, pluvial, perene), o <b>potencial hidrelétrico</b> e o contraste <b>Amazônica</b> (maior) × <b>Paraná</b> (mais usada para energia). O São Francisco como rio de integração é clássico.</div>
+        <div class="ex"><b>Exemplo:</b> qual bacia hidrográfica brasileira é a mais aproveitada para a geração de energia, onde fica Itaipu? <span class="resp">A bacia do Paraná (bacia Platina).</span></div>
+      </section>
+
+      <section class="card" id="nat3-bio">
+        <div class="kicker">Brasil natural · 3.4</div>
+        <h3>Domínios morfoclimáticos e biomas</h3>
+        <p class="lead">A vegetação reflete o conjunto do quadro natural. Aziz <b>Ab’Sáber</b> propôs os <b>domínios morfoclimáticos</b>, que combinam <b>relevo, clima, solo e vegetação</b>: <b>Amazônico</b> (floresta equatorial), <b>Cerrado</b> (savana, no Brasil central), <b>Caatinga</b> (semiárido nordestino, vegetação <b>xerófila</b>), <b>Mares de Morros</b> (Mata Atlântica, leste úmido), <b>Araucárias</b> (planalto sul) e <b>Pradarias</b> (Pampas, no RS). O IBGE reconhece seis <b>biomas</b>: Amazônia, Cerrado, Caatinga, Mata Atlântica, Pampa e Pantanal.</p>
+        <div class="formula-box">Domínios de Ab’Sáber: Amazônico · Cerrado · Caatinga · Mares de Morros (Mata Atlântica) · Araucárias · Pradarias</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>domínios de Ab’Sáber</b> (associar a relevo+clima+vegetação) e os <b>biomas</b> do IBGE. Destaques: a <b>Caatinga</b> (única exclusivamente brasileira) e a <b>Mata Atlântica</b> (a mais devastada).</div>
+        <div class="ex"><b>Exemplo:</b> que domínio morfoclimático, do semiárido nordestino, tem vegetação adaptada à seca (xerófila)? <span class="resp">A Caatinga.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE II — CAP 4 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="nat4">
+        <div class="num">II · A Dinâmica da Natureza</div>
+        <h2>4. Natureza e Ambiente em Santa Catarina</h2>
+        <p>O quadro físico catarinense, exigido pela UFSC: faixas de relevo que vão do litoral ao planalto, o clima subtropical (o mais frio do Brasil habitado), duas vertentes de rios e a Mata de Araucárias — com seus problemas ambientais próprios.</p>
+        <div class="mini">
+          <a href="#nat4-relevo">Relevo e geologia de SC</a>
+          <a href="#nat4-clima">Clima e hidrografia de SC</a>
+          <a href="#nat4-veg">Vegetação e problemas ambientais</a>
+        </div>
+      </div>
+
+      <section class="card" id="nat4-relevo">
+        <div class="kicker">SC natural · 4.1</div>
+        <h3>Relevo e geologia de Santa Catarina</h3>
+        <p class="lead">SC organiza-se em <b>faixas no sentido leste–oeste</b>: a estreita <b>planície litorânea</b> (praias, ilhas, lagunas e mangues), as <b>serras do Leste</b> (Serra do Mar) e, subindo o degrau da <b>Serra Geral</b>, o amplo <b>Planalto Meridional</b>, de origem <b>basáltica</b> (com solos férteis de <b>terra roxa</b> no oeste). No <b>sul</b> do estado, as bacias sedimentares guardam <b>carvão mineral</b> (Criciúma, Lauro Müller). O ponto culminante é o <b>Morro da Igreja</b>, em Urubici.</p>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> as <b>faixas de relevo</b> (litoral → serras → planalto), o <b>carvão mineral</b> do sul e o <b>basalto/terra roxa</b> do planalto e do oeste. A Serra Geral como divisor é detalhe cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> que recurso mineral é a base histórica da economia do sul catarinense (região de Criciúma)? <span class="resp">O carvão mineral.</span></div>
+      </section>
+
+      <section class="card" id="nat4-clima">
+        <div class="kicker">SC natural · 4.2</div>
+        <h3>Clima e hidrografia de Santa Catarina</h3>
+        <p class="lead">Por estar <b>ao sul do Trópico de Capricórnio</b>, SC tem <b>clima subtropical úmido</b>, com <b>chuvas bem distribuídas</b> o ano todo, quatro estações marcadas, <b>geadas</b> e, no planalto (<b>São Joaquim</b>, Urubici), até <b>neve</b> no inverno — a área mais fria do Brasil habitado. A hidrografia tem <b>duas vertentes</b>: a do <b>litoral/Atlântico</b> (rios curtos e caudalosos, como o <b>Itajaí-Açu</b>) e a do <b>interior</b>, que corre para o <b>rio Uruguai</b> (bacia do Prata). As <b>enchentes</b> do Vale do Itajaí são recorrentes.</p>
+        <div class="formula-box">SC: clima subtropical · vertente Atlântica (rios curtos, ex. Itajaí-Açu) × vertente do interior (→ rio Uruguai/Prata)</div>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> o <b>clima subtropical</b> (frio, neve no planalto), as <b>duas vertentes</b> hidrográficas (Atlântico × Uruguai) e as <b>enchentes</b> do Vale do Itajaí (relevo + ocupação).</div>
+        <div class="ex"><b>Exemplo:</b> que fenômeno raro no Brasil pode ocorrer no inverno do planalto catarinense (São Joaquim)? <span class="resp">A neve, típica do clima subtropical de altitude.</span></div>
+      </section>
+
+      <section class="card" id="nat4-veg">
+        <div class="kicker">SC natural · 4.3</div>
+        <h3>Vegetação e problemas ambientais de SC</h3>
+        <p class="lead">A vegetação original catarinense é a <b>Mata Atlântica</b> (litoral e encostas) e, no planalto, a <b>Floresta de Araucárias</b> (Mata dos Pinhais, marcada pelo <b>pinheiro-do-paraná</b>) — hoje muito <b>reduzida</b> pela exploração madeireira —, além de <b>campos</b> e <b>manguezais</b>. Os principais problemas ambientais são as <b>enchentes e deslizamentos</b> (Vale do Itajaí, ocupação de encostas), a <b>poluição pelo carvão</b> no sul, o <b>desmatamento das araucárias</b> e a contaminação da água pela <b>suinocultura</b> intensiva no oeste.</p>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> a <b>Floresta de Araucárias</b> (símbolo do planalto, fortemente devastada) e os <b>problemas ambientais</b> catarinenses — enchentes, carvão e dejetos da suinocultura.</div>
+        <div class="ex"><b>Exemplo:</b> que floresta, típica do planalto catarinense e hoje muito reduzida, é marcada pelo pinheiro-do-paraná? <span class="resp">A Floresta de Araucárias (Mata dos Pinhais).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE III — CAP 1 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="hum1">
+        <div class="num">III · População, Cidade e Campo</div>
+        <h2>1. Demografia</h2>
+        <p>O estudo da população: quantos somos, como crescemos, como nos distribuímos por idade, sexo e etnia, o que medem os indicadores sociais e por que as pessoas migram. A base humana de toda a Geografia.</p>
+        <div class="mini">
+          <a href="#hum1-cresc">Crescimento e teorias</a>
+          <a href="#hum1-estrutura">Estrutura etária e por sexo</a>
+          <a href="#hum1-etnias">Etnias e minorias</a>
+          <a href="#hum1-indicadores">Indicadores e setores</a>
+          <a href="#hum1-migracoes">Migrações</a>
+        </div>
+      </div>
+
+      <section class="card" id="hum1-cresc">
+        <div class="kicker">Demografia · 1.1</div>
+        <h3>Crescimento populacional e teorias demográficas</h3>
+        <p class="lead">A população mundial já ultrapassou <b>8 bilhões</b>. O <b>crescimento vegetativo</b> (ou natural) é a diferença entre a <b>natalidade</b> e a <b>mortalidade</b>. A <b>transição demográfica</b> descreve a passagem de taxas <b>altas</b> (de natalidade e mortalidade) para <b>baixas</b>: hoje os países <b>desenvolvidos</b> têm crescimento baixo e <b>envelhecimento</b>, enquanto os <b>subdesenvolvidos</b> ainda crescem (mas desacelerando). As teorias divergem: a <b>malthusiana</b> previa fome (população em progressão geométrica × alimentos em progressão aritmética); a <b>reformista (marxista)</b> defende que o problema não é o número de pessoas, mas a <b>má distribuição da riqueza</b>.</p>
+        <div class="formula-box">crescimento vegetativo = natalidade − mortalidade · transição demográfica: taxas altas → baixas</div>
+        <table class="tab"><thead><tr><th>Teoria</th><th>Ideia central</th></tr></thead><tbody>
+          <tr><td>Malthusiana</td><td>população cresce mais que os alimentos → fome</td></tr>
+          <tr><td>Neomalthusiana</td><td>controlar a natalidade dos países pobres</td></tr>
+          <tr><td>Reformista (marxista)</td><td>a fome vem da má distribuição de renda, não do nº de pessoas</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> o cálculo do <b>crescimento vegetativo</b>, a <b>transição demográfica</b> e o contraste <b>malthusiana × reformista</b>. O envelhecimento dos desenvolvidos × juventude dos subdesenvolvidos é tema certeiro.</div>
+        <div class="ex"><b>Exemplo:</b> segundo a teoria reformista, qual é a verdadeira causa da fome no mundo? <span class="resp">A má distribuição da renda e da riqueza — não o excesso de população.</span></div>
+      </section>
+
+      <section class="card" id="hum1-estrutura">
+        <div class="kicker">Demografia · 1.2</div>
+        <h3>Estrutura da população: idade e sexo</h3>
+        <p class="lead">A <b>pirâmide etária</b> representa a população por <b>faixas de idade</b> e <b>sexo</b>. Uma <b>base larga</b> (muitos jovens) e <b>topo estreito</b> indicam um país <b>jovem</b>, com alta natalidade (típico de subdesenvolvidos); uma pirâmide de <b>base estreita</b> e <b>topo largo</b> indica <b>envelhecimento</b> (típico de desenvolvidos). O <b>Brasil</b> está em transição: a base vem <b>estreitando</b> (queda da natalidade) e a expectativa de vida cresce — um <b>envelhecimento</b> que pressiona a <b>Previdência</b> e a saúde no futuro.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>ler pirâmides etárias</b> (base larga = jovem × topo largo = envelhecida) e interpretar o <b>envelhecimento</b> do Brasil e suas consequências (previdência, mercado de trabalho).</div>
+        <div class="ex"><b>Exemplo:</b> uma pirâmide etária de base larga e topo estreito indica que tipo de população? <span class="resp">Uma população jovem, com alta natalidade (típica de país subdesenvolvido).</span></div>
+      </section>
+
+      <section class="card" id="hum1-etnias">
+        <div class="kicker">Demografia · 1.3</div>
+        <h3>Aspectos humanos: etnias e minorias</h3>
+        <p class="lead">A população é diversa em <b>etnias</b>, culturas, línguas e religiões. O conceito de <b>minoria</b> não se refere ao grupo <b>menos numeroso</b>, e sim a grupos com <b>menos poder e representação</b> social (indígenas, quilombolas, refugiados, mulheres em certos contextos). O <b>Brasil</b> formou-se pela <b>miscigenação</b> de indígenas, africanos, europeus e asiáticos — mas a ideia de “<b>democracia racial</b>” é um <b>mito</b>, pois persistem desigualdade e <b>racismo estruturais</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o conceito de <b>minoria</b> (poder, não número), a <b>miscigenação</b> brasileira e a crítica ao <b>mito da democracia racial</b>. Interdisciplinar com Sociologia e História.</div>
+        <div class="ex"><b>Exemplo:</b> em Geografia, o termo “minoria” refere-se sempre ao grupo menos numeroso? <span class="resp">Não — refere-se a grupos com menos poder e representação social, independentemente do número.</span></div>
+      </section>
+
+      <section class="card" id="hum1-indicadores">
+        <div class="kicker">Demografia · 1.4</div>
+        <h3>Indicadores socioeconômicos e setores da economia</h3>
+        <p class="lead">Os <b>indicadores</b> medem o desenvolvimento. O <b>PIB</b> mede a riqueza produzida (econômico); o <b>IDH</b> combina <b>renda, educação e longevidade</b> (social), variando de <b>0 a 1</b>. Outros: expectativa de vida, mortalidade infantil e o <b>Índice de Gini</b> (desigualdade). A economia divide-se em <b>setores</b>: <b>primário</b> (agropecuária, extrativismo), <b>secundário</b> (indústria) e <b>terciário</b> (comércio e serviços). O <b>Brasil</b> terciarizou-se, mas continua sendo um dos países mais <b>desiguais</b> na distribuição de renda (Gini alto).</p>
+        <div class="formula-box">IDH = renda + educação + longevidade (0 a 1) · setores: primário · secundário · terciário</div>
+        <div class="uso"><b>Como cai no vestibular:</b> diferenciar <b>PIB × IDH</b>, ler o <b>IDH</b>, reconhecer os <b>três setores</b> e a forte <b>desigualdade de renda</b> brasileira (Gini). Um país pode ter PIB alto e IDH/desigualdade ruins.</div>
+        <div class="ex"><b>Exemplo:</b> que índice combina renda, educação e longevidade para medir o desenvolvimento humano, variando de 0 a 1? <span class="resp">O IDH (Índice de Desenvolvimento Humano).</span></div>
+      </section>
+
+      <section class="card" id="hum1-migracoes">
+        <div class="kicker">Demografia · 1.5</div>
+        <h3>Migrações</h3>
+        <p class="lead">Migração é o <b>deslocamento</b> de pessoas. Distingue-se <b>emigração</b> (sair) de <b>imigração</b> (entrar); migração <b>interna × internacional</b>; o <b>êxodo rural</b> (do campo para a cidade); a <b>pendular</b> (diária, casa–trabalho); e a <b>sazonal</b>. As causas são econômicas (busca de trabalho), guerras e desastres (<b>refugiados</b>). No <b>Brasil</b>, houve grande <b>êxodo rural</b> no século XX e forte migração de <b>nordestinos para o Sudeste</b>; hoje há fluxos para o <b>Centro-Oeste</b> (agronegócio) e a chegada de imigrantes (haitianos, venezuelanos).</p>
+        <div class="formula-box">emigração (sai) × imigração (entra) · êxodo rural (campo → cidade) · pendular (diária)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>tipos</b> de migração (êxodo rural, pendular, refugiados) e os <b>fluxos brasileiros</b> (NE→SE; interiorização). Os <b>refugiados</b> são tema atual e humanitário.</div>
+        <div class="ex"><b>Exemplo:</b> o deslocamento diário de trabalhadores entre a cidade onde moram e aquela onde trabalham é a migração? <span class="resp">Pendular.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE III — CAP 2 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="hum2">
+        <div class="num">III · População, Cidade e Campo</div>
+        <h2>2. Urbanização</h2>
+        <p>O século XX foi o da cidade. Aqui você vê os conceitos dos estudos urbanos, como o Brasil se tornou um país de cidades (rápida e desigualmente) e os problemas que isso trouxe — da segregação à violência.</p>
+        <div class="mini">
+          <a href="#hum2-conceitos">Conceitos urbanos</a>
+          <a href="#hum2-brasil">Urbanização no Brasil e em SC</a>
+          <a href="#hum2-problemas">Pobreza e violência urbana</a>
+        </div>
+      </div>
+
+      <section class="card" id="hum2-conceitos">
+        <div class="kicker">Urbanização · 2.1</div>
+        <h3>Conceitos dos estudos urbanos</h3>
+        <p class="lead"><b>Urbanização</b> é o crescimento da população <b>urbana</b> em relação à <b>rural</b>. Uma <b>metrópole</b> é uma grande cidade que <b>polariza</b> (comanda) uma região; a <b>megalópole</b> é a junção de várias metrópoles; a <b>conurbação</b> ocorre quando cidades vizinhas crescem e se <b>fundem fisicamente</b> numa mancha contínua; a <b>região metropolitana</b> é uma unidade administrativa que reúne municípios integrados. As cidades organizam-se em uma <b>rede urbana</b>, com <b>hierarquia</b> (umas exercem mais influência que outras).</p>
+        <div class="formula-box">conurbação (cidades se fundem) · metrópole (polariza) · megalópole (metrópoles unidas) · rede e hierarquia urbanas</div>
+        <div class="uso"><b>Como cai no vestibular:</b> definir <b>urbanização, metrópole, conurbação</b> e <b>rede/hierarquia urbana</b>. Cuidado para não confundir <b>conurbação</b> (fenômeno físico) com <b>região metropolitana</b> (recorte administrativo).</div>
+        <div class="ex"><b>Exemplo:</b> quando duas ou mais cidades crescem e se unem fisicamente, formando uma área contínua, ocorre o quê? <span class="resp">Conurbação.</span></div>
+      </section>
+
+      <section class="card" id="hum2-brasil">
+        <div class="kicker">Urbanização · 2.2</div>
+        <h3>A urbanização no Brasil e em Santa Catarina</h3>
+        <p class="lead">O Brasil urbanizou-se de forma <b>rápida e tardia</b>, a partir de <b>1950</b>, impulsionado pela <b>industrialização</b> e pelo <b>êxodo rural</b>; hoje, mais de <b>80%</b> vivem em cidades. Foi uma urbanização <b>desordenada</b>, que gerou periferias, favelas e carência de infraestrutura, com destaque para as metrópoles de <b>São Paulo</b> e <b>Rio de Janeiro</b>. Em <b>Santa Catarina</b>, a urbanização é mais <b>equilibrada e distribuída</b>, sem uma metrópole dominante: sobressaem <b>Joinville</b> (maior cidade, industrial), <b>Florianópolis</b> (capital, serviços e turismo), <b>Blumenau</b> (têxtil) e <b>Criciúma</b> (sul).</p>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> a urbanização brasileira (<b>rápida, tardia, desordenada</b>) e a <b>rede urbana</b> de SC, marcada por várias cidades médias (sem macrometrópole). Joinville como a maior cidade e Florianópolis como capital são detalhes cobrados.</div>
+        <div class="ex"><b>Exemplo:</b> qual é a cidade mais populosa de Santa Catarina e principal polo industrial do estado? <span class="resp">Joinville.</span></div>
+      </section>
+
+      <section class="card" id="hum2-problemas">
+        <div class="kicker">Urbanização · 2.3</div>
+        <h3>A questão da pobreza e da violência urbana</h3>
+        <p class="lead">A urbanização acelerada e desigual produziu graves problemas: a <b>segregação socioespacial</b> (separação entre os bairros ricos e as periferias pobres), a <b>favelização</b>, o <b>déficit habitacional</b>, o <b>saneamento</b> precário e a <b>mobilidade</b> difícil. A <b>violência urbana</b> está fortemente ligada à <b>desigualdade</b>, à falta de oportunidades e à ausência do Estado em muitas áreas — e não a “características individuais”. As respostas passam por <b>políticas públicas</b>, urbanização de favelas e o <b>direito à cidade</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar <b>pobreza e violência urbana à desigualdade</b> e à <b>segregação socioespacial</b> (uma leitura estrutural, social). O conceito de segregação é central e atual.</div>
+        <div class="ex"><b>Exemplo:</b> a separação entre bairros ricos, bem servidos, e periferias pobres e precárias é chamada de? <span class="resp">Segregação socioespacial (urbana).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE III — CAP 3 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="hum3">
+        <div class="num">III · População, Cidade e Campo</div>
+        <h2>3. Indústria, Energia e Serviços</h2>
+        <p>A (re)organização do espaço pela economia: a indústria que atrai cidades e empregos, as redes de energia e transporte que integram o território, e as novas tecnologias que transformam o trabalho e o lugar.</p>
+        <div class="mini">
+          <a href="#hum3-industria">Industrialização</a>
+          <a href="#hum3-infra">Energia, transporte e tecnologias</a>
+        </div>
+      </div>
+
+      <section class="card" id="hum3-industria">
+        <div class="kicker">Economia · 3.1</div>
+        <h3>Industrialização e atividades industriais</h3>
+        <p class="lead">A <b>indústria</b> transforma <b>matéria-prima</b> em produtos. Há indústrias de <b>base</b> (bens de produção, como a siderurgia), de <b>bens intermediários</b> e de <b>bens de consumo</b>. A escolha de onde instalar uma fábrica depende dos <b>fatores locacionais</b>: matéria-prima, <b>energia</b>, mão de obra, mercado consumidor, transporte e <b>incentivos fiscais</b>. O <b>Brasil</b> industrializou-se <b>tardiamente</b> (século XX, com forte papel do <b>Estado</b> e a <b>substituição de importações</b>), concentrando-se no <b>Sudeste</b> (São Paulo); depois veio a <b>desconcentração</b> industrial (guerra fiscal, busca de custos menores).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>tipos</b> de indústria, os <b>fatores locacionais</b> e a industrialização brasileira (<b>tardia</b>, concentrada no Sudeste e depois <b>desconcentrando</b>). A “guerra fiscal” entre estados é tema recorrente.</div>
+        <div class="ex"><b>Exemplo:</b> a proximidade de matéria-prima, energia, mão de obra e mercado, que orienta onde instalar uma fábrica, são os? <span class="resp">Fatores locacionais (da indústria).</span></div>
+      </section>
+
+      <section class="card" id="hum3-infra">
+        <div class="kicker">Economia · 3.2</div>
+        <h3>Energia, transporte, serviços e novas tecnologias</h3>
+        <p class="lead">As <b>redes</b> integram o território. Na <b>energia</b>, o Brasil tem matriz elétrica <b>limpa</b>, com predomínio das <b>hidrelétricas</b> (e expansão de <b>eólica</b> e <b>solar</b>), enquanto a matriz <b>mundial</b> ainda depende dos <b>fósseis</b> (petróleo, carvão, gás). Nos <b>transportes</b>, o Brasil é muito dependente do modal <b>rodoviário</b> (caro, herança do governo JK), com pouca ferrovia e hidrovia. O <b>comércio</b> e os <b>serviços</b> (terciário) crescem sem parar. As <b>novas tecnologias</b> (informática, internet, automação) criam o <b>meio técnico-científico-informacional</b> (Milton Santos), reorganizando o trabalho e o espaço.</p>
+        <div class="formula-box">matriz elétrica do Brasil: predomínio hidrelétrico (+ eólica/solar) · transportes: predomínio rodoviário</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>matriz energética</b> brasileira (hidrelétrica/renovável) <b>×</b> mundial (fóssil); a <b>dependência rodoviária</b>; e o <b>meio técnico-científico-informacional</b> de Milton Santos. Energias renováveis são tema em alta.</div>
+        <div class="ex"><b>Exemplo:</b> que fonte predomina na matriz de energia <b>elétrica</b> do Brasil, ao contrário da matriz mundial? <span class="resp">A hidrelétrica (energia hidráulica).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE III — CAP 4 ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="hum4">
+        <div class="num">III · População, Cidade e Campo</div>
+        <h2>4. O Espaço Agrário</h2>
+        <p>O campo no Mundo, no Brasil e em Santa Catarina: as atividades (agricultura, pecuária, extrativismo), o contraste entre agronegócio e agricultura familiar, os problemas ambientais e a velha questão da concentração de terras.</p>
+        <div class="mini">
+          <a href="#hum4-atividades">Agricultura, pecuária e extrativismo</a>
+          <a href="#hum4-fundiaria">Estrutura fundiária e reforma agrária</a>
+          <a href="#hum4-sc">O espaço agrário de SC</a>
+        </div>
+      </div>
+
+      <section class="card" id="hum4-atividades">
+        <div class="kicker">Espaço agrário · 4.1</div>
+        <h3>Agricultura, pecuária e extrativismo</h3>
+        <p class="lead">O espaço agrário reúne a <b>agricultura</b> (lavoura), a <b>pecuária</b> (criação de animais) e o <b>extrativismo</b> (vegetal, animal e mineral). Há dois grandes sistemas: a <b>agricultura de subsistência/familiar</b> (menor escala, abastece o mercado interno) e o <b>agronegócio</b> (comercial, <b>mecanizado</b>, de <b>monocultura</b> voltada à <b>exportação</b> e de alta produtividade). O <b>Brasil</b> é uma <b>potência agropecuária</b> (soja, milho, café, cana, carne). Os <b>problemas ambientais</b> incluem o <b>desmatamento</b> (avanço da fronteira agrícola na Amazônia e no Cerrado), os <b>agrotóxicos</b>, a erosão e as <b>queimadas</b>.</p>
+        <div class="formula-box">agricultura de subsistência/familiar (mercado interno) × agronegócio (comercial, monocultura, exportação)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir <b>agricultura familiar × agronegócio</b>, reconhecer o Brasil como <b>potência agropecuária</b> e relacionar a produção aos <b>problemas ambientais</b> (fronteira agrícola, agrotóxicos, queimadas).</div>
+        <div class="ex"><b>Exemplo:</b> o sistema agrícola mecanizado, de monocultura voltada à exportação e alta produtividade, é o? <span class="resp">O agronegócio (agricultura comercial/patronal).</span></div>
+      </section>
+
+      <section class="card" id="hum4-fundiaria">
+        <div class="kicker">Espaço agrário · 4.2</div>
+        <h3>Estrutura fundiária e reforma agrária</h3>
+        <p class="lead">A <b>estrutura fundiária</b> é a forma como as terras estão <b>distribuídas</b>. O Brasil tem uma das maiores <b>concentrações fundiárias</b> do mundo (predomínio de <b>latifúndios</b>, herança colonial), o que gera <b>conflitos pela terra</b>, movimentos sociais (como o <b>MST</b>) e a demanda por <b>reforma agrária</b> (redistribuição de terras improdutivas). O debate opõe a <b>justiça social</b> e a fixação do agricultor no campo à <b>produtividade</b> do agronegócio. Convivem grandes propriedades modernas e a <b>agricultura familiar</b> (responsável por boa parte dos alimentos da mesa).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>concentração fundiária</b> (latifúndio, herança colonial), os <b>conflitos pela terra</b> (MST) e o debate sobre a <b>reforma agrária</b>. A importância da <b>agricultura familiar</b> no abastecimento interno é ponto-chave.</div>
+        <div class="ex"><b>Exemplo:</b> a forte concentração de terras nas mãos de poucos, herança histórica do Brasil, é um problema de? <span class="resp">Estrutura fundiária (concentração fundiária).</span></div>
+      </section>
+
+      <section class="card" id="hum4-sc">
+        <div class="kicker">SC agrário · 4.3</div>
+        <h3>O espaço agrário de Santa Catarina</h3>
+        <p class="lead">Ao contrário do latifúndio do restante do país, em <b>Santa Catarina</b> predomina a <b>pequena propriedade</b> e a <b>agricultura familiar</b> — herança da colonização europeia em pequenos lotes. É um estado muito <b>produtivo</b>: <b>líder nacional na criação de suínos e aves</b> (oeste, base das agroindústrias como a <b>BRF</b>) e grande produtor de <b>maçã</b> (São Joaquim, no planalto), arroz, fumo, leite e cebola. Os principais problemas são a <b>poluição da água</b> pelos dejetos da <b>suinocultura</b> e o uso intensivo de <b>agrotóxicos</b> (fumo). Forte presença de <b>cooperativas</b> e <b>agroindústrias</b>.</p>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> a <b>pequena propriedade/agricultura familiar</b> como marca de SC (vs. o latifúndio nacional), a <b>liderança em suínos e aves</b> (oeste) e a <b>maçã</b> do planalto, além da <b>agroindústria</b>. Detalhe regional muito cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> que estrutura agrária, herdada da colonização europeia, predomina em Santa Catarina, diferente do latifúndio nacional? <span class="resp">A pequena propriedade (agricultura familiar).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE IV — CAP 1 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="reg1">
+        <div class="num">IV · Regiões e Mundo Contemporâneo</div>
+        <h2>1. Regionalização do Brasil</h2>
+        <p>Dividir o Brasil em regiões depende do critério escolhido. Há a divisão oficial do IBGE, em cinco regiões por estados, e a divisão em complexos geoeconômicos, que ignora as fronteiras estaduais e olha para a história econômica.</p>
+        <div class="mini">
+          <a href="#reg1-ibge">As 5 regiões do IBGE</a>
+          <a href="#reg1-complexos">Complexos geoeconômicos</a>
+        </div>
+      </div>
+
+      <section class="card" id="reg1-ibge">
+        <div class="kicker">Regiões do Brasil · 1.1</div>
+        <h3>A regionalização do IBGE (5 regiões)</h3>
+        <p class="lead"><b>Regionalizar</b> é dividir o espaço em <b>regiões</b> segundo critérios. A divisão <b>oficial</b> do <b>IBGE</b> agrupa os estados em <b>cinco grandes regiões</b> — <b>Norte, Nordeste, Centro-Oeste, Sudeste e Sul</b> —, por critérios naturais, sociais e econômicos, respeitando os <b>limites dos estados</b> (critério administrativo). Cada região tem identidade própria: o <b>Sudeste</b> (mais industrializado e populoso), o <b>Nordeste</b> (histórico, com o semiárido e o turismo), o <b>Norte</b> (Amazônia), o <b>Sul</b> (subtropical, agroindustrial) e o <b>Centro-Oeste</b> (agronegócio e Cerrado).</p>
+        <table class="tab"><thead><tr><th>Região (IBGE)</th><th>Destaque</th></tr></thead><tbody>
+          <tr><td>Norte</td><td>Amazônia, extrativismo, baixa densidade</td></tr>
+          <tr><td>Nordeste</td><td>semiárido, história colonial, turismo</td></tr>
+          <tr><td>Centro-Oeste</td><td>agronegócio, Cerrado, Pantanal</td></tr>
+          <tr><td>Sudeste</td><td>maior economia, indústria e população</td></tr>
+          <tr><td>Sul</td><td>clima subtropical, agroindústria, colonização europeia</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> as <b>cinco regiões</b> do IBGE, suas <b>características</b> e o critério <b>administrativo</b> (por estados). É a divisão de referência para mapas e dados oficiais.</div>
+        <div class="ex"><b>Exemplo:</b> quais são as cinco grandes regiões do IBGE? <span class="resp">Norte, Nordeste, Centro-Oeste, Sudeste e Sul.</span></div>
+      </section>
+
+      <section class="card" id="reg1-complexos">
+        <div class="kicker">Regiões do Brasil · 1.2</div>
+        <h3>Os complexos regionais (geoeconômicos)</h3>
+        <p class="lead">Outra regionalização, proposta por <b>Pedro Geiger</b>, divide o país em <b>três complexos regionais</b> (ou <b>geoeconômicos</b>), que <b>não respeitam</b> os limites dos estados e se baseiam no <b>processo histórico-econômico</b> de ocupação: a <b>Amazônia</b> (vasta, de baixa densidade, floresta e fronteira agrícola/extrativismo), o <b>Nordeste</b> (com as sub-regiões Zona da Mata, Agreste, Sertão e Meio-Norte) e o <b>Centro-Sul</b> (o mais <b>rico, industrializado e urbanizado</b>, núcleo econômico do país).</p>
+        <div class="formula-box">complexos geoeconômicos (Geiger): Amazônia · Nordeste · Centro-Sul</div>
+        <div class="uso"><b>Como cai no vestibular:</b> distinguir os <b>3 complexos geoeconômicos</b> (critério histórico-econômico) das <b>5 regiões do IBGE</b> (critério administrativo). O <b>Centro-Sul</b> como núcleo econômico é ponto certeiro.</div>
+        <div class="warn"><b>Pegadinha:</b> não confunda as <b>5 regiões do IBGE</b> (que seguem os limites dos estados) com os <b>3 complexos geoeconômicos</b> (que <b>cruzam</b> as fronteiras estaduais).</div>
+        <div class="ex"><b>Exemplo:</b> na divisão em complexos regionais, qual é a porção mais rica, industrializada e urbanizada do Brasil? <span class="resp">O Centro-Sul.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE IV — CAP 2 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="reg2">
+        <div class="num">IV · Regiões e Mundo Contemporâneo</div>
+        <h2>2. Regionalização de Santa Catarina</h2>
+        <p>Internamente, Santa Catarina é um mosaico de regiões com economias bem distintas — do têxtil do Vale do Itajaí à agroindústria de carnes do Oeste. Conteúdo regional exigido pela UFSC.</p>
+        <div class="mini">
+          <a href="#reg2-meso">As regiões de Santa Catarina</a>
+        </div>
+      </div>
+
+      <section class="card" id="reg2-meso">
+        <div class="kicker">Regiões de SC · 2.1</div>
+        <h3>As regiões de Santa Catarina e suas economias</h3>
+        <p class="lead">Santa Catarina é dividida internamente em <b>mesorregiões</b>, cada uma com forte <b>identidade econômica</b>. O <b>Vale do Itajaí</b> é o polo <b>têxtil</b> (Blumenau, Brusque); o <b>Norte Catarinense</b> concentra a <b>indústria</b> e o setor <b>moveleiro</b> (Joinville, São Bento do Sul); o <b>Sul Catarinense</b> vive do <b>carvão</b> e da <b>cerâmica</b> (Criciúma); o <b>Oeste Catarinense</b> é o grande polo da <b>agroindústria de carnes</b> (Chapecó); a região <b>Serrana</b> tem <b>pecuária</b>, <b>maçã</b> e turismo de inverno (Lages, São Joaquim); e a <b>Grande Florianópolis</b> destaca-se em <b>serviços</b>, <b>turismo</b> e <b>tecnologia</b>.</p>
+        <table class="tab"><thead><tr><th>Região de SC</th><th>Economia / cidade-polo</th></tr></thead><tbody>
+          <tr><td>Vale do Itajaí</td><td>indústria têxtil — Blumenau</td></tr>
+          <tr><td>Norte Catarinense</td><td>indústria e móveis — Joinville</td></tr>
+          <tr><td>Sul Catarinense</td><td>carvão e cerâmica — Criciúma</td></tr>
+          <tr><td>Oeste Catarinense</td><td>agroindústria de carnes — Chapecó</td></tr>
+          <tr><td>Serrana</td><td>pecuária, maçã, turismo — Lages/São Joaquim</td></tr>
+          <tr><td>Grande Florianópolis</td><td>serviços, turismo, tecnologia — Florianópolis</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular (UFSC):</b> associar cada <b>região de SC</b> à sua <b>especialização econômica</b> (Vale do Itajaí têxtil; Oeste carnes; Sul carvão/cerâmica; Norte indústria/móveis; Serra pecuária/maçã). Conteúdo regional altamente cobrado.</div>
+        <div class="ex"><b>Exemplo:</b> qual região catarinense é o grande polo da agroindústria de carnes (suínos e aves), tendo Chapecó como centro? <span class="resp">O Oeste Catarinense.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE IV — CAP 3 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="reg3">
+        <div class="num">IV · Regiões e Mundo Contemporâneo</div>
+        <h2>3. Ordem Mundial, Globalização e Blocos</h2>
+        <p>Como o mundo se organiza hoje: do fim da Guerra Fria à ordem multipolar, a integração global das economias e a formação dos grandes blocos econômicos regionais que disputam o mercado mundial.</p>
+        <div class="mini">
+          <a href="#reg3-ordem">Ordem mundial e polos de poder</a>
+          <a href="#reg3-globalizacao">Globalização</a>
+          <a href="#reg3-blocos">Blocos econômicos</a>
+        </div>
+      </div>
+
+      <section class="card" id="reg3-ordem">
+        <div class="kicker">Mundo atual · 3.1</div>
+        <h3>A ordem mundial e os polos de poder</h3>
+        <p class="lead">A ordem mundial mudou de configuração. Na <b>Guerra Fria</b> (1947–1991), o mundo era <b>bipolar</b>: <b>EUA</b> (capitalista) × <b>URSS</b> (socialista), e se falava em 1º, 2º e 3º mundos. Com o <b>fim da URSS</b> (1991), passou a uma ordem <b>multipolar</b>: os EUA seguem como única superpotência <b>militar</b>, mas o poder <b>econômico</b> se distribui entre vários polos (<b>EUA, União Europeia, China, Japão</b>). A ascensão da <b>China</b> e dos emergentes reforça a multipolaridade. Permanece a divisão <b>Norte</b> (rico/desenvolvido) × <b>Sul</b> (pobre/em desenvolvimento).</p>
+        <div class="formula-box">Guerra Fria (bipolar: EUA × URSS) → pós-1991 (multipolar) · divisão Norte × Sul</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a transição <b>bipolar → multipolar</b>, os <b>polos econômicos</b> (EUA, UE, China, Japão) e a divisão <b>Norte–Sul</b>. A antiga classificação 1º/2º/3º mundo está <b>superada</b>.</div>
+        <div class="ex"><b>Exemplo:</b> durante a Guerra Fria, em torno de quais dois polos o mundo se organizava? <span class="resp">EUA (capitalista) e URSS (socialista) — uma ordem bipolar.</span></div>
+      </section>
+
+      <section class="card" id="reg3-globalizacao">
+        <div class="kicker">Mundo atual · 3.2</div>
+        <h3>Globalização</h3>
+        <p class="lead">A <b>globalização</b> é a <b>integração mundial</b> das economias, das culturas e das informações, intensificada após a Guerra Fria pelo avanço dos <b>transportes</b> e das <b>telecomunicações</b> (internet). Movida pelas <b>empresas transnacionais</b> e pelos fluxos de capital, traz aspectos <b>positivos</b> (acesso a tecnologia e integração) e <b>negativos</b> (aprofundamento das <b>desigualdades</b> entre e dentro dos países, homogeneização cultural, vulnerabilidade a crises). Milton Santos cunhou a crítica da “<b>globalização perversa</b>”.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o conceito de <b>globalização</b> (integração via tecnologia), o papel das <b>transnacionais</b> e a <b>crítica</b> às desigualdades (a “globalização perversa” de Milton Santos). Fluxos de informação e capital são palavras-chave.</div>
+        <div class="ex"><b>Exemplo:</b> que processo de integração mundial de economias e culturas se intensificou com a internet e o fim da Guerra Fria? <span class="resp">A globalização.</span></div>
+      </section>
+
+      <section class="card" id="reg3-blocos">
+        <div class="kicker">Mundo atual · 3.3</div>
+        <h3>Blocos econômicos regionais</h3>
+        <p class="lead">Para competir na economia global, os países formam <b>blocos econômicos</b> (integração regional), com níveis crescentes de integração: <b>zona de livre comércio</b> → <b>união aduaneira</b> → <b>mercado comum</b> → <b>união econômica e monetária</b>. Os principais são a <b>União Europeia</b> (a mais avançada, com a moeda <b>euro</b> e livre circulação de pessoas), o <b>Mercosul</b> (Brasil, Argentina, Uruguai, Paraguai e associados), o <b>USMCA</b> (ex-NAFTA: EUA, Canadá e México), além de <b>APEC</b> e <b>ASEAN</b>. O objetivo é <b>reduzir barreiras</b> e ampliar mercados.</p>
+        <div class="formula-box">zona de livre comércio → união aduaneira → mercado comum → união econômica e monetária</div>
+        <table class="tab"><thead><tr><th>Bloco</th><th>Característica</th></tr></thead><tbody>
+          <tr><td>União Europeia</td><td>mais avançado; moeda euro; livre circulação</td></tr>
+          <tr><td>Mercosul</td><td>América do Sul; inclui o Brasil</td></tr>
+          <tr><td>USMCA (ex-NAFTA)</td><td>EUA, Canadá e México</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> o que são blocos e seus <b>níveis de integração</b>; identificar a <b>UE</b> (mais avançada, euro) e o <b>Mercosul</b> (do Brasil). Não confundir os estágios de integração.</div>
+        <div class="ex"><b>Exemplo:</b> qual é o bloco econômico mais avançado, com moeda única (o euro) e livre circulação de pessoas? <span class="resp">A União Europeia.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== PARTE IV — CAP 4 ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="reg4">
+        <div class="num">IV · Regiões e Mundo Contemporâneo</div>
+        <h2>4. Subdesenvolvimento e Geopolítica</h2>
+        <p>Por que existem países ricos e pobres, e como o poder se disputa no espaço mundial. Aqui se discutem o subdesenvolvimento (uma construção histórica), as regiões emergentes e os grandes conflitos geopolíticos atuais.</p>
+        <div class="mini">
+          <a href="#reg4-subdes">Subdesenvolvimento e emergentes</a>
+          <a href="#reg4-geopol">Geopolítica e geoestratégias</a>
+        </div>
+      </div>
+
+      <section class="card" id="reg4-subdes">
+        <div class="kicker">Mundo atual · 4.1</div>
+        <h3>Subdesenvolvimento e regiões emergentes</h3>
+        <p class="lead">O <b>subdesenvolvimento</b> não é um “atraso natural”, mas um <b>resultado histórico</b> da colonização e da inserção <b>dependente</b> no capitalismo. Suas marcas são a <b>desigualdade</b>, a <b>dependência</b> tecnológica e econômica e indicadores sociais baixos. Nas regiões: a <b>América Latina</b> combina dependência e desigualdade com emergentes (Brasil, México); a <b>África</b> é a mais pobre, marcada pela colonização e por conflitos, mas rica em recursos e em crescimento; a <b>Ásia</b> é cheia de contrastes — os <b>tigres asiáticos</b> e a <b>China</b> industrializaram-se rapidamente. Os <b>emergentes</b> reúnem-se nos <b>BRICS</b> (Brasil, Rússia, Índia, China, África do Sul e novos membros).</p>
+        <div class="formula-box">subdesenvolvimento = construção histórica (colonização + dependência) · emergentes → BRICS</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a explicação <b>histórica</b> do subdesenvolvimento (não “natural”), o panorama de <b>América Latina, África e Ásia</b> e os <b>emergentes/BRICS</b>. China e tigres asiáticos como casos de industrialização acelerada.</div>
+        <div class="ex"><b>Exemplo:</b> o que designa o conceito de “países emergentes”, como os do BRICS? <span class="resp">Economias em desenvolvimento que cresceram e ganharam peso na economia mundial.</span></div>
+      </section>
+
+      <section class="card" id="reg4-geopol">
+        <div class="kicker">Mundo atual · 4.2</div>
+        <h3>Geopolítica e geoestratégias do mundo contemporâneo</h3>
+        <p class="lead">A <b>geopolítica</b> estuda as <b>relações de poder no espaço</b> — territórios, recursos e conflitos. No mundo atual, destacam-se a disputa por <b>hegemonia</b> entre <b>EUA e China</b> (economia, tecnologia, áreas de influência); os <b>conflitos por recursos</b> (petróleo no Oriente Médio), por territórios e por questões <b>étnico-religiosas</b>; o <b>terrorismo</b> e as crises de <b>refugiados</b>; e tensões como <b>Rússia–Ucrânia</b> e <b>Israel–Palestina</b>. Organismos como a <b>ONU</b> e a <b>OTAN</b> atuam nesse tabuleiro, em que recursos estratégicos (água, energia, minerais) pesam cada vez mais. A <b>geoestratégia</b> é o uso do território para fins de poder.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>geopolítica</b> como relações de poder no espaço; os grandes <b>conflitos</b> e disputas atuais (EUA × China, Oriente Médio, recursos) e o papel da <b>ONU/OTAN</b>. Tema sempre atual — vale acompanhar as notícias.</div>
+        <div class="ex"><b>Exemplo:</b> a disputa por hegemonia entre EUA e China, envolvendo economia, tecnologia e áreas de influência, é tema de qual campo da Geografia? <span class="resp">Da geopolítica.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Geografia · organizado nas 4 partes do programa do vestibular, com foco em Santa Catarina (UFSC). O espaço geográfico é produzido pela sociedade — leia mapas e paisagens de forma crítica.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
