@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../img/images.jpeg" type="image/x-icon">
+<title>Guia de Língua Portuguesa e Literatura para o Vestibular — Conteúdos Explicados</title>
+<style>
+  :root{
+    --ink:#1c2330; --muted:#5b6472; --line:#e7e2dc; --line-strong:#d6cfc5;
+    --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#f0fdfa;
+    --paper:#ffffff; --bg:#eef0f4;
+    --uso-bg:#eff6ff; --uso-border:#2563eb;
+    --ex-bg:#f6f5f3; --ex-border:#94a3b8;
+    --warn-bg:#fff8ea; --warn-border:#e0a93c;
+    --ok-bg:#e8f4ea; --ok-border:#1d6b3a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.62; }
+  a{ color:var(--accent-2); }
+  .wrap{ display:grid; grid-template-columns:300px 1fr; max-width:1240px; margin:0 auto;
+    background:var(--paper); box-shadow:0 8px 36px rgba(0,0,0,.08); }
+
+  /* ===== ÍNDICE LATERAL ===== */
+  aside.toc{ position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#fbf9f6; border-right:1px solid var(--line); padding:22px 16px 50px; }
+  aside.toc .brand{ font-weight:800; color:var(--accent); font-size:17px; line-height:1.25; }
+  aside.toc .sub{ font-size:12px; color:var(--muted); margin:4px 0 14px; }
+  .toc .grp{ font-size:11px; text-transform:uppercase; letter-spacing:.7px; color:var(--accent);
+    font-weight:800; margin:16px 0 6px; padding-bottom:3px; border-bottom:1px solid var(--line); }
+  .toc ol{ list-style:none; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:8px; text-decoration:none; color:var(--muted); font-size:13px;
+    padding:5px 8px; border-radius:6px; border-left:2px solid transparent; }
+  .toc ol a:hover{ background:var(--accent-soft); color:var(--accent); border-left-color:var(--accent); }
+  .toc ol a b{ color:var(--accent); font-weight:700; min-width:22px; }
+  .toc details>summary{ display:none; }
+
+  /* ===== CONTEÚDO ===== */
+  main{ min-width:0; padding-bottom:60px; }
+  .hero{ background:linear-gradient(135deg,#155e63,#3730a3); color:#fff; padding:42px 48px; }
+  .hero .eyebrow{ letter-spacing:.28em; text-transform:uppercase; font-size:12.5px; font-weight:700; opacity:.85; }
+  .hero h1{ margin:10px 0 0; font-size:31px; letter-spacing:.2px; }
+  .hero p{ margin:12px 0 0; opacity:.94; font-size:15px; max-width:74ch; }
+  .hero .chips{ margin-top:18px; display:flex; flex-wrap:wrap; gap:7px; }
+  .hero .chips span{ font-size:11.5px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:4px 10px; border-radius:999px; }
+  .intro{ padding:18px 48px; background:#faf7f3; border-bottom:1px solid var(--line);
+    color:var(--muted); font-size:13.7px; }
+  .intro b{ color:var(--ink); }
+  .legenda{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
+  .legenda span{ font-size:12px; display:flex; align-items:center; gap:6px; }
+  .legenda i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+  .content{ padding:0 48px; }
+
+  /* ===== DIVISÓRIA DE CAPÍTULO ===== */
+  .chapter{ scroll-margin-top:10px; margin:40px 0 6px; padding:22px 24px; border-radius:14px;
+    background:var(--accent-soft); border:1px solid var(--line); border-left:7px solid var(--accent); }
+  .chapter .num{ font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  .chapter h2{ margin:4px 0 4px; font-size:24px; color:var(--ink); }
+  .chapter p{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:80ch; }
+  .mini{ margin:14px 0 0; display:flex; flex-wrap:wrap; gap:7px; }
+  .mini a{ font-size:12.5px; text-decoration:none; color:var(--accent); background:#fff;
+    border:1px solid var(--line-strong); padding:5px 11px; border-radius:999px; }
+  .mini a:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ===== CARTÃO DE CONCEITO ===== */
+  section.card{ background:var(--paper); border:1px solid var(--line); border-radius:12px;
+    padding:22px 26px 24px; margin:18px 0; scroll-margin-top:14px; }
+  .kicker{ font-size:11.5px; text-transform:uppercase; letter-spacing:.8px; color:var(--accent); font-weight:800; }
+  section.card h3{ margin:5px 0 12px; font-size:20px; color:var(--ink); }
+  .lead{ font-size:14.7px; margin:0 0 8px; }
+  .lead b{ color:var(--ink); }
+  .formula-box{ background:var(--accent-soft); border:1px solid var(--line-strong); border-radius:10px;
+    padding:13px 15px; text-align:center; font-size:14px; margin:14px 0; overflow-x:auto; color:var(--ink); font-weight:600; }
+  h4.blk{ font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--accent);
+    margin:18px 0 7px; }
+  ul.vars{ margin:0; padding:0; list-style:none; }
+  ul.vars li{ padding:4px 0; border-bottom:1px dashed var(--line); font-size:14px; }
+  ul.vars li:last-child{ border-bottom:none; }
+  ul.vars b{ color:var(--accent); }
+
+  .quote{ background:#fff; border-left:4px solid var(--accent-2); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.4px; font-style:italic; color:#374151; }
+  .quote .src{ display:block; margin-top:6px; font-style:normal; font-size:12.3px; color:var(--muted); }
+
+  .uso{ background:var(--uso-bg); border-left:4px solid var(--uso-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .uso b{ color:#1e3a8a; }
+  .ex{ background:var(--ex-bg); border-left:4px solid var(--ex-border); border-radius:0 8px 8px 0;
+    padding:12px 16px; margin:14px 0; font-size:14.2px; }
+  .ex b{ color:var(--ink); }
+  .ex .resp{ margin-top:8px; display:inline-block; background:var(--ok-bg); border:1px solid #b9dcc0;
+    border-radius:7px; padding:6px 11px; font-weight:600; color:var(--ok-border); font-size:13.7px; }
+  .warn{ background:var(--warn-bg); border-left:4px solid var(--warn-border); border-radius:0 8px 8px 0;
+    padding:11px 16px; margin:14px 0; font-size:13.8px; color:#7a5408; }
+  .warn b{ color:#7a5408; }
+
+  table.tab{ border-collapse:collapse; margin:8px 0; width:100%; font-size:13.4px; }
+  table.tab th, table.tab td{ border:1px solid var(--line-strong); padding:7px 10px; text-align:left; vertical-align:top; }
+  table.tab thead th{ background:var(--accent); color:#fff; text-align:center; }
+  table.tab tbody th{ background:var(--accent-soft); color:var(--accent); }
+
+  .toplink{ display:inline-block; margin-top:6px; font-size:12.5px; color:var(--muted); text-decoration:none; }
+  .toplink:hover{ color:var(--accent); }
+  footer.f{ padding:26px 48px 0; color:var(--muted); font-size:12px; }
+
+  /* ===== CORES POR PARTE (I a V) ===== */
+  .secI{ --accent:#0f766e; --accent-2:#0d9488; --accent-soft:#f0fdfa; }   /* Interpretação — teal */
+  .secII{ --accent:#3730a3; --accent-2:#4f46e5; --accent-soft:#eef2ff; }  /* Recursos linguísticos — indigo */
+  .secIII{ --accent:#9f1239; --accent-2:#be123c; --accent-soft:#fff1f2; } /* Literatura: habilidades — rosa */
+  .secIV{ --accent:#b45309; --accent-2:#d97706; --accent-soft:#fffbeb; }  /* As obras — âmbar */
+  .secV{ --accent:#15803d; --accent-2:#16a34a; --accent-soft:#f0fdf4; }   /* Síntese — verde */
+
+  @media(max-width:900px){
+    .wrap{ grid-template-columns:1fr; }
+    aside.toc{ position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .toc details>summary{ display:block; cursor:pointer; font-weight:800; color:var(--accent); font-size:14px; padding:6px 0; }
+    .toc details:not([open]) > *:not(summary){ display:none; }
+    .hero,.intro,.content,footer.f{ padding-left:18px; padding-right:18px; }
+    section.card{ padding:18px 16px; }
+    .hero h1{ font-size:25px; }
+  }
+  @media print{
+    aside.toc{ display:none; } .wrap{ display:block; box-shadow:none; max-width:100%; }
+    body{ background:#fff; }
+    .chapter{ break-before:page; page-break-before:always; }
+    section.card{ break-inside:avoid; page-break-inside:avoid; }
+    .toplink{ display:none; }
+  }
+</style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <!-- ================= ÍNDICE ================= -->
+    <aside class="toc">
+      <div class="brand">Língua Portuguesa &amp; Literatura</div>
+      <div class="sub">Programa de Vestibular — conteúdos explicados e aplicados</div>
+      <details open>
+        <summary>Índice ▾</summary>
+
+        <div class="grp">I · Compreensão e Interpretação</div>
+        <ol>
+          <li><a href="#int1"><b>1</b> Compreensão global e organização das ideias</a></li>
+          <li><a href="#int2"><b>2</b> Implícitos, argumentação e vozes</a></li>
+          <li><a href="#int3"><b>3</b> Sentido, propósito e gêneros</a></li>
+        </ol>
+
+        <div class="grp">II · Análise de Recursos Linguísticos</div>
+        <ol>
+          <li><a href="#rec1"><b>1</b> Os níveis de análise da língua</a></li>
+          <li><a href="#rec2"><b>2</b> Adequação e variedade padrão</a></li>
+        </ol>
+
+        <div class="grp">III · Literatura — Como Ler</div>
+        <ol>
+          <li><a href="#lit1"><b>1</b> O texto literário e suas leituras</a></li>
+        </ol>
+
+        <div class="grp">IV · As Seis Obras do Programa</div>
+        <ol>
+          <li><a href="#ob1"><b>1</b> Velhos — Alê Motta</a></li>
+          <li><a href="#ob2"><b>2</b> Tropicália ou Panis et Circensis</a></li>
+          <li><a href="#ob3"><b>3</b> Solitária — Eliana Alves Cruz</a></li>
+          <li><a href="#ob4"><b>4</b> Singradura — Flávio José Cardozo</a></li>
+          <li><a href="#ob5"><b>5</b> Torto Arado — Itamar Vieira Júnior</a></li>
+          <li><a href="#ob6"><b>6</b> Parque Industrial — Pagu</a></li>
+        </ol>
+
+        <div class="grp">V · Síntese e Aplicação</div>
+        <ol>
+          <li><a href="#sin1"><b>1</b> Diálogos entre as obras e treino</a></li>
+        </ol>
+      </details>
+    </aside>
+
+    <!-- ================= CORPO ================= -->
+    <main>
+      <div class="hero">
+        <div class="eyebrow">Material de estudo · nível vestibular / ENEM</div>
+        <h1>Guia de Língua Portuguesa e Literatura — Conteúdos Explicados</h1>
+        <p>O programa em três frentes: <b>compreensão e interpretação de textos</b>, <b>análise de recursos linguísticos</b> e <b>literatura brasileira</b> (as seis obras indicadas). Cada tópico responde a três perguntas: <b>o que é</b> (com conceito e exemplo de texto), <b>como cai na prova</b> e <b>um exemplo resolvido</b> — para você reconhecer a habilidade no enunciado, e não apenas decorar nomes.</p>
+        <div class="chips">
+          <span>Significado global</span><span>Implícitos</span><span>Fato × opinião</span><span>Vozes do texto</span>
+          <span>Gênero e tipo</span><span>Níveis da língua</span><span>Coesão e coerência</span>
+          <span>Microconto</span><span>Tropicalismo</span><span>Torto Arado</span><span>Solitária</span><span>Pagu</span>
+        </div>
+      </div>
+      <div class="intro">
+        <b>Como usar:</b> leia a explicação (“o que é”), veja <b>como o assunto aparece na prova</b> e confira o <b>exemplo</b> para fixar. O índice ao lado agrupa o material em 5 partes (I a V); dentro de cada capítulo há atalhos para os tópicos. As caixas destacadas trazem conceitos-chave, trechos e pegadinhas de interpretação. As obras seguem o programa: leia-as <b>integralmente</b> — este guia orienta a leitura, não a substitui.
+        <div class="legenda">
+          <span><i style="background:#2563eb"></i> Como cai no vestibular</span>
+          <span><i style="background:#94a3b8"></i> Exemplo / questão típica</span>
+          <span><i style="background:#e0a93c"></i> Pegadinha / atenção</span>
+          <span><i style="background:#0d9488"></i> Trecho ou citação</span>
+        </div>
+      </div>
+      <div class="content">
+
+      <!-- ===================== PARTE I — INTERPRETAÇÃO ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="int1">
+        <div class="num">I · Compreensão e Interpretação de Texto</div>
+        <h2>1. Compreensão Global e Organização das Ideias</h2>
+        <p>Antes de qualquer detalhe, a prova quer saber se você entendeu o texto como um todo: do que ele trata, qual ideia o organiza e como as informações se hierarquizam e se conectam — dentro do texto e com outros textos.</p>
+        <div class="mini">
+          <a href="#int1-orienta">O que a prova avalia</a>
+          <a href="#int1-global">Significado global</a>
+          <a href="#int1-ideias">Ideias principais e secundárias</a>
+          <a href="#int1-relacoes">Relações intra e intertextuais</a>
+        </div>
+      </div>
+
+      <section class="card" id="int1-orienta">
+        <div class="kicker">Interpretação · 1.1</div>
+        <h3>O que a prova de interpretação realmente avalia</h3>
+        <p class="lead">As questões de compreensão e interpretação não cobram “decoreba”: avaliam se você <b>compreende o significado global</b> de um texto, <b>reconhece ideias principais e secundárias</b>, <b>deduz o que está implícito</b>, <b>acompanha a argumentação</b>, <b>distingue fato de opinião</b>, identifica as <b>vozes</b> do texto, capta o <b>sentido das palavras no contexto</b> e reconhece o <b>gênero, o tipo, o registro e a variedade</b> usados. Em uma palavra: leitura ativa. <b>Compreender</b> é recuperar o que o texto diz; <b>interpretar</b> é ir além, relacionando, inferindo e avaliando.</p>
+        <div class="formula-box">compreender (o que o texto diz) → interpretar (o que se deduz e se relaciona)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> os enunciados pedem “de acordo com o texto” (compreensão, resposta colada à letra) ou “depreende-se / conclui-se / o autor sugere” (interpretação, exige inferência). Reconhecer o <b>verbo de comando</b> evita errar por excesso ou por falta.</div>
+        <div class="ex"><b>Exemplo:</b> qual a diferença entre “o texto afirma” e “depreende-se do texto”? <span class="resp">O primeiro pede algo explícito (compreensão); o segundo, uma inferência válida a partir do explícito (interpretação).</span></div>
+      </section>
+
+      <section class="card" id="int1-global">
+        <div class="kicker">Interpretação · 1.2</div>
+        <h3>Compreensão do significado global do texto</h3>
+        <p class="lead">Ler bem começa por captar o <b>sentido de conjunto</b>: o <b>tema</b> (assunto de que se trata), a <b>tese ou ideia central</b> (a posição/foco que organiza tudo) e o <b>propósito</b> (para que o texto foi escrito). O significado global não está em uma frase isolada — emerge da relação entre as partes. Por isso, distratores costumam usar uma informação <b>verdadeira, mas lateral</b>, para parecer “a ideia principal”. Saber resumir o texto em <b>uma frase</b> é o melhor teste de que você entendeu o todo.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “o texto trata fundamentalmente de…”, “a ideia central é…”, “o melhor título seria…”. A resposta certa abrange <b>o texto inteiro</b>; as erradas são pontos verdadeiros, porém parciais, ou extrapolações.</div>
+        <div class="ex"><b>Exemplo:</b> como escolher entre “tema” e “ideia central”? <span class="resp">O tema é o assunto (ex.: trabalho doméstico); a ideia central é o que o texto afirma sobre ele (ex.: que reproduz heranças escravistas).</span></div>
+      </section>
+
+      <section class="card" id="int1-ideias">
+        <div class="kicker">Interpretação · 1.3</div>
+        <h3>Ideias principais e secundárias</h3>
+        <p class="lead">Um texto é uma <b>hierarquia</b>: há ideias que <b>sustentam</b> a tese (principais) e ideias que <b>apoiam, exemplificam ou detalham</b> (secundárias). Reconhecer essa hierarquia é separar o <b>argumento</b> da <b>ilustração</b>, o <b>núcleo</b> do <b>acessório</b>. Pistas ajudam: o tópico frasal costuma abrir o parágrafo; conectivos como “<b>portanto</b>”, “<b>ou seja</b>”, “<b>em suma</b>” sinalizam conclusões; “<b>por exemplo</b>”, “<b>como</b>”, “<b>inclusive</b>” introduzem o secundário. Em prova, trocar o principal pelo secundário é o erro mais comum.</p>
+        <div class="warn"><b>Pegadinha:</b> um exemplo marcante chama atenção e parece “a mensagem”. Mas exemplo <b>ilustra</b> a ideia principal — não é ela. Pergunte: isto sustenta a tese ou apenas a ilustra?</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “a função do segundo parágrafo é…”, “a informação do trecho serve para…”. Cobra-se distinguir o que é <b>tese</b>, o que é <b>argumento</b> e o que é <b>exemplo/detalhe</b>.</div>
+        <div class="ex"><b>Exemplo:</b> num texto sobre leitura, a frase “Machado lia de tudo” é principal ou secundária? <span class="resp">Secundária: é um exemplo que ilustra a ideia principal (o valor da leitura ampla).</span></div>
+      </section>
+
+      <section class="card" id="int1-relacoes">
+        <div class="kicker">Interpretação · 1.4</div>
+        <h3>Relações intratextuais e intertextuais</h3>
+        <p class="lead">As ideias se ligam em duas direções. As <b>relações intratextuais</b> ocorrem <b>dentro</b> do texto: causa e consequência, comparação, oposição, exemplificação, retomada de termos (coesão). As <b>relações intertextuais</b> ligam um texto a <b>outros</b>: citação, alusão, paráfrase, paródia, epígrafe, diálogo com obras e fatos. Interpretar é perceber esses fios — por exemplo, notar que um poema <b>retoma e subverte</b> outro, ou que uma crônica <b>alude</b> a um provérbio para ironizá-lo.</p>
+        <table class="tab"><thead><tr><th>Relação</th><th>O que liga</th><th>Marcas típicas</th></tr></thead><tbody>
+          <tr><th>Intratextual</th><td>partes do mesmo texto</td><td>conectivos, pronomes, sinônimos, repetição</td></tr>
+          <tr><th>Intertextual</th><td>um texto a outros</td><td>citação, alusão, paródia, epígrafe, paráfrase</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> bancas adoram pôr <b>dois textos</b> (texto + charge, poema + canção) e pedir a relação entre eles — convergência, oposição, complemento, ironia. É leitura intertextual pura.</div>
+        <div class="ex"><b>Exemplo:</b> uma paródia tem que relação com o texto-fonte? <span class="resp">Intertextual: retoma a forma de outro texto para transformá-lo, em geral com humor ou crítica.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== INTERPRETAÇÃO 2 ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="int2">
+        <div class="num">I · Compreensão e Interpretação de Texto</div>
+        <h2>2. Implícitos, Argumentação e Vozes</h2>
+        <p>Nem tudo se diz com todas as letras. Aqui você treina a deduzir o que o texto sugere, a seguir a linha de raciocínio do autor, a separar fato de opinião e a reconhecer as várias vozes que um texto pode abrigar.</p>
+        <div class="mini">
+          <a href="#int2-implicito">Implícitos: pressuposto e subentendido</a>
+          <a href="#int2-argumento">Linha argumentativa</a>
+          <a href="#int2-fato-opiniao">Fato × opinião</a>
+          <a href="#int2-vozes">As vozes do texto</a>
+        </div>
+      </div>
+
+      <section class="card" id="int2-implicito">
+        <div class="kicker">Interpretação · 2.1</div>
+        <h3>Dedução de ideias e pontos de vista implícitos</h3>
+        <p class="lead">O texto sempre diz mais do que escreve. O <b>implícito</b> tem duas formas clássicas. O <b>pressuposto</b> é uma ideia <b>marcada na própria língua</b>, que se admite como dada — em “Ele <b>parou</b> de fumar”, pressupõe-se que antes fumava; em “<b>até</b> o diretor concordou”, que era o menos provável de concordar. O <b>subentendido</b> depende do <b>contexto e da intenção</b>, é insinuado e pode ser negado (“Está frio aqui” pode subentender “feche a janela”). Inferir é preencher esses vazios <b>com base no texto</b>, sem inventar.</p>
+        <div class="warn"><b>Atenção:</b> inferência não é “achismo”. A dedução válida se ancora em pistas do texto. Se a alternativa exige informação que o texto não autoriza, é <b>extrapolação</b> — e está errada.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “o texto pressupõe que…”, “depreende-se que…”, “a expressão sugere…”. Verbos como <i>parar, começar, continuar, ainda, já, até</i> e o uso de <i>aspas/ironia</i> são gatilhos de implícito.</div>
+        <div class="ex"><b>Exemplo:</b> o que “Maria <b>continua</b> estudando” pressupõe? <span class="resp">Que Maria já estudava antes — o verbo “continuar” marca o pressuposto na frase.</span></div>
+      </section>
+
+      <section class="card" id="int2-argumento">
+        <div class="kicker">Interpretação · 2.2</div>
+        <h3>Compreensão da linha argumentativa do autor</h3>
+        <p class="lead">Textos opinativos têm um <b>percurso</b>: partem de uma <b>tese</b>, sustentam-na com <b>argumentos</b> (dados, exemplos, autoridade, causa/consequência), preveem <b>objeções</b> e <b>concluem</b>. Acompanhar a argumentação é mapear esse encadeamento e perceber a <b>função</b> de cada parte: ela <b>afirma</b>, <b>comprova</b>, <b>concede</b>, <b>refuta</b> ou <b>conclui</b>? Os <b>operadores argumentativos</b> são o GPS do raciocínio: “<b>mas/porém</b>” (contrapõe), “<b>porque/já que</b>” (justifica), “<b>portanto/logo</b>” (conclui), “<b>embora/ainda que</b>” (concede).</p>
+        <table class="tab"><thead><tr><th>Operador</th><th>Relação</th><th>Move o argumento para…</th></tr></thead><tbody>
+          <tr><td>mas, porém, contudo</td><td>oposição</td><td>uma ressalva ou virada</td></tr>
+          <tr><td>porque, pois, já que</td><td>causa/justificativa</td><td>o apoio da tese</td></tr>
+          <tr><td>portanto, logo, assim</td><td>conclusão</td><td>o fecho do raciocínio</td></tr>
+          <tr><td>embora, ainda que</td><td>concessão</td><td>aceitar para depois rebater</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> “a função do conectivo X é…”, “o autor conclui que…”, “o argumento que sustenta a tese é…”. Trocar um operador (pôr “portanto” onde cabe “mas”) muda toda a interpretação.</div>
+        <div class="ex"><b>Exemplo:</b> em “Estudou muito, <b>porém</b> não passou”, qual a relação? <span class="resp">Oposição/quebra de expectativa: o esperado seria passar; “porém” contraria essa expectativa.</span></div>
+      </section>
+
+      <section class="card" id="int2-fato-opiniao">
+        <div class="kicker">Interpretação · 2.3</div>
+        <h3>Diferenciação entre fatos e opiniões</h3>
+        <p class="lead">O <b>fato</b> é verificável e, em princípio, não depende de quem fala (“O livro foi publicado em 1933”). A <b>opinião</b> é uma <b>avaliação</b>, um juízo do enunciador (“O livro é genial”). A marca da opinião está na <b>modalização</b>: adjetivos valorativos (<i>excelente, lamentável</i>), advérbios (<i>felizmente, certamente</i>), verbos de atitude (<i>acho, parece, deve</i>) e expressões de dúvida ou certeza. Um mesmo período pode misturar os dois — e a prova quer que você os separe.</p>
+        <div class="warn"><b>Pegadinha:</b> dado numérico parece sempre “fato”, mas pode vir <b>interpretado</b> (“apenas 2%”, “impressionantes 80%”). O advérbio (<i>apenas, impressionantes</i>) já injeta opinião no fato.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “constitui opinião / constitui fato o trecho…”, “predomina a objetividade ou a subjetividade?”. Caça-se a <b>palavra que avalia</b> dentro da frase.</div>
+        <div class="ex"><b>Exemplo:</b> “Infelizmente, choveu o dia todo.” Fato ou opinião? <span class="resp">Há um fato (choveu o dia todo) modalizado por uma opinião (“infelizmente”, que avalia o fato).</span></div>
+      </section>
+
+      <section class="card" id="int2-vozes">
+        <div class="kicker">Interpretação · 2.4</div>
+        <h3>As diferentes “vozes” enunciadas no texto</h3>
+        <p class="lead">Um texto raramente tem uma só voz. A <b>polifonia</b> é a presença de <b>vozes diferentes</b> num mesmo enunciado: a do autor e as que ele <b>cita, evoca ou contesta</b>. Elas aparecem no <b>discurso direto</b> (fala reproduzida, com aspas/travessão), no <b>indireto</b> (fala incorporada: “disse que viria”), no <b>indireto livre</b> (a voz da personagem invade a do narrador, sem marca explícita) e na <b>citação/ironia</b>, em que o autor traz a voz do outro para dela discordar. Reconhecer <b>quem fala</b> evita atribuir ao autor o que ele apenas reporta.</p>
+        <div class="warn"><b>Atenção:</b> nem toda frase do texto é a opinião do autor. Ele pode <b>citar para criticar</b>. Confundir a voz citada com a do autor é um erro clássico de interpretação.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “a quem se atribui a afirmação…”, “as aspas em X indicam…” (ironia, citação, distanciamento). O <b>discurso indireto livre</b> é cobrado sobretudo na literatura.</div>
+        <div class="ex"><b>Exemplo:</b> por que um autor usaria aspas em <i>“solução”</i>? <span class="resp">Para marcar distância ou ironia — sinaliza que ele não assume aquela palavra como sua; é a voz de outro.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== INTERPRETAÇÃO 3 ===================== -->
+      <div class="area secI">
+      <div class="chapter" id="int3">
+        <div class="num">I · Compreensão e Interpretação de Texto</div>
+        <h2>3. Sentido, Propósito e Gêneros</h2>
+        <p>Fecha-se a parte de interpretação no nível mais fino: o sentido das palavras conforme o contexto, o propósito e o estilo do texto, e o reconhecimento de gênero, tipo, registro, variedade e modalidade.</p>
+        <div class="mini">
+          <a href="#int3-contexto">Sentido no contexto</a>
+          <a href="#int3-proposito">Propósito, conteúdo e estilo</a>
+          <a href="#int3-genero">Gênero e tipo textual</a>
+          <a href="#int3-registro">Registro, variedade e modalidade</a>
+        </div>
+      </div>
+
+      <section class="card" id="int3-contexto">
+        <div class="kicker">Interpretação · 3.1</div>
+        <h3>Sentido de palavras, expressões e estruturas no contexto</h3>
+        <p class="lead">Palavra não tem sentido fixo: tem sentido <b>no uso</b>. O <b>contexto</b> seleciona qual acepção vale — “<b>manga</b>” é fruta ou parte da camisa conforme a frase. Entram aqui a <b>polissemia</b> (vários sentidos de uma palavra), a <b>ambiguidade</b> (duplo sentido, às vezes proposital), a diferença entre <b>denotação</b> (sentido literal) e <b>conotação</b> (figurado), e as <b>figuras</b> (metáfora, metonímia, ironia). Interpretar uma expressão é trocá-la por uma <b>paráfrase</b> que caiba naquele contexto sem mudar o sentido.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “no contexto, a palavra X significa…”, “a expressão pode ser substituída, sem alteração de sentido, por…”. Testa-se a leitura <b>contextual</b>, não o verbete do dicionário.</div>
+        <div class="ex"><b>Exemplo:</b> em “Ele tem um <b>coração de pedra</b>”, qual o sentido? <span class="resp">Conotativo: é insensível. A expressão é uma metáfora — não se fala de um órgão petrificado.</span></div>
+      </section>
+
+      <section class="card" id="int3-proposito">
+        <div class="kicker">Interpretação · 3.2</div>
+        <h3>Propósito comunicativo, conteúdo temático e estilo</h3>
+        <p class="lead">Todo texto é uma <b>ação</b>: quer informar, convencer, emocionar, instruir, divertir. Analisar o <b>propósito comunicativo</b> é perguntar <b>para que</b> e <b>para quem</b> o texto foi feito. A isso se somam o <b>conteúdo temático</b> (do que trata, em que recorte) e as <b>unidades de estilo e de composição</b>: o modo de escrever (vocabulário, frases curtas/longas, figuras, tom) e o modo de organizar (introdução–desenvolvimento–conclusão, estrofes, diálogo). Estilo e composição não são enfeite: são <b>escolhas que produzem sentido</b> e revelam a intenção.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “a finalidade do texto é…”, “o tom predominante é…” (irônico, nostálgico, crítico), “o efeito do recurso X é…”. Liga-se <b>forma</b> a <b>intenção</b>.</div>
+        <div class="ex"><b>Exemplo:</b> por que uma propaganda usa imperativos (“compre”, “venha”)? <span class="resp">Porque seu propósito é persuadir e levar à ação; o estilo (verbos no imperativo) serve a essa intenção.</span></div>
+      </section>
+
+      <section class="card" id="int3-genero">
+        <div class="kicker">Interpretação · 3.3</div>
+        <h3>Gênero textual/discursivo e tipo textual</h3>
+        <p class="lead">Não confunda <b>gênero</b> e <b>tipo</b>. O <b>gênero</b> é o texto <b>como circula na vida social</b>, com forma e função reconhecíveis: conto, romance, artigo de opinião, carta, notícia, edital, meme, canção. O <b>tipo</b> (ou sequência) é a <b>estrutura interna</b>: <b>narrativo</b> (conta fatos no tempo), <b>descritivo</b> (caracteriza seres/lugares), <b>dissertativo-argumentativo</b> (defende ideias), <b>expositivo</b> (informa) e <b>injuntivo</b> (instrui/ordena). Um mesmo gênero combina vários tipos: uma crônica pode narrar, descrever e argumentar.</p>
+        <table class="tab"><thead><tr><th>Gênero (como circula)</th><th>Tipo predominante (como se estrutura)</th></tr></thead><tbody>
+          <tr><td>conto, romance, fábula</td><td>narrativo</td></tr>
+          <tr><td>artigo de opinião, editorial</td><td>dissertativo-argumentativo</td></tr>
+          <tr><td>verbete, notícia, relatório</td><td>expositivo/informativo</td></tr>
+          <tr><td>receita, manual, bula</td><td>injuntivo/instrucional</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> “o gênero do texto é…”, “predomina a sequência…”. Cuidado: pergunta-se ora o <b>gênero</b> (conto, carta), ora o <b>tipo</b> (narrativo, argumentativo) — não troque um pelo outro.</div>
+        <div class="ex"><b>Exemplo:</b> uma “carta de leitor” é gênero ou tipo? <span class="resp">É um gênero; seu tipo predominante costuma ser o dissertativo-argumentativo (opina sobre algo publicado).</span></div>
+      </section>
+
+      <section class="card" id="int3-registro">
+        <div class="kicker">Interpretação · 3.4</div>
+        <h3>Registro, variedade linguística e modalidade</h3>
+        <p class="lead">Três escolhas situam o texto. O <b>registro</b> é o grau de formalidade: <b>formal</b> (monitorado, impessoal) ou <b>informal</b> (espontâneo, coloquial), ajustado à situação. A <b>variedade linguística</b> é a forma da língua conforme grupo, região e situação: <b>padrão</b> (a norma de prestígio, da escrita pública) e <b>não padrão</b> (variedades populares, regionais — sem “erro”, mas com outra adequação). A <b>modalidade</b> é o canal: <b>oral</b>, <b>escrita</b> ou <b>visual/multimodal</b> (imagem, charge, emoji). Nenhuma variedade é “feia” ou “errada” em si — o que existe é <b>(in)adequação</b> ao contexto.</p>
+        <div class="warn"><b>Atenção:</b> o vestibular moderno repudia o preconceito linguístico. Variedade não padrão <b>não é</b> “português errado”: é apropriada a certos contextos. O erro é a <b>inadequação</b> (gíria num parecer técnico, por exemplo).</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “o registro do texto é…”, “a variedade empregada se justifica porque…”, “o recurso visual contribui para…”. A literatura usa o não padrão como <b>marca de autenticidade</b> (regionalismo, fala popular).</div>
+        <div class="ex"><b>Exemplo:</b> por que um conto registra a fala caipira “nóis vai”? <span class="resp">Para caracterizar a personagem e dar verossimilhança — é variedade não padrão usada com função estética, não erro.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== RECURSOS 1 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="rec1">
+        <div class="num">II · Análise de Recursos Linguísticos</div>
+        <h2>1. Os Níveis de Análise da Língua</h2>
+        <p>Esta parte privilegia o <b>raciocínio</b>, não a memorização de nomenclaturas. A pergunta não é “como se chama?”, mas “<b>que efeito de sentido</b> esse recurso produz no texto?”. Percorremos os níveis da língua — do som ao discurso — sempre ligando a <b>forma</b> à <b>função</b>.</p>
+        <div class="mini">
+          <a href="#rec1-orienta">Gramatical × lexical e os níveis</a>
+          <a href="#rec1-fonomorfo">Nível fonológico e morfológico</a>
+          <a href="#rec1-sintatico">Nível sintático</a>
+          <a href="#rec1-semantico">Nível semântico</a>
+          <a href="#rec1-textualdiscursivo">Níveis textual e discursivo</a>
+        </div>
+      </div>
+
+      <section class="card" id="rec1-orienta">
+        <div class="kicker">Recursos · 1.1</div>
+        <h3>Recursos gramaticais e lexicais e suas funções no texto</h3>
+        <p class="lead">A língua oferece dois grandes tipos de recurso. Os <b>lexicais</b> são as <b>palavras de conteúdo</b> (substantivos, verbos, adjetivos) e suas relações de sentido (sinonímia, antonímia, hiperonímia, campos semânticos). Os <b>gramaticais</b> são as <b>palavras e estruturas de relação</b> (artigos, pronomes, conjunções, preposições, tempos verbais, ordem das palavras), que articulam e modalizam. A prova pede que você analise <b>como esses recursos funcionam</b> em seis níveis: <b>fonológico, morfológico, sintático, semântico, textual e discursivo</b>. Em todos, o foco é o mesmo: a <b>função no texto</b>.</p>
+        <div class="formula-box">recurso (forma) → função (efeito de sentido no texto)</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “o efeito do emprego de X é…”, “a substituição de X por Y altera o sentido porque…”. Não se cobra a regra pela regra, mas a <b>consequência</b> da escolha linguística.</div>
+        <div class="ex"><b>Exemplo:</b> trocar “uma casa” por “a casa” muda o quê? <span class="resp">O artigo: “a” aponta algo conhecido/definido; “uma”, algo novo/indefinido — recurso gramatical com função referencial.</span></div>
+      </section>
+
+      <section class="card" id="rec1-fonomorfo">
+        <div class="kicker">Recursos · 1.2</div>
+        <h3>Nível fonológico e morfológico</h3>
+        <p class="lead">No <b>nível fonológico</b>, os <b>sons</b> produzem sentido e ritmo: <b>aliteração</b> e <b>assonância</b> (repetição de consoantes/vogais), <b>onomatopeia</b>, rima, cadência. É decisivo na poesia e na canção — caso do tropicalismo, que brinca com a sonoridade. No <b>nível morfológico</b>, a <b>formação e a flexão</b> das palavras geram efeitos: <b>diminutivos</b> com valor afetivo ou pejorativo (“<i>casinha</i>”, “<i>professorzinho</i>”), <b>aumentativos</b>, prefixos e sufixos que criam neologismos, classes de palavra que mudam o foco (substantivar uma ação a torna mais abstrata).</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “o efeito sonoro do verso é…”, “o diminutivo em X exprime…” (afeto, desprezo, ironia), “o neologismo sugere…”. Liga-se o <b>material da palavra</b> ao sentido.</div>
+        <div class="ex"><b>Exemplo:</b> que valor tem o diminutivo em “Que <b>advogadozinho</b> arrogante!”? <span class="resp">Pejorativo/depreciativo — o sufixo “-zinho” não indica tamanho, mas desprezo (morfologia a serviço da ironia).</span></div>
+      </section>
+
+      <section class="card" id="rec1-sintatico">
+        <div class="kicker">Recursos · 1.3</div>
+        <h3>Nível sintático</h3>
+        <p class="lead">A <b>arquitetura da frase</b> também significa. A <b>ordem</b> dos termos destaca informação: a anteposição (“<i>Caro</i>, esse livro foi”) enfatiza; a inversão cria expressividade. A <b>voz passiva</b> apaga ou adia o agente (“O erro foi cometido” — por quem?); a <b>ativa</b> o expõe. A escolha entre <b>coordenação</b> (frases justapostas, ritmo rápido) e <b>subordinação</b> (encaixes, raciocínio mais complexo) molda o tom. Pontuação, paralelismo, períodos curtos ou longos: tudo é recurso sintático com efeito de leitura.</p>
+        <div class="warn"><b>Atenção:</b> a passiva sem agente costuma ser <b>estratégia</b> — esconde quem age (“foram tomadas medidas”). Em texto crítico, perceber esse apagamento é leitura fina.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “a inversão da ordem produz…”, “a mudança para a voz passiva implica…”, “a substituição da vírgula por ponto altera…”. Cobra-se o <b>sentido</b> da estrutura.</div>
+        <div class="ex"><b>Exemplo:</b> por que dizer “Cometeram-se erros” em vez de “Eu errei”? <span class="resp">A construção apaga o agente: dilui a responsabilidade. É um efeito sintático de sentido.</span></div>
+      </section>
+
+      <section class="card" id="rec1-semantico">
+        <div class="kicker">Recursos · 1.4</div>
+        <h3>Nível semântico</h3>
+        <p class="lead">É o nível do <b>sentido</b>. Aqui operam <b>denotação</b> e <b>conotação</b>, as <b>relações lexicais</b> (sinonímia, antonímia, hiponímia), os <b>campos semânticos</b> (palavras que evocam um mesmo domínio, criando atmosfera) e as <b>figuras</b>: <b>metáfora</b> (semelhança), <b>metonímia</b> (contiguidade: “ler Machado” = sua obra), <b>hipérbole</b> (exagero), <b>eufemismo</b> (suavização), <b>antítese</b>, <b>ironia</b> (dizer o contrário do que se pensa). A <b>modalização</b> — graduar certeza, dever, desejo — também é semântica e revela a posição do enunciador.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “a figura de linguagem presente é…”, “o campo semântico predominante sugere…”, “a ironia se constrói por…”. Sempre se pergunta o <b>efeito</b>, não só o nome da figura.</div>
+        <div class="ex"><b>Exemplo:</b> “A Casa Branca declarou…” — que figura? <span class="resp">Metonímia: o lugar (sede) representa quem governa. Recurso semântico de contiguidade.</span></div>
+      </section>
+
+      <section class="card" id="rec1-textualdiscursivo">
+        <div class="kicker">Recursos · 1.5</div>
+        <h3>Níveis textual e discursivo</h3>
+        <p class="lead">No <b>nível textual</b>, o que importa é a <b>tessitura</b>: a <b>coesão</b> (os elos que costuram o texto — pronomes, conectivos, sinônimos, elipses) e a <b>coerência</b> (a lógica e a unidade de sentido do conjunto). É também o nível da <b>progressão</b> (como a informação avança) e da <b>referenciação</b> (como retomamos e renomeamos seres ao longo do texto). No <b>nível discursivo</b>, sobe-se um degrau: a língua em <b>situação</b>, carregada de <b>intenção, ideologia e relações de poder</b>. É onde se analisam o ponto de vista, os pressupostos ideológicos, a quem o discurso serve e que visão de mundo ele veicula.</p>
+        <table class="tab"><thead><tr><th>Nível</th><th>Objeto</th><th>Recursos típicos</th></tr></thead><tbody>
+          <tr><td>Textual</td><td>a costura do texto</td><td>coesão, coerência, referência, progressão</td></tr>
+          <tr><td>Discursivo</td><td>a língua em situação</td><td>intenção, ponto de vista, ideologia, polifonia</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> “o termo X retoma…” (coesão referencial), “a substituição compromete a coerência porque…”, “o discurso revela a visão de…”. Os elementos coesivos são campeões de questões.</div>
+        <div class="ex"><b>Exemplo:</b> em “Comprei o livro. <b>Ele</b> é ótimo.”, o que faz “ele”? <span class="resp">Retoma “o livro” — é coesão referencial por pronome, que dá continuidade ao texto.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== RECURSOS 2 ===================== -->
+      <div class="area secII">
+      <div class="chapter" id="rec2">
+        <div class="num">II · Análise de Recursos Linguísticos</div>
+        <h2>2. Adequação e Variedade Padrão</h2>
+        <p>Conhecer os recursos só vale se você souber <b>usá-los e avaliá-los em contexto</b>. Fecham esta parte a adequação dos recursos à situação e o domínio — reflexivo, não automático — da variedade padrão escrita.</p>
+        <div class="mini">
+          <a href="#rec2-adequacao">Adequação ao contexto de uso</a>
+          <a href="#rec2-padrao">Variedade padrão e reflexão sobre o uso</a>
+        </div>
+      </div>
+
+      <section class="card" id="rec2-adequacao">
+        <div class="kicker">Recursos · 2.1</div>
+        <h3>Adequação dos recursos ao contexto de uso</h3>
+        <p class="lead">Não existe recurso “bom” ou “ruim” em abstrato: existe recurso <b>adequado</b> ou <b>inadequado</b> à <b>situação comunicativa</b> — quem fala, com quem, sobre o quê, por qual canal e com qual propósito. Gíria e emoji cabem numa mensagem entre amigos, mas destoam de um requerimento. A norma culta é exigida num parecer, mas soaria artificial numa conversa de bar. <b>Competência linguística</b> é justamente <b>transitar entre registros</b>, escolhendo o que a situação pede. Avaliar adequação é perguntar: este recurso serve ao propósito <b>aqui</b>?</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “o uso de X é (in)adequado ao gênero porque…”, “a linguagem coloquial se justifica por…”. Avalia-se a relação entre <b>recurso e situação</b>, não um ideal de “certo absoluto”.</div>
+        <div class="ex"><b>Exemplo:</b> por que “E aí, tudo certo?” é inadequado num ofício? <span class="resp">Porque o gênero ofício pede registro formal; a saudação coloquial não se adequa à situação institucional.</span></div>
+      </section>
+
+      <section class="card" id="rec2-padrao">
+        <div class="kicker">Recursos · 2.2</div>
+        <h3>A variedade padrão da língua escrita e a reflexão sobre seu uso</h3>
+        <p class="lead">A <b>variedade padrão</b> é a norma de prestígio da <b>escrita pública</b>: concordância, regência, pontuação, ortografia e construção monitoradas. O programa pede <b>conhecê-la</b> — e, mais que isso, <b>refletir sobre seu uso</b>: entender que ela é uma <b>convenção social</b> historicamente construída, valorizada em certos contextos (provas, documentos, ciência), e não a “única língua certa”. Dominar o padrão <b>amplia</b> seu repertório sem desvalorizar as demais variedades. Pensar a língua é saber <b>quando</b> e <b>por que</b> a norma padrão é exigida — e que efeitos sua presença ou ausência produz.</p>
+        <div class="warn"><b>Atenção:</b> exigir a norma padrão num documento formal é adequação; <b>tratar variedades populares como “erro”</b> é preconceito linguístico — postura que o vestibular contemporâneo rejeita.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> questões de reescrita (“reescreva conforme a norma padrão”), de concordância/regência <b>em contexto</b>, e de reflexão (“o desvio da norma na fala da personagem cumpre que função?”).</div>
+        <div class="ex"><b>Exemplo:</b> por que um autor escreve a narração no padrão, mas a fala da personagem no popular? <span class="resp">Porque cada esfera tem sua adequação: a norma confere autoridade ao narrador; o popular dá verdade à personagem.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== LITERATURA — HABILIDADES ===================== -->
+      <div class="area secIII">
+      <div class="chapter" id="lit1">
+        <div class="num">III · Literatura Brasileira — Como Ler</div>
+        <h2>1. O Texto Literário e suas Leituras</h2>
+        <p>A prova de Literatura valoriza a <b>experiência de leitura</b> mais que a memorização de autores, datas e escolas. Antes das obras, fixe as quatro habilidades que o programa cobra: ler a obra como <b>objeto estético</b>, relacioná-la ao <b>contexto</b>, compreender sua <b>estrutura</b> e perceber as <b>possibilidades de leitura</b> de sua linguagem.</p>
+        <div class="mini">
+          <a href="#lit1-estetica">A obra como objeto estético</a>
+          <a href="#lit1-contexto">Texto, contexto e movimento</a>
+          <a href="#lit1-estrutura">Organização e estrutura</a>
+          <a href="#lit1-leitura">Possibilidades de leitura</a>
+          <a href="#lit1-generos">Os gêneros do programa</a>
+        </div>
+      </div>
+
+      <section class="card" id="lit1-estetica">
+        <div class="kicker">Literatura · 1.1</div>
+        <h3>Apreender a obra como produto de natureza estética</h3>
+        <p class="lead">Literatura não é só “o que” se diz, mas <b>como</b> se diz. O texto literário é um <b>objeto estético</b>: trabalha a linguagem por si mesma — som, ritmo, imagem, ambiguidade, construção — para produzir <b>efeitos de sentido e de beleza</b>. Por isso a <b>função poética</b> (foco na própria mensagem) predomina, e a forma é inseparável do conteúdo. Ler literariamente é não reduzir o poema a uma “mensagem” ou o romance a um “resumo”: é perceber que a maneira de dizer <b>é</b> parte do que se diz.</p>
+        <div class="warn"><b>Atenção:</b> resumir o enredo não é interpretar a obra. A prova quer que você perceba <b>como</b> a linguagem constrói sentido — a escolha das palavras, a estrutura, o ponto de vista.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> trechos das obras com a pergunta “o efeito estético do recurso X é…”, “a construção do trecho revela…”. Valoriza-se quem <b>leu</b> e percebe a elaboração da linguagem.</div>
+        <div class="ex"><b>Exemplo:</b> por que não basta saber o “resumo” de Torto Arado? <span class="resp">Porque o sentido depende de como é narrado — as três vozes, a linguagem da terra, o realismo com o sobrenatural. A forma carrega a interpretação.</span></div>
+      </section>
+
+      <section class="card" id="lit1-contexto">
+        <div class="kicker">Literatura · 1.2</div>
+        <h3>Relacionar o texto ao contexto e ao movimento literário</h3>
+        <p class="lead">Nenhuma obra nasce no vácuo. Interpretá-la é situá-la no seu <b>contexto histórico, social e cultural</b> e no <b>movimento estético</b> com que dialoga — e também na conversa com <b>outros textos</b> (intertextualidade). <i>Parque Industrial</i> só se entende plenamente no <b>modernismo</b> dos anos 1930 e na luta operária; o <b>tropicalismo</b> responde à ditadura de 1968; <i>Solitária</i> e <i>Torto Arado</i> integram a <b>literatura contemporânea</b> que dá voz a sujeitos historicamente silenciados. Contexto não é “enfeite de prova”: ilumina os sentidos da obra.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> “a obra dialoga com o contexto de…”, “a relação entre o texto e o momento histórico…”, “que outro texto/movimento o trecho evoca?”. Cobra-se a <b>obra dentro da história</b>.</div>
+        <div class="ex"><b>Exemplo:</b> por que situar o tropicalismo em 1968? <span class="resp">Porque o álbum responde à ditadura militar e ao debate cultural da época — a crítica e a antropofagia ganham sentido nesse contexto.</span></div>
+      </section>
+
+      <section class="card" id="lit1-estrutura">
+        <div class="kicker">Literatura · 1.3</div>
+        <h3>Compreender a organização e a estrutura do texto literário</h3>
+        <p class="lead">Cada texto tem uma <b>arquitetura</b>. Na <b>narrativa</b> (conto, romance), observe: <b>foco narrativo</b> (quem narra — 1ª ou 3ª pessoa, narrador-personagem, onisciente), <b>enredo</b> (a ação e seus conflitos), <b>personagens</b>, <b>tempo</b> e <b>espaço</b>. Na <b>poesia/canção</b>: versos, estrofes, ritmo, rimas, imagens. Compreender a estrutura é estabelecer <b>relações entre esses elementos</b> — perceber, por exemplo, que a <b>mudança de narrador</b> em <i>Solitária</i> ou em <i>Torto Arado</i> é parte essencial do significado, não um detalhe técnico.</p>
+        <table class="tab"><thead><tr><th>Elemento</th><th>Pergunta-chave</th></tr></thead><tbody>
+          <tr><td>Foco narrativo</td><td>Quem narra? Com que saber e que limites?</td></tr>
+          <tr><td>Enredo</td><td>Qual o conflito central e como se resolve?</td></tr>
+          <tr><td>Personagens</td><td>Quem são e o que representam?</td></tr>
+          <tr><td>Tempo / espaço</td><td>Quando e onde? Que sentido o cenário carrega?</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> “o foco narrativo do trecho é…”, “a função do espaço na obra é…”, “a alternância de narradores produz…”. Pede-se relacionar <b>elementos da estrutura</b>.</div>
+        <div class="ex"><b>Exemplo:</b> por que importa quem narra em Torto Arado? <span class="resp">Porque cada irmã — e a entidade — revela uma perspectiva; a estrutura em três vozes é o que dá amplitude e mistério à história.</span></div>
+      </section>
+
+      <section class="card" id="lit1-leitura">
+        <div class="kicker">Literatura · 1.4</div>
+        <h3>Perceber as possibilidades de leitura e a singularidade da linguagem</h3>
+        <p class="lead">O texto literário é <b>plurissignificativo</b>: admite mais de uma leitura válida, porque trabalha com <b>conotação, ambiguidade, símbolo e ironia</b>. Perceber as <b>possibilidades de leitura</b> é reconhecer essa abertura — sem cair no “vale tudo”: as leituras precisam se <b>sustentar no texto</b>. Atente às <b>singularidades linguísticas</b> que marcam o literário: a oralidade e o regionalismo em <i>Singradura</i>, o ritmo poético da prosa de <i>Torto Arado</i>, a concisão cortante dos microcontos de <i>Velhos</i>, os jogos de palavra do tropicalismo. A linguagem, aqui, é o próprio acontecimento.</p>
+        <div class="warn"><b>Atenção:</b> “várias leituras possíveis” não significa “qualquer leitura”. A interpretação literária é livre, mas <b>responsável</b>: deve encontrar apoio em elementos do texto.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> “o verso admite a leitura de que…”, “a ambiguidade do trecho permite…”, “a linguagem regional cumpre a função de…”. Valoriza-se a leitura <b>fundamentada</b>.</div>
+        <div class="ex"><b>Exemplo:</b> o que dá “singularidade” à linguagem de uma obra? <span class="resp">O modo próprio de usar a língua — ritmo, vocabulário, oralidade, figuras — que a distingue e produz seus efeitos estéticos.</span></div>
+      </section>
+
+      <section class="card" id="lit1-generos">
+        <div class="kicker">Literatura · 1.5</div>
+        <h3>Os gêneros do programa: conto, romance e álbum/canção</h3>
+        <p class="lead">As seis obras cobrem <b>gêneros distintos</b>, e cada um pede um olhar. O <b>conto</b> (e o <b>microconto</b>) vive da <b>concisão</b> e da <b>unidade de efeito</b>: poucos elementos, foco num instante, desfecho que ressignifica — caso de <i>Velhos</i> e <i>Singradura</i>. O <b>romance</b> é amplo: muitas personagens, tempo longo, tramas que abarcam a sociedade — <i>Solitária</i>, <i>Torto Arado</i>, <i>Parque Industrial</i>. O <b>álbum/canção</b> (<i>Tropicália</i>) une <b>letra e música</b>: a interpretação considera o texto verbal <b>e</b> os sentidos sonoros e culturais. Reconhecer o gênero orienta o que perguntar a cada obra.</p>
+        <table class="tab"><thead><tr><th>Gênero</th><th>Obras do programa</th><th>O que observar</th></tr></thead><tbody>
+          <tr><td>Conto / microconto</td><td>Velhos; Singradura</td><td>concisão, efeito único, desfecho, oralidade</td></tr>
+          <tr><td>Romance</td><td>Solitária; Torto Arado; Parque Industrial</td><td>narrador, personagens, sociedade, estrutura</td></tr>
+          <tr><td>Álbum / canção</td><td>Tropicália ou Panis et Circensis</td><td>letra + música, intertexto, contexto, montagem</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> “o gênero da obra é…”, “a brevidade do conto contribui para…”, “na canção, letra e música constroem…”. O gênero é a <b>chave de leitura</b> de cada texto.</div>
+        <div class="ex"><b>Exemplo:</b> por que ler um microconto exige atenção redobrada? <span class="resp">Porque cada palavra pesa: em poucas linhas, um detalhe ou o título reorganiza todo o sentido (unidade de efeito).</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== OBRA 1 — VELHOS ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="ob1">
+        <div class="num">IV · As Seis Obras do Programa</div>
+        <h2>1. Velhos — Alê Motta <span style="font-weight:500;font-size:16px;color:var(--muted)">(contos · Reformatório)</span></h2>
+        <p>Um livro de <b>narrativas curtíssimas</b> (contos e microcontos) que tem a <b>velhice</b> como fio condutor. Em poucas linhas, cada texto flagra uma vida idosa e, com ironia cortante, denuncia o modo como a sociedade trata — e descarta — os velhos.</p>
+        <div class="mini">
+          <a href="#ob1-autora">Alê Motta e o microconto</a>
+          <a href="#ob1-temas">Velhice, exclusão e violência</a>
+          <a href="#ob1-estilo">Concisão, ironia e título</a>
+        </div>
+      </div>
+
+      <section class="card" id="ob1-autora">
+        <div class="kicker">Velhos · 1.1</div>
+        <h3>Alê Motta e a arte do microconto</h3>
+        <p class="lead"><b>Alê Motta</b> é escritora contemporânea, nome ligado à <b>prosa de extrema concisão</b>. <i>Velhos</i> (Reformatório, 2020) reúne <b>narrativas muito breves</b> — contos e <b>microcontos</b> — cujos protagonistas são, todos, <b>pessoas idosas</b>. O <b>microconto</b> é o gênero da <b>máxima economia</b>: cabe em poucas linhas, às vezes uma frase, e aposta na <b>sugestão</b> e no <b>desfecho que ressignifica</b> tudo. Obra da literatura do <b>século XXI</b>, dialoga com a estética da brevidade que floresceu também nas redes, mas a usa como <b>lâmina de crítica social</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer o <b>gênero microconto</b> e suas exigências (concisão, efeito único, importância do título e do não dito) é o primeiro ponto. A obra é contemporânea — atenção ao olhar crítico sobre o presente.</div>
+        <div class="ex"><b>Exemplo:</b> o que caracteriza o microconto como gênero? <span class="resp">A brevidade extrema e a unidade de efeito: diz-se muito com pouquíssimo, e o sentido se completa na sugestão e no fecho.</span></div>
+      </section>
+
+      <section class="card" id="ob1-temas">
+        <div class="kicker">Velhos · 1.2</div>
+        <h3>Velhice, exclusão e violência social</h3>
+        <p class="lead">Os velhos de Alê Motta <b>não cabem em estereótipos</b>: não são o idoso “doce” nem o “decadente”. São pessoas <b>ativas, intensas, solitárias, ignoradas</b>. A obra expõe as <b>violências cotidianas</b> da velhice numa sociedade que cultua a juventude e a <b>produtividade</b>: o idoso é tratado como <b>ineficiente</b>, invisível, um peso. Cruzam os textos temas como <b>solidão</b>, <b>negligência</b>, <b>abandono</b>, <b>racismo</b> e <b>etarismo</b> (preconceito de idade). A força do livro está em mostrar, sem sentimentalismo, como o descaso se disfarça de naturalidade.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> os <b>temas sociais</b> (etarismo, solidão, produtividade, invisibilidade do idoso) e a <b>crítica</b> que os textos veiculam. Espere a relação com debates atuais sobre envelhecimento e dignidade.</div>
+        <div class="ex"><b>Exemplo:</b> que crítica central atravessa Velhos? <span class="resp">A de uma sociedade que mede o valor das pessoas pela produtividade e, assim, descarta e invisibiliza os velhos.</span></div>
+      </section>
+
+      <section class="card" id="ob1-estilo">
+        <div class="kicker">Velhos · 1.3</div>
+        <h3>Concisão, ironia e o peso do título</h3>
+        <p class="lead">O estilo é <b>seco, preciso e irônico</b>. Como cada texto é mínimo, <b>cada palavra significa</b> — e o <b>título</b> de cada microconto costuma ser parte do enredo, abrindo ou virando o sentido. A <b>ironia</b> e o <b>desfecho inesperado</b> são as armas: o leitor é levado a uma expectativa que o fim quebra, revelando a crueldade ou a hipocrisia da cena. Ler bem é prestar atenção ao <b>não dito</b>, aos <b>implícitos</b> e ao efeito de releitura que o final provoca.</p>
+        <div class="warn"><b>Atenção:</b> em microconto, o <b>título não é decorativo</b>: muitas vezes é a chave do texto. Ignorá-lo é perder o sentido. O mesmo vale para o último detalhe da narrativa.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> análise de <b>recursos de concisão</b>, função do <b>título</b>, papel da <b>ironia</b> e do <b>implícito</b> — exatamente as habilidades das Partes I e II aplicadas a um texto literário curto.</div>
+        <div class="ex"><b>Exemplo:</b> por que o desfecho importa tanto no microconto? <span class="resp">Porque ele ressignifica retroativamente toda a narrativa: o sentido se fecha (e muitas vezes se inverte) na última linha.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== OBRA 2 — TROPICÁLIA ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="ob2">
+        <div class="num">IV · As Seis Obras do Programa</div>
+        <h2>2. Tropicália ou Panis et Circensis <span style="font-weight:500;font-size:16px;color:var(--muted)">(álbum, 1968 · Universal Music)</span></h2>
+        <p>O <b>disco-manifesto</b> do Tropicalismo, reunião coletiva de Caetano Veloso, Gilberto Gil, Gal Costa, Nara Leão, Os Mutantes e Tom Zé, com os poetas Capinam e Torquato Neto e arranjos de Rogério Duprat. Pela primeira vez, um <b>álbum</b> entra como obra literária no programa — e suas <b>letras</b> pedem leitura de texto.</p>
+        <div class="mini">
+          <a href="#ob2-contexto">1968, ditadura e manifesto</a>
+          <a href="#ob2-estetica">Antropofagia e mistura</a>
+          <a href="#ob2-prova">Um álbum como texto literário</a>
+        </div>
+      </div>
+
+      <section class="card" id="ob2-contexto">
+        <div class="kicker">Tropicália · 2.1</div>
+        <h3>1968: o disco-manifesto em plena ditadura</h3>
+        <p class="lead">Lançado em <b>julho de 1968</b> pela Philips (hoje Universal Music), o álbum é o <b>manifesto sonoro</b> do <b>Tropicalismo</b>, movimento que explodira nos festivais de 1967. O Brasil vivia a <b>ditadura militar</b>; meses depois, o <b>AI-5</b> (dez./1968) endureceria a repressão e levaria <b>Caetano e Gil ao exílio</b>. Nesse clima, os tropicalistas propõem uma arte ao mesmo tempo <b>alegre e crítica</b>, irônica e inventiva, que recusa tanto o conservadorismo quanto certo nacionalismo fechado da esquerda. O título — “<b>pão e circo</b>”, em latim — já ironiza a alienação oferecida ao povo.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>contexto histórico</b> (1968, ditadura, AI-5, exílio) e o caráter de <b>manifesto</b> coletivo. A ironia do título e a crítica velada à repressão e à alienação são pontos certeiros.</div>
+        <div class="ex"><b>Exemplo:</b> o que ironiza o título “Panis et Circensis” (pão e circo)? <span class="resp">A velha fórmula de manter o povo distraído e conformado — uma crítica à alienação, atual também sob a ditadura.</span></div>
+      </section>
+
+      <section class="card" id="ob2-estetica">
+        <div class="kicker">Tropicália · 2.2</div>
+        <h3>Antropofagia, mistura e vanguarda</h3>
+        <p class="lead">A estética tropicalista é a <b>mistura</b>: junta a <b>tradição brasileira</b> (do brega de “Coração Materno” ao baião) com a <b>vanguarda</b> e o <b>pop estrangeiro</b> (rock, guitarra elétrica, psicodelia, poesia <b>concreta</b>). Sua chave é a <b>Antropofagia</b> de <b>Oswald de Andrade</b>: “<b>devorar</b>” o que vem de fora e o que é local, digerindo tudo para criar algo <b>novo e brasileiro</b> — a capa do disco, aliás, cita poses modernistas e dadaístas. As letras fazem <b>colagem</b> e <b>jogo de palavras</b>: “Geléia Geral” mistura clichês do Brasil; “Bat Macumba” constrói um verso <b>visual</b>, concretista; “Parque Industrial” (de Tom Zé) satiriza o consumo e o “made in Brazil”.</p>
+        <div class="quote">“Um disco em que o erudito e o popular, o nacional e o estrangeiro, o cafona e o sofisticado convivem — devorados e recriados.”<span class="src">Síntese do programa estético tropicalista (antropofagia oswaldiana)</span></div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>antropofagia</b> (Oswald de Andrade), a <b>colagem</b>/mistura de registros, a influência <b>concretista</b> nas letras e a <b>crítica social</b> bem-humorada. Ótimo terreno para <b>intertextualidade</b>.</div>
+        <div class="ex"><b>Exemplo:</b> como o tropicalismo se liga ao modernismo de 22? <span class="resp">Pela Antropofagia de Oswald: assim como os modernistas, os tropicalistas “devoram” influências para produzir algo novo e nacional.</span></div>
+      </section>
+
+      <section class="card" id="ob2-prova">
+        <div class="kicker">Tropicália · 2.3</div>
+        <h3>Como um álbum “cai” como obra literária</h3>
+        <p class="lead">No vestibular, a <b>letra é tratada como texto literário</b>: você interpreta <b>imagens, metáforas, ironia e intertextos</b>, como faria com um poema. Mas a canção tem um <b>plus</b>: o sentido nasce também da <b>música</b> (ritmo, timbre, arranjo) e do <b>contexto cultural</b>. Analisar o álbum é ler as letras <b>e</b> perceber a <b>montagem</b> — a forma como sons e palavras de origens diferentes se chocam para produzir crítica e estranhamento. A própria ideia de <b>“obra coletiva”</b> (vários autores e intérpretes num só projeto) é significativa.</p>
+        <div class="warn"><b>Atenção:</b> não reduza a canção à “mensagem”. O sentido tropicalista está na <b>forma</b> — na mistura, na ironia, na quebra. A leitura literal perde a crítica que mora no contraste.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> interpretação das <b>letras</b> (figuras, ironia, crítica), relação <b>letra–contexto</b>, intertextos (modernismo, cultura pop) e o caráter de <b>manifesto coletivo</b>. Pode vir em diálogo com outra obra do programa.</div>
+        <div class="ex"><b>Exemplo:</b> por que a canção “Parque Industrial” conversa com o romance de Pagu? <span class="resp">Ambos miram a <b>industrialização</b>: Pagu denuncia a exploração operária; Tom Zé ironiza o consumo e a “felicidade” fabricada em série.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== OBRA 3 — SOLITÁRIA ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="ob3">
+        <div class="num">IV · As Seis Obras do Programa</div>
+        <h2>3. Solitária — Eliana Alves Cruz <span style="font-weight:500;font-size:16px;color:var(--muted)">(romance · Companhia das Letras)</span></h2>
+        <p>Romance contemporâneo sobre <b>mãe e filha negras</b> cujas vidas giram em torno do <b>quartinho de empregada</b> de um luxuoso edifício. Com tensão quase policial, a obra expõe o <b>trabalho doméstico</b> como herança viva da escravidão no Brasil do século XXI.</p>
+        <div class="mini">
+          <a href="#ob3-autora">Eliana Alves Cruz</a>
+          <a href="#ob3-enredo">Enredo e estrutura</a>
+          <a href="#ob3-temas">Racismo, trabalho e título</a>
+        </div>
+      </div>
+
+      <section class="card" id="ob3-autora">
+        <div class="kicker">Solitária · 3.1</div>
+        <h3>Eliana Alves Cruz e a literatura afro-brasileira contemporânea</h3>
+        <p class="lead"><b>Eliana Alves Cruz</b> é uma das vozes centrais da <b>literatura afro-brasileira</b> atual. Em romances como <i>Água de barrela</i> (saga de uma família negra ao longo de séculos) e <i>Solitária</i> (Companhia das Letras), ela narra a experiência negra brasileira <b>do ponto de vista de quem a vive</b>, recuperando memórias e denunciando o <b>racismo estrutural</b>. <i>Solitária</i> insere-se na produção do <b>século XXI</b> que dá <b>protagonismo</b> a sujeitos historicamente silenciados — sobretudo <b>mulheres negras</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> situar a obra na <b>literatura contemporânea afro-brasileira</b> e em sua proposta de <b>dar voz</b> às trabalhadoras domésticas negras. O <b>lugar de fala</b> e a representação importam.</div>
+        <div class="ex"><b>Exemplo:</b> que marca define a literatura de Eliana Alves Cruz? <span class="resp">A narração da experiência negra brasileira a partir de dentro, com foco na memória e na crítica ao racismo estrutural.</span></div>
+      </section>
+
+      <section class="card" id="ob3-enredo">
+        <div class="kicker">Solitária · 3.2</div>
+        <h3>Enredo e estrutura: as vozes e os quartos</h3>
+        <p class="lead">No centro estão <b>Eunice</b>, empregada doméstica, e sua filha <b>Mabel</b>, mulheres negras cuja existência se organiza em torno do <b>quarto de empregada</b> de um apartamento de luxo. A narrativa, com <b>tensão de enredo policial</b>, vai revelando segredos, violências e decisões que marcam essas vidas. A <b>estrutura</b> é a chave: o foco narrativo se divide em <b>perspectivas diferentes</b> — a da filha (Mabel), a da mãe (Eunice) e, num lance ousado, a <b>voz dos próprios quartos</b> (o quarto da empregada, o do porteiro, o de hospital), que “testemunham” as relações. Cada ângulo ilumina uma face da mesma opressão.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>alternância de narradores</b> e o efeito de <b>multiperspectiva</b>; a função simbólica do <b>espaço</b> (o quarto). Relacione estrutura e sentido — recurso da Parte III.</div>
+        <div class="ex"><b>Exemplo:</b> que efeito produz dar voz aos “quartos”? <span class="resp">Transforma o <b>espaço</b> em testemunha da história: a arquitetura da casa “fala” da desigualdade e do confinamento que abriga.</span></div>
+      </section>
+
+      <section class="card" id="ob3-temas">
+        <div class="kicker">Solitária · 3.3</div>
+        <h3>Racismo estrutural, trabalho doméstico e a polissemia do título</h3>
+        <p class="lead">O romance escancara como o <b>trabalho doméstico</b> brasileiro guarda <b>vestígios do modelo escravocrata</b>: a empregada como herdeira da <b>mucama</b>, e o <b>“quartinho de empregada”</b> como dispositivo arquitetônico do <b>racismo</b> — o espaço mínimo, sem janela, que materializa o lugar social reservado à mulher negra. O <b>título</b> é <b>polissêmico</b>: “solitária” é a <b>solidão</b> dessas mulheres, é a <b>cela solitária</b> (o confinamento do quarto), e ecoa até a <b>tênia</b> (a “solitária” que se aloja e consome o corpo) — imagens da exploração que se hospeda no íntimo da casa e da vida.</p>
+        <div class="warn"><b>Atenção:</b> o foco não é um drama individual, e sim <b>estrutural</b>: a obra mostra um <b>sistema</b>. O “quarto da empregada” vale como <b>símbolo</b> do racismo que organiza os espaços brasileiros.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>racismo estrutural</b>, herança escravista no trabalho doméstico, simbolismo do <b>espaço</b> e a <b>polissemia do título</b>. Forte candidato a diálogo com <i>Torto Arado</i> e <i>Parque Industrial</i>.</div>
+        <div class="ex"><b>Exemplo:</b> por que o “quartinho de empregada” é central na obra? <span class="resp">Porque simboliza, na própria arquitetura da casa, a continuidade do racismo e da servidão herdados da escravidão.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== OBRA 4 — SINGRADURA ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="ob4">
+        <div class="num">IV · As Seis Obras do Programa</div>
+        <h2>4. Singradura — Flávio José Cardozo <span style="font-weight:500;font-size:16px;color:var(--muted)">(contos · Editora da UFSC)</span></h2>
+        <p>Coletânea de <b>contos breves</b> ambientados na <b>ilha de Florianópolis</b>. Pela escrita de um dos grandes nomes catarinenses, a vida simples da costa ganha densidade humana — gente comum atravessada por <b>dilemas, ambiguidades e contradições</b>.</p>
+        <div class="mini">
+          <a href="#ob4-autor">Flávio José Cardozo e o regionalismo</a>
+          <a href="#ob4-temas">A ilha, os simples e a singradura</a>
+          <a href="#ob4-estilo">Linguagem, oralidade e prova</a>
+        </div>
+      </div>
+
+      <section class="card" id="ob4-autor">
+        <div class="kicker">Singradura · 4.1</div>
+        <h3>Flávio José Cardozo e o regionalismo catarinense</h3>
+        <p class="lead"><b>Flávio José Cardozo</b> é um dos mais reconhecidos escritores de <b>Santa Catarina</b>. <i>Singradura</i> foi publicado originalmente em <b>1970</b> e relançado pela <b>Editora da UFSC (EdUFSC)</b> — daí estar entre as leituras do vestibular catarinense. A obra filia-se à tradição <b>regionalista</b>, que ambienta a ficção num espaço e numa cultura locais; aqui, a <b>porção insular de Florianópolis</b> e sua herança <b>açoriana</b>: pescadores, gente da praia e do interior da ilha. Mas o regionalismo de Cardozo não é mero <b>pitoresco</b>: o local é o <b>palco</b> de dramas humanos universais.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> reconhecer o <b>regionalismo</b> (espaço e cultura locais como matéria literária) e o vínculo <b>catarinense/açoriano</b>. Diferencie regionalismo <b>de superfície</b> (cor local) do regionalismo que aprofunda o <b>humano</b>.</div>
+        <div class="ex"><b>Exemplo:</b> o que caracteriza uma obra regionalista? <span class="resp">A ambientação num espaço e numa cultura específicos (aqui, a ilha de Florianópolis), com linguagem e tipos próprios da região.</span></div>
+      </section>
+
+      <section class="card" id="ob4-temas">
+        <div class="kicker">Singradura · 4.2</div>
+        <h3>A ilha, os simples e o sentido da “singradura”</h3>
+        <p class="lead">As cerca de <b>vinte narrativas</b> mergulham no <b>cotidiano da ilha</b> e em suas <b>culturas tradicionais</b>, com personagens <b>psicologicamente densos</b>, cheios de <b>ambiguidades, dilemas e contradições</b>. O título é revelador: <b>“singradura”</b> é um <b>termo náutico</b> — o <b>trecho que um navio percorre em 24 horas</b> de navegação. Dá nome ao último conto e ao livro, e funciona como <b>metáfora</b> do <b>tempo</b> que cada personagem leva para “singrar” seus dias, sua travessia de vida. O mar e a navegação, assim, organizam tanto o cenário quanto o sentido.</p>
+        <div class="quote">“Singradura: a distância que um barco vence em um dia de navegação.” — o tempo de uma travessia, literal e existencial.<span class="src">Sentido do termo que dá título à coletânea</span></div>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>simbolismo do título</b> (a travessia, o tempo, o mar), a <b>complexidade psicológica</b> das personagens e a relação entre <b>espaço</b> (ilha/mar) e <b>vida</b>. Atenção ao que há de universal sob o local.</div>
+        <div class="ex"><b>Exemplo:</b> que sentido figurado tem “singradura”? <span class="resp">Além do náutico (a distância vencida em um dia), é metáfora da travessia da vida — o percurso diário de cada personagem.</span></div>
+      </section>
+
+      <section class="card" id="ob4-estilo">
+        <div class="kicker">Singradura · 4.3</div>
+        <h3>Linguagem, oralidade e leitura na prova</h3>
+        <p class="lead">A força do livro está também na <b>linguagem</b>: Cardozo incorpora a <b>fala</b> e os modos da gente da ilha, com marcas de <b>oralidade</b> e <b>variedade regional</b>. Esse uso da língua não é “erro”, mas <b>recurso estético</b>: dá <b>verossimilhança</b> e <b>identidade</b> às personagens, aproximando o leitor do mundo retratado. Como são <b>contos</b>, vale o que se viu sobre o gênero: <b>concentração</b>, foco em momentos decisivos, desfechos que iluminam o caráter das figuras. Ler bem é juntar <b>linguagem</b>, <b>espaço</b> e <b>conflito humano</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>variedade regional/oralidade</b> como recurso (ligação direta com a Parte I, item registro/variedade), a estrutura do <b>conto</b> e a densidade das personagens. Pode pedir o <b>efeito</b> da linguagem popular.</div>
+        <div class="ex"><b>Exemplo:</b> qual a função das marcas de fala regional nos contos? <span class="resp">Caracterizar as personagens e dar autenticidade ao mundo da ilha — variedade não padrão com função estética, não desvio a corrigir.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== OBRA 5 — TORTO ARADO ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="ob5">
+        <div class="num">IV · As Seis Obras do Programa</div>
+        <h2>5. Torto Arado — Itamar Vieira Júnior <span style="font-weight:500;font-size:16px;color:var(--muted)">(romance · Todavia)</span></h2>
+        <p>Um dos romances brasileiros mais premiados deste século. No <b>sertão da Bahia</b>, a saga de duas irmãs — unidas por uma faca, uma língua e a luta pela terra — revela a vida de <b>descendentes de escravizados</b> que ainda trabalham terra alheia.</p>
+        <div class="mini">
+          <a href="#ob5-autor">Itamar Vieira Júnior</a>
+          <a href="#ob5-enredo">Enredo e estrutura em três vozes</a>
+          <a href="#ob5-temas">Terra, trabalho, raça e o sagrado</a>
+        </div>
+      </div>
+
+      <section class="card" id="ob5-autor">
+        <div class="kicker">Torto Arado · 5.1</div>
+        <h3>Itamar Vieira Júnior e a literatura da terra</h3>
+        <p class="lead"><b>Itamar Vieira Júnior</b>, escritor <b>baiano</b> e <b>geógrafo</b>, trabalhou com questões agrárias e <b>quilombolas</b> — experiência que alimenta sua ficção. <i>Torto Arado</i> (Todavia, 2019) recebeu prêmios de peso (<b>LeYa</b>, <b>Jabuti</b>, <b>Oceanos</b>) e tornou-se um fenômeno da <b>literatura contemporânea</b>. A obra dá <b>voz e dignidade literária</b> a um Brasil rural e negro frequentemente invisível, na linha de uma literatura que reconta a história a partir dos <b>de baixo</b>. O próprio <b>título</b> evoca o <b>arado</b> que revolve a terra — o trabalho, o solo, a lida que marca corpos e destinos.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> situar a obra na <b>literatura contemporânea</b> de temática <b>agrária e afro-brasileira</b>; o <b>lugar</b> do trabalho e da terra. O reconhecimento crítico e a representação dos quilombolas são pontos frequentes.</div>
+        <div class="ex"><b>Exemplo:</b> o que o título “Torto Arado” sugere? <span class="resp">O arado que lavra a terra de modo torto — imagem do trabalho duro e da vida torcida pela exploração no campo.</span></div>
+      </section>
+
+      <section class="card" id="ob5-enredo">
+        <div class="kicker">Torto Arado · 5.2</div>
+        <h3>Enredo e estrutura: a faca, a língua e as três vozes</h3>
+        <p class="lead">Na <b>Fazenda Água Negra</b>, na Chapada Diamantina, vivem <b>Bibiana</b> e <b>Belonísia</b>, irmãs descendentes de escravizados, presas a um sistema de <b>servidão</b>: trabalham a terra que não lhes pertence. Meninas, encontram uma <b>velha faca</b> escondida entre os pertences da avó <b>Donana</b> e a levam à boca — <b>uma delas (Belonísia) perde a língua</b>. A partir daí, ficam <b>ligadas para sempre</b>: a que fala empresta a <b>voz</b> à que silenciou. O romance se divide em <b>três partes</b> — “<b>Fio de corte</b>”, “<b>Torto arado</b>” e “<b>Rio de sangue</b>” —, cada uma com um <b>narrador</b> diferente: <b>Bibiana</b>, depois <b>Belonísia</b> e, por fim, <b>Santa Rita Pescadeira</b>, uma <b>entidade encantada</b>. A mudança de vozes amplia o olhar e funde o <b>real</b> ao <b>sagrado</b>.</p>
+        <div class="warn"><b>Atenção:</b> a <b>terceira voz</b> não é humana: é uma <b>entidade</b> ligada à religiosidade local. Esse narrador insere o <b>sobrenatural</b> (realismo + encantamento) — um traço estrutural decisivo, não um detalhe.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>estrutura em três partes/vozes</b>, o <b>foco narrativo</b> que muda, o símbolo da <b>faca</b> e da <b>língua cortada</b> (silenciamento e união das irmãs). Relacione <b>forma</b> e <b>sentido</b>.</div>
+        <div class="ex"><b>Exemplo:</b> o que simboliza a língua cortada? <span class="resp">O <b>silenciamento</b> histórico desses sujeitos — e a <b>solidariedade</b>: uma irmã torna-se a voz da outra, imagem da partilha e da resistência.</span></div>
+      </section>
+
+      <section class="card" id="ob5-temas">
+        <div class="kicker">Torto Arado · 5.3</div>
+        <h3>Terra, trabalho, raça e a religiosidade do jarê</h3>
+        <p class="lead">No centro está a <b>questão da terra</b>: descendentes de escravizados que, mesmo após a Abolição, seguem <b>presos à fazenda</b>, trabalhando sem posse nem direitos — uma <b>escravidão que se reinventa</b>. A obra trata da <b>exploração</b>, da <b>violência</b> (de gênero e de classe), do <b>racismo</b> e da <b>luta por dignidade</b> e por território. Atravessa tudo o <b>jarê</b>, religião <b>afro-brasileira</b> da Chapada Diamantina, fonte de <b>identidade, força e resistência</b> da comunidade. A <b>natureza</b> e o <b>trabalho da roça</b> dão à prosa um <b>ritmo poético</b>, quase telúrico: a terra é personagem.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> <b>conflito agrário</b>, herança da <b>escravidão</b>, <b>resistência quilombola</b>, <b>religiosidade afro-brasileira</b> (jarê) e a <b>força feminina</b>. Forte candidato a diálogo com <i>Solitária</i> (raça e trabalho) e <i>Parque Industrial</i> (exploração).</div>
+        <div class="ex"><b>Exemplo:</b> por que se diz que a obra mostra uma “escravidão que continua”? <span class="resp">Porque, livres no papel, os moradores seguem sem terra e sem direitos, presos ao trabalho na fazenda — a exploração persiste sob nova forma.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== OBRA 6 — PARQUE INDUSTRIAL ===================== -->
+      <div class="area secIV">
+      <div class="chapter" id="ob6">
+        <div class="num">IV · As Seis Obras do Programa</div>
+        <h2>6. Parque Industrial — Pagu <span style="font-weight:500;font-size:16px;color:var(--muted)">(romance · Companhia das Letras)</span></h2>
+        <p>O <b>primeiro romance proletário</b> da literatura brasileira. Na São Paulo industrial dos anos 1930, Pagu narra a vida das <b>operárias</b> do bairro do <b>Brás</b> — exploração, miséria e luta —, unindo <b>modernismo</b>, <b>marxismo</b> e <b>feminismo</b>.</p>
+        <div class="mini">
+          <a href="#ob6-autora">Pagu: arte e militância</a>
+          <a href="#ob6-enredo">O Brás, as operárias e a forma</a>
+          <a href="#ob6-temas">Classe, gênero, raça e crítica</a>
+        </div>
+      </div>
+
+      <section class="card" id="ob6-autora">
+        <div class="kicker">Parque Industrial · 6.1</div>
+        <h3>Pagu: modernismo e militância</h3>
+        <p class="lead"><b>Patrícia Galvão</b>, a <b>Pagu</b> (1910–1962), foi escritora, jornalista e <b>militante comunista</b>, figura agitadora do <b>modernismo</b> brasileiro. Publicou <i>Parque Industrial</i> em <b>1933</b> sob o <b>pseudônimo Mara Lobo</b> — em parte para separar o romance “de tese” de sua obra anterior, em parte pela exposição política. É a obra mais antiga do programa e marca a <b>segunda fase do modernismo</b> (a <b>geração de 1930</b>), voltada ao <b>romance social</b> e à denúncia das desigualdades. Pagu escreve a serviço de uma causa: <b>dar visibilidade literária à classe operária</b>, em especial às <b>mulheres</b>.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> situar a obra no <b>modernismo de 30</b> (romance social/neorrealismo), a relação <b>arte e engajamento</b> e o pioneirismo de uma <b>autora mulher</b> e comunista. O pseudônimo Mara Lobo costuma aparecer.</div>
+        <div class="ex"><b>Exemplo:</b> por que Parque Industrial é um “romance proletário”? <span class="resp">Porque tem a classe trabalhadora como protagonista e tema, denunciando sua exploração — o primeiro do gênero no Brasil.</span></div>
+      </section>
+
+      <section class="card" id="ob6-enredo">
+        <div class="kicker">Parque Industrial · 6.2</div>
+        <h3>O Brás, as operárias e a forma modernista</h3>
+        <p class="lead">O cenário é o <b>Brás</b>, bairro <b>industrial</b> e operário de São Paulo. A narrativa acompanha um grupo de <b>operárias</b> — <b>Otávia</b>, <b>Rosinha Lituana</b>, <b>Corina</b>, <b>Matilde</b>, <b>Eleonora</b> — e expõe os <b>maus-tratos</b> sofridos pela classe trabalhadora urbana num tempo <b>anterior aos direitos trabalhistas</b>. A <b>forma</b> acompanha o conteúdo: prosa <b>fragmentada</b>, de <b>cenas curtas</b> e cortes rápidos, quase <b>cinematográfica</b> e <b>jornalística</b>, com ironia e linguagem direta. Não há um herói único: o <b>protagonista é coletivo</b> — a própria massa operária e a cidade que a explora.</p>
+        <div class="uso"><b>Como cai no vestibular:</b> o <b>espaço</b> (Brás/fábrica) como símbolo, o <b>protagonismo coletivo</b> e a <b>forma fragmentada/cinematográfica</b> tipicamente modernista. Relacione <b>estrutura</b> e <b>projeto crítico</b>.</div>
+        <div class="ex"><b>Exemplo:</b> que efeito tem a narrativa fragmentada e em cenas rápidas? <span class="resp">Simula o ritmo da cidade industrial e dá visão panorâmica da coletividade operária — a forma reforça a denúncia social.</span></div>
+      </section>
+
+      <section class="card" id="ob6-temas">
+        <div class="kicker">Parque Industrial · 6.3</div>
+        <h3>Classe, gênero, raça e crítica social</h3>
+        <p class="lead">A denúncia é <b>tripla</b>. De <b>classe</b>: a exploração dos operários, a miséria, a desumanização do trabalho fabril. De <b>gênero</b>: a violência específica contra a <b>mulher trabalhadora</b> — assédio, abandono, a queda na <b>prostituição</b> como destino imposto pela pobreza. E de <b>raça</b>: o <b>racismo</b> que se soma à exploração das personagens negras. Pagu cruza <b>marxismo</b> e <b>feminismo</b> num <b>realismo social</b> cru, em que a injustiça não é pano de fundo, mas o próprio assunto. A obra propõe a <b>tomada de consciência</b> e a <b>luta</b> como saída.</p>
+        <div class="warn"><b>Atenção:</b> não leia a obra como simples “panfleto”. Há <b>elaboração estética</b> (montagem modernista, ironia, montagem de vozes). O engajamento se faz <b>com</b> forma literária, não apesar dela.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> a <b>tríade</b> classe + gênero + raça, o <b>engajamento</b> político e o <b>realismo social dos anos 1930</b>. Diálogo natural com <i>Solitária</i> e <i>Torto Arado</i> (trabalho, raça, opressão) e com a canção “Parque Industrial”.</div>
+        <div class="ex"><b>Exemplo:</b> que diferencia a denúncia de Pagu da de outros romances de 30? <span class="resp">A ênfase na <b>mulher operária</b> — somando à crítica de classe a crítica de gênero (e de raça), numa perspectiva feminista pioneira.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- ===================== SÍNTESE ===================== -->
+      <div class="area secV">
+      <div class="chapter" id="sin1">
+        <div class="num">V · Síntese e Aplicação</div>
+        <h2>1. Diálogos entre as Obras e Treino das Habilidades</h2>
+        <p>Para fechar, dois movimentos: <b>conectar</b> as seis obras por temas e por época, e <b>aplicar</b> a um texto literário as habilidades de interpretação (Parte I) e de análise linguística (Parte II). É assim que a prova mistura tudo.</p>
+        <div class="mini">
+          <a href="#sin1-dialogos">Temas que atravessam as obras</a>
+          <a href="#sin1-panorama">Panorama estético</a>
+          <a href="#sin1-interp">Aplicar a interpretação</a>
+          <a href="#sin1-recursos">Aplicar a análise linguística</a>
+          <a href="#sin1-prova">Como tudo cai no vestibular</a>
+        </div>
+      </div>
+
+      <section class="card" id="sin1-dialogos">
+        <div class="kicker">Síntese · 1.1</div>
+        <h3>Temas que atravessam as obras</h3>
+        <p class="lead">Embora variadas, as obras <b>conversam</b>. Um eixo forte é <b>trabalho e exploração</b>: a operária de <i>Parque Industrial</i>, a doméstica de <i>Solitária</i> e o trabalhador da terra de <i>Torto Arado</i> são faces da mesma desigualdade. Outro é <b>raça e herança escravista</b>, que une <i>Solitária</i> e <i>Torto Arado</i> (e ecoa em Pagu). Há também o <b>protagonismo feminino</b> (Pagu, Eliana, Itamar, e os velhos de Alê Motta), a <b>crítica social</b> que mora na <b>forma</b> (a ironia de <i>Velhos</i>, a montagem de <i>Parque Industrial</i>, a antropofagia tropicalista) e a <b>valorização do local e do oral</b> (<i>Singradura</i>, <i>Torto Arado</i>). Até um <b>fio explícito</b> aproxima dois textos: a canção “Parque Industrial”, de Tom Zé, e o romance homônimo de Pagu.</p>
+        <table class="tab"><thead><tr><th>Eixo temático</th><th>Obras em diálogo</th></tr></thead><tbody>
+          <tr><td>Trabalho e exploração</td><td>Parque Industrial · Solitária · Torto Arado</td></tr>
+          <tr><td>Raça e herança escravista</td><td>Solitária · Torto Arado</td></tr>
+          <tr><td>Mulheres e resistência</td><td>Parque Industrial · Solitária · Torto Arado · Velhos</td></tr>
+          <tr><td>Exclusão e invisibilidade</td><td>Velhos · Solitária</td></tr>
+          <tr><td>Local, oralidade e identidade</td><td>Singradura · Torto Arado · Tropicália</td></tr>
+          <tr><td>Crítica pela forma</td><td>Tropicália · Parque Industrial · Velhos</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> questões <b>comparativas</b> (“as obras X e Y aproximam-se por…”) e textos de <b>uma obra usados para iluminar outra</b>. Ter os <b>eixos</b> na ponta da língua resolve a maioria.</div>
+        <div class="ex"><b>Exemplo:</b> o que aproxima Solitária e Torto Arado? <span class="resp">A denúncia da <b>exploração do trabalho negro</b> como herança da escravidão — uma no campo, outra na casa urbana.</span></div>
+      </section>
+
+      <section class="card" id="sin1-panorama">
+        <div class="kicker">Síntese · 1.2</div>
+        <h3>Panorama estético: do modernismo ao contemporâneo</h3>
+        <p class="lead">As obras desenham uma pequena <b>linha do tempo</b> da literatura brasileira. <i>Parque Industrial</i> (1933) é <b>modernismo</b> de 2ª fase, romance social. O álbum <i>Tropicália</i> (1968) é <b>tropicalismo</b>, vanguarda que reatualiza a <b>antropofagia</b> modernista. <i>Singradura</i> (1970) reúne o <b>regionalismo</b> de matriz catarinense. E <i>Velhos</i>, <i>Torto Arado</i> e <i>Solitária</i> são <b>literatura contemporânea</b> (séc. XXI), marcada pela <b>pluralidade de vozes</b> e pelo protagonismo de sujeitos antes silenciados. Note o <b>diálogo entre épocas</b>: a antropofagia de 1922 chega a 1968; a denúncia social de Pagu reverbera no presente.</p>
+        <table class="tab"><thead><tr><th>Obra</th><th>Período aprox.</th><th>Movimento / contexto</th></tr></thead><tbody>
+          <tr><td>Parque Industrial</td><td>1933</td><td>Modernismo (2ª fase) — romance proletário</td></tr>
+          <tr><td>Tropicália ou Panis et Circensis</td><td>1968</td><td>Tropicalismo — vanguarda e antropofagia</td></tr>
+          <tr><td>Singradura</td><td>1970</td><td>Regionalismo catarinense</td></tr>
+          <tr><td>Torto Arado</td><td>2019</td><td>Contemporâneo — temática agrária/afro-brasileira</td></tr>
+          <tr><td>Velhos</td><td>2020</td><td>Contemporâneo — microconto, crítica social</td></tr>
+          <tr><td>Solitária</td><td>2022</td><td>Contemporâneo — afro-brasileiro, racismo estrutural</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> relacionar a obra ao <b>momento estético</b> e perceber <b>continuidades</b> (modernismo → tropicalismo; denúncia social de 30 → contemporâneo). Datas valem como <b>contexto</b>, não como decoreba.</div>
+        <div class="ex"><b>Exemplo:</b> que herança modernista o tropicalismo retoma? <span class="resp">A <b>antropofagia</b> de Oswald de Andrade — devorar e recriar influências —, atualizada para a cultura pop de 1968.</span></div>
+      </section>
+
+      <section class="card" id="sin1-interp">
+        <div class="kicker">Síntese · 1.3</div>
+        <h3>Aplicando a interpretação a um texto literário</h3>
+        <p class="lead">Diante de um trecho das obras, siga um <b>roteiro</b>: (1) capte o <b>sentido global</b> e o <b>tema</b>; (2) identifique o <b>foco narrativo</b> — <b>quem fala</b>? (lembre das <b>vozes</b> de <i>Torto Arado</i> e <i>Solitária</i>); (3) separe o que é <b>explícito</b> do que é <b>implícito</b> (pressupostos, ironia); (4) reconheça o <b>gênero</b> (microconto, romance, canção) e o que ele exige; (5) relacione ao <b>contexto</b> e a <b>outras obras</b>. Um mesmo trecho costuma cobrar várias dessas camadas ao mesmo tempo.</p>
+        <div class="formula-box">sentido global → quem narra → explícito × implícito → gênero → contexto e intertexto</div>
+        <div class="uso"><b>Como cai no vestibular:</b> trechos das obras com comandos que vão do literal (“segundo o texto”) ao inferencial (“depreende-se”) e ao contextual (“a passagem relaciona-se com…”). O roteiro evita pular etapas.</div>
+        <div class="ex"><b>Exemplo:</b> num trecho narrado por Belonísia, qual o primeiro cuidado? <span class="resp">Lembrar <b>quem narra</b> e seus limites: é a voz de uma das irmãs, com sua perspectiva — não a “verdade” onisciente.</span></div>
+      </section>
+
+      <section class="card" id="sin1-recursos">
+        <div class="kicker">Síntese · 1.4</div>
+        <h3>Aplicando a análise de recursos linguísticos</h3>
+        <p class="lead">A mesma página literária é prato cheio para a Parte II. Pergunte sempre pelo <b>efeito</b>: o <b>diminutivo</b> e a <b>ironia</b> de um microconto de <i>Velhos</i> (morfologia + semântica); a <b>variedade regional</b> e a <b>oralidade</b> em <i>Singradura</i> e <i>Torto Arado</i> (adequação, registro); a <b>sintaxe fragmentada</b> e a <b>montagem</b> de <i>Parque Industrial</i> (efeito de ritmo e simultaneidade); os <b>jogos sonoros e a colagem</b> do tropicalismo (fonológico + intertextual); a <b>coesão</b> que costura a alternância de narradores em <i>Solitária</i>. Forma e sentido <b>não se separam</b>.</p>
+        <table class="tab"><thead><tr><th>Recurso</th><th>Onde brilha</th><th>Efeito típico</th></tr></thead><tbody>
+          <tr><td>Diminutivo / ironia</td><td>Velhos</td><td>desprezo, crítica, virada de sentido</td></tr>
+          <tr><td>Variedade regional / oralidade</td><td>Singradura, Torto Arado</td><td>verossimilhança, identidade</td></tr>
+          <tr><td>Sintaxe fragmentada / montagem</td><td>Parque Industrial</td><td>ritmo urbano, visão coletiva</td></tr>
+          <tr><td>Jogo sonoro / colagem</td><td>Tropicália</td><td>estranhamento, crítica, antropofagia</td></tr>
+        </tbody></table>
+        <div class="uso"><b>Como cai no vestibular:</b> “o efeito do recurso X no trecho é…”. Ligue sempre o <b>traço linguístico</b> ao <b>projeto da obra</b> — é a leitura que a banca premia.</div>
+        <div class="ex"><b>Exemplo:</b> por que a variedade não padrão em Torto Arado não é “erro”? <span class="resp">Porque é <b>recurso estético</b>: dá voz e verdade às personagens, marcando sua identidade — adequação, não desvio.</span></div>
+      </section>
+
+      <section class="card" id="sin1-prova">
+        <div class="kicker">Síntese · 1.5</div>
+        <h3>Como tudo cai no vestibular</h3>
+        <p class="lead">Os formatos mais comuns: (1) um <b>texto-base</b> (literário ou não) seguido de questões de <b>compreensão e interpretação</b>; (2) análise de um <b>recurso linguístico</b> e seu efeito; (3) <b>trecho de uma das obras</b> com perguntas de enredo, foco narrativo, tema e estilo; (4) <b>comparação</b> entre obras ou entre obra e texto de apoio; (5) relação da obra com seu <b>contexto histórico-cultural</b>. Em todos, a regra de ouro é a <b>leitura atenta</b>: identifique tema, quem fala, o que é dito e o que é sugerido — e responda <b>ao texto dado</b>, não ao seu resumo geral.</p>
+        <div class="warn"><b>Atenção:</b> os distratores mais perigosos são afirmações <b>verdadeiras sobre a obra</b>, mas que <b>não respondem</b> ao trecho. E lembre: <b>ler as obras na íntegra</b> é insubstituível — o guia orienta, a leitura forma.</div>
+        <div class="uso"><b>Como cai no vestibular:</b> bancas como a da <b>UFSC</b> e o <b>ENEM</b> privilegiam <b>interpretação</b> e <b>raciocínio</b> sobre a língua, com forte presença de <b>literatura contextualizada</b>. Treine parafrasear teses e justificar leituras pelo texto.</div>
+        <div class="ex"><b>Exemplo:</b> diante de um trecho desconhecido de uma das obras, por onde começar? <span class="resp">Pelo <b>sentido global</b> e por <b>quem narra</b>; depois, separe explícito de implícito e confira qual alternativa respeita o que o texto efetivamente diz.</span></div>
+        <a class="toplink" href="#top">↑ voltar ao topo</a>
+      </section>
+      </div>
+
+      <!-- CONTENT-END -->
+      </div><!-- /.content -->
+      <footer class="f">
+        Guia de estudos de Língua Portuguesa e Literatura · Programa de Vestibular. Interpretar é acompanhar um sentido: capte o todo, hierarquize as ideias, deduza o implícito e relacione os textos. Nas obras, leia o texto integral — o guia orienta, não substitui a leitura.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

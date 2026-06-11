@@ -20,6 +20,7 @@ butInicio.addEventListener('click', () => {
         <a href=".//tabs/filosofia.html">Filosofia</a>
         <a href=".//tabs/geografia.html">Geografia</a>
         <a href=".//tabs/historia.html">História</a>
+        <a href=".//tabs/portugues.html">Português</a>
     </nav>
     <main>
         <br><br><br><br>
