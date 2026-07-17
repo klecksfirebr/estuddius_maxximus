@@ -21,6 +21,7 @@ butInicio.addEventListener('click', () => {
         <a href=".//tabs/geografia.html">Geografia</a>
         <a href=".//tabs/historia.html">História</a>
         <a href=".//tabs/portugues.html">Português</a>
+        <a href=".//tabs/video.html">Vídeos</a>
     </nav>
     <main>
         <br><br><br><br>
@@ -29,6 +30,6 @@ butInicio.addEventListener('click', () => {
         <img src="./img/ninjaTurtles.gif" alt="" id="ninjaTurtles"><br>
         <img src="./img/gigachad.gif" alt="" id="gigachad">
         </div>
-    </main>`
-
+    </main>
+    `
 })
